@@ -1,0 +1,122 @@
+.pageBanner{
+    max-width: 720px;
+    height: 100%;
+    padding: 30px 20px;
+   
+    &__inner{
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+    }
+    &__img{
+        &-imgDestop{
+            display: none;
+            width: 100%;
+        }
+        &-imgMobile{
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+#controls{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.controls__prevBtn{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate( 30px , -50%);
+    cursor: pointer;
+}
+
+.controls__prevBtn svg , .controls__nextBtn svg{
+    width: 19px;
+    height: 35px;
+}
+
+.controls__prevBtn svg path , .controls__nextBtn svg path {
+    fill: #fff;
+}
+
+.controls__nextBtn{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate( -30px , -50%);
+    cursor: pointer;
+}
+
+.pageBanner__inner .tns-outer .tns-nav{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(-12px , -12px);
+    display: flex;
+    gap: 5px;
+    z-index: 2;
+}
+
+.pageBanner__inner .tns-outer .tns-nav button{
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 100%;
+    border: none;
+}
+
+.tns-nav-active{
+    background-color: black !important;
+}
+
+@media (min-width: 720px){
+    .pageBanner{
+        max-width: 1280px;
+        padding: 30px 50px;
+        &__inner{
+            width: 100%;
+        }
+        &__img{
+            &-imgDestop{
+                display: block;
+            }
+            &-imgMobile{
+                display: none;
+            }
+        }
+    }
+    .tns-nav{
+        width: 100%;
+        bottom: 12px;
+        transform: none;
+        justify-content: center;
+    }
+    .tns-nav button{
+        background-color: #dadada;
+    }
+    
+}
+
+@media (min-width: 1280px){
+    .pageBanner{
+        max-width: 1440px;
+        padding: 30px 0px;
+        &__inner{
+            max-width: 1000px;
+        }
+    }
+}
+
+@media (min-width: 1440px){
+    .pageBanner{
+        max-width: 100%;
+        &__inner{
+            max-width: 1220px;
+        }
+    }
+}

@@ -1,0 +1,91 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Themekit template theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/themekit",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/themekit\/issues"
+  },
+  {
+    "name": "Color & Styles",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary color",
+        "default": "#009ee3"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Secondary color",
+        "default": "#cef14d"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#454545"
+      },
+      {
+        "type": "color",
+        "id": "light_textColor",
+        "label": "Light Text color",
+        "default": "#888888"
+      },
+      {
+        "type": "color",
+        "id": "background_content",
+        "label": "Background Content Color",
+        "default": "#e5e5e5"
+      },
+      {
+        "type": "header",
+        "content": " Price Colors"
+      },
+      {
+        "type": "color",
+        "id": "price_color",
+        "label": "Price color",
+        "default": "#454545"
+      },
+      {
+        "type": "color",
+        "id": "sale_price_label_bgColor",
+        "label": "Sale price Label Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "sale_price_label_textColor",
+        "label": "Sale price Label Text color",
+        "default": "#e11436"
+      },
+      {
+        "type": "header",
+        "content": " Button Colors"
+      },
+      {
+        "type": "color",
+        "id": "Email_button",
+        "label": "Email Button Color",
+        "default": "#032c41"
+      },
+      {
+        "type": "header",
+        "content": "Borders Colors"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border Color",
+        "default": "#d0d0d0"
+      }
+    ]
+  }
+]

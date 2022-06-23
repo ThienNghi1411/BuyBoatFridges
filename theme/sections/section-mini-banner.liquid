@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="{{ 'miniBanner.css' | asset_url }}">
+<section class="miniBanner" data-section-type="mini-banner" data-section-id="{{ section.id }}">
+    <div class="miniBanner__inner">
+        <div class="miniBanner__bannerCont">
+            <div class="miniBanner__imgBanner">
+                <a href="{{ routes.root_url }}" class="">
+                    <img src="{{ section.settings.image1 | image_url }} " />
+                </a>
+            </div>
+            <div class="miniBanner__imgBanner">
+                <a href="{{ routes.root_url }}" class="">
+                    <img src="{{ section.settings.image2 | image_url }} " />
+                </a>
+            </div>
+        </div>
+        <div class="miniBanner__productBannerCont">
+            {% for i in (1..2)%}
+                {% if i == 1 %}
+                    {%- assign product = all_products[section.settings.product1] -%}
+                {% else %}
+                    {%- assign product = all_products[section.settings.product2] -%}
+                {% endif %}
+                <div class="miniBanner__productBanner">
+                    <div class="miniBanner__productBanner-wrap">
+                        <div class="miniBanner__productBanner-imgCont">
+                            <img src="{{ product.featured_image | image_url }} " />
+                            <div class="miniBanner__productBanner-imgCont-tagCont">{{ product.vendor }}</div>
+                        </div>
+                        <div class="miniBanner__productBanner-infoProduct">
+                            <div class="miniBanner__productBanner-titleProduct">
+                                <div class="miniBanner__productBanner-titleProduct-productName">{{ product.variants[0].sku }}</div>
+                                <div class="miniBanner__productBanner-titleProduct-subTitle">{{ product.title}}</div>
+                                <div class="miniBanner__productBanner-priceProduct">
+                                    <div class="miniBanner__productBanner-priceProduct-lastPrice">{{ product.compare_at_price | money }}</div>
+                                    <div class="miniBanner__productBanner-priceProduct-basePrice">{{ product.price | money }}</div>
+                                </div>
+                            </div>
+                            <div class="miniBanner__productBanner-priceAndBtn">
+                                <div class="miniBanner__productBanner-btnSeeMoreCont">
+                                    <button class="miniBanner__productBanner-btnSeeMore">
+                                        <a href="{{ product.url }}" class="">See more</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Mini Banner",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Mini Banner"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":" xxxxx"
+            },
+            {
+                "type":"image_picker",
+                "id":"image1",
+                "label":"choose image:"
+            },
+            {
+                "type":"image_picker",
+                "id":"image2",
+                "label":"choose image:"
+            },
+            {
+                "type":"product",
+                "id":"product1",
+                "label":"choose product:"
+            },
+            {
+                "type":"product",
+                "id":"product2",
+                "label":"choose product:"
+            }
+        ]
+    }
+{% endschema %}

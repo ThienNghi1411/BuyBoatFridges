@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="{{ 'pageBanner.css' | asset_url }}">
+<section class="pageBanner"  data-section-type="page-banner" data-section-id="{{ section.id }}">
+    <div class="pageBanner__inner">
+        <div class="pageBanner__slider">
+          {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'slide' %}
+                  <div class="pageBanner__img" {{ block.shopify_attributes }}>
+                      <a href="{{ routes.root_url }}" class="">
+                        <img src="{{ block.settings.imageDestop | image_url }}" alt="{{ block.settings.image.alt }}" class="pageBanner__img-imgDestop" />
+                        <img src="{{ block.settings.imageMobile | image_url }}" alt="{{ block.settings.image.alt }}" class="pageBanner__img-imgMobile" />
+                      </a>
+                  </div>
+              {% endcase %}
+          {% endfor %}
+        </div>
+        <div id="controls">
+          <div class="controls__prevBtn">{% render 'icon-angle-left' %}</div>
+          <div class="controls__nextBtn">{% render 'icon-angle-right' %}</div>
+        </div>
+    </div>
+
+</section>
+{% schema %}
+    {
+        "name": "Page Banner",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Page Banner"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":" xxxxx"
+            }
+        ],
+        "blocks": [
+            {
+              "name": "Image Slide",
+              "type": "slide",
+              "settings": [
+                {
+                  "type": "image_picker",
+                  "id": "imageDestop",
+                  "label": "Choose image for destop screen: "
+                },
+                {
+                  "type": "image_picker",
+                  "id": "imageMobile",
+                  "label": "Choose image for mobile screen:"
+                }
+              ]
+            }
+          ]
+    }
+{% endschema %}

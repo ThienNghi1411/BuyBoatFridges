@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ 'category-card.css' | asset_url }}">
+{% capture url %}{{ routes.collections_url }}/{{ collection.handle }}{% endcapture %}
+<div class="categoryCard">
+        <div class="categoryCard__imgCont">
+            {% if collection.image.src != blank %}
+                <a href="{{url}}"> <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /></a>
+            {% else %}
+                {{ 'product-1' | placeholder_svg_tag }}
+            {% endif %}
+        </div>             
+    <div class="categoryCard__title">
+        
+        <a href="{{ url }}" class=""> {{ collection.title }}</a> 
+    </div>
+</div>

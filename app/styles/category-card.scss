@@ -1,0 +1,21 @@
+.categoryCard{
+    max-width: 150px;
+    width: 100%;
+ 
+    justify-self: center;
+    align-self: center;
+    &__title{
+        text-align: center;
+        color: #454545;
+        font-weight: bold;
+        font-size: 13px;
+        flex: 1;
+    }
+    &__imgCont{
+        width: 100%;
+        margin-bottom: 15px;
+        & img{
+            width: 100%;
+        }
+    }
+}

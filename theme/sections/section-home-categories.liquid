@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="{{ 'homeCategories.css' | asset_url }}">
+<section class="homeCategories">
+    <div class="homeCategories__inner">
+        <div class="homeCategories__title">SHOP BY CATEGORIES</div>
+        <div class="homeCategories__content">
+            {% for collection in collections limit: 12 %}
+                {% render 'category-card' with collection as collection %}    
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% schema %}
+    {
+        "name": "Categories List",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Categories List"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":" xxxxx"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"choose image:"
+            }
+        ]
+    }
+{% endschema %}

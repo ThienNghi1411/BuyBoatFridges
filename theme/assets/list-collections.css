@@ -1,0 +1,14 @@
+.collections__wrapper .collections .collections__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 50px 0 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px; }
+
+@media (min-width: 720px) {
+  .collections .collections__inner {
+    max-width: 1000px !important; }
+  .collections .collections__inner .categoryCard {
+    width: 20%; } }

@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="{{ 'homeBestSeller.css' | asset_url }}">
+<section class="homeBestSeller">
+    <div class="homeBestSeller__inner">
+        <div class="homeBestSeller__title">BEST SELLER</div>
+        <div class="homeBestSeller__content">
+            <div class="homeBestSeller__contentCont">
+                {% for product in collections['Evaporators'].products limit : 4 %}
+                    <script>console.log({{ product | json }})</script>
+                    {% render 'product-card' with product as product%}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Best Seller",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Best Seller"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":" xxxxx"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"choose image:"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,145 @@
+{
+  "current": {
+    "primary_color": "#009ee3",
+    "background_content": "#f7f8fa",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "636c1817-c52e-4a16-a640-6f9f7e25d497": {
+            "type": "add_Form",
+            "settings": {
+              "show_content": true,
+              "Form_title": "FOR EXCLUSIVE DEALS",
+              "button_text": "JOIN US",
+              "placehoder_text": "Enter your e-mail",
+              "show_icons": false,
+              "FaceBook": "",
+              "Twitter": "https:\/\/twitter.com\/home?lang=vi",
+              "Gmail": "https:\/\/mail.google.com\/",
+              "Instagram": "https:\/\/www.instagram.com\/",
+              "Whatsapp": "https:\/\/web.whatsapp.com\/",
+              "pinterest": "https:\/\/www.pinterest.com\/"
+            }
+          },
+          "ad685beb-5029-4c53-a0ee-3244548b4ead": {
+            "type": "add_PaymentIcons",
+            "settings": {
+              "show_content": false,
+              "PaymentIcon_width": "20",
+              "PaymentIcon_height": "20",
+              "icon1": "shopify:\/\/shop_images\/FRONT_LOADING.png",
+              "link1": "",
+              "icon2": "shopify:\/\/shop_images\/SAFES.png",
+              "link2": "",
+              "link3": "",
+              "link4": "",
+              "link5": "",
+              "link6": "",
+              "link7": "",
+              "link8": ""
+            }
+          },
+          "7ed3ceb8-08ae-4c85-a869-248bfa26551f": {
+            "type": "add_FooterMenu",
+            "settings": {
+              "show_content": true,
+              "Col1_title": "Products",
+              "menu": "footer",
+              "Col2_title": "Information",
+              "menu2": "technical-support",
+              "Col3_title": "About us",
+              "html": "<div class=\"collaspe_content\">\n                     <ul class=\"list\">\n                        <li><a href=\"\/search\">Pay less and buy more with https:\/\/www.buyboatfridges.com\/<\/a><\/li>\n                       \n                     <\/ul>   \n                     <\/div>",
+              "Col4_title": "Contact Us",
+              "html2": "<div class=\"collaspe_content\">\n                     <ul class=\"list\">\n                        <li><a href=\"\/search\">PHONE:+1 (305) 999 5212<\/a><\/li>\n                        <li><a href=\"\/search\">HOURS: 24\/7 Customer Support<\/a><\/li>\n\n                        <li><a href=\"\/search\"> <p>EMAIL:<\/p>  <p class=\"list-email\"> sales@buyboatfridges.com<\/p> <\/a><\/li>\n                     \n                     <\/ul>   \n                     <\/div>"
+            }
+          }
+        },
+        "block_order": [
+          "636c1817-c52e-4a16-a640-6f9f7e25d497",
+          "ad685beb-5029-4c53-a0ee-3244548b4ead",
+          "7ed3ceb8-08ae-4c85-a869-248bfa26551f"
+        ],
+        "settings": {
+          "copyRight": "@2022 BUYBOATFRIDGES. All Rights Reserved",
+          "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
+          "Icon_width": "45",
+          "Icon_heigth": "25"
+        }
+      },
+      "1655454297d803f2c2": {
+        "type": "section-pageBanner",
+        "blocks": {
+          "93efc541-e3d4-4cb1-821c-5c72c35dd386": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/banner1_3.jpg"
+            }
+          },
+          "d99635c0-d987-4110-87e9-5f2c387673e4": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/banner1_4.jpg"
+            }
+          },
+          "3136ffd8-97c9-4ca0-8e28-e7f79611ce27": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/banner1_1.jpg"
+            }
+          },
+          "f9ef989a-c33e-46dd-bc8a-3827c130d052": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/banner1_2.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "93efc541-e3d4-4cb1-821c-5c72c35dd386",
+          "d99635c0-d987-4110-87e9-5f2c387673e4",
+          "3136ffd8-97c9-4ca0-8e28-e7f79611ce27",
+          "f9ef989a-c33e-46dd-bc8a-3827c130d052"
+        ],
+        "settings": {}
+      },
+      "165556668187c23e1f": {
+        "type": "section-home-categories",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/img.png"
+        }
+      },
+      "165563478473cdca76": {
+        "type": "section-home-filter",
+        "settings": {}
+      },
+      "16557794261460c40a": {
+        "type": "section-home-bestSeller",
+        "settings": {}
+      },
+      "1655805105ac3f6132": {
+        "type": "section-mini-banner",
+        "settings": {
+          "image1": "shopify:\/\/shop_images\/Banner1.png",
+          "image2": "shopify:\/\/shop_images\/Banner2.png",
+          "product1": "vitrifrigo-evaporator-holding-plate-ac20-q",
+          "product2": "vitrifrigo-front-loading-black-refrigerator-w-freezer-compartment-c42rbd4-f-1-adjustable-flange-external-cooling-unit"
+        }
+      }
+    },
+    "content_for_index": [
+      "1655454297d803f2c2",
+      "165563478473cdca76",
+      "165556668187c23e1f",
+      "16557794261460c40a",
+      "1655805105ac3f6132"
+    ]
+  },
+  "presets": {
+    "Default": {}
+  }
+}
