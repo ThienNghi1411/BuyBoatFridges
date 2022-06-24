@@ -4,6 +4,7 @@
   position: relative; }
 
 .header__inner {
+  width: 100%;
   margin: 0 auto;
   position: relative; }
 
@@ -82,28 +83,59 @@
   font-size: 15px;
   border-radius: 5px;
   cursor: pointer;
-  display: none; }
+  display: none;
+  position: relative; }
+
+.header__megaMenu {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  transform: translateY(30px);
+  z-index: 10;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+  padding: 0 20px; }
+
+.header__megaMenu-option {
+  width: 100%;
+  padding: 18px 0 17px;
+  color: #454545;
+  font-size: 16px;
+  font-weight: 400;
+  border-bottom: 1px solid #e9e7e7;
+  transition: all .2s linear; }
+
+.header__megaMenu-option:hover {
+  font-weight: 700; }
+
+.headerMobile__iconMenu {
+  cursor: pointer; }
 
 .headerMobile__iconMenu-icon {
   width: 60%; }
 
 .menuMobile {
   position: absolute;
+  z-index: 10;
   width: 100%;
-  top: 100%;
+  top: 0;
   left: 0;
   display: none; }
 
 .menuMobile__overlay {
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer; }
 
 .menuMobile__container {
   position: absolute;
-  width: 100%;
   top: 0;
   left: 0;
+  width: 100%;
   padding: 20px;
   background-color: #fff;
   z-index: 99;
@@ -118,8 +150,9 @@
   margin-bottom: 30px; }
 
 .menuMobile__header-title {
-  font-size: 30px;
+  font-size: 24px;
   color: #139aeb;
+  text-transform: uppercase;
   font-weight: 600; }
 
 .menuMobile__header-icon {
@@ -135,9 +168,9 @@
   gap: 20px; }
 
 .menuMobile__menuShow-option {
-  font-size: 25px;
+  font-size: 16px;
   color: #454545;
-  font-weight: 400;
+  font-weight: 500;
   transition: all .2s linear; }
 
 .menuMobile__menuShow-option:hover {
@@ -152,9 +185,21 @@
   gap: 17px; }
 
 .menuMobile__contact-text {
-  font-size: 25px;
+  font-size: 18px;
   color: #454545;
   font-weight: 400; }
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: #fff;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2); }
 
 @media (min-width: 320px) {
   .header {
@@ -166,12 +211,71 @@
   .header__account {
     gap: 17px; }
   .header__account-iconCart, .header__account-iconUser, .headerMobile__iconMenu-icon {
-    width: 100%; } }
+    width: 100%; }
+  .menuMobile {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none; }
+  .menuMobile__overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer; }
+  .menuMobile__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    z-index: 99;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    display: none; }
+  .menuMobile__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px; }
+  .menuMobile__header-title {
+    font-size: 30px;
+    color: #139aeb;
+    text-transform: uppercase;
+    font-weight: 600; }
+  .menuMobile__header-icon {
+    cursor: pointer; }
+  .menuMobile__content {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333; }
+  .menuMobile__menuShow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; }
+  .menuMobile__menuShow-option {
+    font-size: 25px;
+    color: #454545;
+    font-weight: 500;
+    transition: all .2s linear; }
+  .menuMobile__menuShow-option:hover {
+    color: #139aeb; }
+  .menuMobile__footer {
+    padding-top: 30px; }
+  .menuMobile__contact {
+    display: flex;
+    align-items: center;
+    gap: 17px; }
+  .menuMobile__contact-text {
+    font-size: 25px;
+    color: #454545;
+    font-weight: 400; } }
 
 @media (min-width: 720px) {
   .header {
     max-width: 1280px;
-    padding: 15px 50px 30px; }
+    padding: 15px 50px 0; }
   .header__logoDestop {
     display: block; }
   .header__account, .header__logoMobile {
@@ -186,7 +290,7 @@
 @media (min-width: 1280px) {
   .header {
     max-width: 1440px;
-    padding: 15px 0 30px; }
+    padding: 15px 0 0; }
   .header__inner {
     max-width: 1000px;
     margin: 0 auto; } }

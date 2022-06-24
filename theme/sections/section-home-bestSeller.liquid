@@ -5,7 +5,7 @@
         <div class="homeBestSeller__content">
             <div class="homeBestSeller__contentCont">
                 {% for product in collections['Evaporators'].products limit : 4 %}
-                    <script>console.log({{ product | json }})</script>
+             
                     {% render 'product-card' with product as product%}
                 {% endfor %}
             </div>

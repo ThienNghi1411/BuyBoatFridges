@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
-<header class="header">
+    <link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
+
     <div class="header__inner ">
         <div class="header__userLogin">
             <div class="header__login"><a href="{{ routes.account_login_url }}">{{ 'sections.header.login' | t }}</a></div>
@@ -8,9 +8,7 @@
         </div>
         <div class="header__container">
             <div class="headerMobile__iconMenu">
-                <a href="{{ routes.root_url }}" class="">
-                    <img src="{{ section.settings.iconMenu | image_url }}" class="headerMobile__iconMenu-icon" />
-                </a>
+                <img src="{{ section.settings.iconMenu | image_url }}" class="headerMobile__iconMenu-icon" />
             </div>
             <div class="header__logo">
                 <a href="{{ routes.root_url }}" class="">
@@ -52,69 +50,72 @@
                     <div class="header__myCart-text">{{ section.settings.cart_text }}</div>
                 </div>
             </div>
-            <div class="menuMobile__container">
-                <div class="menuMobile__header">
-                    <span class="menuMobile__header-title">{{ 'sections.header.menu' | t }}</span>
-                    <div class="menuMobile__header-icon">
-                        {% render 'icon-close' %}
-                    </div>
-                </div>
-                <div class="menuMobile__content">
-                    <ul class="menuMobile__menuShow">
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                        <li class="menuMobile__menuShow-option">
-                            <a href="{{ routes.root_url }}" class="">Front-loading Refrigeration</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="menuMobile__footer">
-                    <div class="menuMobile__contact">
-                        <div class="menuMobile__contact-icon">
-                            {% render 'icon-contact' %}
-                        </div>
-                        <div class="menuMobile__contact-text">{{ 'sections.header.contact' | t }}</div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="header__productSearch">
-            <div class="header__productMenu">{{ 'sections.header.product' | t }}</div>
+            <div class="header__productMenu">
+                <div class="header__productMenu-title">{{ 'sections.header.product' | t }}</div>
+                <ul class="header__megaMenu">
+                    {% for collection in collections  %}
+                        <li class="header__megaMenu-option">
+                            <a href="{{ collection.url }}" class=""> {{ collection.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
             <input type="text" placeholder="{{ 'sections.header.search' | t }}" class="header__productSearch-input">
+        </div>
+        <div class="menuMobile__container">
+            <div class="menuMobile__header">
+                <span class="menuMobile__header-title">{{ 'sections.header.menu' | t }}</span>
+                <div class="menuMobile__header-icon">
+                    {% render 'icon-close' %}
+                </div>
+            </div>
+            <div class="menuMobile__content">
+                <ul class="menuMobile__menuShow">
+                    {% for collection in collections %}
+                        <li class="menuMobile__menuShow-option">
+                            <a href="{{ collection.url }}" class=""> {{ collection.title }}</a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <div class="menuMobile__footer">
+                <div class="menuMobile__contact">
+                    <div class="menuMobile__contact-icon">
+                        {% render 'icon-contact' %}
+                    </div>
+                    <div class="menuMobile__contact-text">{{ 'sections.header.contact' | t }}</div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="menuMobile">
         <div class="menuMobile__overlay"></div>
 
     </div>
-</header>
+    <script src=" {{ 'header.js' | asset_url }}" defer></script>
+    {% if section.settings.enableSticky %}
+        <script src=" {{ 'sticky-menu.js' | asset_url }}" defer></script>
+    {% endif %}
+
 
 {% schema %}
     {
         "name": "Header",
         "settings":[
+            {
+                "type":"header",
+                "content":"Header Settings"
+            },
+            {
+                "type":"checkbox",
+                "id":"enableSticky",
+                "label":"Enabel sticky header",
+                "default":true
+            },
             {
                 "type":"header",
                 "content":"Header Customize"

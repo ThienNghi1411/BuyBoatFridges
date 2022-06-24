@@ -3,9 +3,13 @@
     <div class="homeCategories__inner">
         <div class="homeCategories__title">SHOP BY CATEGORIES</div>
         <div class="homeCategories__content">
-            {% for collection in collections limit: 12 %}
-                {% render 'category-card' with collection as collection %}    
-            {% endfor %}
+            {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'collection' %}
+                    {% assign collection = collections[block.settings.collection] %}
+                    {% render 'category-card' with collection as collection %}
+                {% endcase %}
+              {% endfor %}
         </div>
     </div>
 </section>
@@ -27,6 +31,19 @@
                 "type":"image_picker",
                 "id":"image",
                 "label":"choose image:"
+            }
+        ],
+        "blocks":[
+            {
+                "name":"Collection",
+                "type":"collection",
+                "settings":[
+                    {
+                        "type": "collection",
+                        "id": "collection",
+                        "label": "Choose your collection: "
+                    }
+                ]
             }
         ]
     }
