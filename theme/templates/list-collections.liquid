@@ -1,15 +1,1 @@
-<link rel="stylesheet" href="{{ 'list-collections.css' | asset_url }}">
-
-
-<div class="collections__wrapper">
-  <div class="collections">
-    <div class="collections__inner">
-      {% for collection in collections | limit:12 %}
-      {% render 'category-card' with collection as collection %}    
-      {% endfor %}
-    </div>
-  </div>
-</div>
-
-
-
+{% section 'section-list-collections' %}

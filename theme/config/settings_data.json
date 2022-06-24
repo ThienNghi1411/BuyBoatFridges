@@ -2,10 +2,23 @@
   "current": {
     "primary_color": "#009ee3",
     "background_content": "#f7f8fa",
+    "border_color": "#c1c1c1",
     "sections": {
       "header": {
         "type": "header",
-        "settings": {}
+        "settings": {
+          "enableSticky": false,
+          "logoDestop": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
+          "logoDestopWidth": "115",
+          "logoMobile": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
+          "logoMobileWidth": "90",
+          "iconContact": "shopify:\/\/shop_images\/contact.png",
+          "contact_text": "+1 (305) 999 5212",
+          "iconCart": "shopify:\/\/shop_images\/shopping-bag.png",
+          "cart_text": "My cart",
+          "iconUser": "shopify:\/\/shop_images\/user.png",
+          "iconMenu": "shopify:\/\/shop_images\/menu.png"
+        }
       },
       "footer": {
         "type": "footer",
@@ -77,25 +90,29 @@
           "93efc541-e3d4-4cb1-821c-5c72c35dd386": {
             "type": "slide",
             "settings": {
-              "image": "shopify:\/\/shop_images\/banner1_3.jpg"
+              "imageDestop": "shopify:\/\/shop_images\/banner1_3.jpg",
+              "imageMobile": "shopify:\/\/shop_images\/Background.png"
             }
           },
           "d99635c0-d987-4110-87e9-5f2c387673e4": {
             "type": "slide",
             "settings": {
-              "image": "shopify:\/\/shop_images\/banner1_4.jpg"
+              "imageDestop": "shopify:\/\/shop_images\/banner1_4.jpg",
+              "imageMobile": "shopify:\/\/shop_images\/Background.png"
             }
           },
           "3136ffd8-97c9-4ca0-8e28-e7f79611ce27": {
             "type": "slide",
             "settings": {
-              "image": "shopify:\/\/shop_images\/banner1_1.jpg"
+              "imageDestop": "shopify:\/\/shop_images\/banner1_1.jpg",
+              "imageMobile": "shopify:\/\/shop_images\/Background.png"
             }
           },
           "f9ef989a-c33e-46dd-bc8a-3827c130d052": {
             "type": "slide",
             "settings": {
-              "image": "shopify:\/\/shop_images\/banner1_2.jpg"
+              "imageDestop": "shopify:\/\/shop_images\/banner1_2.jpg",
+              "imageMobile": "shopify:\/\/shop_images\/Background.png"
             }
           }
         },
@@ -109,6 +126,102 @@
       },
       "165556668187c23e1f": {
         "type": "section-home-categories",
+        "blocks": {
+          "c447ba89-0787-47cd-a76f-44dd28a228eb": {
+            "type": "collection",
+            "settings": {
+              "collection": "front-loading-refrigerator"
+            }
+          },
+          "64c4b65b-fd7c-4062-a7e1-3ca926ed6aac": {
+            "type": "collection",
+            "settings": {
+              "collection": "fridge-freezer"
+            }
+          },
+          "26df25b9-4534-4898-8b6e-41ce75909444": {
+            "type": "collection",
+            "settings": {
+              "collection": "fridges"
+            }
+          },
+          "710beb26-e341-4048-a7c0-50f37812ddc1": {
+            "type": "collection",
+            "settings": {
+              "collection": "freezers"
+            }
+          },
+          "22953c84-513a-4d98-9482-1086d7da6947": {
+            "type": "collection",
+            "settings": {
+              "collection": "ice-makers"
+            }
+          },
+          "b43a3eb5-3b40-410b-a747-d506decc23e3": {
+            "type": "collection",
+            "settings": {
+              "collection": "portable-refrigerators"
+            }
+          },
+          "ad63279d-cfa2-4969-abed-b8b4b196bf08": {
+            "type": "collection",
+            "settings": {
+              "collection": "top-loading-countertop"
+            }
+          },
+          "b8d17b65-0c19-4d96-ba3d-fcb1f3d66879": {
+            "type": "collection",
+            "settings": {
+              "collection": "wine-coolers"
+            }
+          },
+          "15dca201-c473-46cf-85b5-80390d0ebf6d": {
+            "type": "collection",
+            "settings": {
+              "collection": "safes"
+            }
+          },
+          "844702aa-8a45-442a-b972-c495c0d80ecf": {
+            "type": "collection",
+            "settings": {
+              "collection": "condensing-units"
+            }
+          },
+          "c863f6c9-cf02-4dbd-b0ea-ec06a618a215": {
+            "type": "collection",
+            "settings": {
+              "collection": "evaporators"
+            }
+          },
+          "4489d2ff-0143-456c-9627-15d46f668ac0": {
+            "type": "collection",
+            "settings": {
+              "collection": "spare-parts"
+            }
+          },
+          "6b1f107f-8218-4aab-b0ec-d7ddf0cad9e2": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "c447ba89-0787-47cd-a76f-44dd28a228eb",
+          "64c4b65b-fd7c-4062-a7e1-3ca926ed6aac",
+          "26df25b9-4534-4898-8b6e-41ce75909444",
+          "710beb26-e341-4048-a7c0-50f37812ddc1",
+          "22953c84-513a-4d98-9482-1086d7da6947",
+          "b43a3eb5-3b40-410b-a747-d506decc23e3",
+          "ad63279d-cfa2-4969-abed-b8b4b196bf08",
+          "b8d17b65-0c19-4d96-ba3d-fcb1f3d66879",
+          "15dca201-c473-46cf-85b5-80390d0ebf6d",
+          "844702aa-8a45-442a-b972-c495c0d80ecf",
+          "c863f6c9-cf02-4dbd-b0ea-ec06a618a215",
+          "4489d2ff-0143-456c-9627-15d46f668ac0",
+          "6b1f107f-8218-4aab-b0ec-d7ddf0cad9e2"
+        ],
         "settings": {
           "image": "shopify:\/\/shop_images\/img.png"
         }
@@ -124,11 +237,107 @@
       "1655805105ac3f6132": {
         "type": "section-mini-banner",
         "settings": {
-          "image1": "shopify:\/\/shop_images\/Banner1.png",
-          "image2": "shopify:\/\/shop_images\/Banner2.png",
+          "image1": "shopify:\/\/shop_images\/Banner1_88b67533-656a-467a-b162-a7ec724f9fc3.png",
+          "image2": "shopify:\/\/shop_images\/Banner2_9ef6556b-d1d8-44c8-889d-39108b30cfbe.png",
           "product1": "vitrifrigo-evaporator-holding-plate-ac20-q",
-          "product2": "vitrifrigo-front-loading-black-refrigerator-w-freezer-compartment-c42rbd4-f-1-adjustable-flange-external-cooling-unit"
+          "product2": "vitrifrigo-ac10-q-evaporator-holding-plate-stainless-steel"
         }
+      },
+      "section-list-collections": {
+        "type": "section-list-collections",
+        "blocks": {
+          "c2635ec4-f936-423a-b872-c04955696f8a": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "front-loading-refrigerator"
+            }
+          },
+          "3004beaf-7264-4ce1-aa5e-1c4be7e7e48f": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "fridge-freezer"
+            }
+          },
+          "25ff3760-bd74-4d69-9e38-cf607b7375f9": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "fridges"
+            }
+          },
+          "fa531b9e-4cb4-494a-9de4-7f454960cd6a": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "freezers"
+            }
+          },
+          "3290aa6b-9d8d-4f89-b848-a2ec72406478": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "top-loading-countertop"
+            }
+          },
+          "1718dba0-56b9-4b83-976c-3d3863bd6c9f": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "wine-coolers"
+            }
+          },
+          "4760e3ae-cd83-4408-a9e9-2a71eaea5507": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "ice-makers"
+            }
+          },
+          "24c1addb-1512-4c35-bb45-0ec16f154cb3": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "portable-refrigerators"
+            }
+          },
+          "849f67c5-a7a6-4ff1-8abf-4db883170516": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "safes"
+            }
+          },
+          "0d5a924c-60dc-4c4e-bee3-463d44e56a4a": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "condensing-units"
+            }
+          },
+          "8bc3b896-4e35-4ba0-96f4-c8694622f299": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "evaporators"
+            }
+          },
+          "4f6bc6fa-7cd0-4648-8059-ac1abfd42b98": {
+            "type": "add_collection",
+            "settings": {
+              "collect": "spare-parts"
+            }
+          }
+        },
+        "block_order": [
+          "c2635ec4-f936-423a-b872-c04955696f8a",
+          "3004beaf-7264-4ce1-aa5e-1c4be7e7e48f",
+          "25ff3760-bd74-4d69-9e38-cf607b7375f9",
+          "fa531b9e-4cb4-494a-9de4-7f454960cd6a",
+          "3290aa6b-9d8d-4f89-b848-a2ec72406478",
+          "1718dba0-56b9-4b83-976c-3d3863bd6c9f",
+          "4760e3ae-cd83-4408-a9e9-2a71eaea5507",
+          "24c1addb-1512-4c35-bb45-0ec16f154cb3",
+          "849f67c5-a7a6-4ff1-8abf-4db883170516",
+          "0d5a924c-60dc-4c4e-bee3-463d44e56a4a",
+          "8bc3b896-4e35-4ba0-96f4-c8694622f299",
+          "4f6bc6fa-7cd0-4648-8059-ac1abfd42b98"
+        ],
+        "settings": {}
+      },
+      "collection": {
+        "type": "collection",
+        "settings": {}
       }
     },
     "content_for_index": [

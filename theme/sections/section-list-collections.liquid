@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="{{ 'list-collections.css' | asset_url }}">
+
+
+<div class="collections__wrapper">
+  <div class="collections">
+    <div class="collections__inner">
+     
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'add_collection' %}
+         
+            {% render 'category-card' with block.settings.collect as collection  %}    
+        
+       
+            
+        {% endcase %}
+        
+      {% endfor %}
+     
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "collection",
+ 
+  "class": "slideshow",
+  "blocks": [
+     {
+       "name": "collection",
+       "type":"add_collection",
+       "settings": [
+         {
+           "type": "collection",
+           "id": "collect",
+           "label": "collection picker"
+         }
+       ]
+     }
+   ]
+}
+{% endschema %}
+

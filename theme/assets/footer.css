@@ -6,12 +6,14 @@
 
 .footer
 {
-    width: 100%;
+    max-width: 320px;
+    
+
 }
 .footer__inner
 {
-    
-
+    width: 100%;
+    margin: 0 auto;
 }
 .footer__emailForm
 {
@@ -19,12 +21,12 @@
     flex-direction: column;
     gap: 19px;
     background-color: var(--primary-color);
-    padding: 21px 51px 27px 51px;
+    padding: 30px 20px;
 }
 .emailForm_title
 {
     color :white;
-    font-size: 29px;
+    font-size: 21px;
     text-align: center;
 }
 
@@ -73,12 +75,15 @@
     cursor: pointer;
 
 }
+.emailForm__button a {
+    font-size: 12px;
+}
 .footer__menu
 {
     width: 100%;
     height: 100%;
     background-color: var( --background-color);
-    padding: 0px 51px 30px 51px;
+    padding: 30px 20px;
     position: relative;
 }
 
@@ -93,7 +98,7 @@
 }
 .col__title
 {
-    font-size: 25px;
+    font-size: 18px;
     color: var(--light-color);
     position: relative;
 }
@@ -117,22 +122,32 @@
 }
 .collaspe_content
 {
-    display: none;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    transition: all 0.2s linear;
+  
+}
+.collaspe_content .list>li>a{
+    
 }
 .menu_active
 {
-    display: block;
+    
+    
 }
+
 .footer__copyRight
 {
-    padding: 20px 51px;
+  
     display: flex;
     align-items: center;
     gap: 5px;
+    padding: 30px 20px;
 }
 .footer__text
 {
-    font-size: 14px;
+    font-size: 12px;
     color: #979595;
 }
 .footer__logo img
@@ -161,11 +176,18 @@ li{
 {
     color: var(--primary-color);
 }
-li >a{
+
+.list li>a{
     text-decoration: none;
     color: var(--light-color);
     display: flex;
+    font-size: 12px;
+    transition: all 0.2s linear;
 }
+.list li>a:hover{
+    color: var(--primary-color);
+}
+
 .minus
 {
     display: none;
@@ -224,11 +246,29 @@ path{
     width: 20px;
     height: 20px;
 }
-@media (min-width:720px)
+@media (min-width:320px)
 {
+    .footer{
+        max-width: 480px;
+    }
+}
+@media (min-width:480px)
+{
+    .footer{
+        max-width: 720px;
+    }
+}
+@media (min-width:720px)
+{     .footer__menu
+    {
+        padding: 0px 51px 30px 51px;
+    }
+    .footer{
+        max-width: 860px;
+    }
     .Email__Wrapper
     {
-        max-width: 1000px;
+      
         margin: 0 auto;
         display: flex;
         align-items: center;
@@ -237,20 +277,24 @@ path{
     .menu_wrap
     {
         display: flex;
-        max-width: 1000px;
+        flex-wrap: wrap;
         margin: 0 auto;
     }
+    
     .copyRight__wrapper
     {
-        max-width: 1000px;
+      
         display: flex;
         align-items: center;
         margin: 0 auto;
     }
-   
+    
     .collaspe_content
     {
         display: block;
+        opacity: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
     }
     .menu__controlIcon
     {
@@ -259,12 +303,16 @@ path{
     .menu__col
     {
         border-bottom: unset;
+        width: 50%;
+      
     }
     .footer__emailForm
     {
         flex-direction: row;
         align-items: center;
+        padding: 21px 51px 27px 51px;
     }
+
     .emailForm_title
     {
         font-size: 14px;
@@ -283,8 +331,8 @@ path{
         font-size: 16px;
         color: #434343;
     }
-    .list >li{
-        font-size: 11px;
+    .list li>a{
+        font-size: 12px;
     }
     .footer__text
     {
@@ -294,4 +342,96 @@ path{
     {
         display: flex;
     }
+    .footer__copyRight
+    {
+    padding: 20px 51px;
+    }
+}
+@media (min-width:860px)
+{
+    .footer{
+        max-width: 1080px;
+    }
+    .col__title
+    {
+        font-size: 18px;
+    }
+    .list li>a{
+        font-size: 14.5px;
+    }
+
+}
+
+@media (min-width:1080px)
+{
+    .footer{
+        max-width: 1280px;
+    }
+}
+@media (min-width:1280px)
+{
+    .footer{
+        max-width: 1440px;
+    }
+    .footer__inner
+    {
+        max-width: 100%;
+
+    } 
+    .footer__emailForm
+    {
+        width: 100%;
+    }   
+    .Email__Wrapper
+    {
+        max-width: 1000px;
+        margin: 0 auto;
+    }  
+    .menu_wrap
+    {
+        max-width: 1000px;
+        display: flex;
+        justify-content: center;
+        
+        
+    }
+}
+@media (min-width:1440px)
+{
+    .footer{
+        max-width: 100%;
+        
+    }
+    .footer__inner
+    {
+        max-width: 100%;
+
+    }
+    .footer__emailForm
+    {
+        width: 100%;
+    }   
+    .Email__Wrapper
+    {
+        max-width: 1220px;
+        margin: 0 auto;
+    }
+    .footer__menu
+    {
+        width: 100%;
+    }
+    .menu_wrap
+    {
+        max-width: 1220px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer__copyRight
+    {
+        max-width: 1220px;
+         margin: 0 auto;
+    }
+
 }
