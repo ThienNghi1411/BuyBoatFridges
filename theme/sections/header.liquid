@@ -12,17 +12,17 @@
             </div>
             <div class="header__logo">
                 <a href="{{ routes.root_url }}" class="">
-                    {% if section.settings.logoDestopWidth == blank %}
-                        {% assign logoDestopWidth = 115 %}
-                    {% else %}
-                        {% assign logoDestopWidth = section.settings.logoDestopWidth %}
+                    {%- if section.settings.logoDestopWidth == blank -%}
+                        {%- assign logoDestopWidth = 115 -%}
+                    {%- else -%}
+                        {%- assign logoDestopWidth = section.settings.logoDestopWidth -%}
                     {% endif %}
                     
-                    {% if section.settings.logoMobileWidth == blank %}
-                        {% assign logoMobileWidth = 115 %}
-                    {% else %}
-                        {% assign logoMobileWidth = section.settings.logoMobileWidth %}
-                    {% endif %}
+                    {%- if section.settings.logoMobileWidth == blank -%}
+                        {%- assign logoMobileWidth = 115-%}
+                    {%- else -%}
+                        {%- assign logoMobileWidth = section.settings.logoMobileWidth -%}
+                    {%- endif -%}
 
                     <img src="{{ section.settings.logoDestop | image_url: width: logoDestopWidth  }}" alt="{{ "" }}" class="header__logoDestop" />
                     <img src="{{ section.settings.logoMobile | image_url: width: logoMobileWidth  }}" alt="{{ "" }}" class="header__logoMobile" />

@@ -92,12 +92,14 @@
         width: 100%;
         top: 100%;
         left: 0;
-        transform: translateY(30px);
+        transform: translateY(15px);
         z-index: 10;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border-radius: 5px;
         padding: 0px 20px;
+        overflow: hidden;
+        animation: rolling .2s linear;
         &-option{
             width: 100%;
             padding: 18px 0px 17px;
@@ -206,7 +208,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
+  padding-bottom: 30px !important;
 }
 
 @media (min-width: 320px){

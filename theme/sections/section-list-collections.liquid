@@ -1,32 +1,65 @@
 <link rel="stylesheet" href="{{ 'list-collections.css' | asset_url }}">
 
 
+{% assign  var2= section.settings.collection_grid | times: 1 %}
+{% style %}
+
+
+.collections__inner{
+    grid-template-columns: repeat(var2,1fr);
+}
+{% endstyle %}
+
+
+
 <div class="collections__wrapper">
   <div class="collections">
-    <div class="collections__inner">
-     
+    <div class="collections__inner">     
       {% for block in section.blocks %}
         {% case block.type %}
-          {% when 'add_collection' %}
-         
-            {% render 'category-card' with block.settings.collect as collection  %}    
-        
-       
-            
-        {% endcase %}
-        
+          {% when 'add_collection' %}       
+            {% render 'category-card' with block.settings.collect as collection  %}             
+        {% endcase %}       
       {% endfor %}
-     
-
     </div>
   </div>
 </div>
-
 {% schema %}
 {
   "name": "collection",
  
-  "class": "slideshow",
+  "class": "List-collection",
+  "settings":[
+  {
+    "type": "select",
+    "id": "collection_grid",
+    "label": "Adjust Grid",
+    "options": [
+      {
+        "value": "1",
+        "label": "1"
+      },
+      {
+        "value": "2",
+        "label": "2"
+      },
+      {
+        "value": "3",
+        "label": "3"
+      },
+      {
+        "value":"4",
+        "label":"4"
+      }
+    ],
+    "default": "4"
+  }
+
+
+
+
+  ],
+
   "blocks": [
      {
        "name": "collection",
@@ -37,6 +70,7 @@
            "id": "collect",
            "label": "collection picker"
          }
+         
        ]
      }
    ]

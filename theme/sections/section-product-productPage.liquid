@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
+<script>console.log({{ product | json }})</script>
+<section class="productPage">
+    <div class="productPage__inner">
+        <div class="productPage__infoProduct">
+            <div class="productPage__titleProduct">
+            
+                {%- capture productName -%}{{ product.vendor }} {{ product.variants[0].sku }}{%- endcapture -%}
+                <div class="productPage__nameProduct"> {{ productName }}</div>
+                <div class="productPage__skuProduct">{{ product.variants[0].sku }}</div>
+                <div class="productPage__featureProduct">{{ product.title }}</div>
+            </div>
+            <div class="productPage__imgProduct">
+                <img src="{{ product.featured_image | image_url }} " alt="{{  }}" />
+                <div class="productPage__imgProduct-alert">
+                    <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                </div>
+            </div>
+            <div class="productPage__priceCont">
+                <div class="productPage__price">
+                    <div class="productPage__price-lastPrice">{{ product.variants[0].price | money }}</div>
+                    {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                    <div class="productPage__price-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                    {%- endif -%}
+                </div>
+                <div class="productPage__policy">
+                    <div class="productPage__policyOption">
+                        <div class="productPage__policyOption-icon"> <img src="{{ section.settings.iconPolicy1 | image_url }} " alt="{{  }}" /></div>
+                        <div class="productPage__policyOption-text">{{ 'sections.productPage.policy1' | t }}</div>
+                    </div>
+                    <div class="productPage__policyOption">
+                        <div class="productPage__policyOption-icon"><img src="{{ section.settings.iconPolicy2 | image_url }} " alt="{{  }}" /></div>
+                        <div class="productPage__policyOption-text">{{ 'sections.productPage.policy2' | t }}</div>
+                    </div>
+                </div>
+                <div class="productPage__quantityStatus">{{ 'sections.productPage.available' | t }}:  
+                        {%- if product.variants[0].inventory_quantity > 0 -%}
+                            <span class="productPage__quantityStatus-status" style="color: #19b652"> {{ 'sections.productPage.inStock' | t }}</span>
+                        {%- else -%}
+                            <span class="productPage__quantityStatus-status" style="color: red"> {{ 'sections.productPage.outStock' | t }}</span>
+                        {%- endif -%}
+                </div>
+                <div class="productPage__quantityCont">
+                    <button class="productPage__quantityCont-minusBtn">-</button>
+                    <input type="number" class="productPage__quantityCont-inputQty" value=1 min=1>
+                    <button class="productPage__quantityCont-plusBtn">+</button> 
+                </div>
+                <div class="productPage__btnCont">
+                    <div class="productPage__btnAdd">
+                        <button class="productPage__btnAdd-btn">{{ 'sections.productPage.addToCart' | t }}</button>
+                    </div>
+                    <div class="productPage__btnBuyNow">
+                        <button class="productPage__btnBuyNow-btn">{{ 'sections.productPage.buyNow' | t }}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="productPage__termConditions">
+                <div class="productPage__termConditions-checkbox"></div>
+                <div class="productPage__termConditions-text">{{ 'sections.productPage.agreeTerms' | t }}</div>
+            </div>
+            <div class="productPage__otherInfo">
+                <div class="productPage__vendor">Vendor: {{ product.vendor }}</div>
+                <div class="productPage__productType">Product Type: {{ product.type }}</div>
+                {%- assign tagContent = "" -%}
+                {%- for tag in product.tags -%}
+                    {%- assign tagContent = tagContent | append: ', ' | append: tag -%}
+                {%- endfor -%}
+                
+                <div class="productPage__tags">Tags: {{ tagContent }}</div>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+{% schema %}
+    {
+        "name": "Product Page",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Product Page"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":"Product Page"
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPicture",
+                "label":"Choose icon for image product: "
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPolicy1",
+                "label":"Choose icon for policy 1: "
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPolicy2",
+                "label":"Choose icon for policy 2: "
+            }
+        ]
+
+    }
+{% endschema %}

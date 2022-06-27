@@ -1,0 +1,10 @@
+{% if collection.all_tags.size > 0 %}
+  <ul class="tag-filters">
+    {% for tag in collection.all_tags %}
+         
+    <li class="tag-filters__item">
+      {{ tag | link_to_add_tag: tag }}
+    </li>
+    {% endfor %}
+  </ul>
+{% endif %}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "settings": {
+        "filter_image": "shopify:\/\/shop_images\/img_0adef2eb-4009-47dd-b5e9-b2817af97aab.png"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

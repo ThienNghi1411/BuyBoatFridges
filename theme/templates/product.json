@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "section-product-productPage": {
+      "type": "section-product-productPage",
+      "settings": {
+        "iconPicture": "shopify:\/\/shop_images\/alert.png",
+        "iconPolicy1": "shopify:\/\/shop_images\/box.png",
+        "iconPolicy2": "shopify:\/\/shop_images\/chat.png"
+      }
+    }
+  },
+  "order": [
+    "section-product-productPage"
+  ]
+}

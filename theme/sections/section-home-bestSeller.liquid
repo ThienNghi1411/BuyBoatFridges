@@ -1,13 +1,32 @@
 <link rel="stylesheet" href="{{ 'homeBestSeller.css' | asset_url }}">
 <section class="homeBestSeller">
     <div class="homeBestSeller__inner">
-        <div class="homeBestSeller__title">BEST SELLER</div>
+        <div class="homeBestSeller__title">{{ section.settings.title }}</div>
+        {%- assign fsArr = section.settings.title_fs | split: "," -%}
+
+        {%- style -%}
+            @media(min-width: 320px){
+                .homeBestSeller__title{
+                    font-size: {{ fsArr[0] }} ;
+                    font-weight: {{ section.settings.title_fw }};
+                }
+            }
+            @media(min-width: 720px){
+                .homeBestSeller__title{
+                    font-size: {{ fsArr[1] }} ;
+                }
+            }
+            @media(min-width: 1440px){
+                .homeBestSeller__title{
+                    font-size: {{ fsArr[2] }} ;
+                }
+            }
+        {%- endstyle -%}
         <div class="homeBestSeller__content">
             <div class="homeBestSeller__contentCont">
-                {% for product in collections['Evaporators'].products limit : 4 %}
-             
-                    {% render 'product-card' with product as product%}
-                {% endfor %}
+                {%- for product in collections[ section.settings.collection].products limit : section.settings.limitProduct -%}
+                    {%- render 'product-card' with product as product -%}
+                {%- endfor -%}
             </div>
         </div>
     </div>
@@ -15,22 +34,52 @@
 
 {% schema %}
     {
-        "name": "Best Seller",
+        "name": "Products Grid",
         "tag": "section",
         "presets": [
             {
-              "name": "Best Seller"
+              "name": "Products Grid"
             }
         ],
         "settings":[
             {
                 "type":"header",
-                "content":" xxxxx"
+                "content":" Title"
             },
             {
-                "type":"image_picker",
-                "id":"image",
-                "label":"choose image:"
+                "type":"text",
+                "id":"title",
+                "label":"Adjust title: "
+            },
+            {
+                "type":"text",
+                "id":"title_fs",
+                "label":"Adjust font size: ",
+                "info":"E.g: 20px,24px,30px - Mobile screen, Table screen, Destop screen "
+            },
+            {
+                "type":"range",
+                "id":"title_fw",
+                "min":100,
+                "max": 800,
+                "step":100,
+                "default":700,
+                "label":"Adjust font weight: "
+            },
+            {
+                "type":"header",
+                "content":"Collection"
+            },
+            {
+                "type":"collection",
+                "id":"collection",
+                "label":"Choose your collection: " 
+            },
+            {
+                "type":"number",
+                "id":"limitProduct",
+                "label":"Limit product show: ",
+                "default":4
             }
         ]
     }

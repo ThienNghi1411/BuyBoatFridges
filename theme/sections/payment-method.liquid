@@ -1,0 +1,191 @@
+
+
+{% style %}
+.footer__logo img{
+    width: {{ section.settings.Icon_width }}px;
+    height: {{ section.settings.Icon_heigth }}px;
+}
+.paymentIcon a > img{
+   width:  {{ section.settings.PaymentIcon_width }}px;
+   height:  {{ section.settings.PaymentIcon_height }}px;
+}
+{% endstyle %}
+
+<div class="footer__copyRight">
+    <div class="copyRight__wrapper">
+       <div class="footer__logo">   <img src=" {{ section.settings.image | img_url:'small'}} " /></div>
+       <div class="footer__text">{{section.settings.copyRight}}</div>
+    </div>
+       {% if section.settings.show_content %}
+       <div class="paymentMethod_Wrapper">
+          <div class="paymentIcon">
+             <a href=""> <img src=" {{ section.settings.icon1 | img_url:'small'}} " /></a>        
+         </div>
+          <div class="paymentIcon">
+             <a href=""><img src=" {{ section.settings.icon2 | img_url:'small'}} " /></a>               
+          </div>
+          <div class="paymentIcon">
+             <a href=""><img src=" {{ section.settings.icon3 | img_url:'small'}} " /></a>                 
+          </div>
+          <div class="paymentIcon">
+             <a href=""><img src=" {{ section.settings.icon4 | img_url:'small'}} " /></a>            
+          </div>
+          <div class="paymentIcon">
+             <a href=""> <img src=" {{ section.settings.icon5 | img_url:'small'}} " /></a>              
+          </div>
+          <div class="paymentIcon">
+             <a href=""> <img src=" {{ section.settings.icon6 | img_url:'small'}} " /></a>    
+          </div>
+          <div class="paymentIcon">
+             <a href=""> <img src=" {{ section.settings.icon7 | img_url:'small'}} " /></a>
+          </div>
+          <div class="paymentIcon">
+             <a href=""><img src=" {{ section.settings.icon8 | img_url:'small'}} " /></a>
+          </div>
+    </div>
+       {% endif %}
+      
+ </div>
+
+{% schema %}
+{
+  "name": "Payment-method",
+  "settings": [
+  {
+    "type":"image_picker",
+    "id":"image",
+    "label":"Icon Image"
+   
+  },
+  {
+    "type":"text",
+    "id":"Icon_width",
+    "label":"Adjust Footer Icon Width",
+    "default":"45"
+  },
+  {
+    "type":"text",
+    "id":"Icon_heigth",
+    "label":"Adjust Footer Icon Height",
+    "default":"25"
+  },
+  {
+    "type":"text",
+    "id":"copyRight",
+    "label":"Edit CopyRight",
+    "default":"@2022 BUYBOATFRIDGES.com.All Rights Reserved"
+  },
+  {
+    "type":"checkbox",
+    "id":"show_content",
+    "label":"Show Icon Content",
+    "default":true
+  },
+  {
+    "type":"text",
+    "id":"PaymentIcon_width",
+    "label":"Adjust Paynent Icon Width",
+    "default":"20"
+  },
+  {
+    "type":"text",
+    "id":"PaymentIcon_height",
+    "label":"Adjust Paynent Icon Height",
+    "default":"20"
+  },
+  {
+    "type":"image_picker",
+    "id":"icon1",
+    "label":"Icon1 Image"
+   
+  },
+  {
+    "type":"url",
+    "id":"link1",
+    "label":"Payment Link 1"       
+  },
+  {
+    "type":"image_picker",
+    "id":"icon2",
+    "label":"Icon2 Image"
+   
+  },
+  {
+    "type":"url",
+    "id":"link2",
+    "label":"Payment Link 2"       
+  },
+  {
+    "type":"image_picker",
+    "id":"icon3",
+    "label":"Icon3 Image"
+   
+  },
+  {
+    "type":"url",
+    "id":"link3",
+    "label":"Payment Link 3"       
+  },
+  {
+    "type":"image_picker",
+    "id":"icon4",
+    "label":"Icon4 Image"
+   
+  },
+  {
+    "type":"url",
+    "id":"link4",
+    "label":"Payment Link 4"       
+  },
+  {
+    "type":"image_picker",
+    "id":"icon5",
+    "label":"Icon5 Image"
+  },
+  {
+    "type":"url",
+    "id":"link5",
+    "label":"Payment Link 5"       
+  },
+  {
+    "type":"image_picker",
+    "id":"icon6",
+    "label":"Icon6 Image"
+   
+  },
+  {
+    "type":"url",
+    "id":"link6",
+    "label":"Payment Link 6"       
+  },
+  {
+    "type":"image_picker",
+    "id":"icon7",
+    "label":"Icon7 Image"
+  },
+  {
+    "type":"url",
+    "id":"link7",
+    "label":"Payment Link 7"       
+  },
+  {
+    "type":"image_picker",
+    "id":"icon8",
+    "label":"Icon8 Image"
+   
+  },
+  {
+    "type":"url",
+    "id":"link8",
+    "label":"Payment Link 8"       
+  }
+
+  ],
+  "presets": [
+     {
+       "name": "Payment-method"
+       
+     }
+   ]
+}
+{% endschema %}

@@ -122,18 +122,37 @@
 }
 .collaspe_content
 {
+
+    /* margin-top: 30px; */
     width: 0px;
     height: 0px;
     opacity: 0;
     transition: all 0.2s linear;
+    
   
 }
 .collaspe_content .list>li>a{
-    
+      transition: all .2s linear;
+}
+.collaspe_content p>a{
+    text-decoration: none;
+    color: var(--light-color);
+    display: flex;
+    font-size: 12px;
+    transition: all .2s linear;
+}
+.collaspe_content p{
+    text-decoration: none;
+    color: var(--light-color);
+    display: flex;
+    font-size: 12px;
+    line-height: 10px;
+    transition: all 1s linear;
+    width: 60%;
 }
 .menu_active
 {
-    
+    margin-top: 30px;
     
 }
 
@@ -158,7 +177,7 @@
 .list
 {
     display: flex;
-    margin-top: 30px;
+   
     flex-direction: column;
     gap: 20px;
 }
@@ -194,18 +213,21 @@ li{
 }
 .footer_scrolltoTop_button
 {
-    position: absolute;
+    position: fixed;
     width: 55px;
     height: 55px;
     background-color: var(--primary-color);
-    bottom: 0;
+    bottom: -7%;
     right: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: all 0.1s linear;
+    transition: all 0.2s linear;
     display: none;
+}
+.appear{
+    bottom: 7%;
 }
 .footer_scrolltoTop_button:hover
 {
@@ -257,7 +279,12 @@ path{
     .footer{
         max-width: 720px;
     }
+    .collaspe_content
+    {
+        margin-top: 30px;
+    }
 }
+
 @media (min-width:720px)
 {     .footer__menu
     {
@@ -359,6 +386,7 @@ path{
     .list li>a{
         font-size: 14.5px;
     }
+   
 
 }
 
@@ -432,6 +460,11 @@ path{
     {
         max-width: 1220px;
          margin: 0 auto;
+    }
+     .menu__col
+    {
+        width: 100% !important;
+      
     }
 
 }

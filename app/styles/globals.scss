@@ -20,3 +20,32 @@ a{
 .shopify-section{
     width: 100%;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button{
+    border: none;
+    background-color: inherit;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@keyframes rolling {
+    0% {
+        height: 0px;
+    }
+    50% {
+        height: 50%;
+    }
+    to {
+        height: 100%;
+     }
+}

@@ -1,0 +1,122 @@
+     <div class="footer__emailForm">
+         <div class="Email__Wrapper">
+            <div class="emailForm_title">{{section.settings.Form_title}}</div>
+         <div class="emailForm">
+            <div class="emailFormWarp">
+               <div class="emailForm__input">
+                  <input type="text" placeholder="{{section.settings.placehoder_text}}">
+               </div>
+               <div class="emailForm__button"><a href="">{{section.settings.button_text}} </a> </div>
+            </div>
+         </div>
+         {% if section.settings.show_icons %}
+         <ul class="emailForm_socialIcons">
+            <li class="socialIcon">
+               <a href="{{section.settings.FaceBook}}">
+                  {% render 'icon-facebook' %}
+               </a>
+            </li>
+            <li class="socialIcon">
+               <a href="{{section.settings.Twitter}}">
+                  {% render 'icon-twitter' %}
+               </a>
+            </li>
+            <li class="socialIcon">
+               <a href="{{section.settings.Gmail}}">
+                  {% render 'icon-gmail' %}
+               </a>
+            </li>
+            <li class="socialIcon">
+               <a href="{{section.settings.Instagram}}">
+                  {% render 'icon-instagram' %}
+               </a>
+            </li>
+            <li class="socialIcon">
+               <a href="{{section.settings.Whatsapp}}">
+                  {% render 'icon-whatsapp' %}
+               </a>
+            </li>
+            <li class="socialIcon">
+               <a href="{{section.settings.pinterest}}">
+                  {% render 'icon-pinterest' %}
+               </a>
+            </li>
+            </ul>
+         {% endif %}
+         
+         
+         </div>
+      </div>   
+      {% schema %}
+      {
+        "name": "Newsletter",
+        "settings": [
+
+         {
+            "type":"text",
+            "id":"Form_title",
+            "label":"Edit Form Text",
+            "default":"FOR EXCLUSIVE DEALS"
+          },
+          {
+            "type":"text",
+            "id":"button_text",
+            "label":"Edit Button Text",
+            "default":"JOIN US"
+          },
+          {
+            "type":"text",
+            "id":"placehoder_text",
+            "label":"Edit Place Holder Text",
+            "default":"Enter your e-mail"
+          },
+          {
+            "type": "header",
+            "content": "SOCIAL ICONS"
+          },
+          {
+            "type":"checkbox",
+            "id":"show_icons",
+            "label":"Show Social Icons",
+            "default":true
+          },
+          {
+            "type":"url",
+            "id":"FaceBook",
+            "label":"FaceBook"       
+          },
+          {
+            "type":"url",
+            "id":"Twitter",
+            "label":"Twitter"       
+          },
+          {
+            "type":"url",
+            "id":"Gmail",
+            "label":"Gmail"       
+          },
+          {
+            "type":"url",
+            "id":"Instagram",
+            "label":"Instagram"       
+          },
+          {
+            "type":"url",
+            "id":"Whatsapp",
+            "label":"Whatsapp"       
+          },
+          {
+            "type":"url",
+            "id":"pinterest",
+            "label":"Pinterest"       
+          }
+   
+        ],
+        "presets": [
+           {
+             "name": "Subscription-Form"
+             
+           }
+         ]
+      }
+      {% endschema %}

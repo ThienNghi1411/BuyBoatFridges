@@ -22,66 +22,16 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "636c1817-c52e-4a16-a640-6f9f7e25d497": {
-            "type": "add_Form",
-            "settings": {
-              "show_content": true,
-              "Form_title": "FOR EXCLUSIVE DEALS",
-              "button_text": "JOIN US",
-              "placehoder_text": "Enter your e-mail",
-              "show_icons": false,
-              "FaceBook": "",
-              "Twitter": "https:\/\/twitter.com\/home?lang=vi",
-              "Gmail": "https:\/\/mail.google.com\/",
-              "Instagram": "https:\/\/www.instagram.com\/",
-              "Whatsapp": "https:\/\/web.whatsapp.com\/",
-              "pinterest": "https:\/\/www.pinterest.com\/"
-            }
-          },
-          "ad685beb-5029-4c53-a0ee-3244548b4ead": {
-            "type": "add_PaymentIcons",
-            "settings": {
-              "show_content": false,
-              "PaymentIcon_width": "20",
-              "PaymentIcon_height": "20",
-              "icon1": "shopify:\/\/shop_images\/FRONT_LOADING.png",
-              "link1": "",
-              "icon2": "shopify:\/\/shop_images\/SAFES.png",
-              "link2": "",
-              "link3": "",
-              "link4": "",
-              "link5": "",
-              "link6": "",
-              "link7": "",
-              "link8": ""
-            }
-          },
-          "7ed3ceb8-08ae-4c85-a869-248bfa26551f": {
-            "type": "add_FooterMenu",
-            "settings": {
-              "show_content": true,
-              "Col1_title": "Products",
-              "menu": "footer",
-              "Col2_title": "Information",
-              "menu2": "technical-support",
-              "Col3_title": "About us",
-              "html": "<div class=\"collaspe_content\">\n                     <ul class=\"list\">\n                        <li><a href=\"\/search\">Pay less and buy more with https:\/\/www.buyboatfridges.com\/<\/a><\/li>\n                       \n                     <\/ul>   \n                     <\/div>",
-              "Col4_title": "Contact Us",
-              "html2": "<div class=\"collaspe_content\">\n                     <ul class=\"list\">\n                        <li><a href=\"\/search\">PHONE:+1 (305) 999 5212<\/a><\/li>\n                        <li><a href=\"\/search\">HOURS: 24\/7 Customer Support<\/a><\/li>\n\n                        <li><a href=\"\/search\"> <p>EMAIL:<\/p>  <p class=\"list-email\"> sales@buyboatfridges.com<\/p> <\/a><\/li>\n                     \n                     <\/ul>   \n                     <\/div>"
-            }
-          }
-        },
-        "block_order": [
-          "636c1817-c52e-4a16-a640-6f9f7e25d497",
-          "ad685beb-5029-4c53-a0ee-3244548b4ead",
-          "7ed3ceb8-08ae-4c85-a869-248bfa26551f"
-        ],
         "settings": {
-          "copyRight": "@2022 BUYBOATFRIDGES. All Rights Reserved",
-          "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
-          "Icon_width": "45",
-          "Icon_heigth": "25"
+          "show_content": true,
+          "Col1_title": "Products",
+          "menu": "footer",
+          "Col2_title": "Information",
+          "menu2": "technical-support",
+          "Col3_title": "About us",
+          "AboutUs_text": "<p><a href=\"https:\/\/www.buyboatfridges.com\/search\">Pay less and buy more with <\/a><\/p><p><a href=\"https:\/\/www.buyboatfridges.com\/search\">https:\/\/www.buyboatfridges.com\/<\/a><\/p>",
+          "Col4_title": "Contact Us",
+          "ContactUs_text": "<p>PHONE: +1 (305) 999 5212<\/p><p>HOURS: 24\/7 Customer Support<\/p><p>E-MAIL: <a href=\"mailto:sales@buyboatfridges.com\">sales@buyboatfridges.com<\/a><\/p>"
         }
       },
       "1655454297d803f2c2": {
@@ -130,80 +80,93 @@
           "c447ba89-0787-47cd-a76f-44dd28a228eb": {
             "type": "collection",
             "settings": {
-              "collection": "front-loading-refrigerator"
+              "collection": "front-loading-refrigerator",
+              "checkImg": false
             }
           },
           "64c4b65b-fd7c-4062-a7e1-3ca926ed6aac": {
             "type": "collection",
             "settings": {
-              "collection": "fridge-freezer"
+              "collection": "fridge-freezer",
+              "checkImg": false
             }
           },
           "26df25b9-4534-4898-8b6e-41ce75909444": {
             "type": "collection",
             "settings": {
-              "collection": "fridges"
+              "collection": "fridges",
+              "checkImg": false
             }
           },
           "710beb26-e341-4048-a7c0-50f37812ddc1": {
             "type": "collection",
             "settings": {
-              "collection": "freezers"
+              "collection": "freezers",
+              "checkImg": false
             }
           },
           "22953c84-513a-4d98-9482-1086d7da6947": {
             "type": "collection",
             "settings": {
-              "collection": "ice-makers"
+              "collection": "ice-makers",
+              "checkImg": false
             }
           },
           "b43a3eb5-3b40-410b-a747-d506decc23e3": {
             "type": "collection",
             "settings": {
-              "collection": "portable-refrigerators"
+              "collection": "portable-refrigerators",
+              "checkImg": false
             }
           },
           "ad63279d-cfa2-4969-abed-b8b4b196bf08": {
             "type": "collection",
             "settings": {
-              "collection": "top-loading-countertop"
+              "collection": "top-loading-countertop",
+              "checkImg": false
             }
           },
           "b8d17b65-0c19-4d96-ba3d-fcb1f3d66879": {
             "type": "collection",
             "settings": {
-              "collection": "wine-coolers"
+              "collection": "wine-coolers",
+              "checkImg": false
             }
           },
           "15dca201-c473-46cf-85b5-80390d0ebf6d": {
             "type": "collection",
             "settings": {
-              "collection": "safes"
+              "collection": "safes",
+              "checkImg": false
             }
           },
           "844702aa-8a45-442a-b972-c495c0d80ecf": {
             "type": "collection",
             "settings": {
-              "collection": "condensing-units"
+              "collection": "condensing-units",
+              "checkImg": false
             }
           },
           "c863f6c9-cf02-4dbd-b0ea-ec06a618a215": {
             "type": "collection",
             "settings": {
-              "collection": "evaporators"
+              "collection": "evaporators",
+              "checkImg": false
             }
           },
           "4489d2ff-0143-456c-9627-15d46f668ac0": {
             "type": "collection",
             "settings": {
-              "collection": "spare-parts"
+              "collection": "spare-parts",
+              "checkImg": false
             }
           },
           "6b1f107f-8218-4aab-b0ec-d7ddf0cad9e2": {
             "type": "collection",
             "disabled": true,
             "settings": {
-              "collection": ""
+              "collection": "",
+              "checkImg": false
             }
           }
         },
@@ -223,7 +186,9 @@
           "6b1f107f-8218-4aab-b0ec-d7ddf0cad9e2"
         ],
         "settings": {
-          "image": "shopify:\/\/shop_images\/img.png"
+          "title": "SHOP BY CATEGORIES",
+          "title_fs": "20px,30px,30px",
+          "title_fw": 700
         }
       },
       "165563478473cdca76": {
@@ -232,7 +197,13 @@
       },
       "16557794261460c40a": {
         "type": "section-home-bestSeller",
-        "settings": {}
+        "settings": {
+          "title": "BEST SELLER",
+          "title_fs": "20px,30px,30px",
+          "title_fw": 700,
+          "collection": "condensing-units",
+          "limitProduct": 4
+        }
       },
       "1655805105ac3f6132": {
         "type": "section-mini-banner",
@@ -333,11 +304,56 @@
           "8bc3b896-4e35-4ba0-96f4-c8694622f299",
           "4f6bc6fa-7cd0-4648-8059-ac1abfd42b98"
         ],
-        "settings": {}
+        "settings": {
+          "collection_grid": "4"
+        }
       },
       "collection": {
         "type": "collection",
         "settings": {}
+      },
+      "payment-method": {
+        "type": "payment-method",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
+          "Icon_width": "45",
+          "Icon_heigth": "25",
+          "copyRight": "@2022 BUYBOATFRIDGES.com.All Rights Reserved",
+          "show_content": false,
+          "PaymentIcon_width": "20",
+          "PaymentIcon_height": "20",
+          "icon1": "shopify:\/\/shop_images\/visa_1.png",
+          "link1": "",
+          "icon2": "shopify:\/\/shop_images\/mastercard_1.png",
+          "link2": "",
+          "icon3": "shopify:\/\/shop_images\/maestro_1.png",
+          "link3": "",
+          "icon4": "shopify:\/\/shop_images\/paypal-39_1.png",
+          "link4": "",
+          "icon5": "shopify:\/\/shop_images\/skrill_1_e589f6f6-8ab7-4b5c-97d2-0f32cbfd9467.png",
+          "link5": "",
+          "icon6": "shopify:\/\/shop_images\/wepay_1.png",
+          "link6": "",
+          "icon7": "shopify:\/\/shop_images\/moneygram_1.png",
+          "link7": "",
+          "icon8": "shopify:\/\/shop_images\/blue-pay_1.png",
+          "link8": ""
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "Form_title": "FOR EXCLUSIVE DEALS",
+          "button_text": "JOIN US",
+          "placehoder_text": "Enter your e-mail",
+          "show_icons": false,
+          "FaceBook": "",
+          "Twitter": "",
+          "Gmail": "",
+          "Instagram": "",
+          "Whatsapp": "",
+          "pinterest": ""
+        }
       }
     },
     "content_for_index": [

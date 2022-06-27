@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="{{ 'category-card.css' | asset_url }}">
-{% capture url %}{{ routes.collections_url }}/{{ collection.handle }}{% endcapture %}
+{%- capture url -%}{{ routes.collections_url }}/{{ collection.handle }}{%- endcapture -%}
 <div class="categoryCard" {{ block.shopify_attributes }}>
         <div class="categoryCard__imgCont">
-            {% if collection.image.src != blank %}
+            {%- if collection.image.src != blank -%}
                 <a href="{{url}}"> <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /></a>
-            {% else %}
+            {%- else -%}
                 {{ 'product-1' | placeholder_svg_tag }}
-            {% endif %}
+            {%- endif -%}
         </div>             
     <div class="categoryCard__title">
         

@@ -14,6 +14,19 @@
       "product":"PRODUCTS",
       "contact":"Contact us",
       "menu":"Menu"
+    },
+    "productPage":{
+      "policy1":"Shipping and Returns",
+      "policy2":"Ask about this product",
+      "addToCart":"Add to cart",
+      "buyNow":"BUY NOW",
+      "available":"Available",
+      "inStock":"In Stock",
+      "outStock":"Out of stock",
+      "agreeTerms":"I agree with the terms and conditions",
+      "vendor":"Vendor",
+      "productType":"Product Type",
+      "tag":"Tags"
     }
   }
 }

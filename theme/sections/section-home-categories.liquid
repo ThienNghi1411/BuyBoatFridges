@@ -1,7 +1,27 @@
 <link rel="stylesheet" href="{{ 'homeCategories.css' | asset_url }}">
 <section class="homeCategories">
     <div class="homeCategories__inner">
-        <div class="homeCategories__title">SHOP BY CATEGORIES</div>
+        <div class="homeCategories__title">{{ section.settings.title }}</div>
+        {%- assign fsArr = section.settings.title_fs | split: "," -%}
+
+        {%- style -%}
+            @media(min-width: 320px){
+                .homeCategories__title{
+                    font-size: {{ fsArr[0] }} ;
+                    font-weight: {{ section.settings.title_fw }};
+                }
+            }
+            @media(min-width: 720px){
+                .homeCategories__title{
+                    font-size: {{ fsArr[1] }} ;
+                }
+            }
+            @media(min-width: 1440px){
+                .homeCategories__title{
+                    font-size: {{ fsArr[2] }} ;
+                }
+            }
+        {%- endstyle -%}
         <div class="homeCategories__content">
             {% for block in section.blocks %}
                 {% case block.type %}
@@ -15,22 +35,37 @@
 </section>
 {% schema %}
     {
-        "name": "Categories List",
+        "name": "Featured Collection",
         "tag": "section",
         "presets": [
             {
-              "name": "Categories List"
+              "name": "Featured Collection"
             }
         ],
         "settings":[
             {
                 "type":"header",
-                "content":" xxxxx"
+                "content":"Title"
             },
             {
-                "type":"image_picker",
-                "id":"image",
-                "label":"choose image:"
+                "type":"text",
+                "id":"title",
+                "label":"Adjust title: "
+            },
+            {
+                "type":"text",
+                "id":"title_fs",
+                "label":"Adjust font size: ",
+                "info":"E.g: 20px,24px,30px - Mobile screen, Table screen, Destop screen "
+            },
+            {
+                "type":"range",
+                "id":"title_fw",
+                "min":100,
+                "max": 800,
+                "step":100,
+                "default":700,
+                "label":"Adjust font weight: "
             }
         ],
         "blocks":[
@@ -42,6 +77,17 @@
                         "type": "collection",
                         "id": "collection",
                         "label": "Choose your collection: "
+                    },
+                    {
+                        "type": "checkbox",
+                        "id":"checkImg",
+                        "label":"Use another pictue for collection",
+                        "default":false
+                    },
+                    {
+                        "type": "image_picker",
+                        "id":"imgCollection",
+                        "label": "Choose another picture for collection: "
                     }
                 ]
             }
