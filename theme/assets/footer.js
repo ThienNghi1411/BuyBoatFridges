@@ -2,7 +2,6 @@ var list = document.querySelectorAll(".menu__col");
 //Icon Control display
 list.forEach(e => {
     let item = e.children[1];
-    console.log(item);
     let icon_Open = e.children[0].children[1];
     let icon_Close = e.children[0].children[2];
     e.addEventListener("click", () => {
