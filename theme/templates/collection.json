@@ -2,6 +2,26 @@
   "sections": {
     "main": {
       "type": "collection",
+      "blocks": {
+        "112a5771-ef2d-41bf-ae38-b63bc20bb07e": {
+          "type": "Add_Filter",
+          "settings": {
+            "tags_Heading": "DOOR TYPE",
+            "tags": "Double Door,Double Drawer,Single Door"
+          }
+        },
+        "2a76a88c-fd55-43c5-9652-16e90481af76": {
+          "type": "Add_Filter",
+          "settings": {
+            "tags_Heading": "PRODUCT TYPE",
+            "tags": "Front-Loading Refrigerator,\nFridge Freezer"
+          }
+        }
+      },
+      "block_order": [
+        "112a5771-ef2d-41bf-ae38-b63bc20bb07e",
+        "2a76a88c-fd55-43c5-9652-16e90481af76"
+      ],
       "settings": {
         "filter_image": "shopify:\/\/shop_images\/img_0adef2eb-4009-47dd-b5e9-b2817af97aab.png"
       }

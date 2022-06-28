@@ -1,10 +1,122 @@
+<link rel="stylesheet" href="{{ 'filterbyTags.css' | asset_url }}">
 {% if collection.all_tags.size > 0 %}
+<div class="filter__cointaner">
   <ul class="tag-filters">
-    {% for tag in collection.all_tags %}
-         
-    <li class="tag-filters__item">
-      {{ tag | link_to_add_tag: tag }}
-    </li>
-    {% endfor %}
+    <div class="filter__tittle filter_active">
+      <div class="tittle__text">COLOR</div>
+      <div class="Icon__Control">
+        {% render 'icon-minus' %}
+      </div>
+      <div class="Icon__Control plus">
+        {% render 'icon-plus' %}
+      </div>
+    </div>
+    <div class="item__wrap row">
+      {% for tag in collection.all_tags %}
+      {% if tag =="Black" %}
+      <div class="filter_color black">
+        <div class="color_description">{{ 'Black' | link_to_add_tag: 'Black' }}</div> 
+      </div>
+
+      {% endif %}
+      {% if tag=="Stainless Steel" %}
+      <div class="filter_color steel ">
+       <div class="color_description"> {{ tag | link_to_add_tag: tag }}</div>
+      </div>
+      
+      {% endif %}
+      {% endfor %}
+    </div>
   </ul>
+  <ul class="tag-filters">
+    <div class="filter__tittle filter_active">
+      <div class="tittle__text">DOOR TYPE</div>
+      <div class="Icon__Control">
+        {% render 'icon-minus' %}
+      </div>
+      <div class="Icon__Control plus">
+        {% render 'icon-plus' %}
+      </div>
+    </div>
+    <div class="item__wrap">
+      {% for tag in collection.all_tags %}
+      {% if tag =="Double Drawer" or tag =="Single Door" or tag =="Double Door"%}
+      <li class="tag-filters__item">
+        {{ tag | link_to_add_tag: tag }}
+      </li>
+      {% endif %}
+      {% endfor %}
+    </div>
+   
+  </ul>
+
+  <ul class="tag-filters">
+    <div class="filter__tittle filter_active">
+      <div class="tittle__text">FLANGE TYPE</div>
+      <div class="Icon__Control">
+        {% render 'icon-minus' %}
+      </div>
+      <div class="Icon__Control plus">
+        {% render 'icon-plus' %}
+      </div>
+    </div>
+    <div class="item__wrap">
+      {% for tag in collection.all_tags %}
+      {% if tag =="Flush Flange" or tag =="Surface Flange" or tag =="Adjustable Flange"%}
+      <li class="tag-filters__item">
+        {{ tag | link_to_add_tag: tag }}
+      </li>
+      {% endif %}
+      {% endfor %}
+    </div>
+   
+  </ul>
+
+  <ul class="tag-filters">
+    <div class="filter__tittle filter_active">
+      <div class="tittle__text">VENDOR</div>
+      <div class="Icon__Control">
+        {% render 'icon-minus' %}
+      </div>
+      <div class="Icon__Control plus">
+        {% render 'icon-plus' %}
+      </div>
+    </div>
+    <div class="item__wrap">
+      {% for tag in collection.all_tags %}
+      {% if tag =="Vitrifrigo"%}
+      <li class="tag-filters__item">
+        {{ tag | link_to_add_tag: tag }}
+      </li>
+      {% endif %}
+      {% endfor %}
+    </div>
+ 
+  </ul>
+
+  <ul class="tag-filters">
+    <div class="filter__tittle ">
+      <div class="tittle__text">CUBIC FEET</div>
+      <div class="Icon__Control">
+        {% render 'icon-minus' %}
+      </div>
+      <div class="Icon__Control plus">
+        {% render 'icon-plus' %}
+      </div>
+    </div>
+    <div class="item__wrap">
+      {% for tag in collection.all_tags %}
+      {% if tag =="Under 2 Cubic Feet" or tag=="Between 2 to 5 Cubic Feet" or tag=="Above 5 Cubic Feet"%}
+      <li class="tag-filters__item">
+        {{ tag | link_to_add_tag: tag }}
+      </li>
+      {% endif %}
+      {% endfor %}
+    </div>
+  
+  </ul>
+</div>
+  
+
 {% endif %}
+<script src="{{ 'filterbyTags.js' | asset_url }}" defer></script>

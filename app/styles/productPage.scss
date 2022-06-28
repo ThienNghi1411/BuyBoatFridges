@@ -1,8 +1,8 @@
 
 @media (min-width: 320px){
     .productPage{
-        max-width: 750px;
-        padding: 30px 20px;
+        max-width: 600px;
+        padding: 30px 20px 0px 20px;
         &__inner{
             width: 100%;
             
@@ -38,6 +38,7 @@
             margin-bottom: 30px;
             & img{
                 width: 100%;
+                max-height: 100%;
             }
             &-alert{
                 position: absolute;
@@ -184,6 +185,150 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            margin-bottom: 20px;
+        }
+        &__vendor,&__productType,&__tags{
+            font-size: 13px;
+            font-weight: 400;
+            color: #454545;
+        }
+    }
+    .imgProductDestop{
+        display: none;
+    }
+    .btnContDestop{
+        display: none;
+        margin-top: 30px;
+        flex-direction: row;
+        gap: 35px;
+    }
+}
+
+@media (min-width: 600px){
+    .productPage{
+        padding: 30px 50px 0px 50px;
+        &__nameProduct{
+            font-size: 30px;       
+        }
+        &__skuProduct{
+            font-size: 20px;
+        }
+
+        &__featureProduct{
+            font-size: 20px;
+        }
+        &__price{
+            &-lastPrice{
+                font-size: 35px;
+            }
+            &-basePrice{
+                font-size: 20px;
+            }
+        }
+        &__policyOption{
+            &-text{
+                font-size: 20px;
+            }
+        }
+        &__quantityStatus{
+            font-size: 20px;
+        }
+        &__quantityCont{
+            &-minusBtn, &-plusBtn{
+                font-size: 30px;
+            }
+            &-inputQty{
+                font-size: 20px;
+            }
+        }
+        &__btnAdd{
+            &-btn{
+                font-size: 20px;
+            }
+        }
+        &__btnBuyNow{
+            &-btn{
+                font-size: 20px;
+            }
+        }
+        &__termConditions{
+            &-text{
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (min-width: 750px){
+    .productPage{
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1000px){
+    .productPage{
+        &__contentCont{
+            display: flex;
+            gap: 90px;
+        }
+        &__infoProduct{
+            width: 36%;
+        }
+        &__nameProduct{
+            font-size: 28px;       
+        }
+        &__skuProduct{
+            font-size: 15px;
+        }
+
+        &__featureProduct{
+            font-size: 18px;
+        }
+        &__policy{
+            flex-direction: row;
+        }
+        &__policyOption{
+            &-text{
+                font-size: 18px;
+            }
+        }
+        &__termConditions{
+            &-text{
+                font-size: 15px;
+            }
+        }
+    }
+    .imgProductMobile{
+        display: none;
+    }
+    .imgProductDestop{
+        display: block;
+        flex: 1;
+        margin: 0;
+    }
+    .btnContDestop{
+        display: flex;
+    }
+    .btnContMobile{
+        display: none;
+    }
+}
+
+@media (min-width: 1280px){
+    .productPage{
+        max-width: 1440px;
+        &__inner{
+            width: 1000px;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (min-width: 1440px){
+    .productPage{
+        max-width: 100%;
+        &__inner{
+            width: 1220px;
         }
     }
 }

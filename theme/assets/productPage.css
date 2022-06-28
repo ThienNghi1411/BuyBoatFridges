@@ -1,7 +1,7 @@
 @media (min-width: 320px) {
   .productPage {
-    max-width: 750px;
-    padding: 30px 20px; }
+    max-width: 600px;
+    padding: 30px 20px 0; }
   .productPage__inner {
     width: 100%; }
   .productPage__titleProduct {
@@ -25,7 +25,8 @@
     border: 1px solid #000;
     margin-bottom: 30px; }
   .productPage__imgProduct img {
-    width: 100%; }
+    width: 100%;
+    max-height: 100%; }
   .productPage__imgProduct-alert {
     position: absolute;
     width: 40px;
@@ -144,4 +145,80 @@
   .productPage__otherInfo {
     display: flex;
     flex-direction: column;
-    gap: 10px; } }
+    gap: 10px;
+    margin-bottom: 20px; }
+  .productPage__productType, .productPage__tags, .productPage__vendor {
+    font-size: 13px;
+    font-weight: 400;
+    color: #454545; }
+  .imgProductDestop {
+    display: none; }
+  .btnContDestop {
+    display: none;
+    margin-top: 30px;
+    flex-direction: row;
+    gap: 35px; } }
+
+@media (min-width: 600px) {
+  .productPage {
+    padding: 30px 50px 0; }
+  .productPage__nameProduct {
+    font-size: 30px; }
+  .productPage__featureProduct, .productPage__skuProduct {
+    font-size: 20px; }
+  .productPage__price-lastPrice {
+    font-size: 35px; }
+  .productPage__policyOption-text, .productPage__price-basePrice, .productPage__quantityStatus {
+    font-size: 20px; }
+  .productPage__quantityCont-minusBtn, .productPage__quantityCont-plusBtn {
+    font-size: 30px; }
+  .productPage__btnAdd-btn, .productPage__btnBuyNow-btn, .productPage__quantityCont-inputQty {
+    font-size: 20px; }
+  .productPage__termConditions-text {
+    font-size: 16px; } }
+
+@media (min-width: 750px) {
+  .productPage {
+    max-width: 100%; } }
+
+@media (min-width: 1000px) {
+  .productPage__contentCont {
+    display: flex;
+    gap: 90px; }
+  .productPage__infoProduct {
+    width: 36%; }
+  .productPage__nameProduct {
+    font-size: 28px; }
+  .productPage__skuProduct {
+    font-size: 15px; }
+  .productPage__featureProduct {
+    font-size: 18px; }
+  .productPage__policy {
+    flex-direction: row; }
+  .productPage__policyOption-text {
+    font-size: 18px; }
+  .productPage__termConditions-text {
+    font-size: 15px; }
+  .imgProductMobile {
+    display: none; }
+  .imgProductDestop {
+    display: block;
+    flex: 1;
+    margin: 0; }
+  .btnContDestop {
+    display: flex; }
+  .btnContMobile {
+    display: none; } }
+
+@media (min-width: 1280px) {
+  .productPage {
+    max-width: 1440px; }
+  .productPage__inner {
+    width: 1000px;
+    margin: 0 auto; } }
+
+@media (min-width: 1440px) {
+  .productPage {
+    max-width: 100%; }
+  .productPage__inner {
+    width: 1220px; } }

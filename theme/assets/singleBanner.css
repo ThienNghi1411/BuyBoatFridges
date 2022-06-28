@@ -1,0 +1,21 @@
+.singleBanner {
+  max-width: 600px;
+  padding: 30px 20px 0; }
+
+.singleBanner__inner, .singleBanner__inner img {
+  width: 100%; }
+
+@media (min-width: 600px) {
+  .singleBanner {
+    max-width: 100%;
+    padding: 30px 50px 0; } }
+
+@media (min-width: 1280px) {
+  .singleBanner__inner {
+    width: 1000px;
+    margin: 0 auto; } }
+
+@media (min-width: 1440px) {
+  .singleBanner__inner {
+    width: 1220px;
+    margin: 0 auto; } }
