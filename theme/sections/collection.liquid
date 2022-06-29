@@ -8,12 +8,18 @@
         <div class="collection__filter">
 
             <div class="filter_byName">
-                <div class="filter_tittle">
-                    Products
+                <div class="filter__tittle  filter_active">
+                    <div class="tittle__text">PRODUCTS</div>
+                    <div class="Icon__Control">
+                      {% render 'icon-minus' %}
+                    </div>
+                    <div class="Icon__Control plus">
+                      {% render 'icon-plus' %}
+                    </div>
                     <div class="closebutton">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#139aeb" stroke="#139aeb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x" style="width: 30px;">
                             <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
-                          </svg>
+                    </svg>
                     </div>
                 </div>
                 <ul class="list">
@@ -22,13 +28,48 @@
                      <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
                
                 {% endfor %}
-                 </ul>   
+                </ul>   
             </div>
             <div class="filter_byType">
-                 
-                  {% render 'filterbyTags'%}
-                  {% render 'filter'%}
-                  
+                {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'Add_Filter' %}
+                    <ul class="tag-filters">
+                        <div class="filter__tittle filter_active">
+                          <div class="tittle__text">{{block.settings.tags_Heading}}</div>
+                          <div class="Icon__Control">
+                            {% render 'icon-minus' %}
+                          </div>
+                          <div class="Icon__Control plus">
+                            {% render 'icon-plus' %}
+                          </div>
+                        </div>
+                        <div class="item__wrap">
+                            
+                            {% assign beatles = block.settings.tags | split: "," %}
+
+                            {% for member in beatles %}
+                            
+                              <div class="tag">
+                         
+
+                                {{ member | link_to_add_tag: member }}
+                                
+                              </div>
+                            {% endfor %}
+                          
+                        </div>
+                      </ul>
+
+                   
+
+                    
+                        
+                {% endcase %}
+                    
+                {% endfor %}
+                        
+                    
                  
             </div>
             <div class="filter_image">
@@ -95,16 +136,38 @@
     </div>
 </section>
 <script src="{{ 'collection.js' | asset_url }}" defer></script>
+<script src="{{ 'filterbyTags.js' | asset_url }}" defer></script>
+
 {% schema %}
-    {
-        "name": "Collection",
-        "tag": "section",
-        "settings":[
-        {
+{
+  "name": "Collection",
+  "tag": "section",
+  "settings": [
+            {
             "type": "image_picker",
             "id": "filter_image",
             "label": "Filter image"
-          }
-        ]
-    }
+            }
+  ],
+  "blocks": [
+     {
+       "name": "Add Filter",
+       "type": "Add_Filter",
+       "settings": [
+
+            {
+                "type":"text",
+                "id":"tags_Heading",
+                "label":"Enter Tags Heading"
+            },
+            {
+                "type": "textarea",
+                "id": "tags",
+                "label": "Enter Tags"
+               
+            }
+       ]
+     }
+   ]
+}
 {% endschema %}

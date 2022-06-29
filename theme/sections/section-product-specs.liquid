@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="{{ 'productSpecs.css' | asset_url }}">
+<section class="productSpecs">
+    <div class="productSpecs__inner">
+        <div class="productSpecs__option">
+            <div class="productSpecs__optionWrap">
+                <div class="productSpecs__optionWrap-text">DESCRIPTION</div>
+                <div class="productSpecs__optionWrap-icon">
+                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                </div>
+            </div>
+            <div class="productSpecs__content">
+                {{ product.description }}
+            </div>
+        </div>
+        <div class="productSpecs__option">
+            <div class="productSpecs__optionWrap">
+                <div class="productSpecs__optionWrap-text">DIMENSIONS</div>
+                <div class="productSpecs__optionWrap-icon">
+                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                </div>
+
+            </div>
+            {%- assign getSize = product.metafields.dimensions.heading.size -%}
+            {%- assign heading = product.metafields.dimensions.heading -%}
+            {%- assign content = product.metafields.dimensions.content -%}
+
+            {%- for i in (1..getSize) -%}
+                {%- assign index = i | minus: 1 -%}
+                <div class="productSpecs__content">
+                    <div class="productSpecs__content-heading">{{ heading[index] }}</div>
+                    <div class="productSpecs__content-content">{{ content[index] }}</div>
+                </div>
+            {%- endfor -%}
+        </div>
+        <div class="productSpecs__option">
+            <div class="productSpecs__optionWrap">
+                <div class="productSpecs__optionWrap-text">TECHNICAL DOCUMENTS</div>
+                <div class="productSpecs__optionWrap-icon">
+                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                </div>
+            </div>
+        </div>
+        <div class="productSpecs__option">
+            <div class="productSpecs__optionWrap">
+                <div class="productSpecs__optionWrap-text">PARTS</div>
+                <div class="productSpecs__optionWrap-icon">
+                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                </div>
+            </div>
+        </div>
+        <div class="productSpecs__option">
+            <div class="productSpecs__optionWrap">
+                <div class="productSpecs__optionWrap-text">SHIPPING</div>
+                <div class="productSpecs__optionWrap-icon">
+                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+    {
+        "name": "Product Specifications",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Product Specifications"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":"Product Specifications"
+            },
+            {
+                "type":"image_picker",
+                "id":"icon",
+                "label":"icon"  
+            }
+        ]
+
+    }
+{% endschema %}

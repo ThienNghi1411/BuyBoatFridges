@@ -1,0 +1,374 @@
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+
+.collection {
+    max-width: 320px;
+
+    .collection__inner {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0px;
+        padding: 0px 20px;
+
+        .collection__overlay-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+            .collection__overlay {
+                width: 100%;
+                height: 100vh;
+                background-color: #00000080;
+                cursor: pointer;
+            }
+
+        }
+
+        .collection__filter {
+            position: absolute;
+            top: 0;
+           left: 0;
+            width: 30%;
+            height: 100vh;
+            padding: 20px;
+            background-color: #fff;
+            z-index: 99;
+            display: none;
+            .filter_byName
+            {
+                .list
+                {
+                    padding: 30px 0 40px 0;
+                }
+                .filter__tittle
+                {
+                    position: relative;
+                    cursor: pointer;
+                    display: flex;
+                    padding-bottom: 17px;
+                    border-bottom: 1px solid var(--border-color); 
+
+                    .tittle__text
+                    {
+                        font-size: 16px;
+                        color: #1d3042;
+                        font-weight: bolder;
+                       
+                    }
+                    .closebutton
+                    {
+                        position: absolute;
+                        right: -5%;
+                        top: -38%;
+                        cursor: pointer;
+                    }
+                    .Icon__Control
+                    {
+                        width: 10px;
+                        height: 10px;
+                        position: absolute;
+                        right: 5%;
+                    }
+                    .plus{
+                        display: none;
+                    }
+                }
+
+            }
+            .filter_byType
+            {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                .tag-filters
+                {
+                    .filter__tittle
+                    {
+                   
+                        font-size: 16px;
+                        color: #1d3042;
+                        font-weight: bolder;
+                        padding-bottom: 17px;
+                        border-bottom: 1px solid var(--border-color);
+                        display: flex;
+                        position: relative;
+                        cursor: pointer;
+                        .Icon__Control
+                        {
+                            width: 10px;
+                            height: 10px;
+                            position: absolute;
+                            right: 5%;
+                            color: var(--border-color);
+                            
+                        }
+                    }
+                }
+            }
+            .filter_image
+            {
+                margin-top: 37px;
+            }
+        }
+
+        .collection__content {
+            .collection__header {
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                p {
+
+                    font-size: 15px
+                }
+            }
+
+            .collection__handle {
+                width: 100%;
+
+
+                gap: 32px;
+
+                border-bottom: 1px solid #8d8d8d;
+
+                .collection__tittle {
+                    width: 100%;
+                    font-size: 21px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+
+                .collection__control {
+
+                    display: flex;
+                    gap: 32px;
+                    justify-content: flex-end;
+
+                    .collection__sort {
+                        width: 50%;
+                        position: relative;
+
+                        #sort-by {
+                            font-size: 15px;
+                            border: none;
+                            border-radius: 5px;
+                            width: 141px;
+                            height: 15px;
+
+                            .sort__option {
+                                padding: 10px;
+                            }
+                        }
+                    }
+
+                    .collection__sort::before {
+                        content: '>';
+                        transform: rotate(90deg);
+                        font-size: 23px;
+                        font-weight: bolder;
+                        right: 2%;
+                        top: -3px;
+                        position: absolute;
+                        pointer-events: none;
+                    }
+
+                    .collection__itemDisplay {
+
+
+                        width: 30%;
+                        position: relative;
+
+                        #display {
+                            font-size: 15px;
+                            border: none;
+                            border-radius: 5px;
+                            width: 50px;
+                            height: 15px;
+
+                        }
+
+
+                    }
+
+                    .collection__itemDisplay::before {
+                        content: ">";
+                        transform: rotate(90deg);
+                        font-size: 23px;
+                        font-weight: bolder;
+                        right: 34%;
+                        top: -13%;
+                        position: absolute;
+                        pointer-events: none;
+                    }
+
+                    .collections__Filter {
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .collection__content {
+                display: flex;
+
+                width: 100%;
+                flex-wrap: wrap;
+                padding: 30px 0;
+
+                .collecion__Item {
+                    width: 280px;
+                    height: 420px;
+                    border: 1px solid black;
+                }
+            }
+        }
+
+
+    }
+}
+
+@media (min-width: 320px){
+    .collection{
+        max-width: 480px;
+    }
+}
+@media (min-width: 480px){
+    .collection{
+        max-width: 720px;
+    }
+}
+@media (min-width: 720px){
+    .collection{
+        max-width: 1080px;
+        .collection__inner
+        {
+            padding: 30px 50px;
+            .collection__content
+            {
+                .collection__handle
+                {
+                    padding: 40px 0 45px 0;
+                    display: flex;
+                    .collection__tittle
+                    {
+                        text-align: unset;
+                    }
+                    .collection__control
+                    {
+                        .collection__sort
+                        {
+                            width: 180px;
+                            height: 40px;
+                            border-radius: 5px;
+                            border: 1px solid var( --border-color);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            #sort-by{
+                                width: 100%;
+                                height: 100%;
+                                padding-left: 12px;
+                            }
+
+                        }
+                        .collection__sort:before {
+                            content: ">";
+                            
+                            right: 3%;
+                            top: 5px;
+                   
+                        }
+                        .collection__itemDisplay
+                        {
+                            width: 70px;
+                            height: 40px;
+                            border-radius: 5px;
+                            border: 1px solid var( --border-color);;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            #display
+                            {
+                                width: 100%;
+                                height: 100%;
+                                padding-left: 12px;
+                            }
+                        }
+                        .collection__itemDisplay:before {
+                            content: ">";
+                           
+                            right: 12%;
+                            top: 5px;
+                           
+                        }
+                    
+                        
+                    }
+
+                }
+                .collection__Productcontent
+                {
+                    display: grid;
+                    gap: 30px 57px;
+                    grid-template-columns: repeat(2,1fr);
+                    margin-top: 39px;
+                }
+            }
+        }
+
+    }
+}
+@media (min-width: 1080px){
+    .collection{
+        max-width: 1220px;
+        margin: 0 auto;
+        .collection__inner
+        {
+            margin: 0 auto;
+            display: flex;
+            padding: 30px 0;
+            .collection__filter
+            {
+                display: flex;
+                position: relative;
+                height: 100%;
+                flex-direction: column;
+                .filter_byName
+                {
+                    .filter__tittle
+                    {
+                        .closebutton
+                        {
+                            display: none;
+                        }
+                    }
+                }
+               
+            }
+            .collection__content
+            {
+                .collection__handle
+                {
+                    .collection__control
+                    {
+                        .collections__Filter
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    
+}

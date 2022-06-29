@@ -1,0 +1,28 @@
+.filter__cointaner .filter__tittle {
+  font-size: 16px;
+  color: #1d3042;
+  font-weight: bolder;
+  padding-bottom: 17px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  position: relative;
+  cursor: pointer; }
+
+.filter__cointaner .filter__tittle .Icon__Control {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  right: 5%;
+  color: var(--border-color); }
+
+.filter__cointaner .filter__tittle .plus {
+  display: none; }
+
+.filter__cointaner .filter-group-display .filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 0 40px; }
+
+.filter__cointaner .filter-group-display .filter-list .filter-item {
+  color: var(--light-color); }

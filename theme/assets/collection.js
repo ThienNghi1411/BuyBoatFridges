@@ -1,3 +1,4 @@
+// filter moblie
 (() => {
     var FilterIcon = document.querySelector(".collections__Filter");
     var menuMobileCloseIcon = document.querySelector(".closebutton");
@@ -32,3 +33,33 @@
     init();
   })();
   
+
+
+
+//filter tag 
+  var content = document.querySelectorAll(".filter__tittle");
+//Icon Control display
+content.forEach(e => {
+    let item = e.nextElementSibling;
+    let icon_Open = e.children[2];
+    let icon_Close = e.children[1];
+    e.addEventListener("click", () => {
+        
+        if(e.classList.contains("filter_active"))
+        {
+            e.classList.remove("filter_active")
+            item.style.display = "none";
+            icon_Open.style.display = "unset"
+            icon_Close.style.display = "none"
+        }
+        else
+        {
+            e.classList.add("filter_active")
+            item.style.display = "flex";
+            icon_Open.style.display = "none"
+            icon_Close.style.display = "unset"
+        }
+       
+    })
+})
+

@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="{{ 'singleBanner.css' | asset_url }}">
+{% capture className %}singleBanner singleBanner-{{ section.id }}{% endcapture %}
+<section class="{{ className }}">
+    <div class="singleBanner__inner">
+        <a href="{{ section.settings.url | default: routes.root_url }}" class="">
+            <img src="{{ section.settings.banner | image_url }} " alt="{{  }}" />
+        </a>
+    </div>
+</section>
+{% schema %}
+    {
+        "name": "Single Banner",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Single Banner"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":"Single Banner"
+            },
+            {
+                "type":"image_picker",
+                "id":"banner",
+                "label":"Choose image: "
+            },
+            {
+                "type":"text",
+                "id":"url",
+                "label":"Fill url for banner: "
+            }
+        ]
+
+    }
+{% endschema %}

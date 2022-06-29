@@ -5,11 +5,27 @@
       "settings": {
         "iconPicture": "shopify:\/\/shop_images\/alert.png",
         "iconPolicy1": "shopify:\/\/shop_images\/box.png",
-        "iconPolicy2": "shopify:\/\/shop_images\/chat.png"
+        "iconPolicy2": "shopify:\/\/shop_images\/chat.png",
+        "imgTrusted": "shopify:\/\/shop_images\/trustedsite_logo.png"
+      }
+    },
+    "165638478359b08742": {
+      "type": "section-single-banner",
+      "settings": {
+        "banner": "shopify:\/\/shop_images\/Banner_1_1.jpg",
+        "url": ""
+      }
+    },
+    "16563876429df20041": {
+      "type": "section-product-specs",
+      "settings": {
+        "icon": "shopify:\/\/shop_images\/next.png"
       }
     }
   },
   "order": [
-    "section-product-productPage"
+    "section-product-productPage",
+    "165638478359b08742",
+    "16563876429df20041"
   ]
 }
