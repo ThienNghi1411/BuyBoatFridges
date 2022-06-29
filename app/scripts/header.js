@@ -5,7 +5,7 @@ const menuMobileOverLay = document.querySelector(".menuMobile");
 const menuMobile = document.querySelector(".menuMobile__container");
 const megaMenuIcon = document.querySelector(".header__productMenu");
 const megaMenu = document.querySelector(".header__megaMenu");
-console.log(megaMenu);
+
 
 const init = () => {
     menuMobileIcon.addEventListener("click" , showMenuMobile);

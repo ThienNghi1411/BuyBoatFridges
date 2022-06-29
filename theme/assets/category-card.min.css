@@ -1,3 +1,3 @@
-.categoryCard{width:100%;justify-self:center;align-self:center}.categoryCard__title{text-align:center;color:#454545;font-weight:700;font-size:13px;flex:1}.categoryCard__imgCont{width:100%;margin-bottom:15px}.categoryCard__imgCont img{width:100%}
+.categoryCard{width:100%;height:100%;justify-self:center;align-self:center;display:flex;flex-direction:column;justify-content:space-between}.categoryCard__title{text-align:center;color:#454545;font-weight:700;font-size:13px;height:35px}.categoryCard__imgCont{width:100%;margin-bottom:15px;flex:1}.categoryCard__imgCont a{width:100%;height:100%;display:flex;justify-content:center;align-items:center}.categoryCard__imgCont img{width:100%}
 
 /*# sourceMappingURL=category-card.min.css.map */

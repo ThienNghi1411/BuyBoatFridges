@@ -1,4 +1,4 @@
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -185,10 +185,11 @@ input[type=number] {
   align-items: center; }
 
 .breadcrumb__option {
-  padding: 7px 25px;
+  padding: 7px 15px;
   position: relative;
   transition: all .2s linear;
-  font-size: 14px; }
+  font-size: 12px;
+  text-align: center; }
 
 .breadcrumb__option:first-child {
   padding-left: 0; }
@@ -200,6 +201,9 @@ input[type=number] {
   right: 0;
   transform: translateY(-50%); }
 
+.breadcrumb__option:last-child {
+  padding-right: 0; }
+
 .breadcrumb__option:last-child:after {
   content: ""; }
 
@@ -208,7 +212,10 @@ input[type=number] {
 
 @media (min-width: 600px) {
   .breadcrumb {
-    padding: 0 50px; } }
+    padding: 0 50px; }
+  .breadcrumb__option {
+    padding: 7px 25px;
+    font-size: 14px; } }
 
 @media (min-width: 1280px) {
   .breadcrumb__inner {
