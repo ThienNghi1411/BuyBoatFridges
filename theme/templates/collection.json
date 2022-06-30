@@ -3,6 +3,20 @@
     "main": {
       "type": "collection",
       "blocks": {
+        "2a76a88c-fd55-43c5-9652-16e90481af76": {
+          "type": "Add_Filter",
+          "settings": {
+            "tags_Heading": "PRODUCT TYPE",
+            "tags": "Front-Loading Refrigerator,\nFridge Freezer"
+          }
+        },
+        "a78ae9ee-1be0-403d-8d3a-9b6e89076002": {
+          "type": "Add_ColorFilter",
+          "settings": {
+            "tags_Heading": "Color",
+            "tags": "Black,Grey,Stainless Steel"
+          }
+        },
         "112a5771-ef2d-41bf-ae38-b63bc20bb07e": {
           "type": "Add_Filter",
           "settings": {
@@ -10,20 +24,39 @@
             "tags": "Double Door,Double Drawer,Single Door"
           }
         },
-        "2a76a88c-fd55-43c5-9652-16e90481af76": {
+        "87f12cec-bbeb-4001-9f79-3977a0d77aae": {
           "type": "Add_Filter",
           "settings": {
-            "tags_Heading": "PRODUCT TYPE",
-            "tags": "Front-Loading Refrigerator,\nFridge Freezer"
+            "tags_Heading": "Flange Type",
+            "tags": "Flush Flange,Surface Flange,Adjustable Flange"
+          }
+        },
+        "7788ef51-74d0-466e-a3fb-2f7a35ff85cd": {
+          "type": "Add_Filter",
+          "settings": {
+            "tags_Heading": "Vendor",
+            "tags": "Vitrifrigo"
+          }
+        },
+        "f1c5f3ab-50a8-4f9d-a44d-cada53f0912c": {
+          "type": "Add_Filter",
+          "settings": {
+            "tags_Heading": "Cubic Feet",
+            "tags": "Under 2 Cubic Feet,Between 2 to 5 Cubic Feet,Above 5 Cubic Feet"
           }
         }
       },
       "block_order": [
+        "2a76a88c-fd55-43c5-9652-16e90481af76",
+        "a78ae9ee-1be0-403d-8d3a-9b6e89076002",
         "112a5771-ef2d-41bf-ae38-b63bc20bb07e",
-        "2a76a88c-fd55-43c5-9652-16e90481af76"
+        "87f12cec-bbeb-4001-9f79-3977a0d77aae",
+        "7788ef51-74d0-466e-a3fb-2f7a35ff85cd",
+        "f1c5f3ab-50a8-4f9d-a44d-cada53f0912c"
       ],
       "settings": {
-        "filter_image": "shopify:\/\/shop_images\/img_0adef2eb-4009-47dd-b5e9-b2817af97aab.png"
+        "filter_image": "shopify:\/\/shop_images\/img_0adef2eb-4009-47dd-b5e9-b2817af97aab.png",
+        "loading_type": "1"
       }
     }
   },

@@ -5,78 +5,225 @@
 <section class="collection">
     <div class="collection__inner">
 
-        <div class="collection__filter">
+      {% if section.settings.loading_type =='1' %}
+      <div class="collection__filter">
 
-            <div class="filter_byName">
-                <div class="filter__tittle  filter_active">
-                    <div class="tittle__text">PRODUCTS</div>
+        <div class="filter_byName">
+            <div class="filter__tittle  filter_active">
+                <div class="tittle__text">PRODUCTS</div>
+                <div class="Icon__Control">
+                  {% render 'icon-minus' %}
+                </div>
+                <div class="Icon__Control plus">
+                  {% render 'icon-plus' %}
+                </div>
+                <div class="closebutton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#139aeb" stroke="#139aeb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x" style="width: 30px;">
+                        <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                </div>
+            </div>
+            <ul class="list">
+                {% for link in linklists.collections-menu.links %}
+              
+                 <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
+           
+            {% endfor %}
+            </ul>   
+        </div>
+        <div class="filter_Clear">
+          
+        
+        </div>
+        <div class="filter_byType">
+            {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'Add_Filter' %}
+                <ul class="tag-filters">
+                    <div class="filter__tittle filter_active">
+                      <div class="tittle__text">{{block.settings.tags_Heading}}</div>
+                      <div class="Icon__Control">
+                        {% render 'icon-minus' %}
+                      </div>
+                      <div class="Icon__Control plus">
+                        {% render 'icon-plus' %}
+                      </div>
+                    </div>
+                    <div class="item__wrap">
+                        
+                        {% assign beatles = block.settings.tags | split: "," %}
+
+                        {% for member in beatles %}
+                       
+                          <div class="tag">
+                     
+                            {{ member | link_to_add_tag: member }}
+                            
+                          </div>
+                        {% endfor %}
+                      
+                    </div>
+                  </ul>
+                {% when 'Add_ColorFilter' %}  
+                <ul class="tag-filters">
+                  <div class="filter__tittle filter_active">
+                    <div class="tittle__text">{{block.settings.tags_Heading}}</div>
                     <div class="Icon__Control">
                       {% render 'icon-minus' %}
                     </div>
                     <div class="Icon__Control plus">
                       {% render 'icon-plus' %}
                     </div>
-                    <div class="closebutton">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#139aeb" stroke="#139aeb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x" style="width: 30px;">
-                            <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                    </div>
-                </div>
-                <ul class="list">
-                    {% for link in linklists.collections-menu.links %}
-                  
-                     <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
-               
-                {% endfor %}
-                </ul>   
-            </div>
-            <div class="filter_byType">
-                {% for block in section.blocks %}
-                {% case block.type %}
-                    {% when 'Add_Filter' %}
-                    <ul class="tag-filters">
-                        <div class="filter__tittle filter_active">
-                          <div class="tittle__text">{{block.settings.tags_Heading}}</div>
-                          <div class="Icon__Control">
-                            {% render 'icon-minus' %}
-                          </div>
-                          <div class="Icon__Control plus">
-                            {% render 'icon-plus' %}
-                          </div>
-                        </div>
-                        <div class="item__wrap">
-                            
-                            {% assign beatles = block.settings.tags | split: "," %}
+                  </div>
+                  <div class="item__wrap flex">
+                      
+                      {% assign beatles = block.settings.tags | split: "," %}
 
-                            {% for member in beatles %}
-                            
-                              <div class="tag">
-                         
-
-                                {{ member | link_to_add_tag: member }}
-                                
-                              </div>
-                            {% endfor %}
+                      {% for member in beatles %}  
+                      {% if member!="Stainless Steel" %}
+                      <div class="tag color" >
+                        <a style="background-color: {{member}};" href="/collections/{{collection.handle}}/{{member}}"></a>
+                        
+                      </div>
+                      {% endif %}
+                        {% if member=="Stainless Steel" %}
+                        <div class="tag spec_color" >
+                          <!-- <a style="background-color: #acb2b4;" href="/collections/{{collection.handle}}/{{member}}"></a> -->
                           
+                          {{ member | link_to_add_tag: member  }}
                         </div>
-                      </ul>
+                        {% endif %}
+                      {% endfor %}
+                    
+                  </div>
+                </ul>
+               
 
-                   
-
+                
                     
-                        
-                {% endcase %}
+            {% endcase %}
+                
+            {% endfor %}
                     
-                {% endfor %}
-                        
-                    
-                 
-            </div>
-            <div class="filter_image">
-                <img src=" {{ section.settings.filter_image | img_url:'medium'}} " />
-            </div>
+                
+             
+        </div>
+        <div class="filter_image">
+            <img src=" {{ section.settings.filter_image | img_url:'medium'}} " />
+        </div>
 
         </div>
+      {% endif %}
+      {% if section.settings.loading_type =='2' %}
+      <div class="collection__filter">
+
+        <div class="filter_byName">
+            <div class="filter__tittle  filter_active">
+                <div class="tittle__text">PRODUCTS</div>
+                <div class="Icon__Control">
+                  {% render 'icon-minus' %}
+                </div>
+                <div class="Icon__Control plus">
+                  {% render 'icon-plus' %}
+                </div>
+                <div class="closebutton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#139aeb" stroke="#139aeb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x" style="width: 30px;">
+                        <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                </div>
+            </div>
+            <ul class="list">
+                {% for link in linklists.collections-menu.links %}
+              
+                 <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
+           
+            {% endfor %}
+            </ul>   
+        </div>
+        <div class="filter_Clear">
+          
+        
+        </div>
+        <div class="filter_byType">
+            {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'Add_Filter' %}
+                <ul class="tag-filters">
+                    <div class="filter__tittle filter_active">
+                      <div class="tittle__text">{{block.settings.tags_Heading}}</div>
+                      <div class="Icon__Control">
+                        {% render 'icon-minus' %}
+                      </div>
+                      <div class="Icon__Control plus">
+                        {% render 'icon-plus' %}
+                      </div>
+                    </div>
+                    <div class="item__wrap">
+                        
+                        {% assign beatles = block.settings.tags | split: "," %}
+
+                        {% for member in beatles %}
+                       
+                          <div class="tag">
+                     
+                            {{ member }}
+                            
+                          </div>
+                        {% endfor %}
+                      
+                    </div>
+                  </ul>
+                {% when 'Add_ColorFilter' %}  
+                <ul class="tag-filters">
+                  <div class="filter__tittle filter_active">
+                    <div class="tittle__text">{{block.settings.tags_Heading}}</div>
+                    <div class="Icon__Control">
+                      {% render 'icon-minus' %}
+                    </div>
+                    <div class="Icon__Control plus">
+                      {% render 'icon-plus' %}
+                    </div>
+                  </div>
+                  <div class="item__wrap flex">
+                      
+                      {% assign beatles = block.settings.tags | split: "," %}
+
+                      {% for member in beatles %}  
+                      {% if member!="Stainless Steel" %}
+                      <div class="tag color" >
+                        <a style="background-color: {{member}};"></a>
+                        
+                      </div>
+                      {% endif %}
+                        {% if member=="Stainless Steel" %}
+                        <div class="tag spec_color" >
+                          <!-- <a style="background-color: #acb2b4;" href="/collections/{{collection.handle}}/{{member}}"></a> -->
+                          
+                          {{ member}}
+                        </div>
+                        {% endif %}
+                      {% endfor %}
+                    
+                  </div>
+                </ul>
+               
+
+                
+                    
+            {% endcase %}
+                
+            {% endfor %}
+                    
+                
+             
+        </div>
+        <div class="filter_image">
+            <img src=" {{ section.settings.filter_image | img_url:'medium'}} " />
+        </div>
+
+        </div>
+      {% endif %}
+       
         <div class="collection__overlay-wrapper">
             <div class="collection__overlay"></div>
         </div>
@@ -106,13 +253,14 @@
                               </option>
                             {% endfor %}
                           </select>
+                         
                     </div>
                     <div class="collection__itemDisplay">
                         <select name="" id="display">
                             <option value="">5</option>
-                            <option value="">10</option>
-                            <option value="">15</option>
-                            <option value="">20</option>
+                            <option value="">16</option>
+                            <option value="">32</option>
+                            <option value="">ALL</option>
                         </select>
                     </div>
                 </div>
@@ -134,10 +282,23 @@
 
 
     </div>
-</section>
-<script src="{{ 'collection.js' | asset_url }}" defer></script>
-<script src="{{ 'filterbyTags.js' | asset_url }}" defer></script>
+    <script>
+      var collection_handle= '{{collection.handle}}';
+    </script>
 
+    
+
+</section>
+
+
+<!-- render first -->
+{% if section.settings.loading_type =='1' %}
+<script src=" {{ 'filter.js' | asset_url }}" defer></script>
+{% endif %}
+{% if section.settings.loading_type =='2' %}
+
+{% endif %}
+<script src="{{ 'collection.js' | asset_url }}" defer></script>
 {% schema %}
 {
   "name": "Collection",
@@ -147,6 +308,23 @@
             "type": "image_picker",
             "id": "filter_image",
             "label": "Filter image"
+            },
+            {
+              "type": "select",
+              "id": "loading_type",
+              "label": "Choose Loading Type",
+              "options": [
+                {
+                  "value": "1",
+                  "label": "Reload Page"
+                },
+                {
+                  "value": "2",
+                  "label": "Ajax"
+                }
+               
+              ],
+              "default": "1"
             }
   ],
   "blocks": [
@@ -167,7 +345,27 @@
                
             }
        ]
-     }
+     },
+     {
+      "name": "Add Color Filter",
+      "type": "Add_ColorFilter",
+
+      "settings": [
+
+           {
+               "type":"text",
+               "id":"tags_Heading",
+               "label":"Enter Tags Heading"
+           },
+           {
+               "type": "textarea",
+               "id": "tags",
+               "label": "Enter Tags"
+              
+           }
+      ]
+    }
+
    ]
 }
 {% endschema %}

@@ -6,7 +6,6 @@
   var menuMobile = document.querySelector(".menuMobile__container");
   var megaMenuIcon = document.querySelector(".header__productMenu");
   var megaMenu = document.querySelector(".header__megaMenu");
-  console.log(megaMenu);
   var init = () => {
     menuMobileIcon.addEventListener("click", showMenuMobile);
     menuMobileCloseIcon.addEventListener("click", hideMenuMobile);

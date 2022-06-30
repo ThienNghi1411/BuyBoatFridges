@@ -1,5 +1,5 @@
 .productSpecs {
-  max-width: 600px;
+  max-width: 100%;
   padding: 30px 20px 0; }
 
 .productSpecs__inner {
@@ -25,7 +25,7 @@
   border: none; }
 
 .productSpecs__optionWrap-text {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   color: #032c41; }
 
@@ -33,16 +33,87 @@
   font-weight: 700;
   color: #fff; }
 
+.productSpecs__optionWrap-hideIcon {
+  display: none; }
+
+.productSpecs__activeOption {
+  background-color: #009ee3;
+  border: none; }
+
+.productSpecs__activeOption .productSpecs__optionWrap-text {
+  font-weight: 700;
+  color: #fff; }
+
 .productSpecs__content {
   margin-top: 20px;
   padding: 15px;
   border-radius: 5px;
-  border: 1px solid #c1c1c1; }
+  border: 1px solid #c1c1c1;
+  display: none;
+  -webkit-animation: rolling .2s linear;
+  animation: rolling .2s linear; }
+
+.productSpecs__content p .main-title {
+  font-size: 25px; }
+
+.productSpecs__content table {
+  margin-top: 15px; }
+
+.productSpecs__content table tr {
+  border: 1px solid #000; }
+
+.productSpecs__content table td {
+  padding: 10px;
+  border: 1px solid #000;
+  vertical-align: middle; }
+
+.productSpecs__content ul {
+  margin-top: 15px;
+  list-style-type: disc !important;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; }
+
+.productSpecs__content > ul li {
+  margin-left: 30px; }
+
+.productSpecs__listDocument {
+  margin-top: 0 !important; }
+
+.productSpecs__listDocument-line {
+  margin-left: 20px !important; }
+
+.productSpecs__listDocument-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
+.productSpecs__listDocument-fileCont {
+  display: flex;
+  align-items: center;
+  gap: 7px; }
+
+.productSpecs__listDocument-lineText {
+  font-size: 15px;
+  color: #454545; }
+
+.productSpecs__listDocument-lineType {
+  font-size: 15px;
+  color: #c1c1c1; }
+
+.productSpecs__listDocument-lineDownload svg path {
+  fill: #c1c1c1; }
 
 @media (min-width: 600px) {
   .productSpecs {
     max-width: 100%;
-    padding: 30px 50px 0; } }
+    padding: 30px 50px 0; }
+  .productSpecs__optionWrap-text {
+    font-size: 20px; }
+  .productSpecs__columnLayout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; } }
 
 @media (min-width: 1000px) {
   .productSpecs__inner {

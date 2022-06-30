@@ -3,9 +3,12 @@
     <div class="productSpecs__inner">
         <div class="productSpecs__option">
             <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text">DESCRIPTION</div>
-                <div class="productSpecs__optionWrap-icon">
-                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                <div class="productSpecs__optionWrap-text ">DESCRIPTION</div>
+                <div class="productSpecs__optionWrap-hideIcon">
+                    {% render 'icon-angle-top' %}
+                </div>
+                <div class="productSpecs__optionWrap-showIcon">
+                    {% render 'icon-angle-bot' %}
                 </div>
             </div>
             <div class="productSpecs__content">
@@ -13,12 +16,14 @@
             </div>
         </div>
         <div class="productSpecs__option">
-            <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text">DIMENSIONS</div>
-                <div class="productSpecs__optionWrap-icon">
-                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+            <div class="productSpecs__optionWrap ">
+                <div class="productSpecs__optionWrap-text ">DIMENSIONS</div>
+                <div class="productSpecs__optionWrap-hideIcon">
+                    {% render 'icon-angle-top' %}
                 </div>
-
+                <div class="productSpecs__optionWrap-showIcon">
+                    {% render 'icon-angle-bot' %}
+                </div>
             </div>
             {%- assign getSize = product.metafields.dimensions.heading.size -%}
             {%- assign heading = product.metafields.dimensions.heading -%}
@@ -34,30 +39,75 @@
         </div>
         <div class="productSpecs__option">
             <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text">TECHNICAL DOCUMENTS</div>
-                <div class="productSpecs__optionWrap-icon">
-                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                <div class="productSpecs__optionWrap-text ">TECHNICAL DOCUMENTS</div>
+                <div class="productSpecs__optionWrap-hideIcon">
+                    {% render 'icon-angle-top' %}
+                </div>
+                <div class="productSpecs__optionWrap-showIcon">
+                    {% render 'icon-angle-bot' %}
+                </div>
+            </div>
+            <div class="productSpecs__content">
+               <ul class="productSpecs__listDocument">
+                {%- assign getSize = product.metafields.document.text.size -%}
+                {%- assign text = product.metafields.document.text -%}
+                {%- assign type = product.metafields.document.type -%}
+                {%- assign file = product.metafields.document.file -%}
+                    {%- for i in (1..getSize) -%}
+                        {% assign tmp = i | minus: 1 %}
+                        <li class="productSpecs__listDocument-line">
+                            <div class="productSpecs__listDocument-wrapper">
+                                <span class="productSpecs__listDocument-lineText">{{ text[tmp] }}</span>
+                                <div class="productSpecs__listDocument-fileCont">
+                                    <span class="productSpecs__listDocument-lineType">{{ type[tmp] }}</span>
+                                    <a href="{{ file[tmp] }}"  class="productSpecs__listDocument-lineDownload" download="test.png" target="_blank">
+                                        {% render 'icon-download' %}
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+        <div class="productSpecs__option">
+            <div class="productSpecs__optionWrap">
+                <div class="productSpecs__optionWrap-text ">PARTS</div>
+                <div class="productSpecs__optionWrap-hideIcon">
+                    {%- render 'icon-angle-top' -%}
+                </div>
+                <div class="productSpecs__optionWrap-showIcon">
+                    {%- render 'icon-angle-bot' -%}
+                </div>
+            </div>
+            <div class="productSpecs__content">
+                <div class="productSpecs__columnLayout">
+                    {%- assign dataProducts = product.metafields.part.product | split: "|" -%}
+                    {%- for pdName in dataProducts -%}
+                         {%- assign dataProduct = all_products[pdName] -%}
+                         {%- render 'product-card' with dataProduct as product -%}
+                    {%- endfor -%}
                 </div>
             </div>
         </div>
         <div class="productSpecs__option">
             <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text">PARTS</div>
-                <div class="productSpecs__optionWrap-icon">
-                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
+                <div class="productSpecs__optionWrap-text ">SHIPPING</div>
+                <div class="productSpecs__optionWrap-hideIcon">
+                    {% render 'icon-angle-top' %}
+                </div>
+                <div class="productSpecs__optionWrap-showIcon">
+                    {% render 'icon-angle-bot' %}
                 </div>
             </div>
-        </div>
-        <div class="productSpecs__option">
-            <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text">SHIPPING</div>
-                <div class="productSpecs__optionWrap-icon">
-                    <img src="{{ section.settings.icon | image_url }} " alt="{{  }}" />
-                </div>
+            <div class="productSpecs__content">
+           
             </div>
         </div>
     </div>
 </section>
+<script src=" {{ 'productSpecs.js' | asset_url }}" defer></script>
 {% schema %}
     {
         "name": "Product Specifications",

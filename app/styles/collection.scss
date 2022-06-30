@@ -35,7 +35,7 @@ select {
             position: absolute;
             top: 0;
            left: 0;
-            width: 30%;
+            width: 40%;
             height: 100vh;
             padding: 20px;
             background-color: #fff;
@@ -47,6 +47,124 @@ select {
                 {
                     padding: 30px 0 40px 0;
                 }
+                .filter__tittle
+                    {
+                        position: relative;
+                        cursor: pointer;
+                        display: flex;
+                        padding-bottom: 17px;
+                        border-bottom: 1px solid var(--border-color); 
+    
+                        .tittle__text
+                        {
+                            font-size: 16px;
+                            color: #1d3042;
+                            font-weight: bolder;
+                           
+                        }
+                        .closebutton
+                        {
+                            position: absolute;
+                            right: -5%;
+                            top: -38%;
+                            cursor: pointer;
+                            
+                        }
+                        .Icon__Control
+                        {
+                            width: 10px;
+                            height: 10px;
+                            position: absolute;
+                            right: 5%;
+                        }
+                        .plus{
+                            display: none;
+                        }
+                    }
+               
+
+            }
+            .filter_byType
+            {
+                display: flex;
+                flex-direction: column;
+               
+                .tag-filters
+                {
+                    .filter__tittle
+                    {
+                        position: relative;
+                        cursor: pointer;
+                        display: flex;
+                        padding-bottom: 17px;
+                        border-bottom: 1px solid var(--border-color); 
+    
+                        .tittle__text
+                        {
+                            font-size: 16px;
+                            color: #1d3042;
+                            font-weight: bolder;
+                           
+                        }
+                        .closebutton
+                        {
+                            position: absolute;
+                            right: -5%;
+                            top: -38%;
+                            cursor: pointer;
+                        }
+                        .Icon__Control
+                        {
+                            width: 10px;
+                            height: 10px;
+                            position: absolute;
+                            right: 5%;
+                        }
+                        .plus{
+                            display: none;
+                        }
+                    }
+                    .item__wrap
+                    {
+                        padding: 30px 0 40px 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        .tag
+                        {
+                            color: var(--light-color);
+                            font-size: 14.5px;
+                        }
+                        .color{
+                           
+                            
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: all 0.2s linear;
+                            position: relative;
+                            a{
+                                width: 15px;
+                                height: 15px;      
+                               border-radius: 5px;
+
+                            }
+                        }
+                        .color:hover
+                        {
+                            transform: scale(1.2);
+                        }
+                        
+                        
+                    }
+                    .flex
+                    {
+                        flex-direction: row;
+                        gap: 10px;
+                    }
+                }
+            }
+            .filter_Clear
+            {
                 .filter__tittle
                 {
                     position: relative;
@@ -68,6 +186,7 @@ select {
                         right: -5%;
                         top: -38%;
                         cursor: pointer;
+                        
                     }
                     .Icon__Control
                     {
@@ -80,37 +199,34 @@ select {
                         display: none;
                     }
                 }
-
-            }
-            .filter_byType
-            {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-                .tag-filters
+                .shopping
                 {
-                    .filter__tittle
-                    {
+                    padding: 30px 0 0 0 ;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
                    
-                        font-size: 16px;
-                        color: #1d3042;
-                        font-weight: bolder;
-                        padding-bottom: 17px;
-                        border-bottom: 1px solid var(--border-color);
-                        display: flex;
+                    .shopingBy_tag
+                    {
                         position: relative;
+                        .tag_RemoveIcon
+                    {
+                        width: 10px;
+                        height: 10px;
+                        position: absolute;
+                        top: 50%; right: 0%;
+                        transform: translate(50%,-50%);
                         cursor: pointer;
-                        .Icon__Control
-                        {
-                            width: 10px;
-                            height: 10px;
-                            position: absolute;
-                            right: 5%;
-                            color: var(--border-color);
-                            
-                        }
                     }
+                    }
+                    
                 }
+                .ClearAll_button
+                {
+                    cursor: pointer;
+                    padding: 10px 0 30px 0;
+                }
+
             }
             .filter_image
             {
