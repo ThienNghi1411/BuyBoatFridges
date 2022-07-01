@@ -21,11 +21,119 @@
       "settings": {
         "icon": "shopify:\/\/shop_images\/next.png"
       }
+    },
+    "1656556383446a4bc6": {
+      "type": "section-collection-slider",
+      "blocks": {
+        "aeee1e87-a3ea-4abb-a8c8-8b275616d4fc": {
+          "type": "collection",
+          "settings": {
+            "collection": "front-loading-refrigerator",
+            "checkImg": false
+          }
+        },
+        "651645ba-8e6b-4b36-90d2-578348fe9731": {
+          "type": "collection",
+          "settings": {
+            "collection": "fridge-freezer",
+            "checkImg": false
+          }
+        },
+        "cffe5098-bb06-4414-8aaa-8fddf79a1796": {
+          "type": "collection",
+          "settings": {
+            "collection": "fridges",
+            "checkImg": false
+          }
+        },
+        "de089c88-4e6c-4af4-877c-336a25aafb19": {
+          "type": "collection",
+          "settings": {
+            "collection": "freezers",
+            "checkImg": false
+          }
+        },
+        "d6c2ec78-a483-413c-9335-ff6d290c526e": {
+          "type": "collection",
+          "settings": {
+            "collection": "condensing-units",
+            "checkImg": false
+          }
+        },
+        "1aec7e39-b642-4385-8f60-8897d8055296": {
+          "type": "collection",
+          "settings": {
+            "collection": "evaporators",
+            "checkImg": false
+          }
+        },
+        "b1263f95-e9db-49eb-bee7-f9ea80234361": {
+          "type": "collection",
+          "settings": {
+            "collection": "safes",
+            "checkImg": false
+          }
+        },
+        "9cc578f6-e42c-4b10-a9e1-9dc2993ab52c": {
+          "type": "collection",
+          "settings": {
+            "collection": "spare-parts",
+            "checkImg": false
+          }
+        },
+        "5339c8e7-6bcc-4163-bce2-77019e19f020": {
+          "type": "collection",
+          "settings": {
+            "collection": "ice-makers",
+            "checkImg": false
+          }
+        },
+        "66b9b09e-15d6-4de4-8d76-b463f3b75aa7": {
+          "type": "collection",
+          "settings": {
+            "collection": "portable-refrigerators",
+            "checkImg": false
+          }
+        },
+        "483ba57a-cb9f-4e60-8f75-9a1ca7f7a2c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "top-loading-countertop",
+            "checkImg": false
+          }
+        },
+        "f7e9ec66-06b3-4235-aafe-561797688c53": {
+          "type": "collection",
+          "settings": {
+            "collection": "wine-coolers",
+            "checkImg": false
+          }
+        }
+      },
+      "block_order": [
+        "aeee1e87-a3ea-4abb-a8c8-8b275616d4fc",
+        "651645ba-8e6b-4b36-90d2-578348fe9731",
+        "cffe5098-bb06-4414-8aaa-8fddf79a1796",
+        "de089c88-4e6c-4af4-877c-336a25aafb19",
+        "d6c2ec78-a483-413c-9335-ff6d290c526e",
+        "1aec7e39-b642-4385-8f60-8897d8055296",
+        "b1263f95-e9db-49eb-bee7-f9ea80234361",
+        "9cc578f6-e42c-4b10-a9e1-9dc2993ab52c",
+        "5339c8e7-6bcc-4163-bce2-77019e19f020",
+        "66b9b09e-15d6-4de4-8d76-b463f3b75aa7",
+        "483ba57a-cb9f-4e60-8f75-9a1ca7f7a2c1",
+        "f7e9ec66-06b3-4235-aafe-561797688c53"
+      ],
+      "settings": {
+        "limitItem": "2.7,3.7,5,6",
+        "autoPlay": 2
+      }
     }
   },
   "order": [
     "section-product-productPage",
     "165638478359b08742",
-    "16563876429df20041"
+    "16563876429df20041",
+    "1656556383446a4bc6"
   ]
 }

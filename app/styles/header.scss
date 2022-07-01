@@ -1,6 +1,5 @@
 .header{
     padding: 30px 20px 0px 20px;
-    max-width: 320px;
     position: relative;
     &__inner{
         width: 100%;
@@ -210,15 +209,10 @@
   padding-bottom: 30px !important;
 }
 
-@media (min-width: 320px){
-    .header{
-        max-width: 480px;
-    }
-}
+
 
 @media (min-width: 480px){
     .header{
-        max-width: 720px;
         &__account{
             gap: 17px;
             &-iconUser , &-iconCart{
@@ -307,11 +301,15 @@
     }
 }
 
-@media (min-width: 720px){
+@media (min-width: 600px){
     .header{
-        max-width: 1280px;
         padding: 15px 50px 0px 50px;
-        
+    }
+}
+
+@media (min-width:1000px){
+    .header{
+
         &__logoDestop{
             display: block;
         }

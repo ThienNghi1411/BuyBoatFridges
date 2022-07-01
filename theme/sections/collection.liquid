@@ -49,54 +49,52 @@
                         {% render 'icon-plus' %}
                       </div>
                     </div>
-                    <div class="item__wrap">
+                    {% if block.settings.color_filter %}
+                    <div class="item__wrap flex">
                         
-                        {% assign beatles = block.settings.tags | split: "," %}
-
-                        {% for member in beatles %}
-                       
-                          <div class="tag">
-                     
-                            {{ member | link_to_add_tag: member }}
-                            
-                          </div>
-                        {% endfor %}
-                      
-                    </div>
-                  </ul>
-                {% when 'Add_ColorFilter' %}  
-                <ul class="tag-filters">
-                  <div class="filter__tittle filter_active">
-                    <div class="tittle__text">{{block.settings.tags_Heading}}</div>
-                    <div class="Icon__Control">
-                      {% render 'icon-minus' %}
-                    </div>
-                    <div class="Icon__Control plus">
-                      {% render 'icon-plus' %}
-                    </div>
-                  </div>
-                  <div class="item__wrap flex">
-                      
                       {% assign beatles = block.settings.tags | split: "," %}
 
-                      {% for member in beatles %}  
-                      {% if member!="Stainless Steel" %}
-                      <div class="tag color" >
-                        <a style="background-color: {{member}};" href="/collections/{{collection.handle}}/{{member}}"></a>
+                      {% for member in beatles %}
+                      
+                      {% if member != "Stainless Steel" %}
+                      <div class="tag color_tag" style="background-color: {{member}};">
+                   
                         
-                      </div>
+                        {{ member | link_to_add_tag: member }}
+                       </div>
                       {% endif %}
-                        {% if member=="Stainless Steel" %}
-                        <div class="tag spec_color" >
-                          <!-- <a style="background-color: #acb2b4;" href="/collections/{{collection.handle}}/{{member}}"></a> -->
+                       
+                        {% if member == "Stainless Steel" %}
+                        <div class="tag">
+                   
+                          {{ member | link_to_add_tag: member }}
                           
-                          {{ member | link_to_add_tag: member  }}
                         </div>
                         {% endif %}
                       {% endfor %}
                     
-                  </div>
-                </ul>
+                    </div>
+                    {% endif %}
+                    {% if block.settings.color_filter == false  %}
+                    <div class="item__wrap">
+                        
+                      {% assign beatles = block.settings.tags | split: "," %}
+
+                      {% for member in beatles %}
+                     
+                        <div class="tag" >
+                   
+                          {{ member | link_to_add_tag: member }}
+                          
+                        </div>
+                      {% endfor %}
+                    
+                  </div>  
+                    {% endif %}
+                   
+
+                  </ul>
+              
                
 
                 
@@ -114,6 +112,11 @@
 
         </div>
       {% endif %}
+
+
+
+
+
       {% if section.settings.loading_type =='2' %}
       <div class="collection__filter">
 
@@ -158,54 +161,51 @@
                         {% render 'icon-plus' %}
                       </div>
                     </div>
-                    <div class="item__wrap">
+                   
+                    {% if block.settings.color_filter %}
+                    <div class="item__wrap flex">
                         
-                        {% assign beatles = block.settings.tags | split: "," %}
-
-                        {% for member in beatles %}
-                       
-                          <div class="tag">
-                     
-                            {{ member }}
-                            
-                          </div>
-                        {% endfor %}
-                      
-                    </div>
-                  </ul>
-                {% when 'Add_ColorFilter' %}  
-                <ul class="tag-filters">
-                  <div class="filter__tittle filter_active">
-                    <div class="tittle__text">{{block.settings.tags_Heading}}</div>
-                    <div class="Icon__Control">
-                      {% render 'icon-minus' %}
-                    </div>
-                    <div class="Icon__Control plus">
-                      {% render 'icon-plus' %}
-                    </div>
-                  </div>
-                  <div class="item__wrap flex">
-                      
                       {% assign beatles = block.settings.tags | split: "," %}
 
-                      {% for member in beatles %}  
-                      {% if member!="Stainless Steel" %}
-                      <div class="tag color" >
-                        <a style="background-color: {{member}};"></a>
+                      {% for member in beatles %}
+                      
+                      {% if member != "Stainless Steel" %}
+                      <div class="tag color_tag2" style="background-color: {{member}};">
+                   
                         
-                      </div>
+                        {{ member }}
+                       </div>
                       {% endif %}
-                        {% if member=="Stainless Steel" %}
-                        <div class="tag spec_color" >
-                          <!-- <a style="background-color: #acb2b4;" href="/collections/{{collection.handle}}/{{member}}"></a> -->
+                       
+                        {% if member == "Stainless Steel" %}
+                        <div class="tag">
+                   
+                          {{ member }}
                           
-                          {{ member}}
                         </div>
                         {% endif %}
                       {% endfor %}
                     
-                  </div>
-                </ul>
+                    </div>
+                    {% endif %}
+                    {% if block.settings.color_filter == false  %}
+                    <div class="item__wrap">
+                        
+                      {% assign beatles = block.settings.tags | split: "," %}
+
+                      {% for member in beatles %}
+                     
+                        <div class="tag" >
+                   
+                          {{ member }}
+                          
+                        </div>
+                      {% endfor %}
+                    
+                  </div>  
+                    {% endif %}
+                  </ul>
+              
                
 
                 
@@ -224,6 +224,7 @@
         </div>
       {% endif %}
        
+      
         <div class="collection__overlay-wrapper">
             <div class="collection__overlay"></div>
         </div>
@@ -244,7 +245,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M3.853 54.87C10.47 40.9 24.54 32 40 32H472C487.5 32 501.5 40.9 508.1 54.87C514.8 68.84 512.7 85.37 502.1 97.33L320 320.9V448C320 460.1 313.2 471.2 302.3 476.6C291.5 482 278.5 480.9 268.8 473.6L204.8 425.6C196.7 419.6 192 410.1 192 400V320.9L9.042 97.33C-.745 85.37-2.765 68.84 3.854 54.87L3.853 54.87z"/></svg>
                     </div>
                     <div class="collection__sort">
-                        <select id="sort-by">
+                        <select id="sort-by" >
                             {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
                           
                             {% for option in collection.sort_options %}
@@ -296,7 +297,7 @@
 <script src=" {{ 'filter.js' | asset_url }}" defer></script>
 {% endif %}
 {% if section.settings.loading_type =='2' %}
-
+<script src="{{ 'collection-ajax.js' | asset_url }}" defer></script>
 {% endif %}
 <script src="{{ 'collection.js' | asset_url }}" defer></script>
 {% schema %}
@@ -332,11 +333,16 @@
        "name": "Add Filter",
        "type": "Add_Filter",
        "settings": [
-
             {
                 "type":"text",
                 "id":"tags_Heading",
                 "label":"Enter Tags Heading"
+            },
+            {
+                "type":"checkbox",
+                "id":"color_filter",
+                "label":"Enable Color FIlter",
+                "default":false
             },
             {
                 "type": "textarea",
@@ -345,26 +351,8 @@
                
             }
        ]
-     },
-     {
-      "name": "Add Color Filter",
-      "type": "Add_ColorFilter",
-
-      "settings": [
-
-           {
-               "type":"text",
-               "id":"tags_Heading",
-               "label":"Enter Tags Heading"
-           },
-           {
-               "type": "textarea",
-               "id": "tags",
-               "label": "Enter Tags"
-              
-           }
-      ]
-    }
+     }
+     
 
    ]
 }

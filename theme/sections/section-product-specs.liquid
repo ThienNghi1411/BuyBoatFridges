@@ -1,108 +1,183 @@
 <link rel="stylesheet" href="{{ 'productSpecs.css' | asset_url }}">
 <section class="productSpecs">
     <div class="productSpecs__inner">
-        <div class="productSpecs__option">
-            <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text ">DESCRIPTION</div>
-                <div class="productSpecs__optionWrap-hideIcon">
-                    {% render 'icon-angle-top' %}
+        <div class="productSpecs__optionWrapper">
+            <div class="productSpecs__option">
+                <div class="productSpecs__optionWrap">
+                    <div class="productSpecs__optionWrap-text ">DESCRIPTION</div>
+                    <div class="productSpecs__optionWrap-hideIcon">
+                        {%- render 'icon-angle-top' -%}
+                    </div>
+                    <div class="productSpecs__optionWrap-showIcon">
+                        {%- render 'icon-angle-bot' -%}
+                    </div>
                 </div>
-                <div class="productSpecs__optionWrap-showIcon">
-                    {% render 'icon-angle-bot' %}
-                </div>
-            </div>
-            <div class="productSpecs__content">
-                {{ product.description }}
-            </div>
-        </div>
-        <div class="productSpecs__option">
-            <div class="productSpecs__optionWrap ">
-                <div class="productSpecs__optionWrap-text ">DIMENSIONS</div>
-                <div class="productSpecs__optionWrap-hideIcon">
-                    {% render 'icon-angle-top' %}
-                </div>
-                <div class="productSpecs__optionWrap-showIcon">
-                    {% render 'icon-angle-bot' %}
-                </div>
-            </div>
-            {%- assign getSize = product.metafields.dimensions.heading.size -%}
-            {%- assign heading = product.metafields.dimensions.heading -%}
-            {%- assign content = product.metafields.dimensions.content -%}
-
-            {%- for i in (1..getSize) -%}
-                {%- assign index = i | minus: 1 -%}
                 <div class="productSpecs__content">
-                    <div class="productSpecs__content-heading">{{ heading[index] }}</div>
-                    <div class="productSpecs__content-content">{{ content[index] }}</div>
-                </div>
-            {%- endfor -%}
-        </div>
-        <div class="productSpecs__option">
-            <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text ">TECHNICAL DOCUMENTS</div>
-                <div class="productSpecs__optionWrap-hideIcon">
-                    {% render 'icon-angle-top' %}
-                </div>
-                <div class="productSpecs__optionWrap-showIcon">
-                    {% render 'icon-angle-bot' %}
+                    {{ product.description }}
                 </div>
             </div>
-            <div class="productSpecs__content">
-               <ul class="productSpecs__listDocument">
-                {%- assign getSize = product.metafields.document.text.size -%}
-                {%- assign text = product.metafields.document.text -%}
-                {%- assign type = product.metafields.document.type -%}
-                {%- assign file = product.metafields.document.file -%}
-                    {%- for i in (1..getSize) -%}
-                        {% assign tmp = i | minus: 1 %}
-                        <li class="productSpecs__listDocument-line">
-                            <div class="productSpecs__listDocument-wrapper">
-                                <span class="productSpecs__listDocument-lineText">{{ text[tmp] }}</span>
-                                <div class="productSpecs__listDocument-fileCont">
-                                    <span class="productSpecs__listDocument-lineType">{{ type[tmp] }}</span>
-                                    <a href="{{ file[tmp] }}"  class="productSpecs__listDocument-lineDownload" download target="_blank">
-                                        {% render 'icon-download' %}
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
+            <div class="productSpecs__option">
+                <div class="productSpecs__optionWrap ">
+                    <div class="productSpecs__optionWrap-text ">DIMENSIONS</div>
+                    <div class="productSpecs__optionWrap-hideIcon">
+                        {%- render 'icon-angle-top' -%}
+                    </div>
+                    <div class="productSpecs__optionWrap-showIcon">
+                        {%- render 'icon-angle-bot' -%}
+                    </div>
+                </div>
+                {%- if product.metafields.dimensions.heading != blank -%}
+                    {%- assign getSize = product.metafields.dimensions.heading.size -%}
+                    {%- assign heading = product.metafields.dimensions.heading -%}
+                    {%- assign content = product.metafields.dimensions.content -%}
 
+                    {%- for i in (1..getSize) -%}
+                        {%- assign index = i | minus: 1 -%}
+                        <div class="productSpecs__content">
+                            <div class="productSpecs__content-heading">{{ heading[index] }}</div>
+                            <div class="productSpecs__content-content">{{ content[index] }}</div>
+                        </div>
                     {%- endfor -%}
-                </ul>
+                {%- endif -%}
+            </div>
+            <div class="productSpecs__option">
+                <div class="productSpecs__optionWrap">
+                    <div class="productSpecs__optionWrap-text ">TECHNICAL DOCUMENTS</div>
+                    <div class="productSpecs__optionWrap-hideIcon">
+                        {%- render 'icon-angle-top' -%}
+                    </div>
+                    <div class="productSpecs__optionWrap-showIcon">
+                        {%- render 'icon-angle-bot' -%}
+                    </div>
+                </div>
+                {%- if product.metafields.document.text != blank -%}
+                    <div class="productSpecs__content">
+                        <ul class="productSpecs__listDocument">
+                        {%- assign getSize = product.metafields.document.text.size -%}
+                        {%- assign text = product.metafields.document.text -%}
+                        {%- assign type = product.metafields.document.type -%}
+                        {%- assign file = product.metafields.document.file -%}
+                            {%- for i in (1..getSize) -%}
+                                {% assign tmp = i | minus: 1 %}
+                                <li class="productSpecs__listDocument-line">
+                                    <div class="productSpecs__listDocument-wrapper">
+                                        <span class="productSpecs__listDocument-lineText">{{ text[tmp] }}</span>
+                                        <div class="productSpecs__listDocument-fileCont">
+                                            <span class="productSpecs__listDocument-lineType">{{ type[tmp] }}</span>
+                                            <a href="{{ file[tmp] }}"  class="productSpecs__listDocument-lineDownload" download target="_blank">
+                                                {% render 'icon-download' %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                {%- endif -%}
+            </div>
+            <div class="productSpecs__option">
+                <div class="productSpecs__optionWrap">
+                    <div class="productSpecs__optionWrap-text ">PARTS</div>
+                    <div class="productSpecs__optionWrap-hideIcon">
+                        {%- render 'icon-angle-top' -%}
+                    </div>
+                    <div class="productSpecs__optionWrap-showIcon">
+                        {%- render 'icon-angle-bot' -%}
+                    </div>
+                </div>
+                {%- if product.metafields.part.product != blank -%}
+                <div class="productSpecs__content">
+                    <div class="productSpecs__columnLayout">
+                        {%- assign dataProducts = product.metafields.part.product | split: "|" -%}
+                        {%- for pdName in dataProducts -%}
+                            {%- assign dataProduct = all_products[pdName] -%}
+                            {%- render 'product-card' with dataProduct as product -%}
+                        {%- endfor -%}
+                    </div>
+                </div>
+                {%- endif -%}
+            </div>
+            <div class="productSpecs__option">
+                <div class="productSpecs__optionWrap">
+                    <div class="productSpecs__optionWrap-text ">SHIPPING</div>
+                    <div class="productSpecs__optionWrap-hideIcon">
+                        {%- render 'icon-angle-top' -%}
+                    </div>
+                    <div class="productSpecs__optionWrap-showIcon">
+                        {%- render 'icon-angle-bot' -%}
+                    </div>
+                </div>
+                {%- if product.metafields.shopping.page != blank -%}
+                    <div class="productSpecs__content">
+                    </div>
+                {%- endif -%}
             </div>
         </div>
-        <div class="productSpecs__option">
-            <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text ">PARTS</div>
-                <div class="productSpecs__optionWrap-hideIcon">
-                    {%- render 'icon-angle-top' -%}
-                </div>
-                <div class="productSpecs__optionWrap-showIcon">
-                    {%- render 'icon-angle-bot' -%}
+        <div class="productSpecs__contentDestopCont">
+            <div class="productSpecs__contentDescriptionCont contentDestop">
+                <div class="productSpecs__contentDestop">
+                    {{ product.description }}
                 </div>
             </div>
-            <div class="productSpecs__content">
-                <div class="productSpecs__columnLayout">
-                    {%- assign dataProducts = product.metafields.part.product | split: "|" -%}
-                    {%- for pdName in dataProducts -%}
-                         {%- assign dataProduct = all_products[pdName] -%}
-                         {%- render 'product-card' with dataProduct as product -%}
+            <div class="productSpecs__contentDimensionsCont contentDestop">
+                {%- if product.metafields.dimensions.heading != blank -%}
+                    {%- assign getSize = product.metafields.dimensions.heading.size -%}
+                    {%- assign heading = product.metafields.dimensions.heading -%}
+                    {%- assign content = product.metafields.dimensions.content -%}
+    
+                    {%- for i in (1..getSize) -%}
+                        {%- assign index = i | minus: 1 -%}
+                        <div class="productSpecs__contentDestop">
+                            <div class="productSpecs__contentDestop-heading">{{ heading[index] }}</div>
+                            <div class="productSpecs__contentDestop-content">{{ content[index] }}</div>
+                        </div>
                     {%- endfor -%}
-                </div>
+                {%- endif -%}
             </div>
-        </div>
-        <div class="productSpecs__option">
-            <div class="productSpecs__optionWrap">
-                <div class="productSpecs__optionWrap-text ">SHIPPING</div>
-                <div class="productSpecs__optionWrap-hideIcon">
-                    {% render 'icon-angle-top' %}
-                </div>
-                <div class="productSpecs__optionWrap-showIcon">
-                    {% render 'icon-angle-bot' %}
-                </div>
+            <div class="productSpecs__contentDocumentsCont contentDestop">
+                {%- if product.metafields.document.text != blank -%}
+                    <div class="productSpecs__contentDestop">
+                        <ul class="productSpecs__listDocument">
+                            {%- assign getSize = product.metafields.document.text.size -%}
+                            {%- assign text = product.metafields.document.text -%}
+                            {%- assign type = product.metafields.document.type -%}
+                            {%- assign file = product.metafields.document.file -%}
+                            {%- for i in (1..getSize) -%}
+                                {% assign tmp = i | minus: 1 %}
+                                <li class="productSpecs__listDocument-line">
+                                    <div class="productSpecs__listDocument-wrapper">
+                                        <span class="productSpecs__listDocument-lineText">{{ text[tmp] }}</span>
+                                        <div class="productSpecs__listDocument-fileCont">
+                                            <span class="productSpecs__listDocument-lineType">{{ type[tmp] }}</span>
+                                            <a href="{{ file[tmp] }}"  class="productSpecs__listDocument-lineDownload" download target="_blank">
+                                                {% render 'icon-download' %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                {%- endif -%}
             </div>
-            <div class="productSpecs__content">
-           
+            <div class="productSpecs__contentPartsCont contentDestop">
+                {%- if product.metafields.part.product != blank -%}
+                    <div class="productSpecs__contentDestop">
+                        <div class="productSpecs__columnLayout">
+                            {%- assign dataProducts = product.metafields.part.product | split: "|" -%}
+                            {%- for pdName in dataProducts -%}
+                                {%- assign dataProduct = all_products[pdName] -%}
+                                {%- render 'product-card' with dataProduct as product -%}
+                            {%- endfor -%}
+                        </div>
+                    </div>
+                {%- endif -%}
+            </div>
+            <div class="productSpecs__contentShippingCont contentDestop">
+                {%- if product.metafields.shopping.page != blank -%}
+                    <div class="productSpecs__contentDestop">
+                    </div>
+                {%- endif -%}
             </div>
         </div>
     </div>

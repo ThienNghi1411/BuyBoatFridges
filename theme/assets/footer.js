@@ -5,7 +5,7 @@ list.forEach(e => {
     let icon_Open = e.children[0].children[1];
     let icon_Close = e.children[0].children[2];
     e.addEventListener("click", () => {
-        if (item.classList.contains("menu_active") && window.innerWidth < 720) {
+        if (item.classList.contains("menu_active") && window.innerWidth < 750) {
             item.classList.remove("menu_active")
             item.style.width = "0px";
             item.style.height = "0px";
@@ -15,7 +15,7 @@ list.forEach(e => {
 
         }
         else {
-            if (window.innerWidth < 720) {
+            if (window.innerWidth < 750) {
                 item.classList.add("menu_active")
                 item.style.width = "100%";
                 item.style.height = "100%"
