@@ -5,6 +5,9 @@
 <section class="collection">
     <div class="collection__inner">
 
+      <div class="collection__spinner">
+
+      </div>
       {% if section.settings.loading_type =='1' %}
       <div class="collection__filter">
 
@@ -113,10 +116,6 @@
         </div>
       {% endif %}
 
-
-
-
-
       {% if section.settings.loading_type =='2' %}
       <div class="collection__filter">
 
@@ -145,7 +144,6 @@
         </div>
         <div class="filter_Clear">
           
-        
         </div>
         <div class="filter_byType">
             {% for block in section.blocks %}
@@ -171,17 +169,13 @@
                       
                       {% if member != "Stainless Steel" %}
                       <div class="tag color_tag2" style="background-color: {{member}};">
-                   
-                        
                         {{ member }}
                        </div>
                       {% endif %}
                        
                         {% if member == "Stainless Steel" %}
-                        <div class="tag">
-                   
+                        <div class="tag">    
                           {{ member }}
-                          
                         </div>
                         {% endif %}
                       {% endfor %}
@@ -196,9 +190,7 @@
                       {% for member in beatles %}
                      
                         <div class="tag" >
-                   
                           {{ member }}
-                          
                         </div>
                       {% endfor %}
                     
@@ -258,10 +250,10 @@
                     </div>
                     <div class="collection__itemDisplay">
                         <select name="" id="display">
-                            <option value="">5</option>
-                            <option value="">16</option>
-                            <option value="">32</option>
-                            <option value="">ALL</option>
+                            <option value="10">10</option>
+                            <option value="16">16</option>
+                            <option value="32">32</option>
+                            <option value="ALL">ALL</option>
                         </select>
                     </div>
                 </div>
@@ -275,7 +267,11 @@
                {% render 'product-card' with product as product %}    
                {% endfor %}
                 
+             
             </div>
+            <div class="collection__loadMore">
+              Download More
+             </div>
         </div>
 
 
@@ -322,6 +318,23 @@
                 {
                   "value": "2",
                   "label": "Ajax"
+                }
+               
+              ],
+              "default": "1"
+            },
+            {
+              "type": "select",
+              "id": "paginate_type",
+              "label": "Choose Style (only for Ajax)",
+              "options": [
+                {
+                  "value": "1",
+                  "label": "Ifinity Load"
+                },
+                {
+                  "value": "2",
+                  "label": "Download More button"
                 }
                
               ],

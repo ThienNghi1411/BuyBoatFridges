@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let url_array = array[0].split("/");
     console.log(url_array.length)
     if (url_array.length >= 6) {
-
         let html_dom = `<div class="filter__tittle  filter_active">
         <div class="tittle__text">SHOPING BY:</div>
         <div class="Icon__Control">
