@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="{{ 'cartPopup.css' | asset_url }}">
+<div class="cartPopup">
+    <div class="cartPopup__overlay">
+        <div class="cartPopup__content">
+            <div class="cartPopup__product">
+                <div class="cartPopup__notification">
+                    {%- render 'icon-check' -%}
+                    <div class="cartPopup__notification-text">Added to cart successfully!</div>
+                </div>
+                <div class="cartPopup__imgCont">
+                    <img src="{{ product.featured_image | image_url }} " alt="{{  }}" />
+                </div>
+                <div class="cartPopup__infoProduct">
+                    <div class="cartPopup__pdName">{{ product.title }}</div>
+                    <div class="cartPopup__pdQty">
+                       QTY: 1
+                    </div>
+                    <div class="cartPopup__total">
+                        TOTAL: $614.67
+                    </div>
+                </div>
+            </div>
+            <div class="cartPopup__cartInfo">
+                <div class="cartPopup__cartTotal">
+                    <div class="cartPopup__cartTotal-text">There are {{ cart.item_count }} items in your cart</div>
+                    <div class="cartPopup__cartTotal-total">TOTAL:   <span>{{ cart.total_price | money }}</span></div>
+                </div>
+                <div class="cartPopup__btnCont">
+                    <div class="cartPopup__btnShopping">
+                        <button class="cartPopup__btnShopping-btn">CONTINUE SHOPPING</button>
+                    </div>
+                    <div class="cartPopup__btnViewCart">
+                        <button class="cartPopup__btnViewCart-btn">VIEW CART</button>
+                    </div>
+                </div>
+                <div class="cartPopup__checkout">
+                    <div class="cartPopup__term">
+                        <div class="cartPopup__term-checkbox">
+                        </div>
+                        <div class="cartPopup__term-text">I argee with the terms and conditions</div>
+                    </div>
+                    <div class="cartPopup__btnCheckout">
+                        <button class="cartPopup__btnCheckout-btn">PROCEED TO CHECKOUT</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cartPopup__closeBtn">
+                {%- render "icon-X" -%}
+            </div>
+        </div>
+    </div>
+</div>
+<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>

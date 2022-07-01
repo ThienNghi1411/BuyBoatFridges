@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
-<script>console.log({{ product.variants[0].inventory_quantity | json }})</script>
-{%- assign collectionUrl = "" -%}
+<script>console.log({{ cart | json }})</script>
 
+{%- assign collectionUrl = "" -%}
 {%- for collection in product.collections -%}
     {%- if collection.title == product.type -%}
         {%- assign collectionUrl = collection.url -%}
@@ -21,8 +21,10 @@
         </div>
     </div>
 </div>
-<section class="productPage">
+<section class="productPage" data-section-type="product-page" data-section-id="{{ section.id }}">
     <div class="productPage__inner">
+        {%- form 'product', product , class: "productForm" -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">                                                         
         <div class="productPage__contentCont">
             <div class="productPage__infoProduct">
                 <div class="productPage__titleProduct">  
@@ -65,13 +67,13 @@
                             {%- endif -%}
                     </div>
                     <div class="productPage__quantityCont">
-                        <button class="productPage__quantityCont-minusBtn">-</button>
-                        <input type="number" class="productPage__quantityCont-inputQty" value=1 min=1>
-                        <button class="productPage__quantityCont-plusBtn">+</button> 
+                        <button class="productPage__quantityCont-minusBtn" name="minus" type="button">-</button>
+                        <input name="quantity" type="text" class="productPage__quantityCont-inputQty" value="1" min="1" m>
+                        <button class="productPage__quantityCont-plusBtn" name="plus" type="button">+</button> 
                     </div>
                     <div class="productPage__btnCont btnContMobile">
                         <div class="productPage__btnAdd">
-                            <button class="productPage__btnAdd-btn">{{ 'sections.productPage.addToCart' | t }}</button>
+                            <button class="productPage__btnAdd-btn" type="submit" name="add" >{{ 'sections.productPage.addToCart' | t }}</button>
                         </div>
                         <div class="productPage__btnBuyNow">
                             <button class="productPage__btnBuyNow-btn">{{ 'sections.productPage.buyNow' | t }}</button>
@@ -108,14 +110,24 @@
         </div>
         <div class="productPage__btnCont btnContDestop">
             <div class="productPage__btnAdd">
-                <button class="productPage__btnAdd-btn">{{ 'sections.productPage.addToCart' | t }}</button>
+                <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
             </div>
             <div class="productPage__btnBuyNow">
                 <button class="productPage__btnBuyNow-btn">{{ 'sections.productPage.buyNow' | t }}</button>
             </div>
         </div>
+        {%- endform -%}
     </div>
+    <script id="productPage__settings" type="application/ld+json">
+        {
+            "product" : {{ product | json }}
+        }
+    </script> 
 </section>
+
+
+<script src="{{ 'product-page.js' | asset_url }}" defer></script>
+
 {% schema %}
     {
         "name": "Product Page",

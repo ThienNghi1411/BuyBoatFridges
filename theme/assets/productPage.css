@@ -1,5 +1,6 @@
 .productPage {
   max-width: 100%;
+  position: relative;
   padding: 30px 20px 0; }
 
 .productPage__inner {
@@ -136,7 +137,6 @@
 .productPage__btnAdd {
   width: 100%;
   text-align: center;
-  padding: 12px 0;
   background-color: #ebebeb;
   border: 1px solid #139aeb;
   border-radius: 5px;
@@ -147,14 +147,17 @@
   opacity: .5; }
 
 .productPage__btnAdd-btn {
+  cursor: pointer;
+  padding: 12px 0;
   font-size: 16px;
   font-weight: 700;
-  color: #139aeb; }
+  color: #139aeb;
+  width: 100%;
+  height: 100%; }
 
 .productPage__btnBuyNow {
   width: 100%;
   text-align: center;
-  padding: 12px 0;
   background-color: #139aeb;
   border-radius: 5px;
   cursor: pointer;
@@ -164,9 +167,13 @@
   opacity: .5; }
 
 .productPage__btnBuyNow-btn {
+  cursor: pointer;
   color: #fff;
   font-size: 16px;
-  font-weight: 700; }
+  font-weight: 700;
+  width: 100%;
+  padding: 12px 0;
+  height: 100%; }
 
 .productPage__termConditions {
   display: flex;
