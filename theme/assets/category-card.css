@@ -12,7 +12,10 @@
   color: #454545;
   font-weight: 700;
   font-size: 13px;
-  height: 35px; }
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .categoryCard__imgCont {
   width: 100%;

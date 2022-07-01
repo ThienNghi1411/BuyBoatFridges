@@ -1,12 +1,20 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
-<script>console.log({{ product | json }})</script>
+<script>console.log({{ product.variants[0].inventory_quantity | json }})</script>
+{%- assign collectionUrl = "" -%}
+
+{%- for collection in product.collections -%}
+    {%- if collection.title == product.type -%}
+        {%- assign collectionUrl = collection.url -%}
+    {%- endif -%}
+{%- endfor -%}
+
 <div class="breadcrumb">
     <div class="breadcrumb__inner">
         <div class="breadcrumb__option">
             <a href="{{ routes.root_url }}" class="">Home</a>
         </div>
         <div class="breadcrumb__option">
-            <a href="{{ routes.root_url }}" class="">{{ product.type }}</a>
+            <a href="{{ collectionUrl }}" class="">{{ product.type }}</a>
         </div>
         <div class="breadcrumb__option">
             <a href="{{ product.url }}" class="">{{ product.vendor }} {{ product.variants[0].sku }}</a>
@@ -28,6 +36,9 @@
                     <div class="productPage__imgProduct-alert">
                         <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                     </div>
+                    {%- if product.variants[0].inventory_quantity == 0 -%}
+                        <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                    {%- endif -%}
                 </div>
                 <div class="productPage__priceCont">
                     <div class="productPage__price">
@@ -90,6 +101,9 @@
                 <div class="productPage__imgProduct-alert">
                     <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                 </div>
+                {%- if product.variants[0].inventory_quantity == 0 -%}
+                    <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                {%- endif -%}
             </div>
         </div>
         <div class="productPage__btnCont btnContDestop">

@@ -42,13 +42,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
+  top: 20px;
   right: 0;
   border: 1px solid #000; }
 
 .productPage__imgProduct-alert img {
   width: 21px;
   height: 25px; }
+
+.productPage__imgProduct-tag {
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #032c41;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+  padding-right: 10px;
+  top: 20px;
+  left: 0; }
 
 .productPage__price {
   display: flex;
@@ -215,7 +230,11 @@
   .productPage__btnAdd-btn, .productPage__btnBuyNow-btn, .productPage__quantityCont-inputQty {
     font-size: 20px; }
   .productPage__termConditions-text {
-    font-size: 16px; } }
+    font-size: 16px; }
+  .productPage__imgProduct-tag {
+    width: 150px;
+    font-size: 20px;
+    padding-right: 15px; } }
 
 @media (min-width: 750px) {
   .productPage {

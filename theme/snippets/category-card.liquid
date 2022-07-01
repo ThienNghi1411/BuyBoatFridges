@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="{{ 'category-card.css' | asset_url }}">
+
 {%- capture url -%}{{ routes.collections_url }}/{{ collection.handle }}{%- endcapture -%}
 <div class="categoryCard" {{ block.shopify_attributes }}>
+    <link rel="stylesheet" href="{{ 'category-card.css' | asset_url }}">
         <div class="categoryCard__imgCont">
             {%- if collection.image.src != blank -%}
                 <a href="{{url}}"> <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /></a>

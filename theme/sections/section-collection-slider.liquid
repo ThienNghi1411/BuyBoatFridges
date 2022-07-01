@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="{{ 'collectionSlider.css' | asset_url }}">
+{%- assign limitArr = section.settings.limitItem | split: "," -%}
+{%- assign autoPlay = section.settings.autoPlay -%}
+
+
+<section class="collectionSlider" data-section-type="collection-slider" data-section-id="{{ section.id }}">
+    <div class="collectionSlider__inner">
+        <div class="collectionSlider__sliderCont">
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                    {%- when 'collection'-%}
+                        <div class="collectionSlider__wrapper">
+                            {%- assign collection = collections[block.settings.collection] -%}
+                            {%- render 'category-card' with collection as collection -%}
+                        </div>
+
+                {%- endcase -%}
+            {%- endfor -%} 
+        </div>
+    </div>
+    <script id="collectionSlider_settings" type="application/ld+json">
+        {
+            "limitArr" : {{ limitArr | json }},
+            "autoPlay" : {{ autoPlay | json }}
+        }
+    </script> 
+</section>
+
+{% schema %}
+    {
+        "name": "Collection Slider",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Collection Slider"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":"Slider"
+            },
+            {
+                "type":"text",
+                "id":"limitItem",
+                "label":"Max number of item per row",
+                "info":"E.g: 2,3.5,5,6"
+            },
+            {
+                "type":"number",
+                "id":"autoPlay",
+                "label":"Auto play slider (in second)",
+                "info":"E.g: 5",
+                "default":0
+            }
+            
+        ],
+        "blocks":[
+            {
+                "name":"Collection",
+                "type":"collection",
+                "settings":[
+                    {
+                        "type": "collection",
+                        "id": "collection",
+                        "label": "Choose your collection: "
+                    },
+                    {
+                        "type": "checkbox",
+                        "id":"checkImg",
+                        "label":"Use another pictue for collection",
+                        "default":false
+                    },
+                    {
+                        "type": "image_picker",
+                        "id":"imgCollection",
+                        "label": "Choose another picture for collection: "
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

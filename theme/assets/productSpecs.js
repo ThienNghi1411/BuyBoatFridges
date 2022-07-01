@@ -1,10 +1,15 @@
 (() => {
   // app/scripts/productSpecs.js
   var specOptions = document.querySelectorAll(".productSpecs__optionWrap");
+  var contentDestop = document.querySelectorAll(".contentDestop");
   var init = () => {
-    specOptions.forEach((specOption) => {
-      specOption.addEventListener("click", toggleOption);
+    specOptions.forEach((specOption, i) => {
+      specOption.addEventListener("click", (e) => toggleOption(e, i));
     });
+    if (window.innerWidth >= 1e3) {
+      specOptions[0].classList.add("productSpecs__activeOption");
+      contentDestop[0].style.display = "flex";
+    }
   };
   var removeClass = (doms, className) => {
     doms.forEach((dom) => {
@@ -13,11 +18,16 @@
       }
     });
   };
-  var toggleOption = (e) => {
-    let option = e.target;
-    let content = e.target.parentElement.querySelectorAll(".productSpecs__content");
-    let hideIcon = e.target.querySelector(".productSpecs__optionWrap-hideIcon");
-    let showIcon = e.target.querySelector(".productSpecs__optionWrap-showIcon");
+  var removeContent = () => {
+    contentDestop.forEach((content) => {
+      content.style.display = "none";
+    });
+  };
+  var toggleOption = (e, i) => {
+    let option = e.currentTarget;
+    let content = e.currentTarget.parentElement.querySelectorAll(".productSpecs__content");
+    let hideIcon = e.currentTarget.querySelector(".productSpecs__optionWrap-hideIcon");
+    let showIcon = e.currentTarget.querySelector(".productSpecs__optionWrap-showIcon");
     if (option.classList.contains("productSpecs__activeOption")) {
       option.classList.remove("productSpecs__activeOption");
       content.forEach((tmp) => {
@@ -25,14 +35,17 @@
       });
       hideIcon.style.display = "none";
       showIcon.style.display = "block";
+      contentDestop[i].style.display = "none";
     } else {
       removeClass(specOptions, "productSpecs__activeOption");
+      removeContent();
       option.classList.add("productSpecs__activeOption");
       content.forEach((tmp) => {
         tmp.style.display = "block";
       });
       hideIcon.style.display = "block";
       showIcon.style.display = "none";
+      contentDestop[i].style.display = "flex";
     }
   };
   init();

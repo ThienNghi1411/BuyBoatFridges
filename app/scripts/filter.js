@@ -57,10 +57,11 @@ document.addEventListener('DOMContentLoaded', function () {
 //Url matching
 document.addEventListener('DOMContentLoaded', function () {
     var removeIcon = document.querySelectorAll(".tag_RemoveIcon");
-    console.log(removeIcon)
+    // console.log(removeIcon)
     removeIcon.forEach(e => {
         e.addEventListener("click", () => {
             let removeFilter = e.parentElement.parentElement;
+            console.log(removeFilter)
             let filterText = e.previousElementSibling.innerText;
             let filter_container = document.querySelector(".shopping");
 
@@ -71,10 +72,29 @@ document.addEventListener('DOMContentLoaded', function () {
                
             }
             else {
-                let newurl = window.location.href.replace(filterText, '');
-                let finalUrl = newurl.replace('+', '');
-                console.log(filter_container.childElementCount);
+              //get the array
+              let filter = window.location.href;
+              let array = filter.split("?");
+              let url_array = array[0].split("/");
+              let filter_array = url_array[5].split("+");
+
+              if(filterText==filter_array[0])
+              {
+                 let string = filterText+'+';
+                let finalUrl = window.location.href.replace(string,'');
                 window.location.href = finalUrl;
+              }
+              else
+              {
+                let string = '+'+filterText;
+                let finalUrl = window.location.href.replace(string,'');
+                // console.log(string);
+                // console.log(filter_container.childElementCount);
+                window.location.href = finalUrl;
+              }
+                
+               
+                
             }
 
 
@@ -88,11 +108,14 @@ document.addEventListener('DOMContentLoaded', function () {
 //Clear All Button
 document.addEventListener('DOMContentLoaded', function () {
     let clearAll = document.querySelector(".ClearAll_button");
-
-    clearAll.addEventListener("click",()=>{
+    if(clearAll!=null)
+    {
+      clearAll.addEventListener("click",()=>{
         let sort_value = document.querySelector("#sort-by").value;
          window.location.href = 'https://www.buyboatfridges.com/collections/'+collection_handle+'?sort_by='+sort_value;
     })
+    }
+  
 })
 
 

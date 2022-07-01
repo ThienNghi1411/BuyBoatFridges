@@ -7,13 +7,15 @@
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "PRODUCT TYPE",
+            "color_filter": false,
             "tags": "Front-Loading Refrigerator,\nFridge Freezer"
           }
         },
-        "a78ae9ee-1be0-403d-8d3a-9b6e89076002": {
-          "type": "Add_ColorFilter",
+        "64abadc8-26ac-42d6-b196-f78bde11b777": {
+          "type": "Add_Filter",
           "settings": {
             "tags_Heading": "Color",
+            "color_filter": true,
             "tags": "Black,Grey,Stainless Steel"
           }
         },
@@ -21,6 +23,7 @@
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "DOOR TYPE",
+            "color_filter": false,
             "tags": "Double Door,Double Drawer,Single Door"
           }
         },
@@ -28,6 +31,7 @@
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "Flange Type",
+            "color_filter": false,
             "tags": "Flush Flange,Surface Flange,Adjustable Flange"
           }
         },
@@ -35,6 +39,7 @@
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "Vendor",
+            "color_filter": false,
             "tags": "Vitrifrigo"
           }
         },
@@ -42,13 +47,14 @@
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "Cubic Feet",
+            "color_filter": false,
             "tags": "Under 2 Cubic Feet,Between 2 to 5 Cubic Feet,Above 5 Cubic Feet"
           }
         }
       },
       "block_order": [
         "2a76a88c-fd55-43c5-9652-16e90481af76",
-        "a78ae9ee-1be0-403d-8d3a-9b6e89076002",
+        "64abadc8-26ac-42d6-b196-f78bde11b777",
         "112a5771-ef2d-41bf-ae38-b63bc20bb07e",
         "87f12cec-bbeb-4001-9f79-3977a0d77aae",
         "7788ef51-74d0-466e-a3fb-2f7a35ff85cd",
@@ -56,7 +62,7 @@
       ],
       "settings": {
         "filter_image": "shopify:\/\/shop_images\/img_0adef2eb-4009-47dd-b5e9-b2817af97aab.png",
-        "loading_type": "1"
+        "loading_type": "2"
       }
     }
   },

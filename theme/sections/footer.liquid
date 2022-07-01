@@ -6,9 +6,14 @@
       <div class="footer__menu"  {{ block.shopify_attributes }}>
          {% if section.settings.show_content %}
          <div class="menu_wrap">
-                  <div class="menu__col">
+
+            {% for block in section.blocks %}
+            {% case block.type %}
+               {% when 'add_menu' %}
+                  {% if block.settings.Menu_layout == '1' %}
+                  <div class="menu__col" {{ block.shopify_attributes }}>
                      <h4 class="col__title">
-                        <div class="tittle_text">{{section.settings.Col1_title}} </div>
+                        <div class="tittle_text">{{block.settings.Col_title}} </div>
                         <div class="menu__controlIcon">
                             {% render 'icon-plus' %}
                         </div>
@@ -18,54 +23,19 @@
                      </h4>
                      <div class="collaspe_content">
                      <ul class="list">
-                        {% for link in linklists[section.settings.menu].links %}
+                        {% for link in linklists[block.settings.menu].links %}
                       
                          <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
                    
                     {% endfor %}
                      </ul>   
                      </div>
-                  </div>               
-                  <div class="menu__col" >
+                  </div>   
+                  {% endif %}
+                  {% if block.settings.Menu_layout == '2' %}
+                  <div class="menu__col" {{ block.shopify_attributes }}>
                      <h4 class="col__title">
-                        <div class="tittle_text"> {{section.settings.Col2_title}}</div>
-                        <div class="menu__controlIcon">
-                            {% render 'icon-plus' %}
-                        </div>
-                        <div class="menu__controlIcon minus">
-                           {% render 'icon-minus' %}
-                        </div>
-                     </h4>                   
-                     <div class="collaspe_content">
-                        <ul class="list">
-                           {% for link in linklists[section.settings.menu2].links %}
-                         
-                            <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
-                      
-                       {% endfor %}
-                        </ul>   
-                        </div>
-                  </div>                 
-                  <div class="menu__col">
-                     <h4 class="col__title">
-                        <div class="tittle_text"> {{section.settings.Col3_title}}</div>
-                        <div class="menu__controlIcon">
-                            {% render 'icon-plus' %}
-                        </div>
-                        <div class="menu__controlIcon minus">
-                           {% render 'icon-minus' %}
-                        </div>
-                     </h4>  
-                        <div class="collaspe_content">
-                           <div class="list">
-                              {{section.settings.AboutUs_text}}
-                           </div>
-                 
-                        </div> 
-                  </div>               
-                  <div class="menu__col" >
-                     <h4 class="col__title">
-                        <div class="tittle_text"> {{section.settings.Col4_title}}</div>
+                        <div class="tittle_text"> {{block.settings.Col_title}}</div>
                         <div class="menu__controlIcon">
                             {% render 'icon-plus' %}
                         </div>
@@ -75,17 +45,60 @@
                      </h4>  
                      <div class="collaspe_content">
                         <div class="list">
-                           {{section.settings.ContactUs_text}}
+                           {{block.settings.Menu_content}}
                         </div>
                      </div> 
                     
                   </div> 
+                  {% endif %}
+               
+                  
+            {% endcase %}
+               
+            {% endfor %}
+                            
+                                
+                               
+                 
                   {% endif %}   
          </div>
           <div class="footer_scrolltoTop_button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z"/></svg>
           </div>  
       </div>
+      
+      
+   {% for block in section.blocks %}
+         {% case block.type %}
+            {% when 'Payment_Method' %}
+            <div class="footer__copyRight">
+               <div class="copyRight__wrapper">
+                  <div class="footer__logo">   <img src=" {{ block.settings.image | img_url:'small'}} " /></div>
+                  <div class="footer__text">{{block.settings.copyRight}}</div>
+               </div>
+                  {% if block.settings.show_content %}
+                  <div class="paymentMethod_Wrapper">
+
+                     {% for block in section.blocks %}
+                     {% case block.type %}
+                        {% when 'payment_icon' %}
+                        <div class="paymentIcon">
+                           <a href="{{block.settings.payment_link}}"> <img src=" {{ block.settings.icon | img_url:'small'}} " /></a>        
+                       </div>
+                       
+                           
+                     {% endcase %}
+                        
+                     {% endfor %}
+                    
+                     
+               </div>
+                  {% endif %}
+                 
+               </div>    
+         {% endcase %}
+   {% endfor %}
+
       
       
      
@@ -98,60 +111,98 @@
 
 {% schema %}
 {
-   "name": "Footer",
-   "tag": "section",
-   "settings": [
-   {
-      "type":"checkbox",
-      "id":"show_content",
-      "label":"Show Content",
-      "default":true
-   },
-   {
-      "type":"text",
-      "id":"Col1_title",
-      "label":"Title 1"
-     
-   },
-   {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Footer menu"
-   },
-   {
-      "type":"text",
-      "id":"Col2_title",
-      "label":"Title 2"
-     
-   },
-   {
-      "type": "link_list",
-      "id": "menu2",
-      "label": "Footer menu"
-   },
-   {
-      "type":"text",
-      "id":"Col3_title",
-      "label":"Title 3"
-     
-   },
-   {
-      "type": "richtext",
-      "id": "AboutUs_text",
-      "label": "Edit"
-   },
-   {
-      "type":"text",
-      "id":"Col4_title",
-      "label":"Title 4"
-     
-   },
-   {
-      "type": "richtext",
-      "id": "ContactUs_text",
-      "label": "Edit Contact Us Text"
-   }
-   ]
+  "name": "Footer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show Content"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "Menu Col",
+       "limit":4,
+       "type": "add_menu",
+       "settings": [
+       {
+         "type": "text",
+         "id": "Col_title",
+         "label": "Tittle for Menu"
+       },
+       {
+         "type": "select",
+         "id": "Menu_layout",
+         "label": "Show menu Layount",
+         "options": [
+           {
+             "value": "1",
+             "label": "1"
+           },
+           {
+             "value": "2",
+             "label": "2"
+           }
+           
+         ],
+         "default": "1"
+       },
+          {
+         "type": "link_list",
+         "id": "menu",
+         "label": "Footer menu (Content for layout 1)"
+          },
+          {
+            "type": "richtext",
+            "id": "Menu_content",
+            "label": "Content for Layout 2"
+          
+          }
+       ]
+     },
+     {
+      "name": "Payment",
+      "type": "Payment_Method",
+      "limit":1,
+      "settings": [
+         {
+            "type":"checkbox",
+            "id":"show_content",
+            "label":"Show Payment Method",
+            "default":true
+         },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Pick Icon Image"
+        },
+        {
+         "type": "text",
+         "id": "copyRight",
+         "label": "Edit CopyRight"
+       }
 
+      ]
+    },
+    {
+      "name": "+Payment Icon",
+      "type": "payment_icon",
+      "limit":8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Pick Payment Icon Image"
+        },
+        {
+         "type": "url",
+         "id": "payment_link",
+         "label": "Edit Payment Link"
+       }
+        
+      ]
+    }
+   ]
 }
 {% endschema %}
