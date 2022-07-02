@@ -1,3 +1,5 @@
+
+
 // VARIABLES //
 const minusBtn = document.querySelector(".productPage__quantityCont-minusBtn");
 const plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
@@ -20,6 +22,49 @@ const adjustQty = (e) => {
 }
 
 init();
+
+
+// CART-POPUP //
+
+const scriptPopup = (data) => {
+    const popup = document.querySelector(".cartPopup");
+    if (popup !== null){
+        const qtyPd = document.querySelector(".cartPopup__pdQty-qty");
+        qtyPd.innerText = qtyField.value;
+        const totalPd = document.querySelector(".cartPopup__total-total");
+        totalPd.innerText = "$"+( data.price*1 * qtyField.value*1) / 100;   
+        const popupContent = document.querySelector(".cartPopup__content");
+        const closeBtn = document.querySelector(".cartPopup__closeBtn");
+        const overlay = document.querySelector(".cartPopup__overlay");
+        const btnContinue = document.querySelector(".cartPopup__btnShopping");
+        const closePopup = () => {
+            popup.remove();
+            toggleEnabelScroll();
+        }
+        popupContent.addEventListener("click" , (e) => {
+            e.stopPropagation();
+        })
+        closeBtn.addEventListener("click", (e) => {
+            
+            closePopup();
+        });
+        overlay.addEventListener("click",closePopup);
+        btnContinue.addEventListener("click", (e) => {
+            e.stopPropagation();
+            closePopup();
+        });
+        const toggleEnabelScroll = () => {
+            const body = document.querySelector("body");
+            if (body.style.overflow === "hidden" ){
+                body.style.overflow = "visible";
+            }else{
+                body.style.overflow = "hidden";
+            }
+        }
+        toggleEnabelScroll();
+    }
+}
+
 
 // Add to Cart //
 const productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
@@ -44,10 +89,12 @@ const addToCart = (e) => {
     })
     .then(data => {
         console.log(data);
+        window.scrollTo(0, 0);
         let container = document.querySelector(".productPage");
         let popup = document.createElement("div");
         popup.innerHTML = data.sections["cart-popup"];
         container.parentElement.appendChild(popup);
+        scriptPopup(data);
     })
     .catch((error) => {
         console.error('Error:', error);

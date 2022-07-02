@@ -13,10 +13,12 @@
                 <div class="cartPopup__infoProduct">
                     <div class="cartPopup__pdName">{{ product.title }}</div>
                     <div class="cartPopup__pdQty">
-                       QTY: 1
+                       <span class="cartPopup__pdQty-text">QTY: </span>
+                       <span class="cartPopup__pdQty-qty"> </span>
                     </div>
                     <div class="cartPopup__total">
-                        TOTAL: $614.67
+                        <span class="cartPopup__total-text">TOTAL: </span>
+                        <span class="cartPopup__total-total"> </span>
                     </div>
                 </div>
             </div>
@@ -30,7 +32,9 @@
                         <button class="cartPopup__btnShopping-btn">CONTINUE SHOPPING</button>
                     </div>
                     <div class="cartPopup__btnViewCart">
-                        <button class="cartPopup__btnViewCart-btn">VIEW CART</button>
+                        <a href="{{ routes.cart_url }}" class="">
+                            <button class="cartPopup__btnViewCart-btn">VIEW CART</button>
+                        </a>
                     </div>
                 </div>
                 <div class="cartPopup__checkout">
@@ -50,4 +54,4 @@
         </div>
     </div>
 </div>
-<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
+
