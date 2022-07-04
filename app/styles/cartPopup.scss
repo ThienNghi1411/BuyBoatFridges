@@ -17,7 +17,7 @@
         width: 740px;
         height: 400px;
         background-color: #fff;
-        display: flex;
+        display: none;
         align-items: center;
         padding: 40px;
         border-radius: 5px;
@@ -38,14 +38,14 @@
         justify-content: center;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 10px;
         & svg {
             width: 20px;
             height: 20px;
         }
 
         &-text{
-            font-size: 20px;
+            font-size: 16px;
             color: #454545;
         }
     }
@@ -158,5 +158,40 @@
             fill: #fff;
         }
     }
+    &__contentMobile{
+        display: block;
+        width: 300px;
+        background-color: #fff;
+        align-items: center;
+        padding: 40px;
+        border-radius: 5px;
+        position: relative;
+    }
+}
 
+@media (min-width: 480px){
+    .cartPopup{
+        &__contentMobile{
+       
+            width: 420px;
+            
+        }
+        &__notification{
+            gap: 5px;
+            &-text{
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px){
+    .cartPopup{
+        &__contentMobile{
+            display: none;
+        }
+        &__content{
+            display: flex;
+        }
+    }
 }

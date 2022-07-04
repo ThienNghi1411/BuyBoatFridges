@@ -76,12 +76,14 @@
                             <button class="productPage__btnAdd-btn" type="submit" name="add" >{{ 'sections.productPage.addToCart' | t }}</button>
                         </div>
                         <div class="productPage__btnBuyNow">
-                            <button class="productPage__btnBuyNow-btn">{{ 'sections.productPage.buyNow' | t }}</button>
+                            {{ form | payment_button }}
                         </div>
                     </div>
                 </div>
                 <div class="productPage__termConditions">
-                    <div class="productPage__termConditions-checkbox"></div>
+                    <div class="productPage__termConditions-checkbox ">
+                        {%- render "icon-check" -%}
+                    </div>
                     <div class="productPage__termConditions-text">{{ 'sections.productPage.agreeTerms' | t }}</div>
                 </div>
                 <div class="productPage__otherInfo">
@@ -113,7 +115,7 @@
                 <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
             </div>
             <div class="productPage__btnBuyNow">
-                <button class="productPage__btnBuyNow-btn">{{ 'sections.productPage.buyNow' | t }}</button>
+                {{ form | payment_button }}
             </div>
         </div>
         {%- endform -%}

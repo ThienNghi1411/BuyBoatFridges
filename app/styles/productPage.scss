@@ -168,36 +168,50 @@
     }
     &__btnBuyNow{
         width: 100%;
-        text-align: center;
-        
-        background-color: #139aeb;
+        pointer-events: none;
+        opacity: .5;
+        background-color: #139aeb !important;
+        max-height: 50px;
         border-radius: 5px;
         cursor: pointer;
         transition: all .2s linear;
+        .shopify-payment-button{
+            
+        }
         &:hover{
             opacity: .5;
         }
-        &-btn{
-            cursor: pointer;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            width: 100%;
-            padding: 12px 0px;
-            height: 100%;
-        }
+
     }
     &__termConditions{
         display: flex;
         align-items: center;
         gap: 15px;
         margin-bottom: 20px;
+        cursor: pointer;
         &-checkbox{
             min-width: 20px;
             height: 20px;
             background-color: #ebebeb;
             border: 1px solid #c1c1c1;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & svg {
+                display: none;
+                width: 15px;
+                height: 15px;
+            }
+        }
+        &-checkboxActive{
+            background-color: #139aeb !important;
+            & svg{
+                display: block !important;
+                & path{
+                    fill: #fff
+                }
+            }
         }
         &-text{
             font-size: 16px;
@@ -238,7 +252,10 @@
     margin-right: -50vw;
 }
     
-
+.shopify-payment-button__button{
+    background-color: #139aeb;
+    font-weight: bold;
+}
 
 @media (min-width: 600px){
     .productPage{

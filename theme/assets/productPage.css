@@ -157,8 +157,10 @@
 
 .productPage__btnBuyNow {
   width: 100%;
-  text-align: center;
-  background-color: #139aeb;
+  pointer-events: none;
+  opacity: .5;
+  background-color: #139aeb !important;
+  max-height: 50px;
   border-radius: 5px;
   cursor: pointer;
   transition: all .2s linear; }
@@ -166,27 +168,36 @@
 .productPage__btnBuyNow:hover {
   opacity: .5; }
 
-.productPage__btnBuyNow-btn {
-  cursor: pointer;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  width: 100%;
-  padding: 12px 0;
-  height: 100%; }
-
 .productPage__termConditions {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  cursor: pointer; }
 
 .productPage__termConditions-checkbox {
   min-width: 20px;
   height: 20px;
   background-color: #ebebeb;
   border: 1px solid #c1c1c1;
-  cursor: pointer; }
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.productPage__termConditions-checkbox svg {
+  display: none;
+  width: 15px;
+  height: 15px; }
+
+.productPage__termConditions-checkboxActive {
+  background-color: #139aeb !important; }
+
+.productPage__termConditions-checkboxActive svg {
+  display: block !important; }
+
+.productPage__termConditions-checkboxActive svg path {
+  fill: #fff; }
 
 .productPage__termConditions-text {
   font-size: 16px;
@@ -220,6 +231,10 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw; }
+
+.shopify-payment-button__button {
+  background-color: #139aeb;
+  font-weight: 700; }
 
 @media (min-width: 600px) {
   .productPage {

@@ -58,7 +58,7 @@
       let html_div = document.createElement("div");
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
-      let product_count = html_div.querySelectorAll(".productCard").length;
+      var product_count = html_div.querySelectorAll(".productCard").length;
       collection__tittle.innerHTML = collection_handle + `(${product_count})`;
       spinner.style.display = "none";
       history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort.value);
@@ -71,8 +71,10 @@
           div.className = "productCard";
           div.innerHTML = collection_item.innerHTML;
           document.querySelector(".collection__Productcontent").appendChild(div);
-          let loadmore = document.querySelector(".collection__loadMore");
-          loadmore.style.display = "flex";
+          if (ifinity == 2) {
+            let loadmore2 = document.querySelector(".collection__loadMore");
+            loadmore2.style.display = "flex";
+          }
         }
       } else {
         let html_dom = html_div.querySelector(".collection__Productcontent").innerHTML;
@@ -82,6 +84,7 @@
   };
   tag.forEach((e) => {
     e.addEventListener("click", () => {
+      console.log("hahahhaa");
       let newString = e.innerText.toLowerCase().replace(/ /g, "-");
       var filter_container = document.querySelector(".shopping");
       if (filter_container == void 0) {
@@ -135,8 +138,7 @@
       removeTags();
     });
   });
-  var Load_Button = document.querySelector(".collection__loadMore");
-  Load_Button.addEventListener("click", () => {
+  loadmore = () => {
     let spinner = document.querySelector(".collection__spinner");
     let render_number = parseInt(document.getElementById("display").value);
     spinner.style.display = "unset";
@@ -159,16 +161,32 @@
         }
       }
       let ItemOnScreen = document.querySelectorAll(".productCard").length;
-      console.log(ItemOnScreen);
-      console.log(product_count);
       if (ItemOnScreen == product_count) {
-        let loadmore = document.querySelector(".collection__loadMore");
-        loadmore.style.display = "none";
+        let loadmore2 = document.querySelector(".collection__loadMore");
+        loadmore2.style.display = "none";
       }
     });
+  };
+  var Load_Button = document.querySelector(".collection__loadMore");
+  Load_Button.addEventListener("click", () => {
+    loadmore();
   });
   var display = document.getElementById("display");
   display.addEventListener("change", (e) => {
     renderItems();
+  });
+  var footer = document.querySelector(".footer").getBoundingClientRect().height;
+  window.addEventListener("scroll", () => {
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+      let products = document.querySelectorAll(".productCard").length;
+      let tittle = document.querySelector(".collection__tittle").innerHTML;
+      let total = parseInt(tittle.split("(")[1].split(")")[0]);
+      if (products < total) {
+        if (ifinity == 1) {
+          loadmore();
+          products = document.querySelectorAll(".productCard").length;
+        }
+      }
+    }
   });
 })();

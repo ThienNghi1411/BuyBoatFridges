@@ -52,6 +52,32 @@
                 {%- render "icon-X" -%}
             </div>
         </div>
+        <div class="cartPopup__contentMobile ">
+            <div style="margin-bottom: 20px" class="cartPopup__notification">
+                {%- render 'icon-check' -%}
+                <div class="cartPopup__notification-text">Added to cart successfully!</div>
+            </div>
+            <div class="cartPopup__btnCont">
+                <div class="cartPopup__btnShopping">
+                    <button class="cartPopup__btnShopping-btn">CONTINUE SHOPPING</button>
+                </div>
+                <div class="cartPopup__btnViewCart">
+                    <a href="{{ routes.cart_url }}" class="">
+                        <button class="cartPopup__btnViewCart-btn">VIEW CART</button>
+                    </a>
+                </div>
+            </div>
+            <div class="cartPopup__checkout">
+                <div class="cartPopup__term">
+                    <div class="cartPopup__term-checkbox">
+                    </div>
+                    <div class="cartPopup__term-text">I argee with the terms and conditions</div>
+                </div>
+                <div class="cartPopup__btnCheckout">
+                    <button class="cartPopup__btnCheckout-btn">PROCEED TO CHECKOUT</button>
+                </div>
+            </div>
+        </div> 
     </div>
 </div>
 
