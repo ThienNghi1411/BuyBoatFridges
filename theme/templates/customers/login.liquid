@@ -1,28 +1,63 @@
 <!-- /templates/customers/login.liquid -->
+<link rel="stylesheet" href="{{ 'login.css' | asset_url }}">
+<section class="login">
+    <div class="login_inner">
+        <div class="login_inner_left_col">
+            <h2 class="left_col-tittle">NEW CUSTOMER</h2>
+            <h2 class="left_col-text">By creating an account with our store, you will be able to move through the
+                checkout process faster, store multiple shipping addresses, view and track your orders in your account
+                and more.</h2>
+            <div class="left_col_button"><a href="">CREATE AN ACCOUNT</a></div>
+        </div>
+        <div class="login_inner_right_col login-form">
+            <h2 class="right_col-tittle">LOGIN</h2>
+            <p class="right_col-subText">If you have an account with us, please log in.</p>
+            {% form 'customer_login' %}
 
-<h2>Login</h2>
-{% form 'customer_login' %}
+            {{ form.errors | default_errors }}
+            <div class="form_group">
+                <label for="customer_email">EMAIL*</label>
+                <input type="email" name="customer[email]" placeholder="Enter E-mail" class="loginForm-input" />
+                <div class="form_requiredText">* Required Fields</div>
+            </div>
 
-{{ form.errors | default_errors }}
+            <div class="form_group">
+                <label for="customer_password">PASSWORD*</label>
+                <input type="password" name="customer[password]" placeholder="Enter Password" class="loginForm-input" />
+            </div>
 
-<label for="customer_email">Email Address</label>
-<input type="email" name="customer[email]" />
+            <div class="form_summit">
+                <input type="submit" value="LOGIN" class="loginForm-submit" />
+                <p href="" class="loginForm-submit-text Forget">Lost your password?</p>
+            </div>
 
-<label for="customer_password">Password</label>
-<input type="password" name="customer[password]" />
 
-<input type="submit" value="Sign In" />
+            {% endform %}
 
-{% endform %}
+        </div>
+        <div class="login_inner_right_col forget-form">
+            <h2 class="right_col-tittle">RESET PASSWORD</h2>
+            <p class="right_col-subText">We will send you an email to reset your password.</p>
+            {% form 'recover_customer_password' %}
 
-<h2>Forgot Password</h2>
-{% form 'recover_customer_password' %}
+            {{ form.errors | default_errors }}
 
-{{ form.errors | default_errors }}
+           
 
-<label for="customer_email">Email Address</label>
-<input type="email" name="email" />
+            <div class="form_group">
+                <label for="customer_email">Email Address</label>
+                <input type="email" name="email" placeholder="Enter E-mail" class="loginForm-input"/>
+                <div class="form_requiredText">* Required Fields</div>
+            </div>
+            <div class="form_summit">
+                <input type="submit" value="SUBMIT" class="loginForm-submit" />
+                <p href="" class="loginForm-submit-text Cancel">or Cancel</p>
+            </div>
 
-<input type="submit" value="Submit" />
+            {% endform %}
+        </div>
+    </div>
 
-{% endform %}
+
+</section>
+<script src="{{ 'login.js' | asset_url }}" defer></script>

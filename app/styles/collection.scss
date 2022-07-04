@@ -58,49 +58,7 @@ select {
             background-color: #fff;
             z-index: 99;
             display: none;
-            .filter_byName
-            {
-                .list
-                {
-                    padding: 30px 0 40px 0;
-                }
-                .filter__tittle
-                    {
-                        position: relative;
-                        cursor: pointer;
-                        display: flex;
-                        padding-bottom: 17px;
-                        border-bottom: 1px solid var(--border-color); 
-    
-                        .tittle__text
-                        {
-                            font-size: 14px;
-                            color: #1d3042;
-                            font-weight: bolder;
-                           
-                        }
-                        .closebutton
-                        {
-                            position: absolute;
-                            right: -5%;
-                            top: -38%;
-                            cursor: pointer;
-                            
-                        }
-                        .Icon__Control
-                        {
-                            width: 10px;
-                            height: 10px;
-                            position: absolute;
-                            right: 5%;
-                        }
-                        .plus{
-                            display: none;
-                        }
-                    }
-               
-
-            }
+        
             .filter_byType
             {
                 display: flex;

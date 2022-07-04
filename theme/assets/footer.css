@@ -289,7 +289,7 @@ path{
     }
 }
 
-@media (min-width:750px)
+@media (min-width:720px)
 {     .footer__menu
     {
         padding: 0px 51px 30px 51px;

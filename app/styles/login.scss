@@ -1,0 +1,193 @@
+.login {
+    max-width: 320px;
+    
+    margin: 0 auto;
+    .login_inner {
+        width: 100%;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        .login_inner_left_col {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+
+            .left_col-tittle {
+                font-size: 20px;
+                line-height: 30px;
+                padding: 0 0 14px;
+                font-weight: 400;
+            }
+
+            .left_col-text {
+                line-height: 22px;
+            }
+
+            .left_col_button {
+                width: 220px;
+                height: 40px;
+                border: 2px solid black;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.2s linear;
+                margin-top: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            
+            }
+
+            .left_col_button:hover {
+                background-color: black;
+                color: white;
+            }
+
+        }
+
+        .login_inner_right_col {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            .right_col-tittle {
+                font-size: 20px;
+                line-height: 30px;
+                padding: 0 0 14px;
+                font-weight: 400;
+
+            }
+            .right_col-subText
+            {
+                margin-bottom: 17px;
+            }
+            .form_group
+            {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                position: relative;
+                .loginForm-input
+                {
+                    padding: 12px;
+                    background-color: #f7f8fa;
+                    border: none;
+                    border-radius: 5px ;
+                    
+                }
+                .form_requiredText
+                {
+                    position: absolute;
+                    right: 0;
+
+                }
+            }
+            .form_summit
+            {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .loginForm-submit
+                {
+                    width: 100px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    background-color: white;
+                    border: 2px solid black;
+                    border-radius: 5px;
+                    transition: all 0.2s linear;
+                }
+                .loginForm-submit:hover
+                {
+                    color: white;
+                    background-color: black;
+                }
+                .loginForm-submit-text
+                {
+                    cursor: pointer;
+                }
+            }
+        }
+        .forget-form
+        {
+            display: none;
+        }
+    }
+}
+@media (min-width:320px)
+{
+    .login{
+        max-width: 480px;
+    }
+}
+@media (min-width:480px)
+{
+    .login{
+        max-width: 720px;
+        
+
+    }
+   
+}
+
+@media (min-width:720px)
+{   
+    .login{
+        max-width: 860px;
+        .login_inner
+        {
+            padding: 30px 50px;
+            flex-direction: row !important;
+            gap: 20px !important;
+            .login_inner_left_col{
+                width: 50% ;
+            }
+            .login_inner_right_col
+            {
+                width: 50% ;
+            }
+        }
+    }
+  
+}
+@media (min-width:860px)
+{
+    .login{
+        max-width: 1080px;
+
+    }
+  
+   
+
+}
+@media (min-width:1080px)
+{
+    .login{
+        max-width: 1280px;
+    }
+    
+}
+
+@media (min-width:1280px)
+{
+    .login{
+        max-width: 1000px;
+        .login_inner
+        {
+            padding: 30px 0px;
+        }
+
+    }
+    
+   
+}
+@media (min-width:1440px)
+{
+    .login{
+        max-width: 1220px;
+        
+    }
+    
+
+}

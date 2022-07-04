@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="{{ 'cartQuickView.css' | asset_url }}">
+<div class="cartQuickView"  style="display: none;">
+    {%- form 'cart', cart -%}
+        <div class="cartQuickView__inner" >
+            {%- if cart.item_count == 0 -%}
+                <a href="{{ routes.cart_url }}" class="">
+                    <div class="cartQuickView__emptyCart">
+                        <div class="cartQuickView__emptyCart-icon">
+                            <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
+                        </div>
+                        <div class="cartQuickView__emptyCart-text">No Products in the Cart</div>
+                    </div>    
+                </a>
+            {%- else -%}
+                <div class="cartQuickView__contentCont">
+                    {%- for item in cart.items -%}
+                        <div class="cartQuickView__productLine">
+                            <div class="cartQuickView__productLine-imgCont">
+                                <img src="{{ item.image | image_url }}"/>
+                            </div>
+                            <div class="cartQuickView__productLine-productInfo">
+                                
+                                <div class="cartQuickView__productLine-productTitle">{{ item.title }}</div>
+                                <div class="cartQuickView__productLine-qtyAndPrice">
+                                    <span class="cartQuickView__productLine-qty">{{ item.quantity }} X </span>
+                                    <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>
+                                </div>
+                            </div>
+                            <div class="cartQuickView__productLine-removeIcon" idPd="{{ item.variant_id }}">
+                                <a href="{{ item.url_to_remove }}">
+                                    {%- render 'icon-remove' -%}
+                                </a>
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+                <div class="cartQuickView__totalCart">
+                    <div class="cartQuickView__totalCart-text">TOTAL:</div>
+                    <div class="cartQuickView__totalCart-total">{{ cart.total_price | money }}</div>
+                </div>
+                <div class="cartQuickView__checkOutCont">
+                    <div class="cartQuickView__checkbox">
+                        <div class="cartQuickView__checkbox-box">
+                            {%- render "icon-check" -%}
+                        </div>
+                        <div class="cartQuickView__checkbox-text">I argee with the terms and conditions</div>
+                    </div>
+                    <div class="cartQuickView__checkOutBtn ">
+                        <button class="cartQuickView__checkOutBtn-btn" type="submit" name="checkout" value="Checkout" >PRODCEED TO CHECKOUT</button>
+                    </div>
+                    <div class="cartQuickView__viewCartBtn">
+                        <a href="{{ routes.cart_url }}" class="">
+                            <button class="cartQuickView__viewCartBtn-btn">VIEW CART</button>
+                        </a>
+                    </div>
+                </div>
+            {%- endif -%}
+        </div>
+    {%- endform -%}
+</div>

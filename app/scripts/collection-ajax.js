@@ -82,7 +82,7 @@ renderItems = () => {
            
             // console.log(html_div)
             let collection__tittle = document.querySelector(".collection__tittle");
-                let product_count = html_div.querySelectorAll('.productCard').length;
+                var product_count = html_div.querySelectorAll('.productCard').length;
                 collection__tittle.innerHTML = collection_handle + `(${product_count})`
                 spinner.style.display="none";
                 history.replaceState(null, null, '/collections/' + collection_handle + '/' + Query+ '?sort_by=' + sort.value);
@@ -103,8 +103,12 @@ renderItems = () => {
                     // console.log(ProductContainer);
                     // console.log(collection_item)
                     document.querySelector('.collection__Productcontent').appendChild(div);
-                    let loadmore = document.querySelector(".collection__loadMore");
-                    loadmore.style.display="flex";
+                    if(ifinity==2)
+                    {
+                        let loadmore = document.querySelector(".collection__loadMore");
+                        loadmore.style.display="flex";    
+                    }
+              
                 }
                 
             }
@@ -120,6 +124,7 @@ renderItems = () => {
 //add tag
 tag.forEach(e => {
     e.addEventListener("click", () => {
+        console.log("hahahhaa")
         //Double Door -> double-door
         let newString = e.innerText.toLowerCase().replace(/ /g, '-');
         var filter_container = document.querySelector(".shopping");
@@ -186,62 +191,90 @@ tag.forEach(e => {
 
 })
 //loadmore
-var Load_Button = document.querySelector(".collection__loadMore");
-Load_Button.addEventListener("click",()=>{
-    let spinner = document.querySelector(".collection__spinner");
-    let render_number = parseInt(document.getElementById("display").value);
-    spinner.style.display = "unset";
-    fetch('https://www.buyboatfridges.com/collections/' + collection_handle + '/' + Query + '?sort_by=' + sort.value)
-        .then(response => response.text())
-        .then(data => {
-            // console.log(data)
-            let html_div = document.createElement('div');
-            html_div.innerHTML = data;
-            // let html_dom = html_div.querySelector('.collection__Productcontent').innerHTML;
-            // document.querySelector('.collection__Productcontent').innerHTML = html_dom;
-            // console.log(html_div)
-            let collection__tittle = document.querySelector(".collection__tittle");
-                let product_count = html_div.querySelectorAll('.productCard').length;
-                collection__tittle.innerHTML = collection_handle + `(${product_count})`
-                spinner.style.display="none";
-                history.replaceState(null, null, '/collections/' + collection_handle + '/' + Query+ '?sort_by=' + sort.value);
-            // product_count tong san pham
-            // render_number so sp can render
-            let ProductContainer = html_div.querySelector('.collection__Productcontent');
-            // console.log(ProductContainer.children[7]);
-           
-                for (i = 0; i < render_number; i++) {
-                    if(render_number+i<product_count)
-                    {
-                        let collection_item = ProductContainer.children[render_number+i];
-                    let div = document.createElement('div');
-                    div.innerHTML = collection_item.innerHTML;
-                    div.className="productCard";
-                    // console.log(ProductContainer);
-                    // console.log(collection_item)
-                    document.querySelector('.collection__Productcontent').appendChild(div);
+
+loadmore = () =>{
+   
+ 
+        let spinner = document.querySelector(".collection__spinner");
+        let render_number = parseInt(document.getElementById("display").value);
+        spinner.style.display = "unset";
+        fetch('https://www.buyboatfridges.com/collections/' + collection_handle + '/' + Query + '?sort_by=' + sort.value)
+            .then(response => response.text())
+            .then(data => {
+                // console.log(data)
+                let html_div = document.createElement('div');
+                html_div.innerHTML = data;
+                // let html_dom = html_div.querySelector('.collection__Productcontent').innerHTML;
+                // document.querySelector('.collection__Productcontent').innerHTML = html_dom;
+                // console.log(html_div)
+                let collection__tittle = document.querySelector(".collection__tittle");
+                    let product_count = html_div.querySelectorAll('.productCard').length;
+                    collection__tittle.innerHTML = collection_handle + `(${product_count})`
+                    spinner.style.display="none";
+                    history.replaceState(null, null, '/collections/' + collection_handle + '/' + Query+ '?sort_by=' + sort.value);
+                // product_count tong san pham
+                // render_number so sp can render
+                let ProductContainer = html_div.querySelector('.collection__Productcontent');
+                // console.log(ProductContainer.children[7]);
+               
+                    for (i = 0; i < render_number; i++) {
+                        if(render_number+i<product_count)
+                        {
+                            let collection_item = ProductContainer.children[render_number+i];
+                        let div = document.createElement('div');
+                        div.innerHTML = collection_item.innerHTML;
+                        div.className="productCard";
+                        // console.log(ProductContainer);
+                        // console.log(collection_item)
+                        document.querySelector('.collection__Productcontent').appendChild(div);
+                        }
+                        
+                        
+                       
                     }
+    
+                    let ItemOnScreen = document.querySelectorAll(".productCard").length;
+                    // console.log(ItemOnScreen)
+                    // console.log(product_count)
+                    if(ItemOnScreen==product_count){
+                        let loadmore = document.querySelector(".collection__loadMore");
+                        loadmore.style.display="none";
+                    }
+    
                     
-                    
-                   
-                }
-
-                let ItemOnScreen = document.querySelectorAll(".productCard").length;
-                console.log(ItemOnScreen)
-                console.log(product_count)
-                if(ItemOnScreen==product_count){
-                    let loadmore = document.querySelector(".collection__loadMore");
-                    loadmore.style.display="none";
-                }
-
                 
-            
-            
-
-        })
+                
+    
+            })
+    
+}
+var Load_Button = document.querySelector(".collection__loadMore");
+Load_Button.addEventListener("click", ()=>{
+    loadmore();
 })
 //display
 var display = document.getElementById("display")
 display.addEventListener("change", (e) => {
     renderItems();
 })
+
+//ifinity load
+var footer = document.querySelector(".footer").getBoundingClientRect().height;
+window.addEventListener('scroll', () => {
+	if(window.scrollY + window.innerHeight >=document.documentElement.scrollHeight) {
+		let products= document.querySelectorAll(".productCard").length;
+        let tittle= document.querySelector(".collection__tittle").innerHTML;
+        let total =parseInt(tittle.split('(')[1].split(')')[0]) ;
+        if(products<total)
+        {
+            if(ifinity==1)
+            {
+                loadmore();
+                products= document.querySelectorAll(".productCard").length;
+            }
+           
+        }
+	}
+
+});
+

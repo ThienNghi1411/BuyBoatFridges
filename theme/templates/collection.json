@@ -3,66 +3,83 @@
     "main": {
       "type": "collection",
       "blocks": {
+        "98d7d7fa-70fb-4e79-8469-89d8028c1b38": {
+          "type": "Add_Filter",
+          "settings": {
+            "tags_Heading": "Products",
+            "FilterBy": "3",
+            "tags": "",
+            "menu": "collections-menu"
+          }
+        },
         "2a76a88c-fd55-43c5-9652-16e90481af76": {
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "PRODUCT TYPE",
-            "color_filter": false,
-            "tags": "Front-Loading Refrigerator,\nFridge Freezer"
-          }
-        },
-        "64abadc8-26ac-42d6-b196-f78bde11b777": {
-          "type": "Add_Filter",
-          "settings": {
-            "tags_Heading": "Color",
-            "color_filter": true,
-            "tags": "Black,Grey,Stainless Steel"
+            "FilterBy": "1",
+            "tags": "Front-Loading Refrigerator,\nFridge Freezer",
+            "menu": ""
           }
         },
         "112a5771-ef2d-41bf-ae38-b63bc20bb07e": {
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "DOOR TYPE",
-            "color_filter": false,
-            "tags": "Double Door,Double Drawer,Single Door"
+            "FilterBy": "1",
+            "tags": "Double Door,Double Drawer,Single Door",
+            "menu": ""
+          }
+        },
+        "64abadc8-26ac-42d6-b196-f78bde11b777": {
+          "type": "Add_Filter",
+          "settings": {
+            "tags_Heading": "Color",
+            "FilterBy": "2",
+            "tags": "Black,Grey,Stainless Steel",
+            "menu": ""
           }
         },
         "87f12cec-bbeb-4001-9f79-3977a0d77aae": {
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "Flange Type",
-            "color_filter": false,
-            "tags": "Flush Flange,Surface Flange,Adjustable Flange"
+            "FilterBy": "1",
+            "tags": "Flush Flange,Surface Flange,Adjustable Flange",
+            "menu": ""
           }
         },
         "7788ef51-74d0-466e-a3fb-2f7a35ff85cd": {
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "Vendor",
-            "color_filter": false,
-            "tags": "Vitrifrigo"
+            "FilterBy": "1",
+            "tags": "Vitrifrigo",
+            "menu": ""
           }
         },
         "f1c5f3ab-50a8-4f9d-a44d-cada53f0912c": {
           "type": "Add_Filter",
           "settings": {
             "tags_Heading": "Cubic Feet",
-            "color_filter": false,
-            "tags": "Under 2 Cubic Feet,Between 2 to 5 Cubic Feet,Above 5 Cubic Feet"
+            "FilterBy": "1",
+            "tags": "Under 2 Cubic Feet,Between 2 to 5 Cubic Feet,Above 5 Cubic Feet",
+            "menu": ""
           }
         }
       },
       "block_order": [
+        "98d7d7fa-70fb-4e79-8469-89d8028c1b38",
         "2a76a88c-fd55-43c5-9652-16e90481af76",
-        "64abadc8-26ac-42d6-b196-f78bde11b777",
         "112a5771-ef2d-41bf-ae38-b63bc20bb07e",
+        "64abadc8-26ac-42d6-b196-f78bde11b777",
         "87f12cec-bbeb-4001-9f79-3977a0d77aae",
         "7788ef51-74d0-466e-a3fb-2f7a35ff85cd",
         "f1c5f3ab-50a8-4f9d-a44d-cada53f0912c"
       ],
       "settings": {
         "filter_image": "shopify:\/\/shop_images\/img_0adef2eb-4009-47dd-b5e9-b2817af97aab.png",
-        "loading_type": "2"
+        "loading_type": "1",
+        "paginate_type": "1"
       }
     }
   },
