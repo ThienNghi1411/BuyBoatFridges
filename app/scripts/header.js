@@ -48,3 +48,15 @@ const toggleMegaMenu = () => {
 
 
 init();
+
+
+//////////////////////////////////////////////////
+const myCart = document.querySelector(".header__myCart");
+const cartQuickView = document.querySelector(".cartQuickView");
+myCart.addEventListener("click", () => {
+    if (cartQuickView.style.display === "none"){
+        cartQuickView.style.display = "block";
+    }else{
+        cartQuickView.style.display = "none";
+    }
+})

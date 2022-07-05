@@ -33,10 +33,11 @@
         font-weight: 600;
     }
     &__imgProduct{
-        position: relative;
         width: 100%;
-        border: 1px solid #000;
         margin-bottom: 30px;
+        &-wrapper{
+            position: relative;
+        }
         & img{
             width: 100%;
             height: 100%;
@@ -50,7 +51,7 @@
             justify-content: center;
             align-items: center;
             top: 20px;
-            right: 0;
+            right: 33px;
             border: 1px solid #000;
             & img{
                 width: 21px;
@@ -68,10 +69,24 @@
            font-size: 16px ;
            color: #fff;
            font-weight: bold;
-           padding-right: 10px;
            top: 20px;
-           left: 0;
+           left: 33px;
         }
+        &-saleTag{
+            position: absolute;
+            width: 120px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ff920c;
+            font-size: 18px ;
+            color: #fff;
+            font-weight: bold;
+            top: 20px;
+            left: 33px;
+            
+         }
     }
 
     &__price{
@@ -86,6 +101,10 @@
         &-basePrice{
             font-size: 16px;
             text-decoration: line-through;
+            font-weight: 500;
+        }
+        &-discountPrice{
+            font-size: 16px;
             font-weight: 500;
         }
     }
@@ -168,36 +187,50 @@
     }
     &__btnBuyNow{
         width: 100%;
-        text-align: center;
-        
-        background-color: #139aeb;
+        pointer-events: none;
+        opacity: .5;
+        background-color: #139aeb !important;
+        max-height: 50px;
         border-radius: 5px;
         cursor: pointer;
         transition: all .2s linear;
+        .shopify-payment-button{
+            
+        }
         &:hover{
             opacity: .5;
         }
-        &-btn{
-            cursor: pointer;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            width: 100%;
-            padding: 12px 0px;
-            height: 100%;
-        }
+
     }
     &__termConditions{
         display: flex;
         align-items: center;
         gap: 15px;
         margin-bottom: 20px;
+        cursor: pointer;
         &-checkbox{
             min-width: 20px;
             height: 20px;
             background-color: #ebebeb;
             border: 1px solid #c1c1c1;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & svg {
+                display: none;
+                width: 15px;
+                height: 15px;
+            }
+        }
+        &-checkboxActive{
+            background-color: #139aeb !important;
+            & svg{
+                display: block !important;
+                & path{
+                    fill: #fff
+                }
+            }
         }
         &-text{
             font-size: 16px;
@@ -216,11 +249,59 @@
         font-weight: 400;
         color: #454545;
     }
-
+    &__sliderImgProduct{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
 }
 
+.control__imgProduct , .control__imgProductMobile{
+    &-prevBtn{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(33px,-50%);
+        height: 35px;
+        width: 35px;
+        border-radius: 100%;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        & svg {
+            width: 12px;
+            height: 17px;
+            & path{
+                fill: #fff;
+            }
+        }
+    }
+    &-nextBtn{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-33px,-50%);
+        height: 35px;
+        width: 35px;
+        border-radius: 100%;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        & svg {
+            width: 12px;
+            height: 17px;
+            & path{
+                fill: #fff;
+            }
+        }
+    }
+}
 
-.imgProductDestop{
+.productPage__sliderImgDestop{
     display: none;
 }
 .btnContDestop{
@@ -238,7 +319,10 @@
     margin-right: -50vw;
 }
     
-
+.shopify-payment-button__button{
+    background-color: #139aeb;
+    font-weight: bold;
+}
 
 @media (min-width: 600px){
     .productPage{
@@ -258,6 +342,9 @@
                 font-size: 35px;
             }
             &-basePrice{
+                font-size: 20px;
+            }
+            &-discountPrice{
                 font-size: 20px;
             }
         }
@@ -294,14 +381,30 @@
                 font-size: 16px;
             }
         }
+
         &__imgProduct{
-            &-tag{
-                width: 150px;
-                font-size: 20px ;
-                padding-right: 15px;
+            &-alert{
+                right: 63px;
             }
+            &-tag{
+               left: 63px;
+            }
+            &-saleTag{
+                
+                left: 63px;
+                
+             }
         }
     }
+    .control__imgProduct , .control__imgProductMobile{
+        &-prevBtn{
+            transform: translate(63px,-50%);
+        }
+        &-nextBtn{
+            transform: translate(-63px,-50%);
+        }
+    }
+    
 }
 
 @media (min-width: 750px){
@@ -317,7 +420,8 @@
             gap: 90px;
         }
         &__infoProduct{
-            width: 36%;
+            min-width: 36%;
+            max-width: 36%;
         }
         &__nameProduct{
             font-size: 28px;       
@@ -342,11 +446,22 @@
                 font-size: 15px;
             }
         }
+        &__imgProduct{
+            &-alert{
+                right: 1px;
+            }
+            &-tag{
+               left: 0px;
+            }
+            &-saleTag{
+                left: 0px;
+             }
+        }
     }
-    .imgProductMobile{
+    .productPage__sliderImgMobile{
         display: none;
     }
-    .imgProductDestop{
+    .productPage__sliderImgDestop{
         display: block;
         flex: 1;
         margin: 0;
@@ -356,6 +471,14 @@
     }
     .btnContMobile{
         display: none;
+    }
+    .control__imgProduct , .control__imgProductMobile{
+        &-prevBtn{
+            transform: translate(33px,-50%);
+        }
+        &-nextBtn{
+            transform: translate(-33px,-50%);
+        }
     }
 }
 

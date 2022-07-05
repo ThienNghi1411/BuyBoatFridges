@@ -18,11 +18,11 @@
   customElements.define("cart-remove-button", CartRemoveButton);
   var CartQuickView = class extends HTMLElement {
     constructor() {
+      console.log("a");
       super();
       this.init();
     }
     init() {
-      console.log("a");
       let checkBox = this.querySelector(".cartQuickView__checkbox");
       let checkOutBtn = this.querySelector(".cartQuickView__checkOutBtn");
       checkBox.addEventListener("click", () => {
