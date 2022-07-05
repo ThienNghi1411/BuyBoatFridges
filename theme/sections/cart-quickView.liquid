@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{ 'cartQuickView.css' | asset_url }}">
-<div class="cartQuickView"  style="display: none;">
+<script src=" {{ 'cart-quick-view.js' | asset_url }}" defer></script>
+<cart-quick-view class="cartQuickView"  style="display: none;">
     {%- form 'cart', cart -%}
         <div class="cartQuickView__inner" >
             {%- if cart.item_count == 0 -%}
@@ -26,11 +27,12 @@
                                     <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>
                                 </div>
                             </div>
-                            <div class="cartQuickView__productLine-removeIcon" idPd="{{ item.variant_id }}">
+                            <cart-remove-button class="cartQuickView__productLine-removeIcon" data-idProduct="{{ item.variant_id }}">
                                 <a href="{{ item.url_to_remove }}">
                                     {%- render 'icon-remove' -%}
                                 </a>
-                            </div>
+                                <div class="cartQuickView__productLine-spinner"></div>
+                            </cart-remove-button>
                         </div>
                     {%- endfor -%}
                 </div>
@@ -57,4 +59,4 @@
             {%- endif -%}
         </div>
     {%- endform -%}
-</div>
+</cart-quick-view>

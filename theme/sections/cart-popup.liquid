@@ -1,5 +1,7 @@
-<link rel="stylesheet" href="{{ 'cartPopup.css' | asset_url }}">
-<div class="cartPopup">
+
+<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
+<cart-popup class="cartPopup">
+    <link rel="stylesheet" href="{{ 'cartPopup.css' | asset_url }}">
     <div class="cartPopup__overlay">
         <div class="cartPopup__content">
             <div class="cartPopup__product">
@@ -79,5 +81,5 @@
             </div>
         </div> 
     </div>
-</div>
+</cart-popup>
 

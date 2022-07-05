@@ -62,7 +62,7 @@
           "ec4f0315-5e91-4abd-8895-c8a66e3c79e6": {
             "type": "Payment_Method",
             "settings": {
-              "show_content": true,
+              "show_content": false,
               "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
               "copyRight": "@2022 BUYBOATFRIDGES.com All Rights Resrved"
             }

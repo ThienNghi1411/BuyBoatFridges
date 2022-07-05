@@ -104,4 +104,11 @@
     Shopify.queryParams.sort_by = value;
     location.search = new URLSearchParams(Shopify.queryParams).toString();
   });
+  document.addEventListener("DOMContentLoaded", function() {
+    let empty = document.querySelector(".collection__empty");
+    let collection_content = document.querySelector(".collection__Productcontent").childElementCount;
+    if (collection_content == 0) {
+      empty.style.display = "unset";
+    }
+  });
 })();
