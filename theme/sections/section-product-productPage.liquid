@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
-<script>console.log({{ cart | json }})</script>
+<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 
 {%- assign collectionUrl = "" -%}
 {%- for collection in product.collections -%}
@@ -30,23 +30,47 @@
                 <div class="productPage__titleProduct">  
                     {%- capture productName -%}{{ product.vendor }} {{ product.variants[0].sku }}{%- endcapture -%}
                     <div class="productPage__nameProduct"> {{ productName }}</div>
-                    <div class="productPage__skuProduct">{{ product.variants[0].sku }}</div>
+                    <div class="productPage__skuProduct">SKU: {{ product.variants[0].sku }}</div>
                     <div class="productPage__featureProduct">{{ product.title }}</div>
                 </div>
-                <div class="productPage__imgProduct imgProductMobile full-width">
-                    <img src="{{ product.featured_image | image_url }} " alt="{{  }}" />
-                    <div class="productPage__imgProduct-alert">
-                        <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                <div class="productPage__sliderImgProduct productPage__sliderImgMobile full-width">
+                    <div class="productPage__imgProduct imgProductMobile ">
+                        {%- assign ratio = product.media[0].aspect_ratio -%}
+                        {%- for image in product.images -%}
+                            <div class="productPage__imgProduct-wrapper">
+                                <img src="{{ image | image_url }} " alt="{{  }}" />
+                                {%- style -%}
+                                    .productPage__imgProduct-wrapper img {
+                                        aspect-ratio: {{ ratio }};
+                                        object-fit: contain;
+                                    }
+                                {%- endstyle -%}
+                                <div class="productPage__imgProduct-alert">
+                                    <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                                </div>
+                                {%- if product.variants[0].inventory_quantity == 0 -%}
+                                    <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                                {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
+                                    <div class="productPage__imgProduct-saleTag">ON SALE</div>
+                                {%- endif -%}
+                            </div> 
+                        {%- endfor -%}
                     </div>
-                    {%- if product.variants[0].inventory_quantity == 0 -%}
-                        <div class="productPage__imgProduct-tag">SOLD OUT</div>
-                    {%- endif -%}
+                    <div class="control__imgProductMobile">
+                        <div class="control__imgProductMobile-prevBtn">{% render 'icon-angle-left' %}</div>
+                        <div class="control__imgProductMobile-nextBtn">{% render 'icon-angle-right' %}</div>
+                    </div> 
                 </div>
                 <div class="productPage__priceCont">
                     <div class="productPage__price">
                         <div class="productPage__price-lastPrice">{{ product.variants[0].price | money }}</div>
                         {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
-                        <div class="productPage__price-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                        <div class="productPage__price-discount">
+                            <div class="productPage__price-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                            {%- assign discountPrice = product.variants[0].compare_at_price | minus: product.variants[0].price %}
+                            <div class="productPage__price-discountPrice">Save {{ discountPrice | money }}</div>
+                        </div>
+                        
                         {%- endif -%}
                     </div>
                     <div class="productPage__policy">
@@ -100,14 +124,33 @@
                     <img src="{{ section.settings.imgTrusted | image_url: width: 120 , height: 20 }} " alt="{{  }}" />
                 </div>
             </div>
-            <div class="productPage__imgProduct imgProductDestop">
-                <img src="{{ product.featured_image | image_url }} " alt="{{  }}" />
-                <div class="productPage__imgProduct-alert">
-                    <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+            <div class="productPage__sliderImgProduct  productPage__sliderImgDestop">
+                <div class="productPage__imgProduct imgProductDestop">
+                    {%- assign ratio = product.media[0].aspect_ratio -%}
+                    {%- for image in product.images -%}
+                        <div class="productPage__imgProduct-wrapper">
+                            <img src="{{ image | image_url }} " alt="{{  }}" />
+                            {%- style -%}
+                                .productPage__imgProduct-wrapper img {
+                                    aspect-ratio: {{ ratio }};
+                                    object-fit: contain;
+                                }
+                            {%- endstyle -%}
+                            <div class="productPage__imgProduct-alert">
+                                <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                            </div>
+                            {%- if product.variants[0].inventory_quantity == 0 -%}
+                                <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                            {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
+                                <div class="productPage__imgProduct-saleTag">ON SALE</div>
+                            {%- endif -%}
+                        </div> 
+                    {%- endfor -%}
                 </div>
-                {%- if product.variants[0].inventory_quantity == 0 -%}
-                    <div class="productPage__imgProduct-tag">SOLD OUT</div>
-                {%- endif -%}
+                <div class="control__imgProduct">
+                    <div class="control__imgProduct-prevBtn">{% render 'icon-angle-left' %}</div>
+                    <div class="control__imgProduct-nextBtn">{% render 'icon-angle-right' %}</div>
+                </div>
             </div>
         </div>
         <div class="productPage__btnCont btnContDestop">
@@ -120,13 +163,14 @@
         </div>
         {%- endform -%}
     </div>
+    <div class="loading__spinner"></div>
     <script id="productPage__settings" type="application/ld+json">
         {
             "product" : {{ product | json }}
         }
-    </script> 
+    </script>
 </section>
-
+<div class="cartPopupCont"></div>
 
 <script src="{{ 'product-page.js' | asset_url }}" defer></script>
 

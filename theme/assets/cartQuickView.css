@@ -38,6 +38,16 @@
 .cartQuickView__productLine-removeIcon svg {
   min-width: 15px; }
 
+.cartQuickView__productLine-spinner {
+  width: 20px;
+  height: 20px;
+  border: 5px solid #f3f3f3;
+  border-top-color: #000;
+  border-radius: 50%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: none; }
+
 .cartQuickView__productLine-qty {
   font-size: 14px;
   color: #454545; }

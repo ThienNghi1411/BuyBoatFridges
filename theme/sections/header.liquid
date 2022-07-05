@@ -1,6 +1,7 @@
 
     <link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
-    <script>console.log({{ cart | json }})</script>
+    <script src=" {{ 'cart-quick-view.js' | asset_url }}" defer></script>
+    
     <div class="header__inner ">
         <div class="header__userLogin">
             <div class="header__login"><a href="{{ routes.account_login_url }}">{{ 'sections.header.login' | t }}</a></div>
@@ -50,14 +51,14 @@
                     </div>
                     <div class="header__myCart-text">{{ section.settings.cart_text }}</div>
                 </div>
-                <div class="cartQuickView" style="display: none;">
+                <cart-quick-view class="cartQuickView"  style="display: none;">
                     {%- form 'cart', cart -%}
-                        <div class="cartQuickView__inner">
+                        <div class="cartQuickView__inner" >
                             {%- if cart.item_count == 0 -%}
                                 <a href="{{ routes.cart_url }}" class="">
                                     <div class="cartQuickView__emptyCart">
                                         <div class="cartQuickView__emptyCart-icon">
-                                            <img src="{{ section.settings.iconCart | image_url }}"/>
+                                            <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
                                         </div>
                                         <div class="cartQuickView__emptyCart-text">No Products in the Cart</div>
                                     </div>    
@@ -77,11 +78,12 @@
                                                     <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>
                                                 </div>
                                             </div>
-                                            <div class="cartQuickView__productLine-removeIcon" idPd="{{ item.variant_id }}">
+                                            <cart-remove-button class="cartQuickView__productLine-removeIcon" data-idProduct="{{ item.variant_id }}">
                                                 <a href="{{ item.url_to_remove }}">
                                                     {%- render 'icon-remove' -%}
                                                 </a>
-                                            </div>
+                                                <div class="cartQuickView__productLine-spinner"></div>
+                                            </cart-remove-button>
                                         </div>
                                     {%- endfor -%}
                                 </div>
@@ -108,7 +110,7 @@
                             {%- endif -%}
                         </div>
                     {%- endform -%}
-                </div>
+                </cart-quick-view>
             </div>
 
         </div>

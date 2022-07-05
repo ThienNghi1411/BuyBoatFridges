@@ -3,6 +3,16 @@
 
 
 <section class="collection">
+  <div class="breadcrumb">
+    <div class="breadcrumb__inner">
+        <div class="breadcrumb__option">
+            <a href="{{ routes.root_url }}" class="">Home</a>
+        </div>
+        <div class="breadcrumb__option">
+            <a href="{{ collectionUrl }}" class="">{{ collection.handle }}</a>
+        </div>
+    </div>
+  </div>
     <div class="collection__inner">
 
       <div class="collection__spinner">
@@ -10,6 +20,9 @@
       </div>
       {% if section.settings.loading_type =='1' %}
       <div class="collection__filter">
+        <div class="closebutton">
+          {% render 'icon-close' %}
+        </div>
         <div class="filter_Clear">
           
         
@@ -114,6 +127,9 @@
         <div class="filter_Clear">
           
         </div>
+        <div class="closebutton">
+          {% render 'icon-close' %}
+        </div>
         <div class="filter_byType">
           {% for block in section.blocks %}
           {% case block.type %}
@@ -198,6 +214,7 @@
              
         </div>
       {% endif %}
+
         <div class="collection__content">
           <div class="collection__header">
               {{collection.description}}
@@ -243,7 +260,14 @@
              {% render 'product-card' with product as product %}    
              {% endfor %}
               
-           
+            
+          </div>
+          <div class="collection__empty">
+            <div class="collection__empty__pic">
+                {% render 'icon-empty'%}
+            </div>
+            <h2 class="collection__empty-tittle">EMPTY</h2>
+            <p class="collection__empty-text">There are no products matching the selection.</p>
           </div>
           <div class="collection__loadMore">
             Download More
@@ -260,17 +284,6 @@
       </div>
 
       </div>
-      
-       
-      
-       
-
-       
-
-
-
-
-
     </div>
     <script>
       var collection_handle= '{{collection.handle}}';

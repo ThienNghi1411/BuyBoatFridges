@@ -13,25 +13,33 @@ select {
         width: 100%;
         margin: 0 auto;
         padding: 0px;
-        padding: 0px 20px;
-        .collection__spinner
-        {
+        padding: 30px 20px;
+
+        .collection__spinner {
             width: 50px;
             height: 50px;
             border: 5px solid #f3f3f3;
-            border-top: 5px solid  black;
+            border-top: 5px solid black;
             border-radius: 50%;
             animation: spin 2s linear infinite;
             position: fixed;
-            top: 50%; right: 41.5%;
-            transform: translate(50%,-50%);
+            top: 50%;
+            right: 41.5%;
+            transform: translate(50%, -50%);
             z-index: 999999;
             display: none;
         }
+
         @keyframes spin {
-            0%{transform: rotate(0deg);}
-            100%{transform: rotate(360deg);}
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         .collection__overlay-wrapper {
             position: absolute;
             z-index: 10;
@@ -39,6 +47,7 @@ select {
             top: 0;
             left: 0;
             display: none;
+
             .collection__overlay {
                 width: 100%;
                 height: 100vh;
@@ -51,190 +60,205 @@ select {
         .collection__filter {
             position: absolute;
             top: 0;
-           left: 0;
-            width: 40%;
-            height: 100vh;
-            padding: 20px;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            padding: 50px 20px 30px 20px;
+            overflow-y: auto;
             background-color: #fff;
             z-index: 99;
             display: none;
-        
-            .filter_byType
-            {
+            
+            .filter_byType {
                 display: flex;
                 flex-direction: column;
-               
-                .tag-filters
-                {
-                    .filter__tittle
-                    {
+
+                .tag-filters {
+                    .filter__tittle {
                         position: relative;
                         cursor: pointer;
                         display: flex;
                         padding-bottom: 17px;
-                        border-bottom: 1px solid var(--border-color); 
-    
-                        .tittle__text
-                        {
+                        border-bottom: 1px solid var(--border-color);
+
+                        .tittle__text {
                             font-size: 14px;
                             color: #1d3042;
                             font-weight: bolder;
-                           
+
                         }
-                        .closebutton
-                        {
+
+                        .closebutton {
                             position: absolute;
                             right: -5%;
                             top: -38%;
                             cursor: pointer;
                         }
-                        .Icon__Control
-                        {
+
+                        .Icon__Control {
                             width: 10px;
                             height: 10px;
                             position: absolute;
                             right: 5%;
                         }
-                        .plus{
+
+                        .plus {
                             display: none;
                         }
                     }
-                    .item__wrap
-                    {
+
+                    .item__wrap {
                         padding: 30px 0 40px 0;
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
-                        .tag
-                        {
+
+                        .tag {
                             color: var(--light-color);
                             font-size: 12px;
                             transition: all 0.2s linear;
                             cursor: pointer;
-                            
+
                         }
-                        .remove{
+
+                        .remove {
                             opacity: 0;
                         }
-                        .tag:hover{
+
+                        .tag:hover {
                             transform: scale(1.2);
                         }
-                        .color_tag{
-                                width: 15px;
-                                height: 15px;
-                                border-radius: 5px;
-                                
-                                a{
-                                    opacity: 0;
-                                }
-                                
+
+                        .color_tag {
+                            width: 15px;
+                            height: 15px;
+                            border-radius: 5px;
+
+                            a {
+                                opacity: 0;
+                            }
+
                         }
-                        .color_tag2{
-                                width: 15px;
-                                height: 15px;
-                                border-radius: 5px;
-                                font-size: 0;
-                                a{
-                                    opacity: 0;
-                                }
-                                
+
+                        .color_tag2 {
+                            width: 15px;
+                            height: 15px;
+                            border-radius: 5px;
+                            font-size: 0;
+
+                            a {
+                                opacity: 0;
+                            }
+
                         }
-                        .color{
-                           
-                            
+
+                        .color {
+
+
                             border-radius: 5px;
                             cursor: pointer;
                             transition: all 0.2s linear;
                             position: relative;
-                            a{
+
+                            a {
                                 width: 15px;
-                                height: 15px;      
-                               border-radius: 5px;
+                                height: 15px;
+                                border-radius: 5px;
 
                             }
                         }
-                        .color:hover
-                        {
+
+                        .color:hover {
                             transform: scale(1.2);
                         }
-                        
-                        
+
+
                     }
-                    .flex
-                    {
+
+                    .flex {
                         flex-direction: row;
                         gap: 10px;
                     }
                 }
             }
-            .filter_Clear
-            {
-                .filter__tittle
-                {
+
+            .filter_Clear {
+                .filter__tittle {
                     position: relative;
                     cursor: pointer;
                     display: flex;
                     padding-bottom: 17px;
-                    border-bottom: 1px solid var(--border-color); 
+                    border-bottom: 1px solid var(--border-color);
 
-                    .tittle__text
-                    {
+                    .tittle__text {
                         font-size: 16px;
                         color: #1d3042;
                         font-weight: bolder;
-                       
+
                     }
-                    .closebutton
-                    {
+
+                    .closebutton {
                         position: absolute;
                         right: -5%;
                         top: -38%;
                         cursor: pointer;
-                        
+
                     }
-                    .Icon__Control
-                    {
+
+                    .Icon__Control {
                         width: 10px;
                         height: 10px;
                         position: absolute;
                         right: 5%;
                     }
-                    .plus{
+
+                    .plus {
                         display: none;
                     }
                 }
-                .shopping
-                {
-                    padding: 30px 0 0 0 ;
+
+                .shopping {
+                    padding: 30px 0 0 0;
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
-                   
-                    .shopingBy_tag
-                    {
+
+                    .shopingBy_tag {
                         position: relative;
-                        .tag_RemoveIcon
-                    {
-                        width: 10px;
-                        height: 10px;
-                        position: absolute;
-                        top: 50%; right: 0%;
-                        transform: translate(50%,-50%);
-                        cursor: pointer;
+
+                        .tag_RemoveIcon {
+                            width: 10px;
+                            height: 10px;
+                            position: absolute;
+                            top: 50%;
+                            right: 0%;
+                            transform: translate(50%, -50%);
+                            cursor: pointer;
+                        }
                     }
-                    }
-                    
+
                 }
-                .ClearAll_button
-                {
+
+                .ClearAll_button {
                     cursor: pointer;
                     padding: 10px 0 30px 0;
                 }
 
             }
-            .filter_image
+            .closebutton
             {
+                position: absolute;
+                top: 1%;
+                right: 8%;
+                svg{
+                    cursor: pointer;
+                }
+            }
+            .filter_image {
                 margin-top: 37px;
+                img{
+                    width: 100%;
+                }
             }
         }
 
@@ -339,14 +363,13 @@ select {
                 }
             }
 
-            .collection__loadMore
-            {
+            .collection__loadMore {
                 width: 210px;
                 height: 35px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-              
+
                 border: 1px solid var(--border-color);
                 border-radius: 5px;
                 cursor: pointer;
@@ -354,7 +377,8 @@ select {
                 margin: 50px auto;
                 display: none;
             }
-            .collection__loadMore:hover{
+
+            .collection__loadMore:hover {
                 transform: scale(1.2);
             }
         }
@@ -363,138 +387,200 @@ select {
     }
 }
 
-@media (min-width: 320px){
-    .collection{
+@media (min-width: 320px) {
+    .collection {
         max-width: 480px;
     }
 }
-@media (min-width: 480px){
-    .collection{
+
+@media (min-width: 480px) {
+    .collection {
         max-width: 720px;
     }
 }
-@media (min-width: 750px){
-    .collection{
+
+@media (min-width: 750px) {
+    .collection {
         max-width: 1080px;
-        .collection__inner
-        {
+
+        .collection__inner {
             padding: 30px 50px;
-            .collection__content
-            {
-                .collection__handle
-                {
+
+            .collection__content {
+                .collection__handle {
                     padding: 40px 0 45px 0;
                     display: flex;
-                    .collection__tittle
-                    {
+
+                    .collection__tittle {
                         text-align: unset;
                     }
-                    .collection__control
-                    {
-                        .collection__sort
-                        {
+
+                    .collection__control {
+                        .collection__sort {
                             width: 180px;
                             height: 40px;
                             border-radius: 5px;
-                            border: 1px solid var( --border-color);
+                            border: 1px solid var(--border-color);
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            #sort-by{
+
+                            #sort-by {
                                 width: 100%;
                                 height: 100%;
                                 padding-left: 12px;
                             }
 
                         }
+
                         .collection__sort:before {
                             content: ">";
-                            
+
                             right: 3%;
                             top: 5px;
-                   
+
                         }
-                        .collection__itemDisplay
-                        {
+
+                        .collection__itemDisplay {
                             width: 70px;
                             height: 40px;
                             border-radius: 5px;
-                            border: 1px solid var( --border-color);;
+                            border: 1px solid var(--border-color);
+                            ;
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            #display
-                            {
+
+                            #display {
                                 width: 100%;
                                 height: 100%;
                                 padding-left: 12px;
                             }
                         }
+
                         .collection__itemDisplay:before {
                             content: ">";
-                           
+
                             right: 12%;
                             top: 5px;
-                           
+
                         }
-                    
-                        
+
+
                     }
 
                 }
-                .collection__Productcontent
-                {
+
+                .collection__Productcontent {
                     display: grid;
                     gap: 30px 57px;
-                    grid-template-columns: repeat(2,1fr);
+                    grid-template-columns: repeat(2, 1fr);
                     margin-top: 39px;
+                  
+                   
+                }
+                .collection__empty {
+                    width: 100%;
+                    display: none;
+                    padding: 106px 20px 102px;
+                    .collection__empty__pic {
+                        width: 150px;
+                        height: 150px;
+                        display: flex;
+                        justify-content: center;
+                        margin: 0 auto;
+                    }
+
+                    .collection__empty-tittle {
+                        color: #191919;
+                        padding: 0;
+                        margin: 9px 0 0;
+                        font-size: 34px;
+                        font-weight: 400;
+                        line-height: 44px;
+                        text-align: center;
+                    }
+
+                    .collection__empty-text {
+                        margin-top: 2px;
+                        font-size: 15px;
+                        text-align: center;
+                    }
                 }
             }
         }
 
     }
 }
-@media (min-width: 1080px){
-    .collection{
-        max-width: 1220px;
+
+@media (min-width: 1080px) {
+    .collection {
+        max-width: 1280px;
         margin: 0 auto;
-        .collection__inner
-        {
+
+        .collection__inner {
             margin: 0 auto;
             display: flex;
-            padding: 30px 0;
-            .collection__filter
-            {
-                display: flex;
+
+            .collection__filter {
+                display: flex !important;
                 position: relative;
                 height: 100%;
                 flex-direction: column;
-                .filter_byName
-                {
-                    .filter__tittle
-                    {
-                        .closebutton
-                        {
-                            display: none;
-                        }
-                    }
+
+                .closebutton {
+                    display: none;
                 }
-               
+
             }
             .collection__content
             {
                 .collection__handle
                 {
-                    .collection__control
-                    {
+                    .collection__control{
                         .collections__Filter
                         {
                             display: none;
                         }
                     }
                 }
-            } 
+            }
+            .collection__overlay-wrapper
+            {
+                display: none !important;
+            }
         }
     }
-    
+
+}
+@media (min-width:1280px)
+{
+    .collection
+    {
+        max-width: 1000px;
+        .collection__inner{
+            padding: 50px 0;
+            .collection__content
+            {
+                .collection__Productcontent {
+ 
+                    grid-template-columns: repeat(3, 1fr);
+                  
+                   
+                }
+            }
+        }
+    }
+   
+}
+
+@media (min-width:1440px)
+{
+    .collection
+    {
+        max-width: 1220px;
+
+        
+    }
+   
 }
