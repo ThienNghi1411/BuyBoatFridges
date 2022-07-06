@@ -5,7 +5,6 @@
   var sort = document.getElementById("sort-by");
   removeTags = () => {
     var remove_Icons = document.querySelectorAll(".tag_RemoveIcon");
-    console.log(remove_Icons);
     if (remove_Icons != void 0) {
       remove_Icons.forEach((e) => {
         let remove_text = e.previousElementSibling.innerText;
@@ -17,7 +16,6 @@
               e2.classList.remove("remove");
               e2.style.pointerEvents = "unset";
               let Query_array = Query.split("+");
-              console.log(Query_array.length);
               if (Query_array.length == 1) {
                 clearAll();
               }
@@ -38,14 +36,12 @@
     }
   };
   document.addEventListener("DOMContentLoaded", function() {
-    removeTags();
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
     console.log(url_array[5]);
-    if (url_array[5] != void 0) {
+    if (url_array[5] != void 0 && url_array[5] != "") {
       let items = url_array[5].split("+");
-      console.log(items);
       let html_dom = `<div class="filter__tittle  filter_active">
         <div class="tittle__text">SHOPING BY:</div>
         <div class="Icon__Control">
@@ -67,7 +63,18 @@
          `;
       let clear_container = document.querySelector(".filter_Clear");
       clear_container.innerHTML = html_dom;
+      let ClearAll_button = document.querySelector(".ClearAll_button");
+      ClearAll_button.addEventListener("click", () => {
+        clearAll();
+      });
       items.forEach((e) => {
+        let tags = document.querySelectorAll(".tag");
+        tags.forEach((element) => {
+          let normal_filter = element.innerText.toLowerCase().replace(/ /g, "-");
+          if (e == normal_filter) {
+            element.classList.add("remove");
+          }
+        });
         let html_dom2 = `
             <div class="shopingBy_tag">
    
@@ -84,6 +91,7 @@
         div.innerHTML = html_dom2;
         filter_container.appendChild(div);
       });
+      removeTags();
       Query = url_array[5];
       renderItems();
     } else {
@@ -119,7 +127,6 @@
       document.querySelector(".collection__Productcontent").innerHTML = "";
       if (product_count == 0) {
         let empty = document.querySelector(".collection__empty");
-        console.log(empty);
         empty.style.display = "unset";
       }
       if (product_count != 0) {
@@ -211,13 +218,14 @@
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
       let product_count = html_div.querySelectorAll(".productCard").length;
+      let itemOnScreen = document.querySelectorAll(".productCard").length;
       collection__tittle.innerHTML = collection_handle + `(${product_count})`;
       spinner.style.display = "none";
       history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort.value);
       let ProductContainer = html_div.querySelector(".collection__Productcontent");
       for (i = 0; i < render_number; i++) {
-        if (render_number + i < product_count) {
-          let collection_item = ProductContainer.children[render_number + i];
+        if (itemOnScreen + i < product_count) {
+          let collection_item = ProductContainer.children[itemOnScreen + i];
           let div = document.createElement("div");
           div.innerHTML = collection_item.innerHTML;
           div.className = "productCard";
@@ -241,16 +249,18 @@
   });
   var footer = document.querySelector(".footer").getBoundingClientRect().height;
   window.addEventListener("scroll", () => {
+    let products = document.querySelectorAll(".productCard").length;
+    console.log(window.scrollY + window.innerHeight);
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
-      let products = document.querySelectorAll(".productCard").length;
       let tittle = document.querySelector(".collection__tittle").innerHTML;
       let total = parseInt(tittle.split("(")[1].split(")")[0]);
+      console.log(total);
       if (products < total) {
         if (ifinity == 1) {
           loadmore();
-          products = document.querySelectorAll(".productCard").length;
         }
       }
     }
   });
+  console.log(document.documentElement.scrollHeight);
 })();

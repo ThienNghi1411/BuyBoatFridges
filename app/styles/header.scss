@@ -66,7 +66,7 @@
         gap: 17px;
         align-items: center;
         &-input{
-            flex: 1;
+            width: 100%;
             padding: 16px 42px;
             font-weight: 300;
             font-size: 15px;
@@ -257,9 +257,13 @@
         display: flex;
         gap: 5px;
         &-imgCont{
-            width: 70px;
+            min-width: 70px;
+            max-width: 70px;
+            position: relative;
+            height: 100%;
             & img{
-                width: 70px;
+                width: 100%;
+            
             }
         }
         &-productTitle{

@@ -68,7 +68,7 @@
   align-items: center; }
 
 .header__productSearch-input {
-  flex: 1;
+  width: 100%;
   padding: 16px 42px;
   font-weight: 300;
   font-size: 15px;
@@ -252,8 +252,14 @@
   display: flex;
   gap: 5px; }
 
-.cartQuickView__productLine-imgCont, .cartQuickView__productLine-imgCont img {
-  width: 70px; }
+.cartQuickView__productLine-imgCont {
+  min-width: 70px;
+  max-width: 70px;
+  position: relative;
+  height: 100%; }
+
+.cartQuickView__productLine-imgCont img {
+  width: 100%; }
 
 .cartQuickView__productLine-productTitle {
   font-size: 14px;

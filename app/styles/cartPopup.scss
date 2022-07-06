@@ -123,12 +123,31 @@
             width: 17px;
             background-color: #f7f8fa;
             border: 1px solid #c1c1c1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .2s linear;
+            & svg {
+                display: none;
+                width: 15px;
+                height: 15px;
+            }
+        }
+        &-checkboxActive{
+            background-color: #139aeb !important;
+            & svg{
+                display: block !important;
+                & path{
+                    fill: #fff
+                }
+            }
         }
         &-text{
             font-size: 12px;
         }
     }
     &__btnCheckout{
+        opacity: .5;
         &-btn{
             border-radius: 5px;
             height: 40px;
@@ -136,10 +155,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #032c41;
+            background-color: #139aeb;
             color: #fff;
             cursor: pointer;
             transition: all .2s linear;
+            font-weight: bold;
             &:hover{
                 opacity: .5;
             }

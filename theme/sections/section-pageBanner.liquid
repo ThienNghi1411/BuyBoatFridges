@@ -7,8 +7,15 @@
                 {% when 'slide' %}
                   <div class="pageBanner__img" {{ block.shopify_attributes }}>
                       <a href="{{ routes.root_url }}" class="">
-                        <img src="{{ block.settings.imageDestop | image_url }}" alt="{{ block.settings.image.alt }}" class="pageBanner__img-imgDestop" />
-                        <img src="{{ block.settings.imageMobile | image_url }}" alt="{{ block.settings.image.alt }}" class="pageBanner__img-imgMobile" />
+                        <div class="pageBanner__img-imgDestop">
+                          {%- render "image-style" , image: block.settings.imageDestop -%}
+                        </div>
+                        <div class="pageBanner__img-imgMobile">
+                          {%- render "image-style" , image: block.settings.imageMobile -%}
+                        </div>
+                        {% comment %} <img src="{{ block.settings.imageDestop | image_url }}" alt="{{ block.settings.image.alt }}" class="pageBanner__img-imgDestop" />
+                        
+                        <img src="{{ block.settings.imageMobile | image_url }}" alt="{{ block.settings.image.alt }}" class="pageBanner__img-imgMobile" /> {% endcomment %}
                       </a>
                   </div>
               {% endcase %}

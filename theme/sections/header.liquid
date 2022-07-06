@@ -68,7 +68,7 @@
                                     {%- for item in cart.items -%}
                                         <div class="cartQuickView__productLine">
                                             <div class="cartQuickView__productLine-imgCont">
-                                                <img src="{{ item.image | image_url }}"/>
+                                                {%- render "image-style" , image: item.image -%}
                                             </div>
                                             <div class="cartQuickView__productLine-productInfo">
                                                 
@@ -125,7 +125,15 @@
                     {% endfor %}
                 </ul>
             </div>
-            <input type="text" placeholder="{{ 'sections.header.search' | t }}" class="header__productSearch-input">
+            <form action="{{ routes.search_url }}" style="flex:1">
+                <input type="text"
+                  placeholder="{{ 'sections.header.search' | t }}"
+                  name="q"
+                  value="{{ search.terms | escape }}"
+                  class="header__productSearch-input"
+               >
+              </form>
+
         </div>
         <div class="menuMobile__container">
             <div class="menuMobile__header">

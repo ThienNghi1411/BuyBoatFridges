@@ -1,0 +1,177 @@
+.cartPage {
+  padding: 30px 20px; }
+
+.cartPage__inner {
+  width: 100%; }
+
+.cartPage__title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #454545;
+  text-align: center;
+  border-bottom: 1px solid #c1c1c1;
+  padding-bottom: 30px; }
+
+.cartPage__item {
+  display: flex;
+  gap: 10px;
+  padding: 20px 0;
+  border-bottom: 1px solid #c1c1c1; }
+
+.cartPage__imgItem {
+  min-width: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.cartPage__imgItem img {
+  width: 100%; }
+
+.cartPage__itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; }
+
+.cartPage__itemInfo-productName, .cartPage__itemInfo-productPrice, .cartPage__itemInfo-productTotal {
+  font-size: 14px;
+  font-weight: 400; }
+
+.cartPage__qtyField {
+  height: 50px;
+  max-width: 132px;
+  display: flex;
+  background-color: #f7f8fa; }
+
+.cartPage__qtyField-minusBtn, .cartPage__qtyField-plusBtn {
+  width: 44px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px; }
+
+.cartPage__qtyField-inputQty {
+  height: 100%;
+  width: calc(100% - 88px);
+  border: none;
+  outline: none;
+  background-color: inherit;
+  text-align: center;
+  border-radius: 5px; }
+
+.cartPage__removeBtn {
+  width: 20px; }
+
+.cartPage__removeBtn-btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.cartPage__removeBtn-btn svg {
+  width: 15px;
+  cursor: pointer; }
+
+.cartPage__btnCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 0;
+  border-bottom: 1px solid #c1c1c1; }
+
+.cartPage__clearCart, .cartPage__continueShopping {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer; }
+
+.cartPage__clearCart-icon svg, .cartPage__continueShopping-icon svg {
+  width: 17px; }
+
+.cartPage__clearCart-text, .cartPage__continueShopping-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #454545; }
+
+.cartPage__shipAndTax {
+  margin-top: 20px;
+  padding: 20px 24px;
+  border: 1px solid #f7f8fa; }
+
+.cartPage__shipAndTax-title {
+  font-size: 17px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 20px; }
+
+.cartPage__shipAndTax-subTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 20px; }
+
+.cartPage__inputZipCode, .cartPage__selectCountry, .cartPage__selectProvince {
+  margin-bottom: 20px; }
+
+.cartPage__inputZipCode-title, .cartPage__selectCountry-title, .cartPage__selectProvince-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 7px; }
+
+.cartPage__inputZipCode-select, .cartPage__selectCountry-select, .cartPage__selectProvince-select {
+  height: 47px;
+  padding: 0 12px;
+  display: flex;
+  background-color: #f7f8fa;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  border-radius: 5px; }
+
+.cartPage__calculateShipBtn-btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #454545;
+  font-size: 14px;
+  border: 2px solid #032c41; }
+
+.cartPage__noteBox {
+  margin-top: 20px;
+  padding: 20px 24px;
+  border: 1px solid #f7f8fa; }
+
+.cartPage__noteBox-title {
+  font-size: 17px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 20px; }
+
+.cartPage__noteBox-subTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 20px; }
+
+.cartPage__noteBox-text {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #f7f8fa;
+  transition: all .15s ease-in-out;
+  padding: 12px; }
+
+.cartPage__noteBox-text:focus {
+  outline: none;
+  border: 1px solid #032c41;
+  background-color: #fff; }

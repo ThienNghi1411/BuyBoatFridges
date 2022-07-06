@@ -52,8 +52,9 @@ init();
 
 //////////////////////////////////////////////////
 const myCart = document.querySelector(".header__myCart");
-const cartQuickView = document.querySelector(".cartQuickView");
 myCart.addEventListener("click", () => {
+    
+    const cartQuickView = document.querySelector(".cartQuickView");
     if (cartQuickView.style.display === "none"){
         cartQuickView.style.display = "block";
     }else{

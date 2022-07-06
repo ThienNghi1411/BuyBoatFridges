@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
 <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
-
+<script>console.log({{ product | json }})</script>
 {%- assign collectionUrl = "" -%}
 {%- for collection in product.collections -%}
     {%- if collection.title == product.type -%}
@@ -36,9 +36,10 @@
                 <div class="productPage__sliderImgProduct productPage__sliderImgMobile full-width">
                     <div class="productPage__imgProduct imgProductMobile ">
                         {%- assign ratio = product.media[0].aspect_ratio -%}
-                        {%- for image in product.images -%}
+                        {%- for image in product.media -%}
                             <div class="productPage__imgProduct-wrapper">
-                                <img src="{{ image | image_url }} " alt="{{  }}" />
+                                {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                                {%- render 'image-style', image: image  -%}
                                 {%- style -%}
                                     .productPage__imgProduct-wrapper img {
                                         aspect-ratio: {{ ratio }};
@@ -127,9 +128,10 @@
             <div class="productPage__sliderImgProduct  productPage__sliderImgDestop">
                 <div class="productPage__imgProduct imgProductDestop">
                     {%- assign ratio = product.media[0].aspect_ratio -%}
-                    {%- for image in product.images -%}
+                    {%- for image in product.media -%}
                         <div class="productPage__imgProduct-wrapper">
-                            <img src="{{ image | image_url }} " alt="{{  }}" />
+                            {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                            {%- render 'image-style', image: image  -%}
                             {%- style -%}
                                 .productPage__imgProduct-wrapper img {
                                     aspect-ratio: {{ ratio }};
@@ -170,7 +172,8 @@
         }
     </script>
 </section>
-<div class="cartPopupCont"></div>
+<div class="cartPopupCont">
+</div>
 
 <script src="{{ 'product-page.js' | asset_url }}" defer></script>
 

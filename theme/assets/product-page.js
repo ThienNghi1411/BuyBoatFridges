@@ -54,8 +54,8 @@
       }
     ];
   };
-  var getSectionInnerHTML = (html, selector) => {
-    return new DOMParser().parseFromString(html, "text/html").querySelector(selector).innerHTML;
+  var getSectionInnerHTML = (html) => {
+    return new DOMParser().parseFromString(html, "text/html");
   };
   var addToCart = (e) => {
     e.preventDefault();
@@ -77,10 +77,12 @@
           const parser = new DOMParser();
           let elementToAppend = document.querySelector(".cartPopupCont");
           let domToAdd = parser.parseFromString(data.sections[section.section], "text/html").querySelector(".cartPopup");
+          domToAdd.setAttribute("data-qty", qtyField.value);
           elementToAppend.appendChild(domToAdd);
         } else {
           const elementToReplace = document.querySelector(section.selector);
-          elementToReplace.innerHTML = getSectionInnerHTML(data.sections[section.section], section.selector);
+          const domReplace = getSectionInnerHTML(data.sections[section.section]);
+          elementToReplace.replaceWith(domReplace.querySelector(section.selector));
         }
       });
     }).catch((error) => {

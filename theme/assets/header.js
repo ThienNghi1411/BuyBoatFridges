@@ -39,8 +39,8 @@
   };
   init();
   var myCart = document.querySelector(".header__myCart");
-  var cartQuickView = document.querySelector(".cartQuickView");
   myCart.addEventListener("click", () => {
+    const cartQuickView = document.querySelector(".cartQuickView");
     if (cartQuickView.style.display === "none") {
       cartQuickView.style.display = "block";
     } else {

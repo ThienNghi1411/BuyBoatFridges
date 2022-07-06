@@ -32,10 +32,6 @@
     };
     init();
   })();
-  
-
-
-
 //filter tag 
 document.addEventListener('DOMContentLoaded', function() {
   var content = document.querySelectorAll(".filter__tittle");
@@ -45,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let icon_Open = e.children[2];
       let icon_Close = e.children[1];
       e.addEventListener("click", () => {
-          console.log("haha")
+          // console.log("haha")
           if(e.classList.contains("filter_active"))
           {
               e.classList.remove("filter_active")

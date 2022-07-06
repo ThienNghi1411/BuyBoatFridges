@@ -9,7 +9,7 @@
     z-index: 100;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 20px;
-    
+    display: none;
     &__inner{
         width: 100%;
     }
@@ -26,9 +26,13 @@
         display: flex;
         gap: 5px;
         &-imgCont{
-            width: 70px;
+            min-width: 70px;
+            max-width: 70px;
+            position: relative;
+            height: 100%;
             & img{
-                width: 70px;
+                width: 100%;
+            
             }
         }
         &-productTitle{
@@ -45,8 +49,8 @@
         &-spinner{
             width: 20px;
             height: 20px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid  black;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid  black;
             border-radius: 50%;
             animation: spin 2s linear infinite;
             display: none;

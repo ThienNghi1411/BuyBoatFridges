@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="{{ 'main-cart.css' | asset_url }}">
+<script>console.log({{ cart | json }})</script>
+<div class="breadcrumb">
+    <div class="breadcrumb__inner">
+        <div class="breadcrumb__option">
+            <a href="{{ routes.root_url }}" class="">Home</a>
+        </div>
+        
+        <div class="breadcrumb__option">
+            <a href="{{ routes.cart_url }}" class="">Your Shopping Cart</a>
+        </div>
+    </div>
+</div>
+<section class="cartPage">
+    <div class="cartPage__inner">
+        <div class="cartPage__title">SHOPPING CART</div>
+        <div class="cartPage__items">
+            {%- for item in cart.items -%}
+                <div class="cartPage__item">
+                    <div class="cartPage__imgItem">
+                        <img src="{{ item.image | image_url }} " alt="{{  }}" />
+                    </div>
+                    <div class="cartPage__itemInfo">
+                        
+                        <div class="cartPage__itemInfo-productName">{{ item.title }}</div>
+                        <div class="cartPage__itemInfo-productPrice">{{ item.price | money }}</div>
+                        <div class="cartPage__qtyField">
+                            <button class="cartPage__qtyField-minusBtn" name="minus" type="button">-</button>
+                            <input name="quantity" type="text" class="cartPage__qtyField-inputQty" value="{{ item.quantity }}" min="1" m>
+                            <button class="cartPage__qtyField-plusBtn" name="plus" type="button">+</button> 
+                        </div>
+                        <div class="cartPage__productTotal">{{ item.line_price | money }}</div>
+                    </div>
+                    <div class="cartPage__removeBtn">
+                        <button class="cartPage__removeBtn-btn">
+                            {%- render 'icon-remove' -%}
+                        </button>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+        <div class="cartPage__btnCont">
+            <div class="cartPage__clearCart">
+                <div class="cartPage__clearCart-icon">{%- render 'icon-remove' -%}</div>
+                <div class="cartPage__clearCart-text">CLEAR SHOPPING CART</div>
+            </div>
+            <div class="cartPage__continueShopping">
+                <div class="cartPage__continueShopping-icon">{%- render 'icon-remove' -%}</div>
+                <div class="cartPage__continueShopping-text">CONTINUE SHOPPING</div>
+            </div>
+        </div>
+        <div class="cartPage__cartBox">
+            <div class="cartPage__shipAndTax">
+                <div class="cartPage__shipAndTax-title">ESTIMATE SHIPPING AND TAX</div>
+                <div class="cartPage__shipAndTax-subTitle">Enter your destination to get a shipping estimate</div>
+                <div class="cartPage__selectCountry">
+                    <div class="cartPage__selectCountry-title">COUNTRY *</div>
+                    <div class="cartPage__selectCountry-select">
+                        <div class="cartPage__selectCountry-select-text">United States</div>
+                        <div class="cartPage__selectCountry-select-icon">{%- render 'icon-angle-bot' -%}</div>
+                    </div>
+                </div>
+                <div class="cartPage__selectProvince">
+                    <div class="cartPage__selectProvince-title">STATE/PROVINCE *</div>
+                    <div class="cartPage__selectProvince-select">
+                        <div class="cartPage__selectProvince-select-text">Micronesia</div>
+                        <div class="cartPage__selectProvince-select-icon">{%- render 'icon-angle-bot' -%}</div>
+                    </div>
+                </div>
+                <div class="cartPage__inputZipCode">
+                    <div class="cartPage__inputZipCode-title">ZIP/POSTAL CODE</div>
+                    <div class="cartPage__inputZipCode-select">
+                        <div class="cartPage__inputZipCode-select-text">Micronesia</div>
+                        
+                    </div>
+                </div>
+                <div class="cartPage__calculateShipBtn">
+                    <button class="cartPage__calculateShipBtn-btn">CALCULATE SHIPPING</button>
+                </div>
+            </div>
+            <div class="cartPage__noteBox">
+                <div class="cartPage__noteBox-title">NOTE</div>
+                <div class="cartPage__noteBox-subTitle">Add special instructions for your order...</div>
+                <textarea name="" id="" cols="30" rows="10" class="cartPage__noteBox-text"></textarea>
+            </div>
+            <div class="cartPage__checkoutBox">
+                <div class="cartPage__subTotal">
+                    <div class="cartPage__subTotal-text">SUBTOTAL</div>
+                    <div class="cartPage__subTotal-price"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Cart Page",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Cart Page"
+            }
+        ]
+    }
+{% endschema %}
