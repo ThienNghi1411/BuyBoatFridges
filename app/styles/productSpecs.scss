@@ -230,3 +230,22 @@
         }
     }
 }
+
+
+///
+
+@media (max-width: 1000px){
+    .productSpecs{
+        &__dimensions{
+           & td {
+                display:inline-block;
+                padding:5px;
+                width:100% !important;
+                & img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+}

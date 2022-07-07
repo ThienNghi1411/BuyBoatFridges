@@ -33,19 +33,43 @@
 .emailFormWarp
 {
     display: flex;
-    width: 100%;
+   justify-content: center;
+}
+.emailFormWarp form{
+    flex: 1;
+}
+.form__inner
+{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+.email
+{
+    width: 80%;
 }
 .Email__Wrapper
 {
-    width: 100%;
+   
 }
 .copyRight__wrapper
 {
     width: 100%;
     display: flex;
+    flex-direction: column;
     gap: 9px;
     align-items:center;
 }
+.copyRight__left__col
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
 .emailForm__input
 {
     width: 100%;
@@ -63,6 +87,10 @@
 }
 .emailForm__button
 {
+   
+}
+.emailForm__button input
+{
     width: 105px;
     height: 35px;
     background-color: var(--button-color);
@@ -74,6 +102,10 @@
     transition: all 0.1s linear;
     cursor: pointer;
 
+}
+.email
+{
+   
 }
 .emailForm__button a {
     font-size: 12px;
@@ -124,11 +156,11 @@
 {
 
     /* margin-top: 30px; */
-    width: 0px;
+    /* width: 0px;
     height: 0px;
     opacity: 0;
-    transition: all 0.2s linear;
-    
+    transition: all 0.2s linear; */
+    display: none;
   
 }
 .collaspe_content .list>li>a{
@@ -169,6 +201,12 @@
 {
     font-size: 12px;
     color: #979595;
+    text-align: center;
+}
+.footer__logo
+{
+    display: flex;
+    justify-content: center;
 }
 .footer__logo img
 {
@@ -180,7 +218,10 @@
     display: flex;
    
     flex-direction: column;
-    gap: 20px;
+ 
+}
+.list > li{
+    line-height: 20px;
 }
 .emailForm__button:hover
 {
@@ -256,6 +297,7 @@ path{
 {
     display: flex;
     gap: 20px;
+    
     margin-top: 19px;
     justify-content: center;
     align-items: center;
@@ -267,6 +309,9 @@ path{
 .paymentMethod_Wrapper{
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 }
 .paymentIcon a >img{
     width: 20px;
@@ -289,10 +334,30 @@ path{
     }
 }
 
-@media (min-width:720px)
-{     .footer__menu
+@media (min-width: 600px){
+    .footer
+    {
+        max-width: 750px;
+    }
+    .footer__menu
     {
         padding: 0px 51px 30px 51px;
+    }
+    .footer__emailForm
+    {
+        padding: 21px 51px 27px 51px;
+    }
+    .footer__copyRight
+    {
+    padding: 20px 51px;
+    }
+}
+
+@media (min-width:750px)
+{   
+    .collaspe_content
+    {
+        display: block !important;
     }
     .footer{
         max-width: 860px;
@@ -303,15 +368,23 @@ path{
         margin: 0 auto;
         display: flex;
         align-items: center;
-        
+        gap: 10px;
+        width: 100%;
+    }
+    .emailForm_socialIcons
+    {
+        margin-top: 0;
+        width: 30%;
+        display: flex;
+        justify-content: flex-end;
     }
     .emailForm_title
     {
-        margin-right: 95px;
+      
     }
     .emailForm
     {
-        margin-right: 66px;
+        width: 70%;
     }
     .menu_wrap
     {
@@ -319,12 +392,28 @@ path{
         flex-wrap: wrap;
         margin: 0 auto;
     }
-    
+    .copyRight__left__col
+    {
+        width: 40%;
+        flex-direction: row;
+    }
+    .footer__text
+    {
+        text-align: left;
+    }
+    .paymentMethod_Wrapper
+    {
+        width: 60%;
+        justify-content: flex-end;
+    }
     .copyRight__wrapper
     {
       
         display: flex;
+        flex-direction: row;
+     
         align-items: center;
+       
         margin: 0 auto;
     }
     
@@ -349,7 +438,7 @@ path{
     {
         flex-direction: row;
         align-items: center;
-        padding: 21px 51px 27px 51px;
+       
     }
 
     .emailForm_title
@@ -381,10 +470,7 @@ path{
     {
         display: flex;
     }
-    .footer__copyRight
-    {
-    padding: 20px 51px;
-    }
+  
     .collaspe_content p{  
         width: 100%;
         font-size: 12px;
@@ -434,6 +520,22 @@ path{
     .footer{
         max-width: 1280px;
     }
+    .Email__Wrapper{
+
+    }
+    .emailForm_title
+    {
+
+        margin-right: 95px;
+        width: 14%;
+        text-align: left;
+    }
+    .emailForm_socialIcons
+    {
+        /* width: 20%; */
+        justify-content: flex-end;
+    }
+
     
 }
 
@@ -456,6 +558,7 @@ path{
         max-width: 1000px;
         margin: 0 auto;
     }  
+
     .menu_wrap
     {
         max-width: 1000px;
@@ -463,6 +566,10 @@ path{
         justify-content: center;
         
         
+    }
+    .copyRight__wrapper
+    {
+        max-width: 1000px;
     }
     .footer__copyRight 
     {
@@ -489,6 +596,7 @@ path{
     {
         max-width: 1220px;
         margin: 0 auto;
+        padding: 0;
     }
     .footer__menu
     {
@@ -500,12 +608,14 @@ path{
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        padding: 0;
     }
 
-    .footer__copyRight
+    .copyRight__wrapper
     {
         max-width: 1220px;
          margin: 0 auto;
+        padding: 0;
     }
      .menu__col
     {

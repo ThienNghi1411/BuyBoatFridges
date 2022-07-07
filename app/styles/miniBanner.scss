@@ -1,5 +1,4 @@
 .miniBanner{
-    max-width: 720px;
     padding: 30px 20px;
     &__inner{
         width: 100%;
@@ -8,6 +7,7 @@
 
     &__imgBanner{
         width: 100%;
+        position: relative;
         & img{
             width: 100%;
         }
@@ -30,6 +30,7 @@
            display: flex;
            justify-content: center;
            align-items: center;
+           position: relative;
             & img{
                 width: 100%;
             }

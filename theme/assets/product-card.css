@@ -8,7 +8,7 @@
 
 .productCard__imgCont {
   position: relative;
-  height: 350px; }
+  height: 300px; }
 
 .productCard__imgCont, .productCard__imgCont a {
   display: flex;
@@ -21,6 +21,10 @@
 
 .productCard__imgCont img {
   width: 100%; }
+
+.productCard__imgCont svg {
+  width: 100%;
+  height: 100%; }
 
 .productCard__imgCont-tagCont {
   position: absolute;

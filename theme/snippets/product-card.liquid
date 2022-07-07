@@ -1,4 +1,5 @@
 
+
 <div class="productCard">
     <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
     <div class="productCard__imgCont">
@@ -28,8 +29,11 @@
         </div>
         <div class="productCard__priceCont">
             <div class="productCard__priceCont-wrap">
-                <div class="productCard__priceCont-salePrice">{{ product.compare_at_price | money }}</div>
-                <div class="productCard__priceCont-basePrice">{{ product.price | money }}</div>
+                <div class="productCard__priceCont-salePrice">{{ product.variants[0].price | money }}</div>
+                {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                    <div class="productCard__priceCont-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                {%- endif -%}
+                
             </div>
             <button class="productCard__priceCont-btnAdd">
                 <a href="{{ routes.root_url }}" class="">ADD TO CART</a>

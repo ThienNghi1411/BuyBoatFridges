@@ -4,12 +4,14 @@
         <div class="miniBanner__bannerCont">
             <div class="miniBanner__imgBanner">
                 <a href="{{ routes.root_url }}" class="">
-                    <img src="{{ section.settings.image1 | image_url }} " />
+                    {% comment %} <img src="{{ section.settings.image1 | image_url }} " /> {% endcomment %}
+                    {%- render "image-style" , image: section.settings.image1 -%}
                 </a>
             </div>
             <div class="miniBanner__imgBanner">
                 <a href="{{ routes.root_url }}" class="">
-                    <img src="{{ section.settings.image2 | image_url }} " />
+                    {% comment %} <img src="{{ section.settings.image2 | image_url }} " /> {% endcomment %}
+                    {%- render "image-style" , image: section.settings.image2 -%}
                 </a>
             </div>
         </div>
@@ -23,16 +25,24 @@
                 <div class="miniBanner__productBanner">
                     <div class="miniBanner__productBanner-wrap">
                         <div class="miniBanner__productBanner-imgCont">
-                            <img src="{{ product.featured_image | image_url }} " />
-                            <div class="miniBanner__productBanner-imgCont-tagCont">{{ product.vendor }}</div>
+                            {% comment %} <img src="{{ product.featured_image | image_url }} " /> {% endcomment %}
+                            <a href="{{ product.url }}" class="">
+                                {%- render "image-style" , image: product.featured_image -%}
+                                <div class="miniBanner__productBanner-imgCont-tagCont">{{ product.vendor }}</div>
+                            </a>
                         </div>
                         <div class="miniBanner__productBanner-infoProduct">
                             <div class="miniBanner__productBanner-titleProduct">
                                 <div class="miniBanner__productBanner-titleProduct-productName">{{ product.variants[0].sku }}</div>
-                                <div class="miniBanner__productBanner-titleProduct-subTitle">{{ product.title}}</div>
+                                <div class="miniBanner__productBanner-titleProduct-subTitle">
+                                    <a href="{{ product.url }}" class="">{{ product.title }}</a>
+                                    
+                                </div>
                                 <div class="miniBanner__productBanner-priceProduct">
-                                    <div class="miniBanner__productBanner-priceProduct-lastPrice">{{ product.compare_at_price | money }}</div>
-                                    <div class="miniBanner__productBanner-priceProduct-basePrice">{{ product.price | money }}</div>
+                                    <div class="miniBanner__productBanner-priceProduct-lastPrice">{{ product.variants[0].price | money }}</div>
+                                    {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                                    <div class="miniBanner__productBanner-priceProduct-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                                    {%- endif -%}
                                 </div>
                             </div>
                             <div class="miniBanner__productBanner-priceAndBtn">

@@ -26,6 +26,7 @@ const toggleEnabelScroll = () => {
 }
 
 const showMenuMobile = () => {
+    window.scroll(0,0);
     menuMobileOverLay.style.display= "block";
     menuMobile.style.display= "block";
     toggleEnabelScroll();
@@ -61,3 +62,4 @@ myCart.addEventListener("click", () => {
         cartQuickView.style.display = "none";
     }
 })
+

@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ 'checkOutField.css' | asset_url }}">
+<div class="checkOutField">
+    {%- form 'cart' , cart -%}
+        <div class="checkOutField__termField">
+            <input type="checkbox" class="checkOutField__termField-checkbox" required>
+            <div class="checkOutField__termField-text">I argee with the terms and conditions</div>
+            <div class="checkOutField__btnCheckOut">
+                <button class="checkOutField__btnCheckOut-btn" type="submit" name="checkout">PROCEED TO CHECKOUT</button>
+            </div>
+           
+        </div>
+        <div class="checkOutField__wrapper"></div>
+
+    {%- endform -%}
+</div>

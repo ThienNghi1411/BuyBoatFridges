@@ -4,7 +4,9 @@
 
 .header__inner {
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto; }
+
+.header__inner, .header__logo {
   position: relative; }
 
 .header__logoDestop {
@@ -366,12 +368,17 @@
 .cartQuickView__viewCartBtn {
   width: 100%;
   height: 40px;
+  margin-top: 10px;
+  border: 1px solid #000;
+  cursor: pointer; }
+
+.cartQuickView__viewCartBtn a {
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: 1px solid #000;
-  cursor: pointer; }
+  align-items: center; }
 
 .cartQuickView__viewCartBtn-btn {
   cursor: pointer;

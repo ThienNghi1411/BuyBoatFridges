@@ -1,8 +1,8 @@
 .cartPage{
-    padding: 30px 20px;
+ 
     &__inner{
         width: 100%;
-    
+        padding: 60px 20px 30px 20px;
     }
     &__title{
         font-size: 24px;
@@ -27,6 +27,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
         & img{
             width: 100%;
         }
@@ -36,7 +37,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        &-productName , &-productPrice , &-productTotal{
+        &-productPrice , &-productPrice , &-productTotal{
             font-size: 14px;
             font-weight: 400;
         }
@@ -67,21 +68,32 @@
             text-align: center;
             border-radius: 5px;
         }
-    }
-    &__removeBtn{
-        width: 20px;
-
-        &-btn{
-            width: 100%;
-            height: 100%;
+        &-spinnerCont{
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            & svg{
-                width: 15px;
-                cursor: pointer;
-            }
+            width: 44px;
+            display: none;
+        }
+    }
+    &__removeBtn{
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & svg{
+            width: 15px;
+            cursor: pointer;
+        }
+
+        &-spinner{
+            width: 20px;
+            height: 20px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid  black;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+            display: none;
         }
     }
     &__btnCont{
@@ -109,6 +121,7 @@
             }
     }
     &__shipAndTax{
+        width: 100%;
         margin-top: 20px;
         padding: 20px 24px;
         border: 1px solid #f7f8fa;
@@ -158,6 +171,7 @@
         }
     }
     &__noteBox{
+        width: 100%;
         margin-top: 20px;
         padding: 20px 24px;
         border: 1px solid #f7f8fa;
@@ -186,6 +200,193 @@
                 border: 1px solid #032c41;
                 background-color: #fff;
             }
+        }
+    }
+    &__checkoutBox{
+        margin-top: 20px;
+        padding: 20px 24px;
+        border: 1px solid #f7f8fa;
+        width: 100%;
+    }
+    &__subTotal{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        &-text , &-price{
+            font-size: 16px;
+            font-weight: 400;
+            color: #454545;
+        }
+    }
+    &__grandTotal{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        &-text , &-price{
+            font-size: 20px;
+            font-weight: 500;
+            color: #454545;
+        }
+    }
+    &__emptyCart{
+        width: 100%;
+        padding: 100px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &-icon{
+            width: 120px;
+            margin-bottom: 20px;
+            & img{
+                width: 100%;
+            }
+        }
+        &-title{
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #454545;
+        }
+        &-subTitle{
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #454545;
+        }
+        &-btnShopping{
+            width: 208px;
+            height: 40px;
+            & a{
+                width: 100%;
+                height: 100%;
+            }
+            &-btn{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                background-color: #139aeb;
+                color: #fff;
+                font-weight: bold;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all .2s linear;
+                &:hover{
+                    opacity: .5;
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (min-width:600px){
+    .cartPage{
+   
+        &__inner{
+            padding: 60px 50px 30px 50px;
+        }
+    }
+}
+
+@media (min-width: 800px){
+    .cartPage{
+        &__cartBox{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+        }
+        &__title{
+            font-size: 34px;
+        }
+        &__noteBox , &__checkoutBox{
+            height: max-content;
+        }
+        &__shipAndTax, &__noteBox{
+            &-title{
+                font-size: 20px;
+            }
+        }
+        &__grandTotal{
+            &-text{
+                font-size: 16px;
+            }
+        }
+        &__emptyCart{
+
+            &-icon{
+                width: 150px;
+
+            }
+            &-title{
+                font-size: 34px;
+
+            }
+            &-subTitle{
+                font-size: 20px;
+
+            }
+            &-btnShopping{
+                width: 220px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px){
+    .cartPage{
+        &__itemInfo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            &-productPrice , &-productPrice , &-productTotal{
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+            &-productName{
+                flex: 2;
+            }
+        }
+        &__btnCont{
+    
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            gap:unset; 
+            border-bottom: none;
+        }
+        &__cartBox{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+        &__noteBox{
+            &-text{
+                height: 300px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1280px){
+    .cartPage{
+        &__inner{
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (min-width: 1440px){
+    .cartPage{
+        &__inner{
+            max-width: 1220px;
+            margin: 0 auto;
         }
     }
 }

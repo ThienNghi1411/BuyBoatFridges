@@ -1,88 +1,98 @@
-     <div class="footer__emailForm">
-         <div class="Email__Wrapper">
-            <div class="emailForm_title">{{section.settings.Form_title}}</div>
-         <div class="emailForm">
-            <div class="emailFormWarp">
-               <div class="emailForm__input">
-                  <input type="text" placeholder="{{section.settings.placehoder_text}}">
+<div class="footer__emailForm">
+   <div class="Email__Wrapper">
+      <div class="emailForm_title">{{section.settings.Form_title}}</div>
+      <div class="emailForm">
+         <div class="emailFormWarp">
+            {% form 'customer' %}
+            <div class="form__inner">
+               <div class="email">
+                  <div class="emailForm__input">
+                     <input type="email" name="contact[email]" placeholder="{{section.settings.placehoder_text}}"/>
+                  </div>
+                  
                </div>
-               <div class="emailForm__button"><a href="">{{section.settings.button_text}} </a> </div>
+               <div class="emailForm__button">
+                  <input type="submit" value="{{section.settings.button_text}} " />
+               </div>
             </div>
-         </div>
-         {% if section.settings.show_icons %}
-         <ul class="emailForm_socialIcons">
-
-            {% for block in section.blocks %}
-               {% case block.type %}
-                  {% when 'social_icon' %}
-                  <li class="socialIcon">
-                     <a href="{{block.settings.Icon_url}}">
-                        {{block.settings.svg}}
-                     </a>
-                  </li>       
-               {% endcase %}
-            {% endfor %}
-          
            
-            </ul>
-         {% endif %}
-         
-         
+            {% endform %}
+
          </div>
-      </div>   
-      {% schema %}
-      {
-        "name": "Newsletter",
-        "settings": [
+      </div>
+      {% if section.settings.show_icons %}
+      <ul class="emailForm_socialIcons">
+
+         {% for block in section.blocks %}
+         {% case block.type %}
+         {% when 'social_icon' %}
+         <li class="socialIcon">
+            <a href="{{block.settings.Icon_url}}">
+               {{block.settings.svg}}
+            </a>
+         </li>
+         {% endcase %}
+         {% endfor %}
+
+
+      </ul>
+      {% endif %}
+
+
+   </div>
+</div>
+{% schema %}
+{
+   "name": "Newsletter",
+   "settings": [
+     {
+       "type": "text",
+       "id": "Form_title",
+       "label": "Edit Form Text",
+       "default": "FOR EXCLUSIVE DEALS"
+     },
+     {
+       "type": "text",
+       "id": "button_text",
+       "label": "Edit Button Text",
+       "default": "JOIN US"
+     },
+     {
+       "type": "text",
+       "id": "placehoder_text",
+       "label": "Edit Place Holder Text",
+       "default": "Enter your e-mail"
+     },
+     {
+       "type": "header",
+       "content": "SOCIAL ICONS"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_icons",
+       "label": "Show Social Icons",
+       "default": true
+     }
+   ],
+   "blocks": [
+     {
+       "name": "Social Icon",
+       "type": "social_icon",
+       "limit": 6,
+       "settings": [
          {
-            "type":"text",
-            "id":"Form_title",
-            "label":"Edit Form Text",
-            "default":"FOR EXCLUSIVE DEALS"
-          },
-          {
-            "type":"text",
-            "id":"button_text",
-            "label":"Edit Button Text",
-            "default":"JOIN US"
-          },
-          {
-            "type":"text",
-            "id":"placehoder_text",
-            "label":"Edit Place Holder Text",
-            "default":"Enter your e-mail"
-          },
-          {
-            "type": "header",
-            "content": "SOCIAL ICONS"
-          },
-          {
-            "type":"checkbox",
-            "id":"show_icons",
-            "label":"Show Social Icons",
-            "default":true
-          }
-        ],
-        "blocks": [
-        {
-          "name": "Social Icon",
-          "type": "social_icon",
-          "limit":6,
-          "settings": [
-            {
-            "type": "html",
-            "id": "svg",
-            "label": "SVG code",
-            "info": "Something like <svg....</svg>"
-            },
-            {
-               "type":"url",
-               "id":"Icon_url",
-               "label":"pick Icon url"
-            }
-          ]
-        }
-      ]
-      
-      }
-      {% endschema %}
+           "type": "html",
+           "id": "svg",
+           "label": "SVG code",
+           "info": "Something like <svg....< /svg>"
+         },
+         {
+           "type": "url",
+           "id": "Icon_url",
+           "label": "pick Icon url"
+         }
+       ]
+     }
+   ]
+ }
+{% endschema %}

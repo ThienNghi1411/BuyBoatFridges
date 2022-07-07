@@ -21,6 +21,7 @@
     }
   };
   var showMenuMobile = () => {
+    window.scroll(0, 0);
     menuMobileOverLay.style.display = "block";
     menuMobile.style.display = "block";
     toggleEnabelScroll();

@@ -23,21 +23,21 @@ class CartQuickView extends HTMLElement {
         this.init();
     }
     init(){
-        console.log("check");
-        const checkBox = this.querySelector(".cartQuickView__checkbox");
-        const checkOutBtn = this.querySelector(".cartQuickView__checkOutBtn")
-        checkBox.addEventListener("click" , () => {
-            let box = checkBox.querySelector(".cartQuickView__checkbox-box");
-            if (box.classList.contains("cartQuickView__checkbox-boxActive")){
-                box.classList.remove("cartQuickView__checkbox-boxActive");
-                checkOutBtn.style.opacity = "0.5";
-                checkOutBtn.style.pointerEvents = "none";
-            }else{
-                box.classList.add("cartQuickView__checkbox-boxActive");
-                checkOutBtn.style.opacity = "1";
-                checkOutBtn.style.pointerEvents = "all";
-            }
-        })
+        // console.log("check");
+        // const checkBox = this.querySelector(".cartQuickView__checkbox");
+        // const checkOutBtn = this.querySelector(".cartQuickView__checkOutBtn")
+        // checkBox.addEventListener("click" , () => {
+        //     let box = checkBox.querySelector(".cartQuickView__checkbox-box");
+        //     if (box.classList.contains("cartQuickView__checkbox-boxActive")){
+        //         box.classList.remove("cartQuickView__checkbox-boxActive");
+        //         checkOutBtn.style.opacity = "0.5";
+        //         checkOutBtn.style.pointerEvents = "none";
+        //     }else{
+        //         box.classList.add("cartQuickView__checkbox-boxActive");
+        //         checkOutBtn.style.opacity = "1";
+        //         checkOutBtn.style.pointerEvents = "all";
+        //     }
+        // })
     }
     getSectionsToRender() {
         return [

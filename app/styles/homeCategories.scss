@@ -1,5 +1,5 @@
 .homeCategories{
-    max-width: 320px;
+ 
     width: 100%;
     padding: 30px 20px;
     &__inner{
@@ -23,7 +23,7 @@
 
 @media (min-width: 320px){
     .homeCategories{
-        max-width: 480px;
+  
 
         &__title{
             margin-bottom: 20px;
@@ -37,16 +37,16 @@
 
 @media (min-width: 480px){
     .homeCategories{
-        max-width: 720px;
+     
         &__content{
             grid-template-columns: repeat(3,1fr);
         }
     }
 }
 
-@media (min-width: 720px){
+@media (min-width: 600px){
     .homeCategories{
-        max-width: 1000px;
+        
         padding: 30px 50px;
         &__title{
             font-size: 20px;
@@ -58,11 +58,20 @@
     }
 }
 
-@media (min-width: 1000px){
+@media (min-width: 800px){
     .homeCategories{
-        max-width: 1280px;
+     
         &__content{
             grid-template-columns: repeat(4,1fr);
+        }
+    }
+}
+
+@media (min-width: 1000px){
+    .homeCategories{
+     
+        &__content{
+            grid-template-columns: repeat(5,1fr);
         }
     }
 }

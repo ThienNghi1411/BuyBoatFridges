@@ -1,5 +1,4 @@
 .pageBanner{
-    max-width: 720px;
     height: 100%;
     padding: 30px 20px;
    
@@ -75,21 +74,13 @@
     background-color: black !important;
 }
 
-@media (min-width: 720px){
+@media (min-width: 600px){
     .pageBanner{
-        max-width: 1280px;
         padding: 30px 50px;
         &__inner{
             width: 100%;
         }
-        &__img{
-            &-imgDestop{
-                display: block;
-            }
-            &-imgMobile{
-                display: none;
-            }
-        }
+
     }
     .tns-nav{
         width: 100%;
@@ -101,6 +92,19 @@
         background-color: #dadada;
     }
     
+}
+
+@media (min-width: 800px){
+    .pageBanner{
+        &__img{
+            &-imgDestop{
+                display: block;
+            }
+            &-imgMobile{
+                display: none;
+            }
+        }
+    }
 }
 
 @media (min-width: 1280px){

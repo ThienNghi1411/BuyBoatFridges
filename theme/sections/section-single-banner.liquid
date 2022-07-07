@@ -3,7 +3,8 @@
 <section class="{{ className }}">
     <div class="singleBanner__inner">
         <a href="{{ section.settings.url | default: routes.root_url }}" class="">
-            <img src="{{ section.settings.banner | image_url }} " alt="{{  }}" />
+            {% comment %} <img src="{{ section.settings.banner | image_url }} " alt="{{  }}" /> {% endcomment %}
+            {%- render "image-style" , image: section.settings.banner -%}
         </a>
     </div>
 </section>

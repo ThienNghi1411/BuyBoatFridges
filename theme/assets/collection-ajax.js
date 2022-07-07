@@ -2,7 +2,49 @@
   // app/scripts/collection-ajax.js
   var tag = document.querySelectorAll(".tag");
   var Query = "";
-  var sort = document.getElementById("sort-by");
+  var sort_value = document.querySelector(".select-selected");
+  renderItems = () => {
+    let spinner = document.querySelector(".collection__spinner");
+    let render_number = parseInt(document.getElementById("display").value);
+    spinner.style.display = "unset";
+    fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value).then((response) => response.text()).then((data) => {
+      let html_div = document.createElement("div");
+      html_div.innerHTML = data;
+      let collection__tittle = document.querySelector(".collection__tittle");
+      let product_count = html_div.querySelectorAll(".productCard").length;
+      collection__tittle.innerHTML = collection_handle + `(${product_count})`;
+      spinner.style.display = "none";
+      history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value);
+      let ProductContainer = html_div.querySelector(".collection__Productcontent");
+      document.querySelector(".collection__Productcontent").innerHTML = "";
+      if (product_count == 0) {
+        let empty = document.querySelector(".collection__empty");
+        empty.style.display = "unset";
+      }
+      if (product_count != 0) {
+        let empty = document.querySelector(".collection__empty");
+        empty.style.display = "none";
+      }
+      if (product_count > render_number) {
+        for (i = 0; i < render_number; i++) {
+          let collection_item = ProductContainer.children[i];
+          let div = document.createElement("div");
+          div.className = "productCard";
+          div.innerHTML = collection_item.innerHTML;
+          document.querySelector(".collection__Productcontent").appendChild(div);
+          if (ifinity == 2) {
+            let loadmore2 = document.querySelector(".collection__loadMore");
+            loadmore2.style.display = "flex";
+          }
+        }
+      } else {
+        let html_dom = html_div.querySelector(".collection__Productcontent").innerHTML;
+        document.querySelector(".collection__Productcontent").innerHTML = html_dom;
+        let loadmore2 = document.querySelector(".collection__loadMore");
+        loadmore2.style.display = "none";
+      }
+    });
+  };
   removeTags = () => {
     var remove_Icons = document.querySelectorAll(".tag_RemoveIcon");
     if (remove_Icons != void 0) {
@@ -99,9 +141,6 @@
       renderItems();
     }
   });
-  sort.addEventListener("change", (e) => {
-    renderItems();
-  });
   clearAll = () => {
     Query = "";
     renderItems();
@@ -109,48 +148,6 @@
     let remove_tags = document.querySelectorAll(".remove");
     remove_tags.forEach((e) => {
       e.classList.remove("remove");
-    });
-  };
-  renderItems = () => {
-    let spinner = document.querySelector(".collection__spinner");
-    let render_number = parseInt(document.getElementById("display").value);
-    spinner.style.display = "unset";
-    fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort.value).then((response) => response.text()).then((data) => {
-      let html_div = document.createElement("div");
-      html_div.innerHTML = data;
-      let collection__tittle = document.querySelector(".collection__tittle");
-      let product_count = html_div.querySelectorAll(".productCard").length;
-      collection__tittle.innerHTML = collection_handle + `(${product_count})`;
-      spinner.style.display = "none";
-      history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort.value);
-      let ProductContainer = html_div.querySelector(".collection__Productcontent");
-      document.querySelector(".collection__Productcontent").innerHTML = "";
-      if (product_count == 0) {
-        let empty = document.querySelector(".collection__empty");
-        empty.style.display = "unset";
-      }
-      if (product_count != 0) {
-        let empty = document.querySelector(".collection__empty");
-        empty.style.display = "none";
-      }
-      if (product_count > render_number) {
-        for (i = 0; i < render_number; i++) {
-          let collection_item = ProductContainer.children[i];
-          let div = document.createElement("div");
-          div.className = "productCard";
-          div.innerHTML = collection_item.innerHTML;
-          document.querySelector(".collection__Productcontent").appendChild(div);
-          if (ifinity == 2) {
-            let loadmore2 = document.querySelector(".collection__loadMore");
-            loadmore2.style.display = "flex";
-          }
-        }
-      } else {
-        let html_dom = html_div.querySelector(".collection__Productcontent").innerHTML;
-        document.querySelector(".collection__Productcontent").innerHTML = html_dom;
-        let loadmore2 = document.querySelector(".collection__loadMore");
-        loadmore2.style.display = "none";
-      }
     });
   };
   tag.forEach((e) => {
@@ -250,7 +247,6 @@
   var footer = document.querySelector(".footer").getBoundingClientRect().height;
   window.addEventListener("scroll", () => {
     let products = document.querySelectorAll(".productCard").length;
-    console.log(window.scrollY + window.innerHeight);
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
       let tittle = document.querySelector(".collection__tittle").innerHTML;
       let total = parseInt(tittle.split("(")[1].split(")")[0]);
@@ -263,4 +259,83 @@
     }
   });
   console.log(document.documentElement.scrollHeight);
+  var x;
+  var i;
+  var j;
+  var l;
+  var ll;
+  var selElmnt;
+  var a;
+  var b;
+  var c;
+  x = document.getElementsByClassName("custom-select");
+  l = x.length;
+  for (i = 0; i < l; i++) {
+    selElmnt = x[i].getElementsByTagName("select")[0];
+    ll = selElmnt.length;
+    a = document.createElement("DIV");
+    a.setAttribute("class", "select-selected");
+    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+    x[i].appendChild(a);
+    b = document.createElement("DIV");
+    b.setAttribute("class", "select-items select-hide");
+    for (j = 1; j < ll; j++) {
+      c = document.createElement("DIV");
+      c.innerHTML = selElmnt.options[j].innerHTML;
+      c.setAttribute("value", selElmnt.options[j].value);
+      c.classList.add("filter-option");
+      c.addEventListener("click", function(e) {
+        var y, i2, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i2 = 0; i2 < sl; i2++) {
+          if (s.options[i2].innerHTML == this.innerHTML) {
+            s.selectedIndex = i2;
+            h.innerHTML = this.innerHTML;
+            h.setAttribute("value", s.options[i2].value);
+            sort_value = s.options[i2].value;
+            renderItems();
+            console.log(s.options[i2].value);
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].classList.remove("same-as-selected");
+            }
+            this.classList.add("same-as-selected");
+            break;
+          }
+        }
+        h.click();
+      });
+      b.appendChild(c);
+    }
+    x[i].appendChild(b);
+    a.addEventListener("click", function(e) {
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+  }
+  function closeAllSelect(elmnt) {
+    var x2, y, i2, xl, yl, arrNo = [];
+    x2 = document.getElementsByClassName("select-items");
+    y = document.getElementsByClassName("select-selected");
+    xl = x2.length;
+    yl = y.length;
+    for (i2 = 0; i2 < yl; i2++) {
+      if (elmnt == y[i2]) {
+        arrNo.push(i2);
+      } else {
+        y[i2].classList.remove("select-arrow-active");
+      }
+    }
+    for (i2 = 0; i2 < xl; i2++) {
+      if (arrNo.indexOf(i2)) {
+        x2[i2].classList.add("select-hide");
+      }
+    }
+  }
+  document.addEventListener("click", closeAllSelect);
 })();
