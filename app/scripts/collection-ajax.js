@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
-    // console.log(url_array[5].length)
+    // console.log(url_array[].length)
 
     if(url_array[5]!=undefined && url_array[5]!='')
     {       
