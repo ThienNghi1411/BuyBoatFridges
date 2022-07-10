@@ -90,8 +90,6 @@
       ];
     }
     updateQuantity(idProduct, qty) {
-      console.log(idProduct);
-      console.log(qty);
       fetch(window.Shopify.routes.root + "cart/change.js", {
         method: "POST",
         headers: {
@@ -106,7 +104,14 @@
       }).then((response) => {
         return response.json();
       }).then((data) => {
-        console.log(data);
+        data.items.forEach((tmp) => {
+          if (tmp.id === idProduct * 1 && qty > tmp.quantity) {
+            let popupError = document.querySelector(".cartPopUpError");
+            popupError.style.display = "block";
+            let errorText = popupError.querySelector(".cartPopUpError__error");
+            errorText.innerText = `You can only add ${tmp.quantity} of this item to your cart.`;
+          }
+        });
         this.getSectionsToRender().forEach((section) => {
           const elementToReplace = document.querySelector(section.selector);
           const domReplace = this.getSectionInnerHTML(data.sections[section.section]).querySelector(section.selector);

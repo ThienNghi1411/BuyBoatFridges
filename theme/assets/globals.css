@@ -267,3 +267,7 @@ input[type=number] {
 
 .t0 {
   top: 0; }
+
+.object-fit--contain {
+  -o-object-fit: contain;
+  object-fit: contain; }
