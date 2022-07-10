@@ -62,7 +62,7 @@
           "ec4f0315-5e91-4abd-8895-c8a66e3c79e6": {
             "type": "Payment_Method",
             "settings": {
-              "show_content": false,
+              "show_content": true,
               "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
               "copyRight": "@2022 BUYBOATFRIDGES.com All Rights Resrved"
             }
@@ -189,7 +189,7 @@
           "c447ba89-0787-47cd-a76f-44dd28a228eb": {
             "type": "collection",
             "settings": {
-              "collection": "front-loading-refrigerator",
+              "collection": "vitrifrigo",
               "checkImg": false
             }
           },
@@ -310,7 +310,7 @@
           "title": "BEST SELLER",
           "title_fs": "20px,30px,30px",
           "title_fw": 700,
-          "collection": "condensing-units",
+          "collection": "vitrifrigo",
           "limitProduct": 4
         }
       },
@@ -319,8 +319,8 @@
         "settings": {
           "image1": "shopify:\/\/shop_images\/Banner1_88b67533-656a-467a-b162-a7ec724f9fc3.png",
           "image2": "shopify:\/\/shop_images\/Banner2_9ef6556b-d1d8-44c8-889d-39108b30cfbe.png",
-          "product1": "vitrifrigo-evaporator-holding-plate-ac20-q",
-          "product2": "vitrifrigo-ac10-q-evaporator-holding-plate-stainless-steel"
+          "product1": "dw100rxn4-ex-1-vitrifrigo-stainless-steel-single-drawer-freezer",
+          "product2": "dw70rxn4-ex-1-vitrifrigo-stainless-steel-single-drawer-freezer-ocx2-model"
         }
       },
       "section-list-collections": {

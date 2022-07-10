@@ -173,3 +173,11 @@
 @media (min-width: 1440px) {
   .productSpecs__inner {
     width: 1220px; } }
+
+@media (max-width: 1000px) {
+  .productSpecs__dimensions td {
+    display: inline-block;
+    padding: 5px;
+    width: 100% !important; }
+  .productSpecs__dimensions td img {
+    width: 100%; } }

@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="{{ 'main-cart.css' | asset_url }}">
+<script>console.log({{ cart | json }})</script>
+<script src=" {{ 'cart.js' | asset_url }}" defer></script>
+<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
+<div class="breadcrumb">
+    <div class="breadcrumb__inner">
+        <div class="breadcrumb__option">
+            <a href="{{ routes.root_url }}" class="">Home</a>
+        </div>
+        
+        <div class="breadcrumb__option">
+            <a href="{{ routes.cart_url }}" class="">Your Shopping Cart</a>
+        </div>
+    </div>
+</div>
+<main-cart class="cartPage">
+    {%- if cart.item_count != 0 -%}
+        {%- form 'cart' , cart -%}
+        <div class="cartPage__inner">
+            <div class="cartPage__title">SHOPPING CART</div>
+            <div class="cartPage__items">
+                {%- for item in cart.items -%}
+                    <div class="cartPage__item">
+                        <div class="cartPage__imgItem">
+                            {%- render "image-style" , image: item.image -%}
+                        </div>
+                        <div class="cartPage__itemInfo">        
+                            <div class="cartPage__itemInfo-productName">{{ item.title }}</div>
+                            <div class="cartPage__itemInfo-productPrice">{{ item.price | money }}</div>
+                            <maincart-qty-field class="cartPage__qtyField" data-idProduct="{{ item.variant_id }}">
+                                <button class="cartPage__qtyField-minusBtn" name="minus" type="button">-</button>
+                                <input name="updates[]" type="text" class="cartPage__qtyField-inputQty" value="{{ item.quantity }}"  >
+                                <div class="cartPage__qtyField-spinnerCont">
+                                    <div class="cartPage__removeBtn-spinner"></div>
+                                </div>
+                                <button class="cartPage__qtyField-plusBtn" name="plus" type="button">+</button> 
+                            </maincart-qty-field>
+                            <div class="cartPage__itemInfo-productTotal">{{ item.line_price | money }}</div>
+                        </div>
+                        <maincart-remove-button class="cartPage__removeBtn" data-idProduct="{{ item.variant_id }}">
+                            <a href="{{ item.url_to_remove }}">
+                                {%- render 'icon-remove' -%}
+                            </a>
+                            <div class="cartPage__removeBtn-spinner"></div>
+                        </maincart-remove-button>
+                    </div>
+                {%- endfor -%}
+            </div>
+            <div class="cartPage__btnCont">
+                <maincart-remove-all-button >
+                    <div class="cartPage__clearCart">
+                        <div class="cartPage__clearCart-icon">{%- render 'icon-remove' -%}</div>
+                        <div class="cartPage__clearCart-text">CLEAR SHOPPING CART</div>
+                    </div>
+                    <div class="cartPage__removeBtn-spinner"></div>
+                </maincart-remove-all-button>
+                <div class="cartPage__continueShopping">
+                    <a href="{{ routes.collections_url }}" class="cartPage__continueShopping">
+                        <div class="cartPage__continueShopping-icon">{%- render 'icon-remove' -%}</div>
+                        <div class="cartPage__continueShopping-text">CONTINUE SHOPPING</div>
+                    </a>
+                </div>
+            </div>
+            <div class="cartPage__cartBox">
+                <div class="cartPage__shipAndTax">
+                    <div class="cartPage__shipAndTax-title">ESTIMATE SHIPPING AND TAX</div>
+                    <div class="cartPage__shipAndTax-subTitle">Enter your destination to get a shipping estimate</div>
+                    <div class="cartPage__selectCountry">
+                        <div class="cartPage__selectCountry-title">COUNTRY *</div>
+                        <div class="cartPage__selectCountry-select">
+                            <div class="cartPage__selectCountry-select-text">United States</div>
+                            <div class="cartPage__selectCountry-select-icon">{%- render 'icon-angle-bot' -%}</div>
+                        </div>
+                    </div>
+                    <div class="cartPage__selectProvince">
+                        <div class="cartPage__selectProvince-title">STATE/PROVINCE *</div>
+                        <div class="cartPage__selectProvince-select">
+                            <div class="cartPage__selectProvince-select-text">Micronesia</div>
+                            <div class="cartPage__selectProvince-select-icon">{%- render 'icon-angle-bot' -%}</div>
+                        </div>
+                    </div>
+                    <div class="cartPage__inputZipCode">
+                        <div class="cartPage__inputZipCode-title">ZIP/POSTAL CODE</div>
+                        <div class="cartPage__inputZipCode-select">
+                            <div class="cartPage__inputZipCode-select-text">Micronesia</div>
+                            
+                        </div>
+                    </div>
+                    <div class="cartPage__calculateShipBtn">
+                        <button class="cartPage__calculateShipBtn-btn">CALCULATE SHIPPING</button>
+                    </div>
+                </div>
+                <div class="cartPage__noteBox">
+                    <div class="cartPage__noteBox-title">NOTE</div>
+                    <div class="cartPage__noteBox-subTitle">Add special instructions for your order...</div>
+                    <textarea name="note" id="" cols="30" rows="10" class="cartPage__noteBox-text"></textarea>
+                </div>
+                <div class="cartPage__checkoutBox">
+                    <div class="cartPage__subTotal">
+                        <div class="cartPage__subTotal-text">SUBTOTAL</div>
+                        <div class="cartPage__subTotal-price">{{ cart.items_subtotal_price | money }}</div>
+                    </div>
+                    <div class="cartPage__grandTotal">
+                        <div class="cartPage__grandTotal-text">GRAND TOTAL</div>
+                        <div class="cartPage__grandTotal-price">{{ cart.total_price | money }}</div>
+                    </div>
+                    {%- render 'snippet-checkout-term' -%}
+                </div>
+            </div>
+        </div>
+        {%- endform -%}
+    {%- else -%}
+        <div class="cartPage__inner">
+            <div class="cartPage__emptyCart">
+                <div class="cartPage__emptyCart-icon">
+                    <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
+                </div>
+                <div class="cartPage__emptyCart-title">SHOPPING CART IS EMPTY</div>
+                <div class="cartPage__emptyCart-subTitle">You have no items in your shopping cart</div>
+                <div class="cartPage__emptyCart-btnShopping">
+                    <a href="{{ routes.collections_url }}" class="">
+                        <button class="cartPage__emptyCart-btnShopping-btn">CONTINUE SHOPPING</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {%- endif -%}
+</main-cart>
+<cart-popup-error class="cartPopUpError">
+    <div class="cartPopUpError__overlay">
+        <div class="cartPopUpError__content">
+            <div class="cartPopUpError__header">
+                <div class="cartPopUpError__header-icon">
+                    {%- render 'icon-warning'-%}
+                </div>
+                <div class="cartPopUpError__header-text">Warning</div>
+            </div>
+            <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
+            <div class="cartPopUpError__iconClose">
+                {%- render 'icon-X' -%}
+            </div>
+        </div>
+    </div>
+</cart-popup-error>
+
+{% schema %}
+    {
+        "name": "Cart Page",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Cart Page"
+            }
+        ]
+    }
+{% endschema %}

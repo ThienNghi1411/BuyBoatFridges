@@ -1,12 +1,15 @@
 .miniBanner {
-  max-width: 720px;
   padding: 30px 20px; }
 
 .miniBanner__inner {
   width: 100%;
   margin: 0 auto; }
 
-.miniBanner__imgBanner, .miniBanner__imgBanner img {
+.miniBanner__imgBanner {
+  width: 100%;
+  position: relative; }
+
+.miniBanner__imgBanner img {
   width: 100%; }
 
 .miniBanner__productBannerCont {
@@ -27,7 +30,8 @@
   width: 50%;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
 
 .miniBanner__productBanner-imgCont img {
   width: 100%; }

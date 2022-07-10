@@ -36,15 +36,11 @@
                 <div class="productPage__sliderImgProduct productPage__sliderImgMobile full-width">
                     <div class="productPage__imgProduct imgProductMobile ">
                         {%- assign ratio = product.media[0].aspect_ratio -%}
-                        {%- for image in product.images -%}
+                        {%- for image in product.media -%}
                             <div class="productPage__imgProduct-wrapper">
-                                <img src="{{ image | image_url }} " alt="{{  }}" />
-                                {%- style -%}
-                                    .productPage__imgProduct-wrapper img {
-                                        aspect-ratio: {{ ratio }};
-                                        object-fit: contain;
-                                    }
-                                {%- endstyle -%}
+                                {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                                {%- render 'image-style', image: image , imageRatio: ratio -%}
+     
                                 <div class="productPage__imgProduct-alert">
                                     <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                                 </div>
@@ -127,15 +123,11 @@
             <div class="productPage__sliderImgProduct  productPage__sliderImgDestop">
                 <div class="productPage__imgProduct imgProductDestop">
                     {%- assign ratio = product.media[0].aspect_ratio -%}
-                    {%- for image in product.images -%}
+                    {%- for image in product.media -%}
                         <div class="productPage__imgProduct-wrapper">
-                            <img src="{{ image | image_url }} " alt="{{  }}" />
-                            {%- style -%}
-                                .productPage__imgProduct-wrapper img {
-                                    aspect-ratio: {{ ratio }};
-                                    object-fit: contain;
-                                }
-                            {%- endstyle -%}
+                            {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                            {%- render 'image-style', image: image , imageRatio: ratio -%}
+ 
                             <div class="productPage__imgProduct-alert">
                                 <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                             </div>
@@ -166,11 +158,29 @@
     <div class="loading__spinner"></div>
     <script id="productPage__settings" type="application/ld+json">
         {
-            "product" : {{ product | json }}
+            "product" : {{ product | json }},
+            "pdQuantity": {{ product.variants[0].inventory_quantity | json }} 
         }
     </script>
 </section>
-<div class="cartPopupCont"></div>
+<div class="cartPopupCont">
+    <cart-popup-error class="cartPopUpError">
+        <div class="cartPopUpError__overlay">
+            <div class="cartPopUpError__content">
+                <div class="cartPopUpError__header">
+                    <div class="cartPopUpError__header-icon">
+                        {%- render 'icon-warning'-%}
+                    </div>
+                    <div class="cartPopUpError__header-text">Warning</div>
+                </div>
+                <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
+                <div class="cartPopUpError__iconClose">
+                    {%- render 'icon-X' -%}
+                </div>
+            </div>
+        </div>
+    </cart-popup-error>
+</div>
 
 <script src="{{ 'product-page.js' | asset_url }}" defer></script>
 

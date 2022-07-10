@@ -35,6 +35,7 @@
   };
   init();
   var productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
+  var pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
   var addToCartForm = document.querySelector('form[action$="/cart/add"]');
   var spinner = document.querySelector(".loading__spinner");
   addToCartForm.addEventListener("submit", (e) => addToCart(e));
@@ -54,35 +55,54 @@
       }
     ];
   };
-  var getSectionInnerHTML = (html, selector) => {
-    return new DOMParser().parseFromString(html, "text/html").querySelector(selector).innerHTML;
+  var getSectionInnerHTML = (html) => {
+    return new DOMParser().parseFromString(html, "text/html");
   };
   var addToCart = (e) => {
     e.preventDefault();
     spinner.style.display = "block";
-    let formData = new FormData(addToCartForm);
     let productUrl = `/products/${productData.handle}`;
-    formData.append("sections", getSectionsToRender().map((section) => section.section));
-    formData.append("sections_url", productUrl);
+    let formData = {
+      "items": [{
+        "id": productData.variants[0].id,
+        "quantity": qtyField.value
+      }],
+      "sections": getSectionsToRender().map((section) => section.section),
+      "sections_url": productUrl
+    };
     fetch(window.Shopify.routes.root + "cart/add.js", {
       method: "POST",
-      body: formData
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
     }).then((response) => {
       return response.json();
     }).then((data) => {
       spinner.style.display = "none";
       window.scrollTo(0, 0);
-      getSectionsToRender().forEach((section) => {
-        if (section.selector === ".cartPopupCont") {
-          const parser = new DOMParser();
-          let elementToAppend = document.querySelector(".cartPopupCont");
-          let domToAdd = parser.parseFromString(data.sections[section.section], "text/html").querySelector(".cartPopup");
-          elementToAppend.appendChild(domToAdd);
-        } else {
-          const elementToReplace = document.querySelector(section.selector);
-          elementToReplace.innerHTML = getSectionInnerHTML(data.sections[section.section], section.selector);
-        }
-      });
+      if (data.status) {
+        let popupError = document.querySelector(".cartPopUpError");
+        popupError.style.display = "block";
+        let errorText = popupError.querySelector(".cartPopUpError__error");
+        errorText.innerText = data.description;
+        let body = document.querySelector("body");
+        body.style.overflow = "hidden";
+      } else {
+        getSectionsToRender().forEach((section) => {
+          if (section.selector === ".cartPopupCont") {
+            const parser = new DOMParser();
+            let elementToAppend = document.querySelector(".cartPopupCont");
+            let domToAdd = parser.parseFromString(data.sections[section.section], "text/html").querySelector(".cartPopup");
+            domToAdd.setAttribute("data-qty", qtyField.value);
+            elementToAppend.appendChild(domToAdd);
+          } else {
+            const elementToReplace = document.querySelector(section.selector);
+            const domReplace = getSectionInnerHTML(data.sections[section.section]);
+            elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+          }
+        });
+      }
     }).catch((error) => {
       console.error("Error:", error);
     });

@@ -252,3 +252,22 @@ input[type=number] {
     transform: rotate(0deg); }
   to {
     transform: rotate(1turn); } }
+
+.pa {
+  position: absolute; }
+
+.w100 {
+  width: 100%; }
+
+.h100 {
+  height: 100%; }
+
+.l0 {
+  left: 0; }
+
+.t0 {
+  top: 0; }
+
+.object-fit--contain {
+  -o-object-fit: contain;
+  object-fit: contain; }

@@ -20,7 +20,8 @@
 .categoryCard__imgCont {
   width: 100%;
   margin-bottom: 15px;
-  flex: 1; }
+  flex: 1;
+  position: relative; }
 
 .categoryCard__imgCont a {
   width: 100%;

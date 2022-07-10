@@ -7,9 +7,10 @@ list.forEach(e => {
     e.addEventListener("click", () => {
         if (item.classList.contains("menu_active") && window.innerWidth < 750) {
             item.classList.remove("menu_active")
-            item.style.width = "0px";
-            item.style.height = "0px";
-            item.style.opacity = "0";
+            // item.style.width = "0px";
+            // item.style.height = "0px";
+            // item.style.opacity = "0";
+            item.style.display="none";
             icon_Open.style.display = "unset"
             icon_Close.style.display = "none"
 
@@ -17,9 +18,10 @@ list.forEach(e => {
         else {
             if (window.innerWidth < 750) {
                 item.classList.add("menu_active")
-                item.style.width = "100%";
-                item.style.height = "100%"
-                item.style.opacity = "1";
+                // item.style.width = "100%";
+                // item.style.height = "100%"
+                // item.style.opacity = "1";
+                item.style.display="block";
                 icon_Open.style.display = "none"
                 icon_Close.style.display = "unset"
             }

@@ -1,6 +1,6 @@
 
 <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
-<cart-popup class="cartPopup">
+<cart-popup class="cartPopup" data-qty=1 data-price="{{ product.price }}" >
     <link rel="stylesheet" href="{{ 'cartPopup.css' | asset_url }}">
     <div class="cartPopup__overlay">
         <div class="cartPopup__content">
@@ -39,16 +39,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="cartPopup__checkout">
-                    <div class="cartPopup__term">
-                        <div class="cartPopup__term-checkbox">
-                        </div>
-                        <div class="cartPopup__term-text">I argee with the terms and conditions</div>
-                    </div>
-                    <div class="cartPopup__btnCheckout">
-                        <button class="cartPopup__btnCheckout-btn">PROCEED TO CHECKOUT</button>
-                    </div>
-                </div>
+                {%- render 'snippet-checkout-term' -%}
             </div>
             <div class="cartPopup__closeBtn">
                 {%- render "icon-X" -%}
@@ -69,16 +60,7 @@
                     </a>
                 </div>
             </div>
-            <div class="cartPopup__checkout">
-                <div class="cartPopup__term">
-                    <div class="cartPopup__term-checkbox">
-                    </div>
-                    <div class="cartPopup__term-text">I argee with the terms and conditions</div>
-                </div>
-                <div class="cartPopup__btnCheckout">
-                    <button class="cartPopup__btnCheckout-btn">PROCEED TO CHECKOUT</button>
-                </div>
-            </div>
+            {%- render 'snippet-checkout-term' -%}
         </div> 
     </div>
 </cart-popup>

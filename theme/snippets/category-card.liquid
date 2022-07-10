@@ -4,7 +4,10 @@
     <link rel="stylesheet" href="{{ 'category-card.css' | asset_url }}">
         <div class="categoryCard__imgCont">
             {%- if collection.image.src != blank -%}
-                <a href="{{url}}"> <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /></a>
+                <a href="{{ url }}"> 
+                    {% comment %} <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /> {% endcomment %}
+                    {%- render 'image-style' , image: collection.image.src  -%}
+                </a>
             {%- else -%}
                 {{ 'product-1' | placeholder_svg_tag }}
             {%- endif -%}

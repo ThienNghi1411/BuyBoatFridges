@@ -1,5 +1,4 @@
 .pageBanner {
-  max-width: 720px;
   height: 100%;
   padding: 30px 20px; }
 
@@ -7,6 +6,9 @@
   position: relative;
   margin: 0 auto;
   width: 100%; }
+
+.pageBanner__img {
+  position: relative; }
 
 .pageBanner__img-imgDestop {
   display: none;
@@ -62,23 +64,23 @@
 .tns-nav-active {
   background-color: #000 !important; }
 
-@media (min-width: 720px) {
+@media (min-width: 600px) {
   .pageBanner {
-    max-width: 1280px;
     padding: 30px 50px; }
-  .pageBanner__inner {
+  .pageBanner__inner, .tns-nav {
     width: 100%; }
-  .pageBanner__img-imgDestop {
-    display: block; }
-  .pageBanner__img-imgMobile {
-    display: none; }
   .tns-nav {
-    width: 100%;
     bottom: 12px;
     transform: none;
     justify-content: center; }
   .tns-nav button {
     background-color: #dadada; } }
+
+@media (min-width: 800px) {
+  .pageBanner__img-imgDestop {
+    display: block; }
+  .pageBanner__img-imgMobile {
+    display: none; } }
 
 @media (min-width: 1280px) {
   .pageBanner {

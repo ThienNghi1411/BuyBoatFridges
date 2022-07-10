@@ -2,7 +2,11 @@
   max-width: 600px;
   padding: 30px 20px 0; }
 
-.singleBanner__inner, .singleBanner__inner img {
+.singleBanner__inner {
+  width: 100%;
+  position: relative; }
+
+.singleBanner__inner img {
   width: 100%; }
 
 @media (min-width: 600px) {

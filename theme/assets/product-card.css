@@ -8,7 +8,7 @@
 
 .productCard__imgCont {
   position: relative;
-  height: 350px; }
+  height: 300px; }
 
 .productCard__imgCont, .productCard__imgCont a {
   display: flex;
@@ -20,8 +20,11 @@
   width: 100%; }
 
 .productCard__imgCont img {
+  width: 100%; }
+
+.productCard__imgCont svg {
   width: 100%;
-  max-width: 280px; }
+  height: 100%; }
 
 .productCard__imgCont-tagCont {
   position: absolute;
