@@ -121,3 +121,28 @@ input[type=number] {
     0%{transform: rotate(0deg);}
     100%{transform: rotate(360deg);}
 }
+
+// pa w100 h100 l0 t0
+
+.pa {
+    position: absolute;
+}
+
+.w100{
+    width: 100%;
+}
+
+.h100{
+    height: 100%;
+}
+
+.l0{
+    left: 0;
+}
+
+.t0{
+    top: 0;
+}
+
+
+

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ 'cartQuickView.css' | asset_url }}">
 <script src=" {{ 'cart-quick-view.js' | asset_url }}" defer></script>
-<cart-quick-view class="cartQuickView pa"  style="display: none;">
+<cart-quick-view class="cartQuickView"  style="display: none;">
     <div class="cartQuickView__inner" >
             {%- if cart.item_count == 0 -%}
                 <a href="{{ routes.cart_url }}" class="">

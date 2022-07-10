@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="{{ 'main-cart.css' | asset_url }}">
 <script>console.log({{ cart | json }})</script>
 <script src=" {{ 'cart.js' | asset_url }}" defer></script>
-<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 <div class="breadcrumb">
     <div class="breadcrumb__inner">
         <div class="breadcrumb__option">
@@ -126,22 +125,6 @@
         </div>
     {%- endif -%}
 </main-cart>
-<cart-popup-error class="cartPopUpError">
-    <div class="cartPopUpError__overlay">
-        <div class="cartPopUpError__content">
-            <div class="cartPopUpError__header">
-                <div class="cartPopUpError__header-icon">
-                    {%- render 'icon-warning'-%}
-                </div>
-                <div class="cartPopUpError__header-text">Warning</div>
-            </div>
-            <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
-            <div class="cartPopUpError__iconClose">
-                {%- render 'icon-X' -%}
-            </div>
-        </div>
-    </div>
-</cart-popup-error>
 
 {% schema %}
     {

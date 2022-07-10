@@ -81,28 +81,19 @@
     }).then((data) => {
       spinner.style.display = "none";
       window.scrollTo(0, 0);
-      if (data.status) {
-        let popupError = document.querySelector(".cartPopUpError");
-        popupError.style.display = "block";
-        let errorText = popupError.querySelector(".cartPopUpError__error");
-        errorText.innerText = data.description;
-        let body = document.querySelector("body");
-        body.style.overflow = "hidden";
-      } else {
-        getSectionsToRender().forEach((section) => {
-          if (section.selector === ".cartPopupCont") {
-            const parser = new DOMParser();
-            let elementToAppend = document.querySelector(".cartPopupCont");
-            let domToAdd = parser.parseFromString(data.sections[section.section], "text/html").querySelector(".cartPopup");
-            domToAdd.setAttribute("data-qty", qtyField.value);
-            elementToAppend.appendChild(domToAdd);
-          } else {
-            const elementToReplace = document.querySelector(section.selector);
-            const domReplace = getSectionInnerHTML(data.sections[section.section]);
-            elementToReplace.replaceWith(domReplace.querySelector(section.selector));
-          }
-        });
-      }
+      getSectionsToRender().forEach((section) => {
+        if (section.selector === ".cartPopupCont") {
+          const parser = new DOMParser();
+          let elementToAppend = document.querySelector(".cartPopupCont");
+          let domToAdd = parser.parseFromString(data.sections[section.section], "text/html").querySelector(".cartPopup");
+          domToAdd.setAttribute("data-qty", qtyField.value);
+          elementToAppend.appendChild(domToAdd);
+        } else {
+          const elementToReplace = document.querySelector(section.selector);
+          const domReplace = getSectionInnerHTML(data.sections[section.section]);
+          elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+        }
+      });
     }).catch((error) => {
       console.error("Error:", error);
     });

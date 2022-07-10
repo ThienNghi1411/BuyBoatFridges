@@ -26,6 +26,7 @@ const toggleEnabelScroll = () => {
 }
 
 const showMenuMobile = () => {
+    window.scroll(0,0);
     menuMobileOverLay.style.display= "block";
     menuMobile.style.display= "block";
     toggleEnabelScroll();
@@ -52,11 +53,13 @@ init();
 
 //////////////////////////////////////////////////
 const myCart = document.querySelector(".header__myCart");
-const cartQuickView = document.querySelector(".cartQuickView");
 myCart.addEventListener("click", () => {
+    
+    const cartQuickView = document.querySelector(".cartQuickView");
     if (cartQuickView.style.display === "none"){
         cartQuickView.style.display = "block";
     }else{
         cartQuickView.style.display = "none";
     }
 })
+

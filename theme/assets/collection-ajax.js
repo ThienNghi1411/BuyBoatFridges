@@ -3,10 +3,9 @@
   var tag = document.querySelectorAll(".tag");
   var Query = "";
   var sort_value = document.querySelector(".select-selected");
-  var render_number = 0;
-  var task = false;
   renderItems = () => {
     let spinner = document.querySelector(".collection__spinner");
+    let render_number = parseInt(document.getElementById("display").value);
     spinner.style.display = "unset";
     fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value).then((response) => response.text()).then((data) => {
       let html_div = document.createElement("div");
@@ -82,6 +81,7 @@
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
+    console.log(url_array[5]);
     if (url_array[5] != void 0 && url_array[5] != "") {
       let items = url_array[5].split("+");
       let html_dom = `<div class="filter__tittle  filter_active">
@@ -167,7 +167,6 @@
     let remove_tags = document.querySelectorAll(".remove");
     remove_tags.forEach((e) => {
       e.classList.remove("remove");
-      e.style.pointerEvents = "unset";
     });
   };
   tag.forEach((e) => {
@@ -240,7 +239,7 @@
       spinner.style.display = "none";
       history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value);
       let ProductContainer = html_div.querySelector(".collection__Productcontent");
-      for (i = 0; i < render_number2; i++) {
+      for (i = 0; i < render_number; i++) {
         if (itemOnScreen + i < product_count) {
           let collection_item = ProductContainer.children[itemOnScreen + i];
           let div = document.createElement("div");
@@ -267,21 +266,19 @@
   });
   var footer = document.querySelector(".footer");
   window.addEventListener("scroll", () => {
-    if (!task) {
-      let products = document.querySelectorAll(".productCard").length;
-      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - footer.offsetHeight) {
-        task = true;
-        let tittle = document.querySelector(".collection__tittle").innerHTML;
-        let total = parseInt(tittle.split("(")[1].split(")")[0]);
-        console.log(total);
-        if (products < total) {
-          if (ifinity == 1) {
-            loadmore();
-          }
+    let products = document.querySelectorAll(".productCard").length;
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+      let tittle = document.querySelector(".collection__tittle").innerHTML;
+      let total = parseInt(tittle.split("(")[1].split(")")[0]);
+      console.log(total);
+      if (products < total) {
+        if (ifinity == 1) {
+          loadmore();
         }
       }
     }
   });
+  console.log(document.documentElement.scrollHeight);
   var x;
   var i;
   var j;
@@ -296,14 +293,13 @@
   for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
     ll = selElmnt.length;
-    console.log(ll);
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
     a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
     x[i].appendChild(a);
     b = document.createElement("DIV");
     b.setAttribute("class", "select-items select-hide");
-    for (j = 0; j < ll; j++) {
+    for (j = 1; j < ll; j++) {
       c = document.createElement("DIV");
       c.innerHTML = selElmnt.options[j].innerHTML;
       c.setAttribute("value", selElmnt.options[j].value);
@@ -318,18 +314,8 @@
             s.selectedIndex = i2;
             h.innerHTML = this.innerHTML;
             h.setAttribute("value", s.options[i2].value);
-            let a2 = parseInt(s.options[i2].value);
-            if (a2 > 0) {
-              let value = window.location.href;
-              sort_value = value.split("=")[1];
-              render_number = a2;
-              renderItems();
-            } else {
-              sort_value = s.options[i2].value;
-              render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
-              console.log(render_number);
-              renderItems();
-            }
+            sort_value = s.options[i2].value;
+            renderItems();
             console.log(s.options[i2].value);
             y = this.parentNode.getElementsByClassName("same-as-selected");
             yl = y.length;

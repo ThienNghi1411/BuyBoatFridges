@@ -9,9 +9,8 @@
         position: relative;
         display: flex;
         justify-content: center;
-        height: 350px;
         align-items: center;
-
+        height: 300px;
         & a {
             height: 100%;
             width: 100%;
@@ -21,7 +20,10 @@
         }
         & img{
             width: 100%;
-            max-width: 280px;
+        }
+        & svg {
+            width: 100%;
+            height: 100%;
         }
         &-tagCont{
             position: absolute;

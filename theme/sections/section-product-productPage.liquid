@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
 <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
-
+<script>console.log({{ product | json }})</script>
 {%- assign collectionUrl = "" -%}
 {%- for collection in product.collections -%}
     {%- if collection.title == product.type -%}
@@ -39,8 +39,13 @@
                         {%- for image in product.media -%}
                             <div class="productPage__imgProduct-wrapper">
                                 {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
-                                {%- render 'image-style', image: image , imageRatio: ratio -%}
-     
+                                {%- render 'image-style', image: image  -%}
+                                {%- style -%}
+                                    .productPage__imgProduct-wrapper img {
+                                        aspect-ratio: {{ ratio }};
+                                        object-fit: contain;
+                                    }
+                                {%- endstyle -%}
                                 <div class="productPage__imgProduct-alert">
                                     <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                                 </div>
@@ -126,8 +131,13 @@
                     {%- for image in product.media -%}
                         <div class="productPage__imgProduct-wrapper">
                             {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
-                            {%- render 'image-style', image: image , imageRatio: ratio -%}
- 
+                            {%- render 'image-style', image: image  -%}
+                            {%- style -%}
+                                .productPage__imgProduct-wrapper img {
+                                    aspect-ratio: {{ ratio }};
+                                    object-fit: contain;
+                                }
+                            {%- endstyle -%}
                             <div class="productPage__imgProduct-alert">
                                 <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                             </div>
@@ -164,22 +174,6 @@
     </script>
 </section>
 <div class="cartPopupCont">
-    <cart-popup-error class="cartPopUpError">
-        <div class="cartPopUpError__overlay">
-            <div class="cartPopUpError__content">
-                <div class="cartPopUpError__header">
-                    <div class="cartPopUpError__header-icon">
-                        {%- render 'icon-warning'-%}
-                    </div>
-                    <div class="cartPopUpError__header-text">Warning</div>
-                </div>
-                <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
-                <div class="cartPopUpError__iconClose">
-                    {%- render 'icon-X' -%}
-                </div>
-            </div>
-        </div>
-    </cart-popup-error>
 </div>
 
 <script src="{{ 'product-page.js' | asset_url }}" defer></script>

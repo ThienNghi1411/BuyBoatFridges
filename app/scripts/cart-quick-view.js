@@ -1,6 +1,6 @@
 class CartRemoveButton extends HTMLElement {
     constructor() {
-        console.log('b');
+    
       super();
        this.addEventListener('click', (event) => {
             console.log(this);
@@ -18,26 +18,26 @@ customElements.define('cart-remove-button', CartRemoveButton);
 
 class CartQuickView extends HTMLElement {
     constructor(){
-        console.log('a');
+       
         super();
         this.init();
     }
     init(){
-        
-        let checkBox = this.querySelector(".cartQuickView__checkbox");
-        let checkOutBtn = this.querySelector(".cartQuickView__checkOutBtn")
-        checkBox.addEventListener("click" , () => {
-            let box = checkBox.querySelector(".cartQuickView__checkbox-box");
-            if (box.classList.contains("cartQuickView__checkbox-boxActive")){
-                box.classList.remove("cartQuickView__checkbox-boxActive");
-                checkOutBtn.style.opacity = "0.5";
-                checkOutBtn.style.pointerEvents = "none";
-            }else{
-                box.classList.add("cartQuickView__checkbox-boxActive");
-                checkOutBtn.style.opacity = "1";
-                checkOutBtn.style.pointerEvents = "all";
-            }
-        })
+        // console.log("check");
+        // const checkBox = this.querySelector(".cartQuickView__checkbox");
+        // const checkOutBtn = this.querySelector(".cartQuickView__checkOutBtn")
+        // checkBox.addEventListener("click" , () => {
+        //     let box = checkBox.querySelector(".cartQuickView__checkbox-box");
+        //     if (box.classList.contains("cartQuickView__checkbox-boxActive")){
+        //         box.classList.remove("cartQuickView__checkbox-boxActive");
+        //         checkOutBtn.style.opacity = "0.5";
+        //         checkOutBtn.style.pointerEvents = "none";
+        //     }else{
+        //         box.classList.add("cartQuickView__checkbox-boxActive");
+        //         checkOutBtn.style.opacity = "1";
+        //         checkOutBtn.style.pointerEvents = "all";
+        //     }
+        // })
     }
     getSectionsToRender() {
         return [
@@ -72,19 +72,21 @@ class CartQuickView extends HTMLElement {
             this.getSectionsToRender().forEach((section => {
                 const elementToReplace =
                   document.querySelector(section.selector);
-      
-                elementToReplace.innerHTML =
-                  this.getSectionInnerHTML(data.sections[section.section], section.selector);
+                const domReplace = this.getSectionInnerHTML((data.sections[section.section])).querySelector(section.selector);
+                if (section.selector === ".cartQuickView"){
+                    domReplace.style.display="block"; 
+                }
+                elementToReplace.replaceWith(domReplace);
+                
             }));
         })
         .catch((error) => {
             console.error('Error:', error);
         });
     }
-    getSectionInnerHTML(html, selector) {
+    getSectionInnerHTML(html) {
         return new DOMParser()
-          .parseFromString(html, 'text/html')
-          .querySelector(selector).innerHTML;
+          .parseFromString(html, 'text/html');
       }
 }
 customElements.define('cart-quick-view', CartQuickView);
