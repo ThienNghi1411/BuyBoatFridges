@@ -39,16 +39,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="cartPopup__checkout">
-                    <div class="cartPopup__term">
-                        <div class="cartPopup__term-checkbox">{%- render "icon-check" -%}
-                        </div>
-                        <div class="cartPopup__term-text">I argee with the terms and conditions</div>
-                    </div>
-                    <div class="cartPopup__btnCheckout">
-                        <button class="cartPopup__btnCheckout-btn">PROCEED TO CHECKOUT</button>
-                    </div>
-                </div>
+                {%- render 'snippet-checkout-term' -%}
             </div>
             <div class="cartPopup__closeBtn">
                 {%- render "icon-X" -%}
@@ -69,15 +60,7 @@
                     </a>
                 </div>
             </div>
-            <div class="cartPopup__checkout">
-                <div class="cartPopup__term">
-                    <div class="cartPopup__term-checkbox">{%- render "icon-check" -%}</div>
-                    <div class="cartPopup__term-text">I argee with the terms and condition</div>
-                </div>
-                <div class="cartPopup__btnCheckout">
-                    <button class="cartPopup__btnCheckout-btn">PROCEED TO CHECKOUT</button>
-                </div>
-            </div>
+            {%- render 'snippet-checkout-term' -%}
         </div> 
     </div>
 </cart-popup>

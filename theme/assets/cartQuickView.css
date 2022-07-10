@@ -156,3 +156,7 @@
 .cartQuickView__viewCartBtn-btn {
   cursor: pointer;
   font-weight: 700; }
+
+@media (max-width: 1000px) {
+  .cartQuickView {
+    display: none !important; } }

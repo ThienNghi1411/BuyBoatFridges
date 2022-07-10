@@ -5,7 +5,7 @@
     let array = filter.split("?");
     let url_array = array[0].split("/");
     console.log(url_array.length);
-    if (url_array.length >= 6) {
+    if (url_array[5] != void 0 && url_array[5] != "") {
       let html_dom = `<div class="filter__tittle  filter_active">
         <div class="tittle__text">SHOPING BY:</div>
         <div class="Icon__Control">
@@ -44,6 +44,15 @@
         var div = document.createElement("div");
         div.innerHTML = html_dom2;
         filter_container.appendChild(div);
+        console.log(array[1]);
+      }
+      if (array[1] != "" && array[1] != void 0) {
+        let sort_options = document.querySelectorAll(".filter-option");
+        sort_options.forEach((e) => {
+          if (e.getAttribute("value") == array[1].split("=")[1]) {
+            e.classList.add("same-as-selected");
+          }
+        });
       }
     }
   });
@@ -86,24 +95,6 @@
       });
     }
   });
-  Shopify.queryParams = {};
-  if (location.search.length) {
-    params = location.search.substr(1).split("&");
-    for (i = 0; i < params.length; i++) {
-      keyValue = params[i].split("=");
-      if (keyValue.length) {
-        Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
-      }
-    }
-  }
-  var params;
-  var keyValue;
-  var i;
-  document.querySelector("#sort-by").addEventListener("change", function(e) {
-    var value = e.target.value;
-    Shopify.queryParams.sort_by = value;
-    location.search = new URLSearchParams(Shopify.queryParams).toString();
-  });
   document.addEventListener("DOMContentLoaded", function() {
     let empty = document.querySelector(".collection__empty");
     let collection_content = document.querySelector(".collection__Productcontent").childElementCount;
@@ -111,4 +102,86 @@
       empty.style.display = "unset";
     }
   });
+  var x;
+  var i;
+  var j;
+  var l;
+  var ll;
+  var selElmnt;
+  var a;
+  var b;
+  var c;
+  x = document.getElementsByClassName("custom-select");
+  l = x.length;
+  for (i = 0; i < l; i++) {
+    selElmnt = x[i].getElementsByTagName("select")[0];
+    ll = selElmnt.length;
+    console.log(ll);
+    a = document.createElement("DIV");
+    a.setAttribute("class", "select-selected");
+    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+    x[i].appendChild(a);
+    b = document.createElement("DIV");
+    b.setAttribute("class", "select-items select-hide");
+    for (j = 0; j < ll; j++) {
+      c = document.createElement("DIV");
+      c.innerHTML = selElmnt.options[j].innerHTML;
+      c.setAttribute("value", selElmnt.options[j].value);
+      c.classList.add("filter-option");
+      c.addEventListener("click", function(e) {
+        var y, i2, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i2 = 0; i2 < sl; i2++) {
+          if (s.options[i2].innerHTML == this.innerHTML) {
+            s.selectedIndex = i2;
+            h.innerHTML = this.innerHTML;
+            h.setAttribute("value", s.options[i2].value);
+            let a2 = parseInt(s.options[i2].value);
+            console.log(s.options[i2].value);
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            Shopify.queryParams = {};
+            Shopify.queryParams.sort_by = s.options[i2].value;
+            location.search = new URLSearchParams(Shopify.queryParams).toString();
+            for (k = 0; k < yl; k++) {
+              y[k].classList.remove("same-as-selected");
+            }
+            this.classList.add("same-as-selected");
+            break;
+          }
+        }
+        h.click();
+      });
+      b.appendChild(c);
+    }
+    x[i].appendChild(b);
+    a.addEventListener("click", function(e) {
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+  }
+  function closeAllSelect(elmnt) {
+    var x2, y, i2, xl, yl, arrNo = [];
+    x2 = document.getElementsByClassName("select-items");
+    y = document.getElementsByClassName("select-selected");
+    xl = x2.length;
+    yl = y.length;
+    for (i2 = 0; i2 < yl; i2++) {
+      if (elmnt == y[i2]) {
+        arrNo.push(i2);
+      } else {
+        y[i2].classList.remove("select-arrow-active");
+      }
+    }
+    for (i2 = 0; i2 < xl; i2++) {
+      if (arrNo.indexOf(i2)) {
+        x2[i2].classList.add("select-hide");
+      }
+    }
+  }
+  document.addEventListener("click", closeAllSelect);
 })();

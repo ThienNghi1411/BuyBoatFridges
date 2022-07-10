@@ -3,9 +3,10 @@
   var tag = document.querySelectorAll(".tag");
   var Query = "";
   var sort_value = document.querySelector(".select-selected");
+  var render_number = 0;
+  var task = false;
   renderItems = () => {
     let spinner = document.querySelector(".collection__spinner");
-    let render_number = parseInt(document.getElementById("display").value);
     spinner.style.display = "unset";
     fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value).then((response) => response.text()).then((data) => {
       let html_div = document.createElement("div");
@@ -81,7 +82,6 @@
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
-    console.log(url_array[5]);
     if (url_array[5] != void 0 && url_array[5] != "") {
       let items = url_array[5].split("+");
       let html_dom = `<div class="filter__tittle  filter_active">
@@ -135,9 +135,28 @@
       });
       removeTags();
       Query = url_array[5];
+      if (array[1] != "" && array[1] != void 0) {
+        sort_value = array[1].split("=")[1];
+        let sort_options = document.querySelectorAll(".filter-option");
+        sort_options.forEach((e) => {
+          if (e.getAttribute("value") == array[1].split("=")[1]) {
+            e.classList.add("same-as-selected");
+          }
+        });
+      } else {
+        sort_value = "price-ascending";
+        document.getElementsByClassName("select-items")[0].children[4].classList.add("same-as-selected");
+      }
+      document.getElementsByClassName("select-items")[1].children[0].classList.add("same-as-selected");
+      render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
       renderItems();
     } else {
+      removeTags();
       Query = "";
+      sort_value = "price-ascending";
+      document.getElementsByClassName("select-items")[0].children[4].classList.add("same-as-selected");
+      document.getElementsByClassName("select-items")[1].children[0].classList.add("same-as-selected");
+      render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
       renderItems();
     }
   });
@@ -148,6 +167,7 @@
     let remove_tags = document.querySelectorAll(".remove");
     remove_tags.forEach((e) => {
       e.classList.remove("remove");
+      e.style.pointerEvents = "unset";
     });
   };
   tag.forEach((e) => {
@@ -208,9 +228,9 @@
   });
   loadmore = () => {
     let spinner = document.querySelector(".collection__spinner");
-    let render_number = parseInt(document.getElementById("display").value);
+    let render_number2 = parseInt(document.getElementById("display").value);
     spinner.style.display = "unset";
-    fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort.value).then((response) => response.text()).then((data) => {
+    fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value).then((response) => response.text()).then((data) => {
       let html_div = document.createElement("div");
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
@@ -218,9 +238,9 @@
       let itemOnScreen = document.querySelectorAll(".productCard").length;
       collection__tittle.innerHTML = collection_handle + `(${product_count})`;
       spinner.style.display = "none";
-      history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort.value);
+      history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value);
       let ProductContainer = html_div.querySelector(".collection__Productcontent");
-      for (i = 0; i < render_number; i++) {
+      for (i = 0; i < render_number2; i++) {
         if (itemOnScreen + i < product_count) {
           let collection_item = ProductContainer.children[itemOnScreen + i];
           let div = document.createElement("div");
@@ -234,6 +254,7 @@
         let loadmore2 = document.querySelector(".collection__loadMore");
         loadmore2.style.display = "none";
       }
+      task = false;
     });
   };
   var Load_Button = document.querySelector(".collection__loadMore");
@@ -244,21 +265,23 @@
   display.addEventListener("change", (e) => {
     renderItems();
   });
-  var footer = document.querySelector(".footer").getBoundingClientRect().height;
+  var footer = document.querySelector(".footer");
   window.addEventListener("scroll", () => {
-    let products = document.querySelectorAll(".productCard").length;
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
-      let tittle = document.querySelector(".collection__tittle").innerHTML;
-      let total = parseInt(tittle.split("(")[1].split(")")[0]);
-      console.log(total);
-      if (products < total) {
-        if (ifinity == 1) {
-          loadmore();
+    if (!task) {
+      let products = document.querySelectorAll(".productCard").length;
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - footer.offsetHeight) {
+        task = true;
+        let tittle = document.querySelector(".collection__tittle").innerHTML;
+        let total = parseInt(tittle.split("(")[1].split(")")[0]);
+        console.log(total);
+        if (products < total) {
+          if (ifinity == 1) {
+            loadmore();
+          }
         }
       }
     }
   });
-  console.log(document.documentElement.scrollHeight);
   var x;
   var i;
   var j;
@@ -273,13 +296,14 @@
   for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
     ll = selElmnt.length;
+    console.log(ll);
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
     a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
     x[i].appendChild(a);
     b = document.createElement("DIV");
     b.setAttribute("class", "select-items select-hide");
-    for (j = 1; j < ll; j++) {
+    for (j = 0; j < ll; j++) {
       c = document.createElement("DIV");
       c.innerHTML = selElmnt.options[j].innerHTML;
       c.setAttribute("value", selElmnt.options[j].value);
@@ -294,8 +318,18 @@
             s.selectedIndex = i2;
             h.innerHTML = this.innerHTML;
             h.setAttribute("value", s.options[i2].value);
-            sort_value = s.options[i2].value;
-            renderItems();
+            let a2 = parseInt(s.options[i2].value);
+            if (a2 > 0) {
+              let value = window.location.href;
+              sort_value = value.split("=")[1];
+              render_number = a2;
+              renderItems();
+            } else {
+              sort_value = s.options[i2].value;
+              render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
+              console.log(render_number);
+              renderItems();
+            }
             console.log(s.options[i2].value);
             y = this.parentNode.getElementsByClassName("same-as-selected");
             yl = y.length;
