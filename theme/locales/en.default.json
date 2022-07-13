@@ -21,12 +21,33 @@
       "addToCart":"Add to cart",
       "buyNow":"BUY NOW",
       "available":"Available",
+      "preOrder":"Pre - Order",
+      "preOrderBtn":"PRE-ORDER",
       "inStock":"In Stock",
       "outStock":"Out of stock",
       "agreeTerms":"I agree with the terms and conditions",
       "vendor":"Vendor",
       "productType":"Product Type",
       "tag":"Tags"
+    },
+    "cart":{
+      "shipping":{
+        "one_shipping_rate":"There is one shipping rate available for {{code}}, {{province}}, {{country}}.",
+        "many_shipping_rates":"There are {{number}} shipping rates available for {{code}}, {{province}}, {{country}}.",
+        "not_found_shipping_rate":"Not found shipping rate available for {{code}}, {{province}}, {{country}}.",
+        "button_submit": "Calculate shipping",
+        "button_submited": "Calculating..."
+      }
+    },
+    "login-form":{
+      "require":"* Required Fields",
+      "lost":"Lost your password?",
+      "cancel":"or Cancel"
+    },
+    "register-form":{
+      "require":"* Required Fields",
+      "return":"or Return to Store"
     }
   }
+
 }

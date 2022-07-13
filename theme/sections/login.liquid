@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="{{ 'login.css' | asset_url }}">
+
+<section class="login">
+    <div class="login_inner">
+        <div class="login_inner_left_col">
+            <h2 class="left_col-tittle">{{section.settings.NewCus_title}}</h2>
+            <h2 class="left_col-text">{{section.settings.NewCus_textarea}}</h2>
+            <div class="left_col_button"><a href="/account/register">{{section.settings.NewCus_buttonText}}</a></div>
+        </div>
+        <div class="login_inner_right_col login-form">
+            <h2 class="right_col-tittle">{{section.settings.Login_title}}</h2>
+            <p class="right_col-subText">{{section.settings.Login_textarea}}</p>
+            {% form 'customer_login' %}
+
+            {{ form.errors | default_errors }}
+            <div class="form_group">
+                <label for="customer_email">{{section.settings.Login_email_label}}</label>
+                <input type="email" name="customer[email]" placeholder="Enter E-mail" class="loginForm-input" />
+                {% if section.settings.show_email_required %}
+                <div class="form_requiredText">* Required Fields</div>
+                {% endif %}
+          
+            </div>
+
+            <div class="form_group">
+                <label for="customer_password">{{section.settings.Login_pass_label}}</label>
+                <input type="password" name="customer[password]" placeholder="Enter Password" class="loginForm-input" />
+                {% if section.settings.show_pass_required %}
+                <div class="form_requiredText">* Required Fields</div>
+                {% endif %}
+            </div>
+
+            <div class="form_summit">
+                <input type="submit" value="{{section.settings.Login_button}}" class="loginForm-submit" />
+                <p href="" class="loginForm-submit-text Forget">Lost your password?</p>
+            </div>
+
+
+            {% endform %}
+
+        </div>
+        <div class="login_inner_right_col forget-form">
+            <h2 class="right_col-tittle">RESET PASSWORD</h2>
+            <p class="right_col-subText">We will send you an email to reset your password.</p>
+            {% form 'recover_customer_password' %}
+
+            {{ form.errors | default_errors }}
+
+           
+
+            <div class="form_group">
+                <label for="customer_email">Email Address</label>
+                <input type="email" name="email" placeholder="Enter E-mail" class="loginForm-input"/>
+                <div class="form_requiredText">* Required Fields</div>
+            </div>
+            <div class="form_summit">
+                <input type="submit" value="SUBMIT" class="loginForm-submit" />
+                <p href="" class="loginForm-submit-text Cancel">or Cancel</p>
+            </div>
+
+            {% endform %}
+        </div>
+    </div>
+</section>
+{% if section.settings.display == '1' %}
+{% style %}
+   
+    .login .login_inner {
+        flex-direction:column !important;
+    }
+    @media (min-width:720px)
+    {
+        .login_inner_right_col 
+    {
+        margin: 0 auto;
+    }
+    .login_inner_left_col 
+    {
+        margin: 0 auto;
+    }
+    }
+    
+    
+{% endstyle %}
+{% endif %}
+<script src="{{ 'login.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Login",
+  "tag": "section",
+  "settings": [
+  {
+    "type": "select",
+    "id": "display",
+    "label": "Choose Display",
+    "options": [
+      {
+        "value": "1",
+        "label": "Column"
+      },
+      {
+        "value": "2",
+        "label": "Row"
+      }
+      
+    ],
+    "default": "2"
+  },
+  {
+    "type":"header",
+    "content":"NEW CUSTOMER FORM"
+  },
+  {
+    "type":"text",
+    "id":"NewCus_title",
+    "label":"Edit tilte",
+    "default":"NEW CUSTOMER"
+  },
+  {
+    "type": "textarea",
+    "id": "NewCus_textarea",
+    "label": "Edit text area: ",
+    "default":"Some Text"
+  },
+  {
+    "type":"text",
+    "id":"NewCus_buttonText",
+    "label":"Edit button text",
+    "default":"CREATE AN ACCOUNT"
+  },
+  {
+    "type":"header",
+    "content":"LOGIN FORM"
+  },
+  {
+    "type":"text",
+    "id":"Login_title",
+    "label":"Edit title",
+    "default":"LOGIN"
+  },
+
+  {
+    "type":"textarea",
+    "id":"Login_textarea",
+    "label":"Edit textarea",
+    "default":"If you have an account with us, please log in."
+  },
+  {
+    "type":"text",
+    "id":"Login_email_label",
+    "label":"Edit email label",
+    "default":"EMAIL*"
+  },
+  {
+    "type": "checkbox",
+    "id": "show_email_required",
+    "label": "Show Required Fields",
+    "default": true
+  },
+  {
+    "type":"text",
+    "id":"Login_pass_label",
+    "label":"Edit password label",
+    "default":"PASSWORD*"
+  },
+  {
+    "type": "checkbox",
+    "id": "show_pass_required",
+    "label": "Show Required Fields",
+    "default": true
+  },
+  {
+    "type":"text",
+    "id":"Login_button",
+    "label":"Edit Login button text",
+    "default":"LOGIN"
+  }
+ 
+ 
+
+  
+
+  ]
+  
+}
+{% endschema %}

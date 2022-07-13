@@ -76,11 +76,11 @@
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1080px){
     .homeCategories{
-        max-width: 1440px;
+
         &__inner{
-            max-width: 1000px;
+            width: 1000px;
         }
         &__content{
             display: grid;
@@ -89,16 +89,11 @@
         }
     }
 }
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     .homeCategories{
         max-width: 100%;
         &__inner{
-            max-width: 1220px;
-        }
-        &__content{
-            display: grid;
-            grid-template-columns: repeat(6,1fr);
-            gap: 58px 50px;
+            width: 1200px;
         }
     }
 }

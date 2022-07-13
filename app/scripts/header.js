@@ -53,13 +53,44 @@ init();
 
 //////////////////////////////////////////////////
 const myCart = document.querySelector(".header__myCart");
-myCart.addEventListener("click", () => {
-    
-    const cartQuickView = document.querySelector(".cartQuickView");
+const cartQuickViewMobile = document.querySelector(".miniCartMobile");
+const cartQuickView = document.querySelector(".miniCartDestop__wrap");
+myCart.addEventListener("click", e => {
+    e.stopPropagation();
     if (cartQuickView.style.display === "none"){
         cartQuickView.style.display = "block";
+        document.addEventListener('click' , e => {
+            if (!cartQuickView.contains(e.target)) {
+              cartQuickView.style.display = 'none';
+            }
+        })
     }else{
         cartQuickView.style.display = "none";
     }
+
+   
+    cartQuickViewMobile.style.display === "none" ?   cartQuickViewMobile.style.display = "block" : cartQuickViewMobile.style.display = "none";
+    if (window.innerWidth < 1000){
+        toggleEnabelScroll();
+    }
 })
 
+
+
+const miniCartMobileOverlay = cartQuickViewMobile.querySelector(".miniCartMobile__overlay");
+const miniCartMobileContent = cartQuickViewMobile.querySelector(".miniCartMobile__content");
+const miniCartMobileBtnClose = cartQuickViewMobile.querySelector(".miniCartMobile__title-icon");
+
+miniCartMobileOverlay.addEventListener("click" , () => {
+    cartQuickViewMobile.style.display="none";
+    toggleEnabelScroll();
+})
+
+miniCartMobileContent.addEventListener("click" , (e) => {
+    e.stopPropagation();
+})
+
+miniCartMobileBtnClose.addEventListener('click' , () => {
+    cartQuickViewMobile.style.display="none";
+    toggleEnabelScroll();
+})

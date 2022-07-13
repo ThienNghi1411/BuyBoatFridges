@@ -4,7 +4,6 @@
   */
 
   import "./common/theme-section";
-  import homeFilter from "./homePage-filter";
 
   register("page-banner", {
     onLoad: function () {
@@ -26,12 +25,9 @@
     onBlockSelect: function (e) {},
     onBlockDeselect: function (e) {},
   });
-  register('home-filter',  {
-    onload: homeFilter
-  })
+
   register("mini-banner", {
     onLoad: function () {
-
       var slider = tns({
         container: '.miniBanner__bannerCont',
         items: 1,
@@ -40,6 +36,7 @@
         nav: true,
         navPosition: "bottom",
         controls: false,
+        disable: false,
         responsive: {
           900:{
             disable:true,
@@ -63,6 +60,28 @@
 
     }
   });
+
+  register("mini-Productbanner", {
+    onLoad: function () {
+      var slider = tns({
+        container: '.miniBanner__productBannerCont',
+        items: 1,
+        mouseDrag: true,
+        autoplayButtonOutput: false,
+        nav: true,
+        navPosition: "bottom",
+        controls: false,
+        disable: false,
+        responsive: {
+          900:{
+            disable:true,
+          }
+        }
+      });
+
+    }
+  });
+
   register("collection-slider", {
     onLoad: function () {
       const settings = JSON.parse(this.container.querySelector("#collectionSlider_settings").innerText);

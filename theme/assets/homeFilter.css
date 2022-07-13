@@ -210,11 +210,9 @@
     padding: 15px 0;
     cursor: pointer; } }
 
-@media (min-width: 1280px) {
-  .homeFilter {
-    max-width: 100%; }
+@media (min-width: 1080px) {
   .homeFilter__inner {
-    max-width: 1000px; }
+    width: 1000px; }
   .homeFilter__content {
     flex-direction: row;
     justify-content: space-between;
@@ -229,11 +227,9 @@
     width: 36px;
     height: 36px; } }
 
-@media (min-width: 1440px) {
-  .homeFilter {
-    max-width: 100%; }
+@media (min-width: 1280px) {
   .homeFilter__inner {
-    max-width: 1220px; }
+    width: 1200px; }
   .homeFilter__content {
     flex-direction: row;
     justify-content: space-between;

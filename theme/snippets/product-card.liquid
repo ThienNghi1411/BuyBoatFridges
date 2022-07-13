@@ -1,7 +1,7 @@
 
 
 <div class="productCard">
-    {%- form 'product' , product -%}
+    {%- form 'product' , product , class: "productCard__form" -%}
         <input type="hidden" name="id" value="{{ product.variants[0].id }}">    
         <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
         <div class="productCard__imgCont">
@@ -14,10 +14,11 @@
                 {% endif %}
             </a>
             <div class="productCard__imgCont-tagCont">
-                {% if product.compare_at_price > product.price %}
-                    {% assign floatNum = product.price | times: 1.0 %}    
-                    {% assign percentSale = product.compare_at_price | divided_by: floatNum | times: 100 | minus: 100 | round %}
-                    <div class="productCard__imgCont-tagCont-text">SALE {{ percentSale }}%</div>
+                {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                    {% assign floatNum =  product.variants[0].compare_at_price | times: 1.0 %}    
+                    {% assign percentSale = product.variants[0].price | divided_by: floatNum | times: 100.0 %}
+                    {% assign resPercent = 100.0 | minus: percentSale | round %}
+                    <div class="productCard__imgCont-tagCont-text">SALE {{ resPercent }}%</div>
                 {% endif %}
             </div>
         </div>

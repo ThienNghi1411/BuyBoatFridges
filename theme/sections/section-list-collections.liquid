@@ -2,15 +2,6 @@
 
 
 {% assign  var2= section.settings.collection_grid | times: 1 %}
-{% style %}
-
-
-.collections__inner{
-    grid-template-columns: repeat(var2,1fr);
-}
-{% endstyle %}
-
-
 
 <div class="collections__wrapper">
   <div class="collections">
@@ -24,10 +15,14 @@
     </div>
   </div>
 </div>
+{% style %}
+.collections__inner{
+    grid-template-columns: repeat(var2,1fr);
+}
+{% endstyle %}
 {% schema %}
 {
   "name": "Collections",
- 
   "class": "List-collection",
   "settings":[
   {
@@ -54,12 +49,7 @@
     ],
     "default": "4"
   }
-
-
-
-
   ],
-
   "blocks": [
      {
        "name": "collection",

@@ -1,5 +1,4 @@
 .register {
-  max-width: 320px;
   margin: 0 auto; }
 
 .register .register_inner {
@@ -56,25 +55,15 @@
 
 .register .register_inner .register_form .form_submit .registerForm-submit:hover {
   color: #fff;
-  background-color: #000; }
+  border: unset;
+  background-color: var(--primary-color); }
 
-@media (min-width: 320px) {
-  .register {
-    max-width: 480px; } }
-
-@media (min-width: 480px) {
-  .register {
-    max-width: 720px; } }
-
-@media (min-width: 720px) {
-  .register {
-    max-width: 860px; } }
+@media (min-width: 600px) {
+  .register .register_inner {
+    padding: 30px 50px; } }
 
 @media (min-width: 860px) {
-  .register {
-    max-width: 1080px; }
   .register .register_inner {
-    padding: 30px 50px;
     max-width: 50%;
     margin: 0 auto; }
   .register .register_inner .register-tittle {
@@ -83,14 +72,10 @@
 
 @media (min-width: 1080px) {
   .register {
-    max-width: 1280px; } }
-
-@media (min-width: 1280px) {
-  .register {
     max-width: 1000px; }
   .register .register_inner {
     padding: 30px 0; } }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .register {
-    max-width: 1220px; } }
+    max-width: 1200px; } }

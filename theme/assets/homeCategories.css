@@ -44,22 +44,16 @@
   .homeCategories__content {
     grid-template-columns: repeat(5, 1fr); } }
 
-@media (min-width: 1280px) {
-  .homeCategories {
-    max-width: 1440px; }
+@media (min-width: 1080px) {
   .homeCategories__inner {
-    max-width: 1000px; }
+    width: 1000px; }
   .homeCategories__content {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 58px 50px; } }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .homeCategories {
     max-width: 100%; }
   .homeCategories__inner {
-    max-width: 1220px; }
-  .homeCategories__content {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 58px 50px; } }
+    width: 1200px; } }

@@ -11,30 +11,42 @@
     const dropDowns = document.querySelectorAll(".filterOption__dropdown");
     dropDowns.forEach((dropDown) => {
       dropDown.addEventListener("click", () => {
-        let selectCont = dropDown.querySelector(".filterOption__dropdownCont");
-        selectCont.style.display = "block";
-        let selectOptions = selectCont.querySelectorAll(".filterOption__dropdownCont-option");
-        selectOptions.forEach((selectOption) => {
-          selectOption.addEventListener("click", () => {
-            removeClass(selectOptions, "filterOption__dropdownCont-optionActive");
-            selectOption.classList.add("filterOption__dropdownCont-optionActive");
+        const dropDownList = dropDown.querySelector(".filterOption__dropdownCont");
+        dropDownList.style.display = "block";
+        const dropDownOptions = dropDownList.querySelectorAll(".filterOption__dropdownCont-option");
+        dropDownOptions.forEach((dropDownOption) => {
+          dropDownOption.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (dropDownOption.classList.contains("filterOption__dropdownCont-optionActive")) {
+              let btnConfirm = dropDown.parentElement.querySelector(".filterOption__btnConfirm");
+              let placeHolder = dropDown.querySelector(".filterOption__dropdown-placeHolder");
+              placeHolder.innerText = dropDownOption.innerText;
+              dropDown.classList.add("backgroundActive");
+              placeHolder.classList.add("filterOption__dropdown-selected");
+              btnConfirm.classList.add("backgroundActive");
+              btnConfirm.setAttribute("value", dropDownOption.innerText);
+              dropDownList.style.display = "none";
+            } else {
+              removeClass(dropDownOptions, "filterOption__dropdownCont-optionActive");
+              dropDownOption.classList.add("filterOption__dropdownCont-optionActive");
+            }
           });
         });
       });
-      let btnConfirm = dropDown.parentElement.querySelector(".filterOption__btnConfirm");
+    });
+    const btnConfirms = document.querySelectorAll(".filterOption__btnConfirm");
+    let url = "/collections/fridges/";
+    btnConfirms.forEach((btnConfirm) => {
       btnConfirm.addEventListener("click", () => {
-        let placeHolder = dropDown.querySelector(".filterOption__dropdown-placeHolder");
-        let selectCont = dropDown.querySelector(".filterOption__dropdownCont");
-        let selectOptions = selectCont.querySelectorAll(".filterOption__dropdownCont-option");
-        selectOptions.forEach((tmp) => {
-          if (tmp.classList.contains("filterOption__dropdownCont-optionActive")) {
-            placeHolder.innerText = tmp.innerText;
-            dropDown.classList.add("backgroundActive");
-            placeHolder.classList.add("filterOption__dropdown-selected");
-            btnConfirm.classList.add("backgroundActive");
+        if (btnConfirm.classList.contains("backgroundActive")) {
+          for (let i = 0; i < btnConfirms.length; i++) {
+            if (btnConfirms[i].getAttribute("value") !== "") {
+              let value = btnConfirms[i].getAttribute("value").replaceAll(" ", "-").toLowerCase();
+              url += value + "+";
+            }
           }
-        });
-        selectCont.style.display = "none";
+          window.location.href = url;
+        }
       });
     });
   };

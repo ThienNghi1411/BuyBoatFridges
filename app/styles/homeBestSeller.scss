@@ -73,30 +73,22 @@
 
 @media (min-width: 1080px){
     .homeBestSeller{
-  
+        &__inner{
+            width: 1000px;
+        }
+        &__contentCont{
+            gap: 45px;
+        }
         &__contentCont{
             grid-template-columns: repeat(4,1fr);
         }
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1281px){
     .homeBestSeller{
-  
         &__inner{
-            max-width: 1000px;
-        }
-        &__contentCont{
-            gap: 45px;
-        }
-    }
-}
-
-@media (min-width: 1440px){
-    .homeBestSeller{
-        max-width: 100%;
-        &__inner{
-            max-width: 1220px;
+            width: 1200px;
         }
         &__contentCont{
           

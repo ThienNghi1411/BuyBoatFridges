@@ -1,71 +1,4 @@
 (() => {
-  var __create = Object.create;
-  var __defProp = Object.defineProperty;
-  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __getProtoOf = Object.getPrototypeOf;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-  var __commonJS = (cb, mod) => function __require() {
-    return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-  };
-  var __reExport = (target, module, desc) => {
-    if (module && typeof module === "object" || typeof module === "function") {
-      for (let key of __getOwnPropNames(module))
-        if (!__hasOwnProp.call(target, key) && key !== "default")
-          __defProp(target, key, { get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable });
-    }
-    return target;
-  };
-  var __toModule = (module) => {
-    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
-  };
-
-  // app/scripts/homePage-filter.js
-  var require_homePage_filter = __commonJS({
-    "app/scripts/homePage-filter.js"() {
-      var removeClass = (doms, className) => {
-        doms.forEach((dom) => {
-          if (dom.classList.contains(className)) {
-            dom.classList.remove(className);
-          }
-        });
-      };
-      var init = () => {
-        const dropDowns = document.querySelectorAll(".filterOption__dropdown");
-        dropDowns.forEach((dropDown) => {
-          dropDown.addEventListener("click", () => {
-            let selectCont = dropDown.querySelector(".filterOption__dropdownCont");
-            selectCont.style.display = "block";
-            let selectOptions = selectCont.querySelectorAll(".filterOption__dropdownCont-option");
-            selectOptions.forEach((selectOption) => {
-              selectOption.addEventListener("click", () => {
-                removeClass(selectOptions, "filterOption__dropdownCont-optionActive");
-                selectOption.classList.add("filterOption__dropdownCont-optionActive");
-              });
-            });
-          });
-          let btnConfirm = dropDown.parentElement.querySelector(".filterOption__btnConfirm");
-          btnConfirm.addEventListener("click", () => {
-            let placeHolder = dropDown.querySelector(".filterOption__dropdown-placeHolder");
-            let selectCont = dropDown.querySelector(".filterOption__dropdownCont");
-            let selectOptions = selectCont.querySelectorAll(".filterOption__dropdownCont-option");
-            selectOptions.forEach((tmp) => {
-              if (tmp.classList.contains("filterOption__dropdownCont-optionActive")) {
-                placeHolder.innerText = tmp.innerText;
-                dropDown.classList.add("backgroundActive");
-                placeHolder.classList.add("filterOption__dropdown-selected");
-                btnConfirm.classList.add("backgroundActive");
-              }
-            });
-            selectCont.style.display = "none";
-          });
-        });
-      };
-      init();
-    }
-  });
-
   // node_modules/@shopify/theme-sections/section.js
   var SECTION_ID_ATTR = "data-section-id";
   function Section(container, properties) {
@@ -304,7 +237,6 @@
   });
 
   // app/scripts/theme.js
-  var import_homePage_filter = __toModule(require_homePage_filter());
   /*@license
     Gofarm by ShopThemes (https://www.shopthemes.net)
     Access unminified JS in assets/theme.js
@@ -334,9 +266,6 @@
     onBlockDeselect: function(e) {
     }
   });
-  register("home-filter", {
-    onload: import_homePage_filter.default
-  });
   register("mini-banner", {
     onLoad: function() {
       var slider = tns({
@@ -347,6 +276,7 @@
         nav: true,
         navPosition: "bottom",
         controls: false,
+        disable: false,
         responsive: {
           900: {
             disable: true
@@ -361,6 +291,25 @@
         nav: true,
         navPosition: "bottom",
         controls: false,
+        responsive: {
+          900: {
+            disable: true
+          }
+        }
+      });
+    }
+  });
+  register("mini-Productbanner", {
+    onLoad: function() {
+      var slider = tns({
+        container: ".miniBanner__productBannerCont",
+        items: 1,
+        mouseDrag: true,
+        autoplayButtonOutput: false,
+        nav: true,
+        navPosition: "bottom",
+        controls: false,
+        disable: false,
         responsive: {
           900: {
             disable: true

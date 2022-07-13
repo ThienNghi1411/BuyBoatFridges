@@ -44,17 +44,12 @@
     grid-template-columns: repeat(3, 1fr); } }
 
 @media (min-width: 1080px) {
+  .homeBestSeller__inner {
+    width: 1000px; }
   .homeBestSeller__contentCont {
+    gap: 45px;
     grid-template-columns: repeat(4, 1fr); } }
 
-@media (min-width: 1280px) {
+@media (min-width: 1281px) {
   .homeBestSeller__inner {
-    max-width: 1000px; }
-  .homeBestSeller__contentCont {
-    gap: 45px; } }
-
-@media (min-width: 1440px) {
-  .homeBestSeller {
-    max-width: 100%; }
-  .homeBestSeller__inner {
-    max-width: 1220px; } }
+    width: 1200px; } }

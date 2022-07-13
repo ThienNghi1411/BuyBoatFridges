@@ -53,58 +53,64 @@
                     <img src="{{ section.settings.iconUser | image_url }}" class="header__account-iconUser"/>
                 </a>
             </div>
-            <cart-quick-view class="cartQuickView pa"  style="display: none;">
-                <div class="cartQuickView__inner" >
-                        {%- if cart.item_count == 0 -%}
-                            <a href="{{ routes.cart_url }}" class="">
-                                <div class="cartQuickView__emptyCart">
-                                    <div class="cartQuickView__emptyCart-icon">
-                                        <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
-                                    </div>
-                                    <div class="cartQuickView__emptyCart-text">No Products in the Cart</div>
-                                </div>    
-                            </a>
-                        {%- else -%}
-                            {%- form 'cart', cart -%}
-                                <div class="cartQuickView__contentCont">
-                                    {%- for item in cart.items -%}
-                                        <div class="cartQuickView__productLine">
-                                            <div class="cartQuickView__productLine-imgCont">
-                                                {%- render "image-style" , image: item.image -%}
-                                            </div>
-                                            <div class="cartQuickView__productLine-productInfo">
-                                                
-                                                <div class="cartQuickView__productLine-productTitle">{{ item.title }}</div>
-                                                <div class="cartQuickView__productLine-qtyAndPrice">
-                                                    <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>
-                                                    <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>
-                                                </div>
-                                            </div>
-                                            <cart-remove-button class="cartQuickView__productLine-removeIcon" data-idProduct="{{ item.variant_id }}">
-                                                <a href="{{ item.url_to_remove }}">
-                                                    {%- render 'icon-remove' -%}
-                                                </a>
-                                                <div class="cartQuickView__productLine-spinner"></div>
-                                            </cart-remove-button>
-                                        </div>
-                                    {%- endfor -%}
-                                </div>
-                                <div class="cartQuickView__totalCart">
-                                    <div class="cartQuickView__totalCart-text">TOTAL:</div>
-                                    <div class="cartQuickView__totalCart-total">{{ cart.total_price | money }}</div>
-                                </div>
-                                <div class="cartQuickView__checkOutCont">
-                                    {%- render 'snippet-checkout-term' -%}
-                                </div>
-                            {%- endform -%}
-                            <div class="cartQuickView__viewCartBtn">
+            <div class="miniCartDestop__wrap" style="display: none">
+                <cart-quick-view class="cartQuickView"  >
+                    <div class="cartQuickView__inner" >
+                            {%- if cart.item_count == 0 -%}
                                 <a href="{{ routes.cart_url }}" class="">
-                                    <button class="cartQuickView__viewCartBtn-btn">VIEW CART</button>
+                                    <div class="cartQuickView__emptyCart">
+                                        <div class="cartQuickView__emptyCart-icon">
+                                            <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
+                                        </div>
+                                        <div class="cartQuickView__emptyCart-text">No Products in the Cart</div>
+                                    </div>    
                                 </a>
-                            </div>
-                        {%- endif -%}
-                </div>
-            </cart-quick-view>
+                            {%- else -%}
+                                {%- form 'cart', cart -%}
+                                    <div class="cartQuickView__contentCont">
+                                        {%- for item in cart.items -%}
+                                            <div class="cartQuickView__productLine">
+                                                <div class="cartQuickView__productLine-imgCont">
+                                                    <a href="{{ item.url }}" class="w100 h100">
+                                                        {%- render "image-style" , image: item.image -%}
+                                                    </a>
+                                                </div>
+                                                <div class="cartQuickView__productLine-productInfo">
+                                                    
+                                                    <div class="cartQuickView__productLine-productTitle">
+                                                        <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                                                    </div>
+                                                    <div class="cartQuickView__productLine-qtyAndPrice">
+                                                        <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>
+                                                        <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>
+                                                    </div>
+                                                </div>
+                                                <cart-remove-button class="cartQuickView__productLine-removeIcon" data-idProduct="{{ item.variant_id }}">
+                                                    <a href="{{ item.url_to_remove }}">
+                                                        {%- render 'icon-remove' -%}
+                                                    </a>
+                                                    <div class="cartQuickView__productLine-spinner"></div>
+                                                </cart-remove-button>
+                                            </div>
+                                        {%- endfor -%}
+                                    </div>
+                                    <div class="cartQuickView__totalCart">
+                                        <div class="cartQuickView__totalCart-text">TOTAL:</div>
+                                        <div class="cartQuickView__totalCart-total">{{ cart.total_price | money }}</div>
+                                    </div>
+                                    <div class="cartQuickView__checkOutCont">
+                                        {%- render 'snippet-checkout-term' -%}
+                                    </div>
+                                {%- endform -%}
+                                <div class="cartQuickView__viewCartBtn">
+                                    <a href="{{ routes.cart_url }}" class="">
+                                        <button class="cartQuickView__viewCartBtn-btn">VIEW CART</button>
+                                    </a>
+                                </div>
+                            {%- endif -%}
+                    </div>
+                </cart-quick-view>
+            </div>
         </div>
 
     </div>
@@ -126,7 +132,7 @@
                 value="{{ search.terms | escape }}"
                 class="header__productSearch-input"
             >
-            </form>
+        </form>
 
     </div>
     <div class="menuMobile__container">
@@ -161,7 +167,73 @@
 
     </div>
 </div>
-
+<div class="miniCartMobile"  style="display: none;">
+    <div class="miniCartMobile__overlay">
+        <div class="miniCartMobile__content">
+            <div class="miniCartMobile__title">
+                <div class="miniCartMobile__title-text">SHOPPING CART</div>
+                <div class="miniCartMobile__title-icon"> {%- render 'icon-X' -%}</div>
+            </div>
+            <div class="miniCartMobile__wrap">
+                <cart-quick-view class="cartQuickView p-0 miniCartMobileUpdate"  >
+                    <div class="cartQuickView__inner" >
+                            {%- if cart.item_count == 0 -%}
+                                <a href="{{ routes.cart_url }}" class="">
+                                    <div class="cartQuickView__emptyCart">
+                                        <div class="cartQuickView__emptyCart-icon">
+                                            <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
+                                        </div>
+                                        <div class="cartQuickView__emptyCart-text">No Products in the Cart</div>
+                                    </div>    
+                                </a>
+                            {%- else -%}
+                                {%- form 'cart', cart -%}
+                                    <div class="cartQuickView__contentCont">
+                                        {%- for item in cart.items -%}
+                                            <div class="cartQuickView__productLine">
+                                                <div class="cartQuickView__productLine-imgCont">
+                                                    <a href="{{ item.url }}" class="w100 h100">
+                                                        {%- render "image-style" , image: item.image -%}
+                                                    </a>
+                                                </div>
+                                                <div class="cartQuickView__productLine-productInfo">
+                                                    <div class="cartQuickView__productLine-productTitle">
+                                                        <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                                                    </div>
+                                                    <div class="cartQuickView__productLine-qtyAndPrice">
+                                                        <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>
+                                                        <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>
+                                                    </div>
+                                                </div>
+                                                <cart-remove-button class="cartQuickView__productLine-removeIcon" data-idProduct="{{ item.variant_id }}">
+                                                    <a href="{{ item.url_to_remove }}">
+                                                        {%- render 'icon-remove' -%}
+                                                    </a>
+                                                    <div class="cartQuickView__productLine-spinner"></div>
+                                                </cart-remove-button>
+                                            </div>
+                                        {%- endfor -%}
+                                    </div>
+                                    <div class="cartQuickView__totalCart">
+                                        <div class="cartQuickView__totalCart-text">TOTAL:</div>
+                                        <div class="cartQuickView__totalCart-total">{{ cart.total_price | money }}</div>
+                                    </div>
+                                    <div class="cartQuickView__checkOutCont">
+                                        {%- render 'snippet-checkout-term' -%}
+                                    </div>
+                                {%- endform -%}
+                                <div class="cartQuickView__viewCartBtn">
+                                    <a href="{{ routes.cart_url }}" class="">
+                                        <button class="cartQuickView__viewCartBtn-btn">VIEW CART</button>
+                                    </a>
+                                </div>
+                            {%- endif -%}
+                    </div>
+                </cart-quick-view>
+            </div>
+        </div>
+    </div>
+</div>
 <script src=" {{ 'header.js' | asset_url }}" defer></script>
 {% if section.settings.enableSticky %}
     <script src=" {{ 'sticky-menu.js' | asset_url }}" defer></script>

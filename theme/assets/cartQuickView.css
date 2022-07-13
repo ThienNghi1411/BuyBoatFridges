@@ -1,15 +1,6 @@
 .cartQuickView {
-  position: absolute;
-  border-radius: 5px;
-  top: 110%;
-  left: 0;
   width: 100%;
-  min-height: 160px;
-  background-color: #fff;
-  z-index: 100;
-  box-shadow: 0 7px 29px 0 rgba(100, 100, 111, 0.2);
-  padding: 20px;
-  display: none; }
+  min-height: 160px; }
 
 .cartQuickView__inner {
   width: 100%; }
@@ -36,10 +27,12 @@
 .cartQuickView__productLine-imgCont img {
   width: 100%; }
 
+.cartQuickView__productLine-productInfo {
+  flex: 1; }
+
 .cartQuickView__productLine-productTitle {
   font-size: 14px;
   color: #454545;
-  flex: 1;
   margin-bottom: 5px; }
 
 .cartQuickView__productLine-removeIcon svg {
@@ -156,7 +149,3 @@
 .cartQuickView__viewCartBtn-btn {
   cursor: pointer;
   font-weight: 700; }
-
-@media (max-width: 1000px) {
-  .cartQuickView {
-    display: none !important; } }

@@ -112,9 +112,7 @@
 
 .cartPage__shipAndTax {
   width: 100%;
-  margin-top: 20px;
-  padding: 20px 24px;
-  border: 1px solid #f7f8fa; }
+  margin-top: 20px; }
 
 .cartPage__shipAndTax-title {
   font-size: 17px;
@@ -127,6 +125,33 @@
   font-weight: 400;
   color: #454545;
   margin-bottom: 20px; }
+
+.cartPage__form {
+  width: 100%;
+  padding: 20px 24px;
+  border: 1px solid #f7f8fa; }
+
+.cartPage__formField {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; }
+
+.cartPage__formField-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 7px; }
+
+.cartPage__formField-input, .cartPage__formField-select {
+  height: 47px;
+  padding: 0 12px;
+  display: flex;
+  background-color: #f7f8fa;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  border-radius: 5px;
+  border: none; }
 
 .cartPage__inputZipCode, .cartPage__selectCountry, .cartPage__selectProvince {
   margin-bottom: 20px; }
@@ -147,6 +172,9 @@
   align-items: center;
   border-radius: 5px; }
 
+.cartPage__calculateShipBtn {
+  transition: all .2s linear; }
+
 .cartPage__calculateShipBtn-btn {
   width: 100%;
   height: 40px;
@@ -154,9 +182,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #454545;
+  color: #fff;
+  font-weight: 700;
   font-size: 14px;
-  border: 2px solid #032c41; }
+  background-color: #139aeb;
+  cursor: pointer; }
+
+.cartPage__calculateShipBtn-btnTextOnSubmit {
+  display: none; }
+
+.cartPage__calculateShipBtn:hover {
+  opacity: .5; }
+
+.cartPage__resCalculate {
+  margin-top: 20px; }
+
+.cartPage__resCalculate-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 7px; }
+
+.cartPage__resCalculate-listRes {
+  list-style-type: disc;
+  margin-left: 20px; }
+
+.cartPage__resCalculate-listRes-option {
+  font-size: 14px;
+  font-weight: 400;
+  color: #454545;
+  margin-bottom: 7px; }
 
 .cartPage__noteBox {
   width: 100%;
@@ -269,6 +324,7 @@
 
 .cartPopUpError {
   position: absolute;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
@@ -390,12 +446,12 @@
   .cartPage__noteBox-text {
     height: 300px; } }
 
-@media (min-width: 1280px) {
+@media (min-width: 1080px) {
   .cartPage__inner {
     max-width: 1000px;
     margin: 0 auto; } }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .cartPage__inner {
-    max-width: 1220px;
+    max-width: 1200px;
     margin: 0 auto; } }

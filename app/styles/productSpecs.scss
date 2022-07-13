@@ -97,7 +97,9 @@
             color: #139aeb;
             text-decoration: underline;
         }
-        
+        & a {
+            display: inline-block;
+        }
     }
 
     &__listDocument{
@@ -142,6 +144,12 @@
         padding: 20px;
         border-radius: 5px;
         border: 1px solid #c1c1c1;
+
+        // & p span strong {
+        //     display: block;
+        //     font-size: 20px;
+        //     margin: 20px 0px;
+        // }
     }
 
     &__contentDescriptionCont,&__contentDimensionsCont,&__contentDocumentsCont,&__contentPartsCont,&__contentShippingCont{
@@ -214,7 +222,7 @@
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1080px){
     .productSpecs{
         &__inner{
             width: 1000px;
@@ -223,10 +231,10 @@
     }
 }
 
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     .productSpecs{
         &__inner{
-            width: 1220px;
+            width: 1200px;
         }
     }
 }
@@ -235,17 +243,12 @@
 ///
 
 @media (max-width: 1000px){
-    .productSpecs{
-        &__dimensions{
-           & td {
-                display:inline-block;
-                padding:5px;
-                width:100% !important;
-                & img{
-                    width: 100%;
-                }
-            }
+    .tdWrap{
+        display:inline-block;
+        padding:5px;
+        width:100% !important;
+        & img{
+            width: 100%;
         }
     }
-
 }

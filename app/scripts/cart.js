@@ -132,13 +132,18 @@ class MainCartItems extends HTMLElement {
                     popupError.style.display="block";
                     let errorText = popupError.querySelector(".cartPopUpError__error");
                     errorText.innerText = `You can only add ${tmp.quantity} of this item to your cart.`;
+                    const body = document.querySelector("body");
+                    body.style.overflow = "hidden";
+                    window.scroll(0,0);
                 }
             })
             this.getSectionsToRender().forEach((section => {
-                const elementToReplace =
-                  document.querySelector(section.selector);
-                const domReplace = this.getSectionInnerHTML((data.sections[section.section])).querySelector(section.selector);
-                elementToReplace.replaceWith(domReplace);
+                const elementToReplaces =
+                document.querySelectorAll(section.selector);
+                elementToReplaces.forEach(elementToReplace => {
+                    const domReplace = this.getSectionInnerHTML((data.sections[section.section]))
+                    elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+                })
                 
             }));
         })

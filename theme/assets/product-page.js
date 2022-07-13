@@ -4,6 +4,9 @@
   var plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
   var qtyField = document.querySelector(".productPage__quantityCont-inputQty");
   var checkBox = document.querySelector(".productPage__termConditions");
+  var askingProduct = document.querySelector(".productPage__askingPd");
+  var askingPopup = document.querySelector(".popupAsking");
+  var body = document.querySelector("body");
   var init = () => {
     minusBtn.addEventListener("click", adjustQty);
     plusBtn.addEventListener("click", adjustQty);
@@ -23,6 +26,11 @@
           checkOutBtn.style.pointerEvents = "all";
         });
       }
+    });
+    askingProduct.addEventListener("click", () => {
+      window.scroll(0, 0);
+      askingPopup.style.display = "block";
+      body.style.overflow = "hidden";
     });
   };
   var adjustQty = (e) => {
@@ -86,7 +94,6 @@
         popupError.style.display = "block";
         let errorText = popupError.querySelector(".cartPopUpError__error");
         errorText.innerText = data.description;
-        let body = document.querySelector("body");
         body.style.overflow = "hidden";
       } else {
         getSectionsToRender().forEach((section) => {
@@ -97,9 +104,11 @@
             domToAdd.setAttribute("data-qty", qtyField.value);
             elementToAppend.appendChild(domToAdd);
           } else {
-            const elementToReplace = document.querySelector(section.selector);
-            const domReplace = getSectionInnerHTML(data.sections[section.section]);
-            elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+            const elementToReplaces = document.querySelectorAll(section.selector);
+            elementToReplaces.forEach((elementToReplace) => {
+              const domReplace = getSectionInnerHTML(data.sections[section.section]);
+              elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+            });
           }
         });
       }

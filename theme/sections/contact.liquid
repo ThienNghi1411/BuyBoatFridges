@@ -1,0 +1,129 @@
+<link rel="stylesheet" href="{{ 'contact.css' | asset_url }}">
+<section class="contact">
+  <div class="contact_inner">
+    <div class="contact_inner_map">
+      {{section.settings.map}}
+    </div>
+    <div class="contact_inner_info">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'svg' %}
+       
+          <div class="inner_info_item "  {{ block.shopify_attributes }}>
+            <div class="item_svg">
+              {{block.settings.icon}}
+            </div>
+            <div class="item_title">{{block.settings.block_title}}</div>
+            <div class="item_text"> {{block.settings.block_textarea}}
+              <br>  
+            </div>
+        </div>
+
+        {% endcase %}
+      {% endfor %}
+    </div>
+    <div class="contact_inner_form">
+      {% form 'contact' %}
+  {% if form.posted_successfully? %} Thank you for your contact {% endif %}
+  {{ form.errors | default_errors }}
+  <div class="form_col">
+    <div class="form_group">
+      <!-- <label for="ContactFormName">name</label> -->
+      <input type="text" id="ContactFormName" name="contact[name]" placeholder="Your Name" class="contactForm-input">
+    </div>
+    <div class="form_group">
+      <!-- <label for="ContactFormEmail">email</label> -->
+    <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="Your Email" class="contactForm-input">
+    </div>
+    <div class="form_group">
+      <!-- <label for="ContactFormPhone">phone</label> -->
+      <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="Your Phone" class="contactForm-input">
+    </div>
+  </div>
+ <div class="form_col textarea">
+  <div class="form_group richText">
+    <!-- <label for="ContactFormMessage">message</label> -->
+  <textarea rows="9" id="ContactFormMessage" name="contact[body]" placeholder="Your Message" class="contactForm-input"></textarea>
+  </div>
+ </div>
+  <div class="form_submit">
+    <input type="submit" value="SEND MESSAGE" class="contactForm-submit">
+  </div>
+{% endform %}
+    </div>
+  </div>
+</section>
+{% if section.settings.display == '2' %}
+{% style %}
+    .contact_inner_form form
+    {
+      flex-direction:column !important; 
+    }
+    .form_col
+    {
+      width:100% !important;
+    }
+{% endstyle %}
+{% endif %}
+{% schema %}
+{
+  "name": "Contact",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "map",
+      "label": "Edit map",
+      "info":"Something like <iframe>...</iframe>"
+    },
+    {
+      "type": "select",
+      "id": "display",
+      "label": "Choose form display",
+      "options": [
+        {
+          "value": "1",
+          "label": "Row"
+        },
+        {
+          "value": "2",
+          "label": "Column"
+        }
+      ],
+      "default": "1"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "SVG + Text",
+       "type": "svg",
+       "limit":3,
+       "settings": [
+         {
+           "type": "html",
+           "id": "icon",
+           "label": "Edit Icon",
+           "info":"Something like <svg>...</svg>"
+         },
+         {
+            "type":"text",
+            "id":"block_title",
+            "label":"Edit block title"
+         },
+         {
+            "type":"textarea",
+            "id":"block_textarea",
+            "label":"Edit block textarea"
+         },
+         {
+            "type":"header",
+            "content":"Contact Form"
+         }
+        
+       ]
+     }
+   ]
+}
+{% endschema %}
+
+

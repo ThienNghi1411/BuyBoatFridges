@@ -30,12 +30,14 @@ const removeContent = () => {
 const toggleOption = (e,i) => {
     let option = e.currentTarget;
     let content = e.currentTarget.parentElement.querySelectorAll(".productSpecs__content");
+    
     let hideIcon = e.currentTarget.querySelector(".productSpecs__optionWrap-hideIcon");
     let showIcon = e.currentTarget.querySelector(".productSpecs__optionWrap-showIcon");
     //destop screen
 
     if (option.classList.contains("productSpecs__activeOption")){
         option.classList.remove("productSpecs__activeOption");
+        console.log(content);
         content.forEach(tmp => {
             tmp.style.display="none";
         })
@@ -43,7 +45,8 @@ const toggleOption = (e,i) => {
         showIcon.style.display="block";
         contentDestop[i].style.display = "none";
     }else{
-        removeClass(specOptions,"productSpecs__activeOption");
+       
+        window.innerWidth >= 1000 ?  removeClass(specOptions,"productSpecs__activeOption") : "";
         removeContent();
         option.classList.add("productSpecs__activeOption");
         content.forEach(tmp => {
@@ -56,3 +59,18 @@ const toggleOption = (e,i) => {
 }
 
 init();
+
+// Processing Tab //
+
+const dimentionsContents = document.querySelectorAll(".dimentions__content");
+dimentionsContents.forEach(dimentionsContent => {
+    let trContents = dimentionsContent.querySelectorAll("table tbody tr");
+    trContents.forEach(trContent => {
+        let tdContents = trContent.querySelectorAll("td");
+        tdContents.forEach(tdContent => {
+            if (tdContent.querySelector("img")){
+                tdContent.classList.add("tdWrap");
+            }
+        })
+    })
+})

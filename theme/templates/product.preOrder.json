@@ -1,0 +1,137 @@
+{
+  "sections": {
+    "section-product-productPagePreOrder": {
+      "type": "section-product-productPagePreOrder",
+      "settings": {
+        "iconPicture": "shopify:\/\/shop_images\/alert.png",
+        "iconPolicy1": "shopify:\/\/shop_images\/box.png",
+        "iconPolicy2": "shopify:\/\/shop_images\/chat.png",
+        "imgTrusted": "shopify:\/\/shop_images\/trustedsite_logo.png"
+      }
+    },
+    "1657697691cc3ecad9": {
+      "type": "section-single-banner",
+      "settings": {
+        "banner": "shopify:\/\/shop_images\/Banner-Product-Page.jpg",
+        "url": ""
+      }
+    },
+    "16576977106864ed7c": {
+      "type": "section-product-specs",
+      "settings": {}
+    },
+    "1657697721455ca000": {
+      "type": "section-collection-slider",
+      "blocks": {
+        "de77572e-77a5-47e9-bcf2-d45c22a848bb": {
+          "type": "collection",
+          "settings": {
+            "collection": "front-loading-refrigerator",
+            "checkImg": false
+          }
+        },
+        "a87f187a-09da-49bf-99e3-dc72320b65d7": {
+          "type": "collection",
+          "settings": {
+            "collection": "fridge-freezer",
+            "checkImg": false
+          }
+        },
+        "2db38199-2b99-47f1-8f6b-aac6c442b444": {
+          "type": "collection",
+          "settings": {
+            "collection": "fridges",
+            "checkImg": false
+          }
+        },
+        "b670b3db-8e25-475d-94d0-4b21c4774916": {
+          "type": "collection",
+          "settings": {
+            "collection": "freezers",
+            "checkImg": false
+          }
+        },
+        "ba25cfda-42ef-44a7-a853-ae2af415c01d": {
+          "type": "collection",
+          "settings": {
+            "collection": "condensing-units",
+            "checkImg": false
+          }
+        },
+        "3cf0da13-661d-425d-a505-748a24ae3b94": {
+          "type": "collection",
+          "settings": {
+            "collection": "evaporators",
+            "checkImg": false
+          }
+        },
+        "d6c865ea-8407-437b-9c1f-8d085d1a5c9f": {
+          "type": "collection",
+          "settings": {
+            "collection": "safes",
+            "checkImg": false
+          }
+        },
+        "98b31bac-7fab-4fe4-a7d3-e15baa8c1a4e": {
+          "type": "collection",
+          "settings": {
+            "collection": "spare-parts",
+            "checkImg": false
+          }
+        },
+        "2b244e0d-5978-4c57-b6ab-470894e067e2": {
+          "type": "collection",
+          "settings": {
+            "collection": "vitrifrigo-ice-makers",
+            "checkImg": false
+          }
+        },
+        "7cc59b3e-c947-459c-ac1c-b3090e38113c": {
+          "type": "collection",
+          "settings": {
+            "collection": "portable-refrigerators",
+            "checkImg": false
+          }
+        },
+        "88f78f61-035d-42c8-84e8-9e5b38b6da26": {
+          "type": "collection",
+          "settings": {
+            "collection": "top-loading-countertop",
+            "checkImg": false
+          }
+        },
+        "9f4aeb78-9320-4a2a-b2e9-176eed816825": {
+          "type": "collection",
+          "settings": {
+            "collection": "wine-coolers",
+            "checkImg": false
+          }
+        }
+      },
+      "block_order": [
+        "de77572e-77a5-47e9-bcf2-d45c22a848bb",
+        "a87f187a-09da-49bf-99e3-dc72320b65d7",
+        "2db38199-2b99-47f1-8f6b-aac6c442b444",
+        "b670b3db-8e25-475d-94d0-4b21c4774916",
+        "ba25cfda-42ef-44a7-a853-ae2af415c01d",
+        "3cf0da13-661d-425d-a505-748a24ae3b94",
+        "d6c865ea-8407-437b-9c1f-8d085d1a5c9f",
+        "98b31bac-7fab-4fe4-a7d3-e15baa8c1a4e",
+        "2b244e0d-5978-4c57-b6ab-470894e067e2",
+        "7cc59b3e-c947-459c-ac1c-b3090e38113c",
+        "88f78f61-035d-42c8-84e8-9e5b38b6da26",
+        "9f4aeb78-9320-4a2a-b2e9-176eed816825"
+      ],
+      "settings": {
+        "limitItem": "",
+        "autoPlay": 0
+      }
+    }
+  },
+  "order": [
+    "section-product-productPagePreOrder",
+    "1657697691cc3ecad9",
+    "16576977106864ed7c",
+    "1657697721455ca000"
+  ]
+}

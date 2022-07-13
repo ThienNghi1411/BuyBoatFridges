@@ -2,14 +2,17 @@
 <html>
 <head>
   <title>{{ page_title }}</title>
-  <meta charset="utf-8">
+   <meta charset="utf-8">
+
+  <link rel="icon" type="image/x-icon" href="https://cdn.shopify.com/s/files/1/0550/1714/4497/files/Favicon_bbf_32x32.png?v=1646169657">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="{{ page_description | escape }}">
-  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="canonical" href="{{ canonical_url }}"> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ 'globals.min.css' | asset_url }}">
+  <link rel="preload" href="{{'globals.min.css' | asset_url}}" as="style">
+  <link rel="stylesheet" href="{{ 'globals.min.css' | asset_url }}" media="all">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"   integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
   {{ content_for_header }} <!-- Header hook for plugins -->

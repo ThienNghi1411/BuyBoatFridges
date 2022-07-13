@@ -2,6 +2,7 @@
 <script>console.log({{ cart | json }})</script>
 <script src=" {{ 'cart.js' | asset_url }}" defer></script>
 <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
+<script src=" {{ 'shipping-calculator.js' | asset_url }}" defer></script>
 <div class="breadcrumb">
     <div class="breadcrumb__inner">
         <div class="breadcrumb__option">
@@ -22,10 +23,16 @@
                 {%- for item in cart.items -%}
                     <div class="cartPage__item">
                         <div class="cartPage__imgItem">
-                            {%- render "image-style" , image: item.image -%}
+                            <a href="{{ item.url }}" class="w100 h100">
+                                {%- render "image-style" , image: item.image -%}
+                            </a>
                         </div>
                         <div class="cartPage__itemInfo">        
-                            <div class="cartPage__itemInfo-productName">{{ item.title }}</div>
+                            <div class="cartPage__itemInfo-productName">
+                                <a href="{{ item.url }}" >
+                                    {{ item.title }}
+                                </a>
+                            </div>
                             <div class="cartPage__itemInfo-productPrice">{{ item.price | money }}</div>
                             <maincart-qty-field class="cartPage__qtyField" data-idProduct="{{ item.variant_id }}">
                                 <button class="cartPage__qtyField-minusBtn" name="minus" type="button">-</button>
@@ -61,54 +68,66 @@
                     </a>
                 </div>
             </div>
-            <div class="cartPage__cartBox">
-                <div class="cartPage__shipAndTax">
-                    <div class="cartPage__shipAndTax-title">ESTIMATE SHIPPING AND TAX</div>
-                    <div class="cartPage__shipAndTax-subTitle">Enter your destination to get a shipping estimate</div>
-                    <div class="cartPage__selectCountry">
-                        <div class="cartPage__selectCountry-title">COUNTRY *</div>
-                        <div class="cartPage__selectCountry-select">
-                            <div class="cartPage__selectCountry-select-text">United States</div>
-                            <div class="cartPage__selectCountry-select-icon">{%- render 'icon-angle-bot' -%}</div>
-                        </div>
-                    </div>
-                    <div class="cartPage__selectProvince">
-                        <div class="cartPage__selectProvince-title">STATE/PROVINCE *</div>
-                        <div class="cartPage__selectProvince-select">
-                            <div class="cartPage__selectProvince-select-text">Micronesia</div>
-                            <div class="cartPage__selectProvince-select-icon">{%- render 'icon-angle-bot' -%}</div>
-                        </div>
-                    </div>
-                    <div class="cartPage__inputZipCode">
-                        <div class="cartPage__inputZipCode-title">ZIP/POSTAL CODE</div>
-                        <div class="cartPage__inputZipCode-select">
-                            <div class="cartPage__inputZipCode-select-text">Micronesia</div>
-                            
-                        </div>
-                    </div>
-                    <div class="cartPage__calculateShipBtn">
-                        <button class="cartPage__calculateShipBtn-btn">CALCULATE SHIPPING</button>
-                    </div>
-                </div>
-                <div class="cartPage__noteBox">
-                    <div class="cartPage__noteBox-title">NOTE</div>
-                    <div class="cartPage__noteBox-subTitle">Add special instructions for your order...</div>
-                    <textarea name="note" id="" cols="30" rows="10" class="cartPage__noteBox-text"></textarea>
-                </div>
-                <div class="cartPage__checkoutBox">
-                    <div class="cartPage__subTotal">
-                        <div class="cartPage__subTotal-text">SUBTOTAL</div>
-                        <div class="cartPage__subTotal-price">{{ cart.items_subtotal_price | money }}</div>
-                    </div>
-                    <div class="cartPage__grandTotal">
-                        <div class="cartPage__grandTotal-text">GRAND TOTAL</div>
-                        <div class="cartPage__grandTotal-price">{{ cart.total_price | money }}</div>
-                    </div>
-                    {%- render 'snippet-checkout-term' -%}
-                </div>
-            </div>
         </div>
         {%- endform -%}
+        <div class="cartPage__cartBox cartPage__inner">
+            <shipping-calculator class="cartPage__shipAndTax"  data-url="{{ routes.cart_url | append: '/shipping_rates.json' }}">
+                <form action="{{ routes.cart_url }}" class="cartPage__form">
+                    <div class="cartPage__shipAndTax-title">ESTIMATE SHIPPING AND TAX</div>
+                    <div class="cartPage__shipAndTax-subTitle">Enter your destination to get a shipping estimate</div>
+                    <div class="cartPage__formField">
+                        <label class="cartPage__formField-label" for="addressCountry{{ object.id }}">COUNTRY *</label>
+                        <select class="cartPage__formField-select" id="addressCountry{{ object.id }}" name="shipping_address[country]" 
+                            data-default="{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address.country }}{% endif %}" required>
+                            {{ country_option_tags }}
+                        </select>
+                    </div>
+                    <div class="cartPage__formField">
+                        <label class="cartPage__formField-label" for="addressProvince{{ object.id }}" >STATE/PROVINCE *</label>
+                        <select class="cartPage__formField-select" id="addressProvince{{ object.id }}" name="shipping_address[province]" 
+                            data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}">
+                        </select>
+                    </div>
+                    <div class="cartPage__formField">
+                        <label class="cartPage__formField-label" for="addressZip{{ object.id }}" >ZIP/POSTAL CODE</label>
+                        <input class="cartPage__formField-input" type="text" id="addressZip{{ object.id }}" name="shipping_address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} required/>
+                    </div>
+                    <div class="cartPage__calculateShipBtn">
+                        <button class="cartPage__calculateShipBtn-btn" type="submit">
+                            <span class="cartPage__calculateShipBtn-btnText">{{ 'sections.cart.shipping.button_submit' | t }}</span>
+                            <span class="cartPage__calculateShipBtn-btnTextOnSubmit">{{ 'sections.cart.shipping.button_submited' | t }}</span>
+                        </button>
+                    </div>
+                    <div class="cartPage__resCalculate">
+                        <div class="cartPage__resCalculate-title"></div>
+                        <ul class="cartPage__resCalculate-listRes"></ul>
+                    </div>
+                </form>
+                <script id="dataShipping" type="application/ld+json">
+                    {
+                        "one_shipping_rate" : {{ 'sections.cart.shipping.one_shipping_rate' | t | json }},
+                        "many_shipping_rates" : {{ 'sections.cart.shipping.many_shipping_rates' | t | json }},
+                        "not_found_shipping_rate" : {{ 'sections.cart.shipping.not_found_shipping_rate' | t | json }}
+                    }
+                </script> 
+            </shipping-calculator>
+            <div class="cartPage__noteBox">
+                <div class="cartPage__noteBox-title">NOTE</div>
+                <div class="cartPage__noteBox-subTitle">Add special instructions for your order...</div>
+                <textarea name="note" id="" cols="30" rows="10" class="cartPage__noteBox-text"></textarea>
+            </div>
+            <div class="cartPage__checkoutBox">
+                <div class="cartPage__subTotal">
+                    <div class="cartPage__subTotal-text">SUBTOTAL</div>
+                    <div class="cartPage__subTotal-price">{{ cart.items_subtotal_price | money }}</div>
+                </div>
+                <div class="cartPage__grandTotal">
+                    <div class="cartPage__grandTotal-text">GRAND TOTAL</div>
+                    <div class="cartPage__grandTotal-price">{{ cart.total_price | money }}</div>
+                </div>
+                {%- render 'snippet-checkout-term' -%}
+            </div>
+        </div>
     {%- else -%}
         <div class="cartPage__inner">
             <div class="cartPage__emptyCart">
@@ -125,6 +144,7 @@
             </div>
         </div>
     {%- endif -%}
+
 </main-cart>
 <cart-popup-error class="cartPopUpError">
     <div class="cartPopUpError__overlay">
@@ -142,6 +162,7 @@
         </div>
     </div>
 </cart-popup-error>
+
 
 {% schema %}
     {

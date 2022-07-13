@@ -1,18 +1,17 @@
 <link rel="stylesheet" href="{{ 'collection.css' | asset_url }}">
 
 
-
-<section class="collection">
-  <div class="breadcrumb">
-    <div class="breadcrumb__inner">
-        <div class="breadcrumb__option">
-            <a href="{{ routes.root_url }}" class="">Home</a>
-        </div>
-        <div class="breadcrumb__option">
-            <a href="{{ collectionUrl }}" class="">{{ collection.handle }}</a>
-        </div>
-    </div>
+<div class="breadcrumb">
+  <div class="breadcrumb__inner">
+      <div class="breadcrumb__option">
+          <a href="{{ routes.root_url }}" class="">Home</a>
+      </div>
+      <div class="breadcrumb__option">
+          <a href="{{ collectionUrl }}" class="">{{ collection.handle  | capitalize}}</a>
+      </div>
   </div>
+</div>
+<section class="collection" data-section-type="collection" data-section-id="{{section.id}}">
     <div class="collection__inner">
 
       <div class="collection__spinner">
@@ -125,7 +124,7 @@
       {% if section.settings.loading_type =='2' %}
       <div class="collection__filter">
         <div class="filter_Clear">
-          
+
         </div>
         <div class="closebutton">
           {% render 'icon-close' %}
@@ -222,7 +221,7 @@
 
           <div class="collection__handle">
               <div class="collection__tittle">
-                  {{collection.handle}} ({{collection.products_count}})
+                  {{collection.title}} ({{collection.products_count}})
               </div>
 
               <div class="collection__control">
@@ -289,13 +288,19 @@
       </div>
 
       </div>
-    </div>
+      
+    <!-- </div> -->
     <script>
-      var collection_handle= '{{collection.handle}}';
+      var collection_handle= '{{collection.handle  | capitalize}}';
+      var collection_title= '{{collection.title  }}';
       var product_count= '{{collection.products_count}}';
       var ifinity= '{{Ifinity}}';
     </script>
-
+  <script id="collection_settings" type="application/ld+json">
+    {
+       
+    }
+</script> 
     
 
 </section>

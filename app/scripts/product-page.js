@@ -5,6 +5,9 @@ const minusBtn = document.querySelector(".productPage__quantityCont-minusBtn");
 const plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
 const qtyField = document.querySelector(".productPage__quantityCont-inputQty");
 const checkBox = document.querySelector(".productPage__termConditions");
+const askingProduct = document.querySelector(".productPage__askingPd");
+const askingPopup = document.querySelector(".popupAsking");
+const body = document.querySelector("body");
 const init = () => {
     minusBtn.addEventListener("click", adjustQty )
     plusBtn.addEventListener("click" , adjustQty )
@@ -24,6 +27,11 @@ const init = () => {
                 checkOutBtn.style.pointerEvents = "all";
             })
         }
+    })
+    askingProduct.addEventListener("click" , () => {
+        window.scroll(0,0);
+        askingPopup.style.display = "block";
+        body.style.overflow="hidden";
     })
 }
 
@@ -109,7 +117,6 @@ const addToCart = (e) => {
             popupError.style.display="block";
             let errorText = popupError.querySelector(".cartPopUpError__error");
             errorText.innerText=data.description;
-            let body = document.querySelector("body");
             body.style.overflow= "hidden";
         }else{
             getSectionsToRender().forEach((section => {
@@ -120,10 +127,13 @@ const addToCart = (e) => {
                     domToAdd.setAttribute("data-qty",qtyField.value);
                     elementToAppend.appendChild(domToAdd);
                 }else{
-                    const elementToReplace =
-                    document.querySelector(section.selector);
-                    const domReplace = getSectionInnerHTML((data.sections[section.section]))
-                    elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+                    const elementToReplaces =
+                    document.querySelectorAll(section.selector);
+                    elementToReplaces.forEach(elementToReplace => {
+                        const domReplace = getSectionInnerHTML((data.sections[section.section]))
+                        elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+                    })
+                   
                 }
             }));
         }

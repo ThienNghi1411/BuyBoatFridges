@@ -17,7 +17,7 @@
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1080px){
     .singleBanner{
         &__inner{
             width: 1000px;
@@ -26,11 +26,10 @@
     }
 }
 
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     .singleBanner{
         &__inner{
-            width: 1220px;
-            margin: 0 auto;
+            width: 1200px;
         }
     }
 }

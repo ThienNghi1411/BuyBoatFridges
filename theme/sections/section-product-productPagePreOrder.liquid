@@ -1,0 +1,226 @@
+<link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
+<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
+<script>console.log({{ product.collections | json }})</script>
+{% comment %} {%- assign collectionUrl = "" -%}
+{%- for collection in product.collections -%}
+    {%- if collection.title == product.type -%}
+        {%- assign collectionUrl = collection.url -%}
+    {%- endif -%}
+{%- endfor -%} {% endcomment %}
+
+<div class="breadcrumb">
+    <div class="breadcrumb__inner">
+        <div class="breadcrumb__option">
+            <a href="{{ routes.root_url }}" class="">Home</a>
+        </div>
+        <div class="breadcrumb__option">
+            <a href="{{ product.collections[0].url }}" class="">{{ product.collections[0].title }}</a>
+        </div>
+        <div class="breadcrumb__option">
+            <a href="{{ product.url }}" class="">{{ product.vendor }} {{ product.variants[0].sku }}</a>
+        </div>
+    </div>
+</div>
+<section class="productPage" data-section-type="product-page" data-section-id="{{ section.id }}">
+    <div class="productPage__inner">                                                    
+        <div class="productPage__contentCont">
+            <div class="productPage__infoProduct">
+                <div class="productPage__titleProduct">  
+                    {%- capture productName -%}{{ product.vendor }} {{ product.variants[0].sku }}{%- endcapture -%}
+                    <div class="productPage__nameProduct"> {{ productName }}</div>
+                    <div class="productPage__skuProduct">SKU: {{ product.variants[0].sku }}</div>
+                    <div class="productPage__featureProduct">{{ product.title }}</div>
+                </div>
+                <div class="productPage__sliderImgProduct productPage__sliderImgMobile full-width">
+                    <div class="productPage__imgProduct imgProductMobile ">
+                        {%- assign ratio = product.media[0].aspect_ratio -%}
+                        {%- for image in product.media -%}
+                            <div class="productPage__imgProduct-wrapper">
+                                {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                                {%- render 'image-style', image: image , imageRatio: ratio -%}
+     
+                                <div class="productPage__imgProduct-alert">
+                                    <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                                </div>
+                                {%- if product.variants[0].inventory_quantity == 0 -%}
+                                    <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                                {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
+                                    <div class="productPage__imgProduct-saleTag">ON SALE</div>
+                                {%- endif -%}
+                            </div> 
+                        {%- endfor -%}
+                    </div>
+                    <div class="control__imgProductMobile">
+                        <div class="control__imgProductMobile-prevBtn">{% render 'icon-angle-left' %}</div>
+                        <div class="control__imgProductMobile-nextBtn">{% render 'icon-angle-right' %}</div>
+                    </div> 
+                </div>
+                <div class="productPage__priceCont">
+                    <div class="productPage__price">
+                        <div class="productPage__price-lastPrice">{{ product.variants[0].price | money }}</div>
+                        {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                        <div class="productPage__price-discount">
+                            <div class="productPage__price-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                            {%- assign discountPrice = product.variants[0].compare_at_price | minus: product.variants[0].price %}
+                            <div class="productPage__price-discountPrice">Save {{ discountPrice | money }}</div>
+                        </div>
+                        
+                        {%- endif -%}
+                    </div>
+                    <div class="productPage__policy">
+                        <div class="productPage__policyOption">
+                            <div class="productPage__policyOption-icon"> <img src="{{ section.settings.iconPolicy1 | image_url }} " alt="{{  }}" /></div>
+                            <div class="productPage__policyOption-text">{{ 'sections.productPage.policy1' | t }}</div>
+                        </div>
+                        <div class="productPage__policyOption">
+                            <div class="productPage__policyOption-icon"><img src="{{ section.settings.iconPolicy2 | image_url }} " alt="{{  }}" /></div>
+                            <div class="productPage__policyOption-text">{{ 'sections.productPage.policy2' | t }}</div>
+                        </div>
+                    </div>
+                    <div class="productPage__wrapper">
+                        <div class="productPage__quantityStatus">{{ 'sections.productPage.available' | t }}:  
+                                <span class="productPage__quantityStatus-status" style="color: #ff920c"> {{ 'sections.productPage.preOrder' | t }}</span>
+                        </div>
+                        <div class="productPage__quantityCont">
+                            <button class="productPage__quantityCont-minusBtn" name="minus" type="button">-</button>
+                            <input name="quantity" type="text" class="productPage__quantityCont-inputQty" value="1" min="1" m>
+                            <button class="productPage__quantityCont-plusBtn" name="plus" type="button">+</button> 
+                        </div>
+                    </div>
+                    <div class="productPage__preOrderLabel">
+                        {%- if product.metafields.product.preOrder != nil -%}
+                            <span class="productPage__preOrderLabel-text">{{ product.metafields.product.preOrder }}</span>
+                        {%- endif -%}
+                    </div>
+                    <div class="productPage__btnCont btnContMobile">
+                        <div class="productPage__btnAdd productPage__btnNoneClick ">
+                            <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
+                        </div>
+                        <div class="productPage__btnPreOrder">
+                            <button class="productPage__btnPreOrder-btn" type="submit" name="add">{{ 'sections.productPage.preOrderBtn' | t }}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="productPage__termConditions">
+                    <div class="productPage__termConditions-checkbox ">
+                        {%- render "icon-check" -%}
+                    </div>
+                    <div class="productPage__termConditions-text">{{ 'sections.productPage.agreeTerms' | t }}</div>
+                </div>
+                <div class="productPage__otherInfo">
+                    <div class="productPage__vendor">Vendor: {{ product.vendor }}</div>
+                    <div class="productPage__productType">Product Type: {{ product.type }}</div>
+                    {%- assign tagContent = "" -%}
+                    {%- for tag in product.tags -%}
+                        {%- assign tagContent = tagContent | append: ', ' | append: tag -%}
+                    {%- endfor -%}
+                    {%- assign tagContent = tagContent | remove_first: "," -%}
+                    <div class="productPage__tags">Tags: {{ tagContent }}</div>
+                </div>
+                <div class="productPage__trustedSite">
+                    <img src="{{ section.settings.imgTrusted | image_url: width: 120 , height: 20 }} " alt="{{  }}" />
+                </div>
+            </div>
+            <div class="productPage__sliderImgProduct  productPage__sliderImgDestop">
+                <div class="productPage__imgProduct imgProductDestop">
+                    {%- assign ratio = product.media[0].aspect_ratio -%}
+                    {%- for image in product.media -%}
+                        <div class="productPage__imgProduct-wrapper">
+                            {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                            {%- render 'image-style', image: image , imageRatio: ratio -%}
+ 
+                            <div class="productPage__imgProduct-alert">
+                                <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                            </div>
+                            {%- if product.variants[0].inventory_quantity == 0 -%}
+                                <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                            {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
+                                <div class="productPage__imgProduct-saleTag">ON SALE</div>
+                            {%- endif -%}
+                        </div> 
+                    {%- endfor -%}
+                </div>
+                <div class="control__imgProduct">
+                    <div class="control__imgProduct-prevBtn">{% render 'icon-angle-left' %}</div>
+                    <div class="control__imgProduct-nextBtn">{% render 'icon-angle-right' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="productPage__btnCont btnContDestop">
+            <div class="productPage__btnAdd productPage__btnNoneClick ">
+                <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
+            </div>
+            <div class="productPage__btnPreOrder">
+                <a href="/pages/contact" class="">
+                    <button class="productPage__btnPreOrder-btn" >{{ 'sections.productPage.preOrderBtn' | t }}</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="loading__spinner"></div>
+    <script id="productPage__settings" type="application/ld+json">
+        {
+            "product" : {{ product | json }},
+            "pdQuantity": {{ product.variants[0].inventory_quantity | json }} 
+        }
+    </script>
+</section>
+<div class="cartPopupCont">
+    <cart-popup-error class="cartPopUpError">
+        <div class="cartPopUpError__overlay">
+            <div class="cartPopUpError__content">
+                <div class="cartPopUpError__header">
+                    <div class="cartPopUpError__header-icon">
+                        {%- render 'icon-warning'-%}
+                    </div>
+                    <div class="cartPopUpError__header-text">Warning</div>
+                </div>
+                <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
+                <div class="cartPopUpError__iconClose">
+                    {%- render 'icon-X' -%}
+                </div>
+            </div>
+        </div>
+    </cart-popup-error>
+</div>
+
+<script src="{{ 'product-page.js' | asset_url }}" defer></script>
+
+{% schema %}
+    {
+        "name": "Product Page",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Product Page"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":"Product Page"
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPicture",
+                "label":"Choose icon for image product: "
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPolicy1",
+                "label":"Choose icon for policy 1: "
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPolicy2",
+                "label":"Choose icon for policy 2: "
+            },
+            {
+                "type":"image_picker",
+                "id":"imgTrusted",
+                "label":"Choose certification image: "
+            }
+        ]
+
+    }
+{% endschema %}

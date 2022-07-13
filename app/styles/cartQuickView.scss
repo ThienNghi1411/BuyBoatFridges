@@ -1,15 +1,6 @@
 .cartQuickView{
-    position: absolute;
-    border-radius: 5px;
-    top: 110%;
-    left: 0;
     width: 100%;
     min-height: 160px;
-    background-color: #fff;
-    z-index: 100;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 20px;
-    display: none;
     &__inner{
         width: 100%;
     }
@@ -35,10 +26,12 @@
             
             }
         }
+        &-productInfo{
+            flex: 1;
+        }
         &-productTitle{
             font-size: 14px;
             color: #454545;
-            flex: 1;
             margin-bottom: 5px;
         }
         &-removeIcon{
@@ -159,10 +152,5 @@
             cursor: pointer;
             font-weight: bold;
         }
-    }
-}
-@media (max-width:1000px){
-    .cartQuickView{
-        display: none !important;
     }
 }

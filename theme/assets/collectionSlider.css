@@ -12,13 +12,13 @@
   .collectionSlider {
     padding: 30px 0 30px 50px; } }
 
-@media (min-width: 1280px) {
+@media (min-width: 1080px) {
   .collectionSlider {
     padding: 30px 0; }
   .collectionSlider__inner {
     width: 1000px;
     margin: 0 auto; } }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .collectionSlider__inner {
-    width: 1220px; } }
+    width: 1200px; } }

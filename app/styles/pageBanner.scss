@@ -1,7 +1,7 @@
 .pageBanner{
     height: 100%;
     padding: 30px 20px;
-   
+    max-width: 100%;
     &__inner{
         position: relative;
         margin: 0 auto;
@@ -107,21 +107,20 @@
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1080px){
     .pageBanner{
-        max-width: 1440px;
-        padding: 30px 0px;
         &__inner{
-            max-width: 1000px;
+            width: 1000px;
         }
     }
 }
 
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     .pageBanner{
-        max-width: 100%;
+        padding: 30px 0px;
         &__inner{
-            max-width: 1220px;
+            width: 1200px;
         }
     }
 }
+

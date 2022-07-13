@@ -4,14 +4,11 @@
     var menuMobileCloseIcon = document.querySelector(".closebutton");
     var menuMobileOverLay = document.querySelector(".collection__overlay-wrapper");
     var menuMobile = document.querySelector(".collection__filter");
-
     var init = () => {
       FilterIcon.addEventListener("click", showMenuMobile);
       menuMobileCloseIcon.addEventListener("click", hideMenuMobile);
       menuMobileOverLay.addEventListener("click", hideMenuMobile);
     };
-
-    
     var toggleEnabelScroll = () => {
       const body = document.querySelector("body");
       if (body.style.overflow === "hidden") {
@@ -42,13 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
       let icon_Open = e.children[2];
       let icon_Close = e.children[1];
       e.addEventListener("click", () => {
-          // console.log("haha")
+          console.log()
           if(e.classList.contains("filter_active"))
           {
               e.classList.remove("filter_active")
               item.style.display = "none";
               icon_Open.style.display = "unset"
               icon_Close.style.display = "none"
+              e.parentElement.style.marginBottom="20px"
           }
           else
           {
@@ -57,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
               // item.style.flexDirection ="column";
               icon_Open.style.display = "none"
               icon_Close.style.display = "unset"
+              e.parentElement.style.marginBottom ="0px"
           }
          
       })

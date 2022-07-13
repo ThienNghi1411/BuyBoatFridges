@@ -53,6 +53,8 @@
             top: 20px;
             right: 33px;
             border: 1px solid #000;
+            background-color: #fff;
+
             & img{
                 width: 21px;
                 height: 25px;
@@ -61,7 +63,7 @@
         &-tag{
            position: absolute;
            width: 120px;
-           height: 40px;
+           padding: 8px 10px 8px 0px;
            display: flex;
            justify-content: flex-end;
            align-items: center;
@@ -70,7 +72,6 @@
            color: #fff;
            font-weight: bold;
            top: 20px;
-           left: 33px;
         }
         &-saleTag{
             position: absolute;
@@ -119,18 +120,40 @@
         align-items: center;
         gap: 15px;
         color: #454545;
+        cursor: pointer;
         &-text{
             font-size: 16px;
             font-weight: 400;
         }
+    }
+    &__wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
     &__quantityStatus{
         font-size: 16px;
         font-weight: 400;
         margin-bottom: 20px;
     }
+    &__preOrderStatus{
+        color: #ff920c;
+    }
+    &__preOrderLabel{
+        padding: 8px 12px;
+        background-color: #ff920c;
+        width: 100%;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        &-text{
+            font-size: 14px;
+            font-weight: bold;
+            color: #032c41;
+        }
+    }
     &__quantityCont{
-        width: 50%;
+        width: 70%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -178,12 +201,16 @@
         &-btn{
             cursor: pointer;
             padding: 12px 0px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             color: #139aeb;
             width: 100%;
             height: 100%;
         }
+    }
+    &__btnNoneClick{
+        pointer-events: none !important;
+        opacity: .5 !important;
     }
     &__btnBuyNow{
         width: 100%;
@@ -201,6 +228,28 @@
             opacity: .5;
         }
 
+    }
+    &__btnPreOrder{
+        width: 100%;
+        background-color: #139aeb !important;
+        padding: 12px 0px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .2s linear;
+        &-btn{
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+        &:hover{
+            opacity: .5;
+        }
     }
     &__termConditions{
         display: flex;
@@ -394,6 +443,114 @@
     }
 }
 
+
+.popupAsking{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    &__overlay{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+    }
+    &__content{
+        width: 550px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 50px 40px;
+        position: relative;
+    }
+    &__btnClose{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        & svg{
+            width: 20px;
+            height: 20px;
+            & path{
+                fill: #c1c1c1;
+            }
+        }
+    }
+    &__title{
+        width: 100%;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #454545;
+        margin-bottom: 40px;
+    }
+    &__formContent{
+        width: 320px;
+        margin: 0 auto;
+    }
+    &__formContentHeader{
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #c1c1c1;
+        margin-bottom: 20px;
+        &-productTitle , &-text{
+            color: #c1c1c1;
+            font-weight: 500;
+        }
+    }
+    &__formWrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    &__formField{
+        width: 100%;
+        &-label{
+            font-size: 16px;
+            font-weight: bold;
+            color: #454545;
+            margin-bottom: 8px;
+            & span{
+                color: red;
+            }
+        }
+        &-input{
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #c1c1c1;
+        }
+        & textarea{
+            height: 80px;
+        }
+    }
+    &__btnSend{
+        &-btn{
+            padding: 10px 25px;
+            background-color: #139aeb;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .2s linear;
+       
+        }
+        & :hover{
+            opacity: .5;
+        }
+    }
+}
+
 @media (min-width: 600px){
     .productPage{
         padding: 30px 50px 0px 50px;
@@ -427,6 +584,7 @@
             font-size: 20px;
         }
         &__quantityCont{
+            width: 50%;
             &-minusBtn, &-plusBtn{
                 font-size: 30px;
             }
@@ -434,10 +592,18 @@
                 font-size: 20px;
             }
         }
+
         &__btnAdd{
             &-btn{
                 font-size: 20px;
 
+            }
+        }
+        &__preOrderLabel{
+            &-text{
+                font-size: 16px;
+                font-weight: bold;
+                color: #032c41;
             }
         }
         &__btnBuyNow{
@@ -484,7 +650,13 @@
 
 @media (min-width: 750px){
     .productPage{
-        max-width: 100%;
+        &__wrapper{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
     }
 }
 
@@ -557,9 +729,8 @@
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1080px){
     .productPage{
-        max-width: 1440px;
         &__inner{
             width: 1000px;
             margin: 0 auto;
@@ -567,11 +738,10 @@
     }
 }
 
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     .productPage{
-        max-width: 100%;
         &__inner{
-            width: 1220px;
+            width: 1200px;
         }
     }
 }

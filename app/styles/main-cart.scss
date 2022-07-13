@@ -123,8 +123,8 @@
     &__shipAndTax{
         width: 100%;
         margin-top: 20px;
-        padding: 20px 24px;
-        border: 1px solid #f7f8fa;
+        
+        
         &-title{
             font-size: 17px;
             font-weight: 400;
@@ -136,6 +136,33 @@
             font-weight: 400;
             color: #454545;
             margin-bottom: 20px;
+        }
+    }
+    &__form{
+        width: 100%;
+        padding: 20px 24px;
+        border: 1px solid #f7f8fa;
+    }
+    &__formField{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        &-label{
+            font-size: 14px;
+            font-weight: 400;
+            color: #454545;
+            margin-bottom: 7px;
+        }
+        &-select,&-input{
+            height: 47px;
+            padding: 0 12px;
+            display: flex;
+            background-color: #f7f8fa;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            border-radius: 5px;
+            border: none;
         }
     }
     &__selectCountry, &__selectProvince, &__inputZipCode{
@@ -165,9 +192,38 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #454545;
+            color: #fff;
+            font-weight: bold;
             font-size: 14px;
-            border: 2px solid #032c41;
+            background-color: #139aeb;
+            cursor: pointer;
+            
+        }
+        transition: all .2s linear;
+        &-btnTextOnSubmit{
+            display: none;
+        }
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+    &__resCalculate{
+        margin-top: 20px;
+        &-title{
+            font-size: 14px;
+            font-weight: 400;
+            color: #454545;
+            margin-bottom: 7px;
+        }
+        &-listRes{
+            list-style-type: disc;
+            margin-left: 20px;
+            &-option{
+                font-size: 14px;
+                font-weight: 400;
+                color: #454545;
+                margin-bottom: 7px;
+            }
         }
     }
     &__noteBox{
@@ -283,6 +339,7 @@
 
 .cartPopUpError{
     position: absolute;
+    z-index: 999;
     top: 0;
     left: 0;
     width: 100%;
@@ -446,7 +503,7 @@
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1080px){
     .cartPage{
         &__inner{
             max-width: 1000px;
@@ -455,10 +512,10 @@
     }
 }
 
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     .cartPage{
         &__inner{
-            max-width: 1220px;
+            max-width: 1200px;
             margin: 0 auto;
         }
     }

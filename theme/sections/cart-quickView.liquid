@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ 'cartQuickView.css' | asset_url }}">
 <script src=" {{ 'cart-quick-view.js' | asset_url }}" defer></script>
-<cart-quick-view class="cartQuickView pa"  style="display: none;">
+<cart-quick-view class="cartQuickView" >
     <div class="cartQuickView__inner" >
             {%- if cart.item_count == 0 -%}
                 <a href="{{ routes.cart_url }}" class="">
@@ -17,11 +17,15 @@
                         {%- for item in cart.items -%}
                             <div class="cartQuickView__productLine">
                                 <div class="cartQuickView__productLine-imgCont">
-                                    {%- render "image-style" , image: item.image -%}
+                                    <a href="{{ item.url }}" class="w100 h100">
+                                        {%- render "image-style" , image: item.image -%}
+                                    </a>
                                 </div>
                                 <div class="cartQuickView__productLine-productInfo">
                                     
-                                    <div class="cartQuickView__productLine-productTitle">{{ item.title }}</div>
+                                    <div class="cartQuickView__productLine-productTitle">
+                                        <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                                    </div>
                                     <div class="cartQuickView__productLine-qtyAndPrice">
                                         <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>
                                         <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>

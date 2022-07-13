@@ -38,6 +38,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+
 .breadcrumb{
     background-color: #f0f0f0;
     padding: 0px 20px;
@@ -86,7 +87,7 @@ input[type=number] {
     }
 }
 
-@media(min-width: 1280px){
+@media(min-width: 1080px){
     .breadcrumb{
         &__inner{
             width: 1000px;
@@ -95,10 +96,10 @@ input[type=number] {
     }
 }
 
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     .breadcrumb{
         &__inner{
-            width: 1220px;
+            width: 1200px;
         }
     }
 }
@@ -148,3 +149,14 @@ input[type=number] {
     object-fit: contain;
 }
 
+.p-0{
+    padding: 0 !important;
+}
+
+html, body {
+    text-rendering: optimizeLegibility;
+}
+
+img.lazyload:not([src]) {
+	visibility: hidden;
+}

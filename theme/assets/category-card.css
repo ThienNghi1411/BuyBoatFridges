@@ -1,8 +1,7 @@
 .categoryCard {
   width: 100%;
-  height: 100%;
   justify-self: center;
-  align-self: center;
+  align-self: flex-end;
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
@@ -28,7 +27,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: flex-end; }
 
 .categoryCard__imgCont img {
   width: 100%; }
