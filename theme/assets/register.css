@@ -20,6 +20,10 @@
   border: 1px solid var(--border-color);
   border-radius: 5px; }
 
+.register .register_inner .register_form form .errors {
+  color: red;
+  line-height: 20px; }
+
 .register .register_inner .register_form .form_group {
   display: flex;
   flex-direction: column;

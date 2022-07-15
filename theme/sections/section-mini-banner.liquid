@@ -8,7 +8,7 @@
                         <div class="miniBanner__imgBanner">
                             <a href="{{ block.settings.urlImg | default: routes.root_url }}" class="">
                                 {% comment %} <img src="{{ section.settings.image1 | image_url }} " /> {% endcomment %}
-                                <script>console.log({{ block.settings.image | json }})</script>
+                                
                                 {%- render "image-style" , image: block.settings.image -%}
                             </a>
                         </div>

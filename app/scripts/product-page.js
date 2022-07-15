@@ -1,16 +1,21 @@
 
-
 // VARIABLES //
 const minusBtn = document.querySelector(".productPage__quantityCont-minusBtn");
 const plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
 const qtyField = document.querySelector(".productPage__quantityCont-inputQty");
+const qtyFieldQuickAdd = document.querySelector(".quickAdd__inputField");
 const checkBox = document.querySelector(".productPage__termConditions");
 const askingProduct = document.querySelector(".productPage__askingPd");
 const askingPopup = document.querySelector(".popupAsking");
+const askingPopUpDefault = document.querySelector(".popupAsking__contentDefault");
 const body = document.querySelector("body");
+
 const init = () => {
     minusBtn.addEventListener("click", adjustQty )
-    plusBtn.addEventListener("click" , adjustQty )
+    plusBtn.addEventListener("click" , adjustQty );
+    qtyFieldQuickAdd.addEventListener("change" , () => {
+        qtyField.value = qtyFieldQuickAdd.value;
+    })
     checkBox.addEventListener("click" , () => {
         let box = checkBox.querySelector(".productPage__termConditions-checkbox");
         let checkOutBtns = document.querySelectorAll(".productPage__btnBuyNow");
@@ -29,7 +34,7 @@ const init = () => {
         }
     })
     askingProduct.addEventListener("click" , () => {
-        window.scroll(0,0);
+        askingPopUpDefault.style.display="block";
         askingPopup.style.display = "block";
         body.style.overflow="hidden";
     })
@@ -41,8 +46,10 @@ const adjustQty = (e) => {
     if (e.target.getAttribute("name") === "minus"){
         if(qtyField.value*1 > 1)
         qtyField.value = qtyField.value*1 - 1;
+        qtyFieldQuickAdd.value = qtyField.value;
     }else{
         qtyField.value = qtyField.value*1 + 1;
+        qtyFieldQuickAdd.value = qtyField.value;
     }
 }
 
@@ -55,10 +62,13 @@ init();
 const productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
 const pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
 
-const addToCartForm = document.querySelector('form[action$="/cart/add"]');
+const addToCartForms = document.querySelectorAll('form[action$="/cart/add"]');
 const spinner = document.querySelector(".loading__spinner");
 
-addToCartForm.addEventListener("submit" , e => addToCart(e));
+addToCartForms.forEach(addToCartForm => {
+    addToCartForm.addEventListener("submit" , e => addToCart(e));
+})
+
 
 const getSectionsToRender = () => {
     return [
@@ -111,7 +121,6 @@ const addToCart = (e) => {
     })
     .then(data => {
         spinner.style.display="none";
-        window.scrollTo(0, 0);
         if (data.status){
             let popupError = document.querySelector(".cartPopUpError");
             popupError.style.display="block";

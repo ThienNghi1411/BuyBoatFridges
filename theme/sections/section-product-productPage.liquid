@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
 <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 <script src=" {{ 'product-popup.js' | asset_url }}" defer></script>
-<script>console.log({{ product.collections | json }})</script>
+
 {% comment %} {%- assign collectionUrl = "" -%}
 {%- for collection in product.collections -%}
     {%- if collection.title == product.type -%}
@@ -31,7 +31,7 @@
                 <div class="productPage__titleProduct">  
                     {%- capture productName -%}{{ product.vendor }} {{ product.variants[0].sku }}{%- endcapture -%}
                     <div class="productPage__nameProduct"> {{ productName }}</div>
-                    <div class="productPage__skuProduct">SKU: {{ product.variants[0].sku }}</div>
+                    <div class="productPage__skuProduct">{{ 'sections.productPage.sku' | t }}: {{ product.variants[0].sku }}</div>
                     <div class="productPage__featureProduct">{{ product.title }}</div>
                 </div>
                 <div class="productPage__sliderImgProduct productPage__sliderImgMobile full-width">
@@ -46,9 +46,9 @@
                                     <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                                 </div>
                                 {%- if product.variants[0].inventory_quantity == 0 -%}
-                                    <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                                    <div class="productPage__imgProduct-tag">{{ 'sections.productPage.imgTag.soldout' | t }}</div>
                                 {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
-                                    <div class="productPage__imgProduct-saleTag">ON SALE</div>
+                                    <div class="productPage__imgProduct-saleTag">{{ 'sections.productPage.imgTag.sale' | t }}</div>
                                 {%- endif -%}
                             </div> 
                         {%- endfor -%}
@@ -72,11 +72,11 @@
                     </div>
                     <div class="productPage__policy">
                         <div class="productPage__policyOption">
-                            <div class="productPage__policyOption-icon"> <img src="{{ section.settings.iconPolicy1 | image_url }} " alt="{{  }}" /></div>
-                            <div class="productPage__policyOption-text">{{ 'sections.productPage.policy1' | t }}</div>
+                            <div class="productPage__policyOption-icon"> <img src="{{ section.settings.iconPolicy1 | image_url }} " alt="{{ section.settings.iconPolicy1.alt }}" /></div>
+                            <div class="productPage__policyOption-text"><a href="{{ routes.root_url | append: "pages/shipping-returns" }}" class="">{{ 'sections.productPage.policy1' | t }}</a></div>
                         </div>
                         <div class="productPage__policyOption productPage__askingPd">
-                            <div class="productPage__policyOption-icon"><img src="{{ section.settings.iconPolicy2 | image_url }} " alt="{{  }}" /></div>
+                            <div class="productPage__policyOption-icon"><img src="{{ section.settings.iconPolicy2 | image_url }} " alt="{{ section.settings.iconPolicy2.alt }}" /></div>
                             <div class="productPage__policyOption-text">{{ 'sections.productPage.policy2' | t }}</div>
                         </div>
                     </div>
@@ -110,14 +110,14 @@
                     <div class="productPage__termConditions-text">{{ 'sections.productPage.agreeTerms' | t }}</div>
                 </div>
                 <div class="productPage__otherInfo">
-                    <div class="productPage__vendor">Vendor: {{ product.vendor }}</div>
-                    <div class="productPage__productType">Product Type: {{ product.type }}</div>
+                    <div class="productPage__vendor">{{ 'sections.productPage.vendor' | t }}: {{ product.vendor }}</div>
+                    <div class="productPage__productType">{{ 'sections.productPage.productType' | t }}: {{ product.type }}</div>
                     {%- assign tagContent = "" -%}
                     {%- for tag in product.tags -%}
                         {%- assign tagContent = tagContent | append: ', ' | append: tag -%}
                     {%- endfor -%}
                     {%- assign tagContent = tagContent | remove_first: "," -%}
-                    <div class="productPage__tags">Tags: {{ tagContent }}</div>
+                    <div class="productPage__tags">{{ 'sections.productPage.tag' | t }}: {{ tagContent }}</div>
                 </div>
                 <div class="productPage__trustedSite">
                     <img src="{{ section.settings.imgTrusted | image_url: width: 120 , height: 20 }} " alt="{{  }}" />
@@ -135,9 +135,9 @@
                                 <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
                             </div>
                             {%- if product.variants[0].inventory_quantity == 0 -%}
-                                <div class="productPage__imgProduct-tag">SOLD OUT</div>
+                                <div class="productPage__imgProduct-tag">{{ 'sections.productPage.imgTag.soldout' | t }}</div>
                             {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
-                                <div class="productPage__imgProduct-saleTag">ON SALE</div>
+                                <div class="productPage__imgProduct-saleTag">{{ 'sections.productPage.imgTag.sale' | t }}</div>
                             {%- endif -%}
                         </div> 
                     {%- endfor -%}
@@ -160,7 +160,7 @@
         {%- endif -%}
         {%- endform -%}
     </div>
-    <div class="loading__spinner"></div>
+    <div class="loading__spinner" style="right:0 ; left: 50%"></div>
     <script id="productPage__settings" type="application/ld+json">
         {
             "product" : {{ product | json }},
@@ -176,9 +176,9 @@
                     <div class="cartPopUpError__header-icon">
                         {%- render 'icon-warning'-%}
                     </div>
-                    <div class="cartPopUpError__header-text">Warning</div>
+                    <div class="cartPopUpError__header-text">{{ 'sections.cart-popup-error.title' | t }}</div>
                 </div>
-                <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
+                <div class="cartPopUpError__error"></div>
                 <div class="cartPopUpError__iconClose">
                     {%- render 'icon-X' -%}
                 </div>
@@ -189,45 +189,84 @@
 <div class="popupAskingCont">
     <product-popup-asking class="popupAsking">
         <div class="popupAsking__overlay">
-            <div class="popupAsking__content">
-                <div class="popupAsking__title">What would you like to know about this product?</div>
-                <div class="popupAsking__btnClose"> {%- render 'icon-X' -%} </div>
-                <div class="popupAsking__formContent">
-                    <div class="popupAsking__formContentHeader">
-                        <div class="popupAsking__formContentHeader-text">Product:</div>
-                        <div class="popupAsking__formContentHeader-productTitle">{{ product.title }}</div>
+            {% form 'contact' , id: 'ContactForm' %}
+                {%- if form.posted_successfully? -%}
+                    <div class="popupAsking__content popupAsking__success">
+                        <div class="popupAsking__btnClose"> {%- render 'icon-X' -%} </div>
+                        <div class="popupAsking__messageIcon">{%- render 'icon-check' -%}</div>
+                        <div class="popupAsking__titleMessage">{{ 'sections.productPage.popupAsking.messageTitle' | t }}</div>
+                        <div class="popupAsking__messageContent">{{ 'sections.productPage.popupAsking.messageContent' | t: productName: productName }}</div>
                     </div>
-                    <div class="popupAsking__formWrapper">
-                        <div class="popupAsking__formField">
-                            <div class="popupAsking__formField-label">Name <span>*</span></div>
-                            <input type="text" class="popupAsking__formField-input">
+                    {%- style -%}
+                        .popupAsking{
+                            display: block;
+                        }
+                        .popupAsking__contentDefault{
+                            display : none;
+                        }
+                        body{
+                            overflow: hidden;
+                        }
+                    {%- endstyle -%}
+                {%- else -%}
+                {{ form.errors | default_errors }}
+                {%- endif -%}
+                <div class="popupAsking__content popupAsking__contentDefault">
+                    <div class="popupAsking__title">{{ 'sections.productPage.popupAsking.formTitle' | t }}</div>
+                    <div class="popupAsking__btnClose"> {%- render 'icon-X' -%} </div>
+                    <div class="popupAsking__formContent">
+                        <div class="popupAsking__formContentHeader">
+                            <div class="popupAsking__formContentHeader-text">{{ 'sections.productPage.popupAsking.formProduct' | t }}:</div>
+                            <div class="popupAsking__formContentHeader-productTitle">{{ productName }}</div>
                         </div>
-                        <div class="popupAsking__formField">
-                            <div class="popupAsking__formField-label">Email <span>*</span></div>
-                            <input type="text" class="popupAsking__formField-input">
-                        </div>
-                        <div class="popupAsking__formField">
-                            <div class="popupAsking__formField-label">Subject</div>
-                            <input type="text" class="popupAsking__formField-input">
-                        </div>
-                        <div class="popupAsking__formField">
-                            <div class="popupAsking__formField-label">Comment <span>*</span></div>
-                            <textarea name="" id="" cols="30" rows="10"  class="popupAsking__formField-input"></textarea>
-                        </div>
-                        <div class="popupAsking__btnSend">
-                            <button class="popupAsking__btnSend-btn">Send</button>
+                        <div class="popupAsking__formWrapper">
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formName' | t }} <span>*</span></div>
+                                <input type="text" name="contact[name]" class="popupAsking__formField-input" required>
+                            </div>
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formEmail' | t }} <span>*</span></div>
+                                <input type="email" name="contact[email]" class="popupAsking__formField-input" required>
+                            </div>
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formSubject' | t }}</div>
+                                <input type="text" name="contact[subject]" class="popupAsking__formField-input">
+                            </div>
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formComment' | t }} <span>*</span></div>
+                                <textarea  name="contact[body]" id="" cols="30" rows="10"  class="popupAsking__formField-input" required></textarea>
+                            </div>
+                            <div class="popupAsking__btnSend">
+                                <button class="popupAsking__btnSend-btn" type="submit">{{ 'sections.productPage.popupAsking.formSend' | t }}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endform %}
         </div>
     </product-popup-asking>
 </div>
-<div class="popupPreOrderCont">
-    <product-popup-preorder class="popupPreOrder">
-    
-    </product-popup-preorder>
+<div class="quickAdd">
+    {%- form 'product', product , class: "productForm" -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">    
+        <div class="quickAdd__inner">
+            <div class="quickAdd__productInfo">
+                <div class="quickAdd__productImg">
+                    {%- render 'image-style', image: product.featured_image , imgClass: "object-fit--contain" -%}
+                </div>
+                <div class="quickAdd__productName">{{ productName }}</div>
+            </div>
+            <div class="quickAdd__productAdd">
+                <div class="quickAdd__productPrice">USD {{ product.variants[0].price | money }}</div>
+                <input type="number" name="quantity" class="quickAdd__inputField" min="1" value="1">
+                <div class="quickAdd__btnAddToCart">
+                    <button class="quickAdd__btnAddToCart-btn" type="submit">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    {%- endform -%}
 </div>
+
 <script src="{{ 'product-page.js' | asset_url }}" defer></script>
 
 {% schema %}

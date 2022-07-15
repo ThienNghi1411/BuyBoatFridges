@@ -181,7 +181,10 @@
           "3136ffd8-97c9-4ca0-8e28-e7f79611ce27",
           "f9ef989a-c33e-46dd-bc8a-3827c130d052"
         ],
-        "settings": {}
+        "settings": {
+          "fullWidth": false,
+          "autoPlay": 2
+        }
       },
       "165556668187c23e1f": {
         "type": "section-home-categories",
@@ -218,28 +221,32 @@
             "type": "collection",
             "settings": {
               "collection": "vitrifrigo-ice-makers",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/ICE_MAKERS_3x_00ec7449-496e-458a-891c-11dd23304f47.png"
             }
           },
           "b43a3eb5-3b40-410b-a747-d506decc23e3": {
             "type": "collection",
             "settings": {
               "collection": "portable-refrigerators",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/PORTABLE_FRIDGE_3x_265ac957-5edc-4520-8a24-24fdd359603a.png"
             }
           },
           "ad63279d-cfa2-4969-abed-b8b4b196bf08": {
             "type": "collection",
             "settings": {
               "collection": "top-loading-countertop",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/TOP_LOADING_COUNTERTOP_3x_004fe55e-c28b-4d25-8e9c-38df32ae9250.png"
             }
           },
           "b8d17b65-0c19-4d96-ba3d-fcb1f3d66879": {
             "type": "collection",
             "settings": {
               "collection": "wine-coolers",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/WINE_COOLER_3x_0012861b-6af9-41de-9370-bfed9cb3bc4d.png"
             }
           },
           "15dca201-c473-46cf-85b5-80390d0ebf6d": {
@@ -298,7 +305,7 @@
           "title": "SHOP BY CATEGORIES",
           "title_fs": "20px,30px,30px",
           "title_fw": 700,
-          "limitPerRow": "2,3,5,6"
+          "limitPerRow": "2,3,4,5,6"
         }
       },
       "165563478473cdca76": {
@@ -434,7 +441,7 @@
           "4f6bc6fa-7cd0-4648-8059-ac1abfd42b98"
         ],
         "settings": {
-          "collection_grid": "4"
+          "limitPerRow": "2,3,3,4,4"
         }
       },
       "section-newsletter": {
@@ -504,13 +511,15 @@
           "f436eebc-0ed7-4fa4-b851-01d74926f4e6": {
             "type": "imageBlock",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Banner1_88b67533-656a-467a-b162-a7ec724f9fc3.png"
+              "image": "shopify:\/\/shop_images\/Banner1_88b67533-656a-467a-b162-a7ec724f9fc3.png",
+              "urlImg": ""
             }
           },
           "6322b54f-9985-4893-85fa-414959f22c3d": {
             "type": "imageBlock",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Banner2_9ef6556b-d1d8-44c8-889d-39108b30cfbe.png"
+              "image": "shopify:\/\/shop_images\/Banner2_9ef6556b-d1d8-44c8-889d-39108b30cfbe.png",
+              "urlImg": ""
             }
           }
         },
@@ -597,7 +606,16 @@
         ],
         "settings": {
           "map": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d28665.904630819092!2d-80.16916334103881!3d26.091145930386087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d90083510ac873%3A0x4953afc8bdd73df7!2sFort%20Lauderdale%2C%20Florida%2033315%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1657090001758!5m2!1svi!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
-          "display": "1"
+          "display": "2"
+        }
+      },
+      "404-template": {
+        "type": "404-template",
+        "settings": {
+          "title": "<p>404<\/p>",
+          "subtitle": "<p>We are sorry, the page you've requested is not available.<\/p>",
+          "button_label": "Back to Homepage",
+          "button_link": "https:\/\/www.buyboatfridges.com\/"
         }
       }
     },

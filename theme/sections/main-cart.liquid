@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'main-cart.css' | asset_url }}">
-<script>console.log({{ cart | json }})</script>
+
 <script src=" {{ 'cart.js' | asset_url }}" defer></script>
 <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 <script src=" {{ 'shipping-calculator.js' | asset_url }}" defer></script>
@@ -10,7 +10,7 @@
         </div>
         
         <div class="breadcrumb__option">
-            <a href="{{ routes.cart_url }}" class="">Your Shopping Cart</a>
+            <a href="{{ routes.cart_url }}" class="">{{ 'sections.cart.cartBreadcrumb' | t }}</a>
         </div>
     </div>
 </div>
@@ -18,13 +18,13 @@
     {%- if cart.item_count != 0 -%}
         {%- form 'cart' , cart -%}
         <div class="cartPage__inner">
-            <div class="cartPage__title">SHOPPING CART</div>
+            <div class="cartPage__title">{{ 'sections.cart.title' | t }}</div>
             <div class="cartPage__items">
                 {%- for item in cart.items -%}
                     <div class="cartPage__item">
                         <div class="cartPage__imgItem">
                             <a href="{{ item.url }}" class="w100 h100">
-                                {%- render "image-style" , image: item.image -%}
+                                {%- render "image-style" , image: item.image , imgClass: "object-fit--contain"-%}
                             </a>
                         </div>
                         <div class="cartPage__itemInfo">        
@@ -57,14 +57,14 @@
                 <maincart-remove-all-button >
                     <div class="cartPage__clearCart">
                         <div class="cartPage__clearCart-icon">{%- render 'icon-remove' -%}</div>
-                        <div class="cartPage__clearCart-text">CLEAR SHOPPING CART</div>
+                        <div class="cartPage__clearCart-text">{{ 'sections.cart.cartClear' | t }}</div>
                     </div>
                     <div class="cartPage__removeBtn-spinner"></div>
                 </maincart-remove-all-button>
                 <div class="cartPage__continueShopping">
                     <a href="{{ routes.collections_url }}" class="cartPage__continueShopping">
                         <div class="cartPage__continueShopping-icon">{%- render 'icon-remove' -%}</div>
-                        <div class="cartPage__continueShopping-text">CONTINUE SHOPPING</div>
+                        <div class="cartPage__continueShopping-text">{{ 'sections.cart.continueShopping' | t }}</div>
                     </a>
                 </div>
             </div>
@@ -73,23 +73,23 @@
         <div class="cartPage__cartBox cartPage__inner">
             <shipping-calculator class="cartPage__shipAndTax"  data-url="{{ routes.cart_url | append: '/shipping_rates.json' }}">
                 <form action="{{ routes.cart_url }}" class="cartPage__form">
-                    <div class="cartPage__shipAndTax-title">ESTIMATE SHIPPING AND TAX</div>
-                    <div class="cartPage__shipAndTax-subTitle">Enter your destination to get a shipping estimate</div>
+                    <div class="cartPage__shipAndTax-title">{{ 'sections.cart.estimateShip.title' | t }}</div>
+                    <div class="cartPage__shipAndTax-subTitle">{{ 'sections.cart.estimateShip.subTitle' | t }}</div>
                     <div class="cartPage__formField">
-                        <label class="cartPage__formField-label" for="addressCountry{{ object.id }}">COUNTRY *</label>
+                        <label class="cartPage__formField-label" for="addressCountry{{ object.id }}">{{ 'sections.cart.estimateShip.country' | t }} *</label>
                         <select class="cartPage__formField-select" id="addressCountry{{ object.id }}" name="shipping_address[country]" 
                             data-default="{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address.country }}{% endif %}" required>
                             {{ country_option_tags }}
                         </select>
                     </div>
                     <div class="cartPage__formField">
-                        <label class="cartPage__formField-label" for="addressProvince{{ object.id }}" >STATE/PROVINCE *</label>
+                        <label class="cartPage__formField-label" for="addressProvince{{ object.id }}" >{{ 'sections.cart.estimateShip.province' | t }} *</label>
                         <select class="cartPage__formField-select" id="addressProvince{{ object.id }}" name="shipping_address[province]" 
                             data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}">
                         </select>
                     </div>
                     <div class="cartPage__formField">
-                        <label class="cartPage__formField-label" for="addressZip{{ object.id }}" >ZIP/POSTAL CODE</label>
+                        <label class="cartPage__formField-label" for="addressZip{{ object.id }}" >{{ 'sections.cart.estimateShip.postal' | t }}</label>
                         <input class="cartPage__formField-input" type="text" id="addressZip{{ object.id }}" name="shipping_address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} required/>
                     </div>
                     <div class="cartPage__calculateShipBtn">
@@ -112,17 +112,17 @@
                 </script> 
             </shipping-calculator>
             <div class="cartPage__noteBox">
-                <div class="cartPage__noteBox-title">NOTE</div>
-                <div class="cartPage__noteBox-subTitle">Add special instructions for your order...</div>
+                <div class="cartPage__noteBox-title">{{ 'sections.cart.note' | t }}</div>
+                <div class="cartPage__noteBox-subTitle">{{ 'sections.cart.noteLabel' | t }}</div>
                 <textarea name="note" id="" cols="30" rows="10" class="cartPage__noteBox-text"></textarea>
             </div>
             <div class="cartPage__checkoutBox">
                 <div class="cartPage__subTotal">
-                    <div class="cartPage__subTotal-text">SUBTOTAL</div>
+                    <div class="cartPage__subTotal-text">{{ 'sections.cart.subTotal' | t }}</div>
                     <div class="cartPage__subTotal-price">{{ cart.items_subtotal_price | money }}</div>
                 </div>
                 <div class="cartPage__grandTotal">
-                    <div class="cartPage__grandTotal-text">GRAND TOTAL</div>
+                    <div class="cartPage__grandTotal-text">{{ 'sections.cart.grandTotal' | t }}</div>
                     <div class="cartPage__grandTotal-price">{{ cart.total_price | money }}</div>
                 </div>
                 {%- render 'snippet-checkout-term' -%}
@@ -134,11 +134,11 @@
                 <div class="cartPage__emptyCart-icon">
                     <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
                 </div>
-                <div class="cartPage__emptyCart-title">SHOPPING CART IS EMPTY</div>
-                <div class="cartPage__emptyCart-subTitle">You have no items in your shopping cart</div>
+                <div class="cartPage__emptyCart-title">{{ 'sections.cart.emptyCart.title' | t }}</div>
+                <div class="cartPage__emptyCart-subTitle">{{ 'sections.cart.emptyCart.subTitle' | t }}</div>
                 <div class="cartPage__emptyCart-btnShopping">
                     <a href="{{ routes.collections_url }}" class="">
-                        <button class="cartPage__emptyCart-btnShopping-btn">CONTINUE SHOPPING</button>
+                        <button class="cartPage__emptyCart-btnShopping-btn">{{ 'sections.cart.emptyCart.continueShopping' | t }}</button>
                     </a>
                 </div>
             </div>
@@ -153,9 +153,9 @@
                 <div class="cartPopUpError__header-icon">
                     {%- render 'icon-warning'-%}
                 </div>
-                <div class="cartPopUpError__header-text">Warning</div>
+                <div class="cartPopUpError__header-text">{{ 'sections.cart-popup-error.title' | t }}</div>
             </div>
-            <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
+            <div class="cartPopUpError__error" error="{{ 'sections.cart-popup-error.error' | t }}"></div>
             <div class="cartPopUpError__iconClose">
                 {%- render 'icon-X' -%}
             </div>

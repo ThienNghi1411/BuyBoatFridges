@@ -3,7 +3,6 @@ class MainCartRemoveBtn extends HTMLElement {
     
       super();
        this.addEventListener('click', (event) => {
-            console.log(this);
             let spin = this.querySelector(".cartPage__removeBtn-spinner");
             let removeSvg = this.querySelector("svg");
             spin.style.display="block";
@@ -131,10 +130,9 @@ class MainCartItems extends HTMLElement {
                     let popupError = document.querySelector(".cartPopUpError");
                     popupError.style.display="block";
                     let errorText = popupError.querySelector(".cartPopUpError__error");
-                    errorText.innerText = `You can only add ${tmp.quantity} of this item to your cart.`;
+                    errorText.innerText = errorText.getAttribute("error").replace("{{ maxQty }}",tmp.quantity);
                     const body = document.querySelector("body");
                     body.style.overflow = "hidden";
-                    window.scroll(0,0);
                 }
             })
             this.getSectionsToRender().forEach((section => {

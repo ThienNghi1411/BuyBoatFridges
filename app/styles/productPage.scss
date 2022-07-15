@@ -231,6 +231,7 @@
     }
     &__btnPreOrder{
         width: 100%;
+        height: 100%;
         background-color: #139aeb !important;
         padding: 12px 0px;
         cursor: pointer;
@@ -375,12 +376,13 @@
 
 
 .cartPopUpError{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     display: none;
+    z-index: 99999;
     &__overlay{
         width: 100%;
         height: 100%;
@@ -444,13 +446,14 @@
 }
 
 
-.popupAsking{
-    position: absolute;
+.popupAsking , .popupPreOrder{
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     display: none;
+    z-index: 99999;
     &__overlay{
         width: 100%;
         height: 100%;
@@ -461,11 +464,12 @@
       
     }
     &__content{
-        width: 550px;
+        width: 90%;
+        margin: 0 auto;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        padding: 50px 40px;
+        padding: 50px 20px;
         position: relative;
     }
     &__btnClose{
@@ -490,7 +494,7 @@
         margin-bottom: 40px;
     }
     &__formContent{
-        width: 320px;
+        width: 90%;
         margin: 0 auto;
     }
     &__formContentHeader{
@@ -547,6 +551,131 @@
         }
         & :hover{
             opacity: .5;
+        }
+    }
+    &__messageIcon{
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #139aeb;
+        margin-bottom: 7px;
+        & svg {
+            width: 15px;
+            height: 15px;
+            & path{
+                fill: #fff;
+            }
+        }
+    }
+    &__titleMessage{
+        font-size: 28px;
+        font-weight: bold;
+        color: #454545;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 7px;
+    }
+    &__messageContent{
+        width: 100%;
+        text-align: center;
+        color: #454545;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
+
+
+.quickAdd{
+    position: fixed;
+    width: 100%;
+    background-color: #242424;
+    opacity: .9;
+    bottom: 0;
+    z-index: 1000;
+    &__inner{
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+        padding: 20px;
+        margin: 0 auto;
+    }
+    &__productInfo{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    &__productImg{
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    &__productName{
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        display: none;
+    }
+    &__productAdd{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 50px;
+    }
+    &__productPrice{
+        font-size: 16px;
+        color: #fff;
+        font-weight: bold;
+    }
+    &__inputField{
+        width: 50px;
+        height: 40px;
+        padding: 5px;
+        border: none;
+        text-align: center;
+        border-radius: 5px;
+        margin: 0;
+        display: none;
+    }
+    &__btnAddToCart{
+        cursor: pointer;
+        transition: all .2s linear;
+        &:hover{
+            opacity: .5;
+        }
+        &-btn{
+            cursor: pointer;
+            height: 40px;
+            padding: 7px 15px;
+            border-radius: 5px;
+            background-color: #139aeb;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+    }
+}
+
+@media (min-width: 480px){
+    .quickAdd{
+        &__inputField{
+            display: block;
+        }
+        &__productPrice{
+            font-size: 24px;
         }
     }
 }
@@ -645,7 +774,21 @@
             width: 500px;
         }
     }
-    
+    .quickAdd{
+        &__inner{
+            padding: 20px 50px;
+        }
+    }
+    .popupAsking , .popupPreOrder{
+        &__content{
+            width: 550px;
+            padding: 50px 40px;
+        }
+        &__formContent{
+            width: 320px;
+            margin: 0 auto;
+        }
+    }
 }
 
 @media (min-width: 750px){
@@ -656,6 +799,11 @@
             align-items: center;
             gap: 15px;
             width: 100%;
+        }
+    }
+    .quickAdd{
+        &__productName{
+            display: block;
         }
     }
 }
@@ -736,10 +884,21 @@
             margin: 0 auto;
         }
     }
+    .quickAdd{
+        &__inner{
+            width: 1000px;
+            padding: 20px 0px;
+        }
+    }
 }
 
 @media (min-width: 1280px){
     .productPage{
+        &__inner{
+            width: 1200px;
+        }
+    }
+    .quickAdd{
         &__inner{
             width: 1200px;
         }

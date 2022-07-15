@@ -24,7 +24,11 @@
     </div>
     <div class="contact_inner_form">
       {% form 'contact' %}
-  {% if form.posted_successfully? %} Thank you for your contact {% endif %}
+  {% if form.posted_successfully? %} 
+  <div class="form_success_message">
+    {{ 'sections.contact.message' | t }}
+  </div>
+   {% endif %}
   {{ form.errors | default_errors }}
   <div class="form_col">
     <div class="form_group">
@@ -62,6 +66,13 @@
     .form_col
     {
       width:100% !important;
+    }
+    .form_group
+    {
+      width:100% !important;
+    }
+    .textarea{
+      margin-top:20px !important; 
     }
 {% endstyle %}
 {% endif %}

@@ -37,7 +37,7 @@ const toggleOption = (e,i) => {
 
     if (option.classList.contains("productSpecs__activeOption")){
         option.classList.remove("productSpecs__activeOption");
-        console.log(content);
+
         content.forEach(tmp => {
             tmp.style.display="none";
         })

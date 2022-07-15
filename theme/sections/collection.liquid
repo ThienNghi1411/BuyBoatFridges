@@ -1,21 +1,17 @@
 <link rel="stylesheet" href="{{ 'collection.css' | asset_url }}">
-
-
 <div class="breadcrumb">
   <div class="breadcrumb__inner">
       <div class="breadcrumb__option">
           <a href="{{ routes.root_url }}" class="">Home</a>
       </div>
       <div class="breadcrumb__option">
-          <a href="{{ collectionUrl }}" class="">{{ collection.handle  | capitalize}}</a>
+          <a href="{{ collectionUrl }}" class="">{{ collection.title  }}</a>
       </div>
   </div>
 </div>
 <section class="collection" data-section-type="collection" data-section-id="{{section.id}}">
     <div class="collection__inner">
-
       <div class="collection__spinner">
-
       </div>
       {% if section.settings.loading_type =='1' %}
       <div class="collection__filter">
@@ -120,7 +116,6 @@
 
         </div>
       {% endif %}
-
       {% if section.settings.loading_type =='2' %}
       <div class="collection__filter">
         <div class="filter_Clear">
@@ -213,21 +208,23 @@
              
         </div>
       {% endif %}
-
         <div class="collection__content">
+          {% if section.settings.show_collection_description %}
           <div class="collection__header">
-              {{collection.description}}
-           </div>
-
+            {{collection.description}}
+         </div>
+          {% endif %}
           <div class="collection__handle">
-              <div class="collection__tittle">
-                  {{collection.title}} ({{collection.products_count}})
-              </div>
-
+            {% if section.settings.show_total %}
+            <div class="collection__tittle">
+              {{collection.title}} ({{collection.products_count}})
+            </div>
+            {% endif %}
               <div class="collection__control">
                   <div class="collections__Filter">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M3.853 54.87C10.47 40.9 24.54 32 40 32H472C487.5 32 501.5 40.9 508.1 54.87C514.8 68.84 512.7 85.37 502.1 97.33L320 320.9V448C320 460.1 313.2 471.2 302.3 476.6C291.5 482 278.5 480.9 268.8 473.6L204.8 425.6C196.7 419.6 192 410.1 192 400V320.9L9.042 97.33C-.745 85.37-2.765 68.84 3.854 54.87L3.853 54.87z"/></svg>
                   </div>
+                  {% if section.settings.show_sort %}
                   <div class="collection__sort">
                     <div class="custom-select">
                        <select id="sort-by" >
@@ -239,32 +236,46 @@
                             </option>
                           {% endfor %}
                         </select>
-                    </div>
-                     
+                    </div>                   
                   </div>
+                 {% endif %}
+                  {% if section.settings.loading_type =='2' %}
+                 
+
+                 
                   <div class="collection__itemDisplay">
                     <div class="custom-select">
+                      {% assign array = section.settings.product_limit | split: "," %}
                       <select name="" id="display">
-                          <option value="10">10</option>
-                          <option value="16">16</option>
+                        {% for member in array %}
+                        <option value="{{member}}">{{member}}</option>
+                        {% endfor %}
+                          <!-- <option value="16">16</option>
                           <option value="32">32</option>
-                          <option value="ALL">ALL</option>
+                          <option value="ALL">ALL</option> -->
                       </select>
                     </div>
                       
                   </div>
+                  {% endif %}
               </div>
-             
-
           </div>
-
           <div class="collection__Productcontent">
-             {% for product in collection.products %}
-              
-             {% render 'product-card' with product as product %}    
-             {% endfor %}
-              
-            
+            {% if  section.settings.loading_type =='2'%}
+            {% for product in collection.products %}
+            {% render 'product-card' with product as product %}    
+            {% endfor %}
+            {% endif %}
+            {% if  section.settings.loading_type =='1'%}
+            {% paginate collection.products by section.settings.pagination %}
+            {% for product in collection.products %}
+            {% render 'product-card' with product as product %}
+            {% endfor %}
+            <div class="paginate">
+              {{ paginate | default_pagination }}
+            </div>
+           {% endpaginate %}
+            {% endif %}
           </div>
           <div class="collection__empty">
             <div class="collection__empty__pic">
@@ -286,9 +297,7 @@
       <div class="collection__overlay-wrapper">
         <div class="collection__overlay"></div>
       </div>
-
       </div>
-      
     <!-- </div> -->
     <script>
       var collection_handle= '{{collection.handle  | capitalize}}';
@@ -304,7 +313,28 @@
     
 
 </section>
+{% if section.settings.sidebar_display == '2' %}
+{% style %}
+   .collection__inner
+   {
+      flex-direction:row-reverse !important;
+      gap:30px !important;
+   }
+{% endstyle %}
+{% endif %}
 
+{% if section.settings.sidebar_display == '3' %}
+{% style %}
+   .collection__filter
+   {
+    display: none!important;
+   }
+   .collection__content
+   {
+    width:100% !important;
+   }
+{% endstyle %}
+{% endif %}
 
 <!-- render first -->
 {% if section.settings.loading_type =='1' %}
@@ -348,13 +378,72 @@
               "options": [
                 {
                   "value": "1",
-                  "label": "Ifinity Load"
+                  "label": "Infinity Load"
                 },
                 {
                   "value": "2",
                   "label": "Download More button"
                 }
                
+              ],
+              "default": "1"
+            },
+            {
+              "type": "number",
+              "id": "pagination",
+              "label": "Edit items/page (only for Reload)",
+              "default": 5
+            },
+            {
+              "type":"header",
+              "content":"COLLECTION TOOLBAR"
+            },
+            {
+              "type": "text",
+              "id": "product_limit",
+              "label": "Adjust product limit ",
+              "info":"ALL ->show All product"
+             
+            },
+            {
+              "type": "checkbox",
+              "id": "show_collection_description",
+              "label": "Collection description",
+              "default": true
+            },
+            {
+              "type": "checkbox",
+              "id": "show_total",
+              "label": "Products showing",
+              "default": true
+            },
+            {
+              "type": "checkbox",
+              "id": "show_sort",
+              "label": "Enable sort by",
+              "default": true
+            },
+            {
+              "type":"header",
+              "content":"SIDEBAR"
+            },
+            {
+              "type": "select",
+              "id": "sidebar_display",
+              "label": "Style",
+              "options": [
+                {
+                  "value": "1",
+                  "label": "Left Sidebar"
+                },
+                {
+                  "value": "2",
+                  "label": "Right Sidebar"
+                },
+                {
+                  "value": "3",
+                  "label": "None Sidebar"
+                }
               ],
               "default": "1"
             }

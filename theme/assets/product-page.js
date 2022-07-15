@@ -3,13 +3,18 @@
   var minusBtn = document.querySelector(".productPage__quantityCont-minusBtn");
   var plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
   var qtyField = document.querySelector(".productPage__quantityCont-inputQty");
+  var qtyFieldQuickAdd = document.querySelector(".quickAdd__inputField");
   var checkBox = document.querySelector(".productPage__termConditions");
   var askingProduct = document.querySelector(".productPage__askingPd");
   var askingPopup = document.querySelector(".popupAsking");
+  var askingPopUpDefault = document.querySelector(".popupAsking__contentDefault");
   var body = document.querySelector("body");
   var init = () => {
     minusBtn.addEventListener("click", adjustQty);
     plusBtn.addEventListener("click", adjustQty);
+    qtyFieldQuickAdd.addEventListener("change", () => {
+      qtyField.value = qtyFieldQuickAdd.value;
+    });
     checkBox.addEventListener("click", () => {
       let box = checkBox.querySelector(".productPage__termConditions-checkbox");
       let checkOutBtns = document.querySelectorAll(".productPage__btnBuyNow");
@@ -28,7 +33,7 @@
       }
     });
     askingProduct.addEventListener("click", () => {
-      window.scroll(0, 0);
+      askingPopUpDefault.style.display = "block";
       askingPopup.style.display = "block";
       body.style.overflow = "hidden";
     });
@@ -37,16 +42,20 @@
     if (e.target.getAttribute("name") === "minus") {
       if (qtyField.value * 1 > 1)
         qtyField.value = qtyField.value * 1 - 1;
+      qtyFieldQuickAdd.value = qtyField.value;
     } else {
       qtyField.value = qtyField.value * 1 + 1;
+      qtyFieldQuickAdd.value = qtyField.value;
     }
   };
   init();
   var productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
   var pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
-  var addToCartForm = document.querySelector('form[action$="/cart/add"]');
+  var addToCartForms = document.querySelectorAll('form[action$="/cart/add"]');
   var spinner = document.querySelector(".loading__spinner");
-  addToCartForm.addEventListener("submit", (e) => addToCart(e));
+  addToCartForms.forEach((addToCartForm) => {
+    addToCartForm.addEventListener("submit", (e) => addToCart(e));
+  });
   var getSectionsToRender = () => {
     return [
       {
@@ -88,7 +97,6 @@
       return response.json();
     }).then((data) => {
       spinner.style.display = "none";
-      window.scrollTo(0, 0);
       if (data.status) {
         let popupError = document.querySelector(".cartPopUpError");
         popupError.style.display = "block";

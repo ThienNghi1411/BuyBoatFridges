@@ -11,28 +11,28 @@
                 <label for="first_name">{{section.settings.firstname}}</label>
                 <input type="text" value="" name="customer[first_name]" size="30" class="register_form-input" placeholder="Enter First Name"/>
                 {% if section.settings.show_firstname_require %}
-                <div class="form_requiredText">{{ 'sections.register-form.require' | t }}</div>
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
                 {% endif %}
             </div>
             <div class="form_group">
                 <label for="last_name">{{section.settings.lastname}}</label>
                 <input type="text" value="" name="customer[last_name]" size="30" class="register_form-input" placeholder="Enter Last Name"/>
                 {% if section.settings.show_lastname_require %}
-                <div class="form_requiredText">{{ 'sections.register-form.require' | t }}</div>
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
                 {% endif %}
             </div>
             <div class="form_group">
                 <label for="email">{{section.settings.email}}</label>
                 <input type="email" value="" name="customer[email]" size="30" class="register_form-input" placeholder="Enter Email Address"/>
                 {% if section.settings.show_email_require %}
-                <div class="form_requiredText">{{ 'sections.register-form.require' | t }}</div>
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
                 {% endif %}
             </div>       
             <div class="form_group">
                 <label for="password">{{section.settings.password}}</label>
                 <input type="password" value="" name="customer[password]" size="30" class="register_form-input" placeholder="Enter Password"/>  
                 {% if section.settings.show_password_require %}
-                <div class="form_requiredText">{{ 'sections.register-form.require' | t }}</div>
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
                 {% endif %}  
             </div>
             <div class="form_submit">

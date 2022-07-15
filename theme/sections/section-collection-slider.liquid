@@ -8,14 +8,15 @@
         <div class="collectionSlider__sliderCont">
             {%- for block in section.blocks -%}
                 {%- case block.type -%}
-                    {%- when 'collection'-%}
-                        <div class="collectionSlider__wrapper">
-                            {%- assign collection = collections[block.settings.collection] -%}
-                            {%- render 'category-card' with collection as collection -%}
-                        </div>
-
+                  {%- when 'collection' -%}
+                    {%- assign collection = collections[block.settings.collection] -%}
+                    {%- if block.settings.checkImg == true -%}
+                        {%- render 'category-card' with collection as collection , img: block.settings.imgCollection -%}
+                    {%- else -%}
+                        {%- render 'category-card' with collection as collection -%}
+                    {%- endif -%}
                 {%- endcase -%}
-            {%- endfor -%} 
+              {%- endfor -%}
         </div>
     </div>
     <script id="collectionSlider_settings" type="application/ld+json">

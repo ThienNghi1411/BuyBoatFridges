@@ -33,24 +33,19 @@ list.forEach(e => {
 })
 //Scroll To Top
 window.addEventListener("scroll", () => {
-    
     let scrolltoTop_button = document.querySelector(".footer_scrolltoTop_button");
-
     if(window.scrollY >= 600)
     {
         scrolltoTop_button.classList.add("appear");
         scrolltoTop_button.addEventListener("click", () => {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
-           
         })
     }
     if(window.scrollY <= 600)
     {
-        scrolltoTop_button.classList.remove("appear");
-       
+        scrolltoTop_button.classList.remove("appear");  
     }
-  
 
 });
 

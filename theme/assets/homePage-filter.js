@@ -45,6 +45,7 @@
               url += value + "+";
             }
           }
+          url = url.substring(0, url.length - 1);
           window.location.href = url;
         }
       });

@@ -16,7 +16,7 @@
                 <label for="customer_email">{{section.settings.Login_email_label}}</label>
                 <input type="email" name="customer[email]" placeholder="Enter E-mail" class="loginForm-input" />
                 {% if section.settings.show_email_required %}
-                <div class="form_requiredText">{{ 'sections.login-form.require' | t }}</div>
+                <div class="form_requiredText">* {{ 'sections.login-form.require' | t }}</div>
                 {% endif %}
           
             </div>
@@ -24,7 +24,7 @@
                 <label for="customer_password">{{section.settings.Login_pass_label}}</label>
                 <input type="password" name="customer[password]" placeholder="Enter Password" class="loginForm-input" />
                 {% if section.settings.show_pass_required %}
-                <div class="form_requiredText">{{ 'sections.login-form.require' | t }}</div>
+                <div class="form_requiredText">* {{ 'sections.login-form.require' | t }}</div>
                 {% endif %}
             </div>
             <div class="form_summit ">
@@ -41,11 +41,11 @@
             <div class="form_group">
                 <label for="customer_email">{{section.settings.Reset_label}}</label>
                 <input type="email" name="email" placeholder="Enter E-mail" class="loginForm-input"/>
-                <div class="form_requiredText ">{{ 'sections.login-form.require' | t }}</div>
+                <div class="form_requiredText ">* {{ 'sections.login-form.require' | t }}</div>
             </div>
             <div class="form_summit ">
                 <input type="submit" value="{{section.settings.Reset_button}}" class="loginForm-submit" />
-                <p href="" class="loginForm-submit-text Cancel">{{ 'sections.login-form.cancel' | t }}</p>
+                <p href="" class="loginForm-submit-text Cancel">* {{ 'sections.login-form.cancel' | t }}</p>
             </div>
             {% endform %}
         </div>

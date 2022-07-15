@@ -4,7 +4,7 @@
         <div class="productSpecs__optionWrapper">
             <div class="productSpecs__option">
                 <div class="productSpecs__optionWrap">
-                    <div class="productSpecs__optionWrap-text ">DESCRIPTION</div>
+                    <div class="productSpecs__optionWrap-text ">{{ 'sections.productSpecs.tab.description' | t }}</div>
                     <div class="productSpecs__optionWrap-hideIcon">
                         {%- render 'icon-angle-top' -%}
                     </div>
@@ -19,7 +19,7 @@
             {%- if product.metafields.dimensions.content != nil and product.metafields.dimensions.heading != nil -%}
                 <div class="productSpecs__option productSpecs__dimensions">
                     <div class="productSpecs__optionWrap ">
-                        <div class="productSpecs__optionWrap-text ">DIMENSIONS</div>
+                        <div class="productSpecs__optionWrap-text ">{{ 'sections.productSpecs.tab.dimensions' | t }}</div>
                         <div class="productSpecs__optionWrap-hideIcon">
                             {%- render 'icon-angle-top' -%}
                         </div>
@@ -43,7 +43,7 @@
             {%- if product.metafields.document.file != nil and product.metafields.document.text and product.metafields.document.type -%}
                 <div class="productSpecs__option">
                     <div class="productSpecs__optionWrap">
-                        <div class="productSpecs__optionWrap-text ">TECHNICAL DOCUMENTS</div>
+                        <div class="productSpecs__optionWrap-text ">{{ 'sections.productSpecs.tab.technical' | t }}</div>
                         <div class="productSpecs__optionWrap-hideIcon">
                             {%- render 'icon-angle-top' -%}
                         </div>
@@ -78,7 +78,7 @@
             {%- if product.metafields.part.product != nil -%}
                 <div class="productSpecs__option">
                     <div class="productSpecs__optionWrap">
-                        <div class="productSpecs__optionWrap-text ">PARTS</div>
+                        <div class="productSpecs__optionWrap-text ">{{ 'sections.productSpecs.tab.parts' | t }}</div>
                         <div class="productSpecs__optionWrap-hideIcon">
                             {%- render 'icon-angle-top' -%}
                         </div>
@@ -102,7 +102,7 @@
             {%- if product.metafields.shopping.page != nil -%}
                 <div class="productSpecs__option">
                     <div class="productSpecs__optionWrap">
-                        <div class="productSpecs__optionWrap-text ">SHIPPING</div>
+                        <div class="productSpecs__optionWrap-text ">{{ 'sections.productSpecs.tab.shipping' | t }}</div>
                         <div class="productSpecs__optionWrap-hideIcon">
                             {%- render 'icon-angle-top' -%}
                         </div>
@@ -170,6 +170,7 @@
                     <div class="productSpecs__contentDestop">
                         <div class="productSpecs__columnLayout">
                             {%- assign dataProducts = product.metafields.part.product | split: "|" -%}
+                            
                             {%- for pdName in dataProducts -%}
                                 {%- assign dataProduct = all_products[pdName] -%}
                                 {%- if dataProduct.id != blank -%}

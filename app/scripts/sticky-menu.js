@@ -1,7 +1,7 @@
 // VARIABLES //
 const header = document.querySelector(".header");
 const sliderBanner = document.querySelector(".pageBanner");
-console.log(sliderBanner);
+
 const init = () => {
     window.onload = () => {
         window.onscroll = () => {

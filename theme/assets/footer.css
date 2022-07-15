@@ -365,7 +365,7 @@ path{
     .emailForm_socialIcons
     {
         margin-top: 0;
-        width: 30%;
+        width: 34%;
         display: flex;
         justify-content: flex-end;
     }
@@ -423,6 +423,7 @@ path{
     {
         border-bottom: unset;
         width: 50%;
+        cursor: unset;
       
     }
     .footer__emailForm
@@ -515,15 +516,15 @@ path{
 {
     .footer__emailForm
     {
-        padding: 10px 50px;
+        padding: 10px 0px;
     }
     .footer__menu
     {
-        padding: 55px 50px;
+        padding: 55px 0px;
     }
     .footer__copyRight
     {
-        padding: 20px 50px;
+        padding: 20px 0px;
     }
     .Email__Wrapper{
         width: 1000px;
@@ -547,6 +548,7 @@ path{
     {
        
         justify-content: flex-end;
+        
     }
 
     

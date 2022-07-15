@@ -52,7 +52,7 @@
 		<noscript>
 			<img
 				class="pa w100 h100 l0 t0{% unless imgClass == blank %} {{imgClass}}{% endunless %}"
-				src="{{ image | image_url: width: image.width, height: image.height }}"
+				srcset="{{ image | image_url: width: image.width, height: image.height }}"
 				width="{{image.width}}"
 				height="{{image.height}}"
 				alt="{{ image.alt }}"

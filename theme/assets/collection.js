@@ -1,5 +1,6 @@
-// filter moblie
 (() => {
+  // app/scripts/collection.js
+  (() => {
     var FilterIcon = document.querySelector(".collections__Filter");
     var menuMobileCloseIcon = document.querySelector(".closebutton");
     var menuMobileOverLay = document.querySelector(".collection__overlay-wrapper");
@@ -18,7 +19,7 @@
       }
     };
     var showMenuMobile = () => {
-      window.scroll(0,0);
+      window.scroll(0, 0);
       menuMobileOverLay.style.display = "block";
       menuMobile.style.display = "block";
       toggleEnabelScroll();
@@ -30,39 +31,40 @@
     };
     init();
   })();
-//filter tag 
-document.addEventListener('DOMContentLoaded', function() {
-  var content = document.querySelectorAll(".filter__tittle");
-  //Icon Control display
-  content.forEach(e => {
+  function Control() {
+    var content = document.querySelectorAll(".filter__tittle");
+    content.forEach((e) => {
       let item = e.nextElementSibling;
       let icon_Open = e.children[2];
       let icon_Close = e.children[1];
       e.addEventListener("click", () => {
-          console.log()
-          if(e.classList.contains("filter_active"))
-          {
-              e.classList.remove("filter_active")
-              item.style.display = "none";
-              icon_Open.style.display = "unset"
-              icon_Close.style.display = "none"
-              e.parentElement.style.marginBottom="20px"
+        console.log(e.classList.contains("filter_active"));
+        if (e.classList.contains("filter_active")) {
+          let clear_All = document.querySelector(".ClearAll_button");
+          if (clear_All != void 0) {
+            clear_All.style.display = "none";
           }
-          else
-          {
-              e.classList.add("filter_active")
-              item.style.display = "flex";
-              // item.style.flexDirection ="column";
-              icon_Open.style.display = "none"
-              icon_Close.style.display = "unset"
-              e.parentElement.style.marginBottom ="0px"
+          e.classList.remove("filter_active");
+          item.style.display = "none";
+          icon_Open.style.display = "unset";
+          icon_Close.style.display = "none";
+          e.parentElement.style.marginBottom = "20px";
+        } else {
+          let clear_All = document.querySelector(".ClearAll_button");
+          if (clear_All != void 0) {
+            clear_All.style.display = "flex";
+            clear_All.style.padding = "10px 0px 30px 0px";
           }
-         
-      })
-  })
-  
-
-});
-
-
- 
+          e.classList.add("filter_active");
+          item.style.display = "flex";
+          icon_Open.style.display = "none";
+          icon_Close.style.display = "unset";
+          e.parentElement.style.marginBottom = "0px";
+        }
+      });
+    });
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    Control();
+  });
+})();

@@ -1,7 +1,6 @@
 class CartPopUp extends HTMLElement {
     constructor() {
         super();
-        console.log(this.dataset);
         this.init();
     }
     init(){ 
@@ -13,7 +12,7 @@ class CartPopUp extends HTMLElement {
         const popupContent = this.querySelector(".cartPopup__content");
         const popupContentMobile = this.querySelector(".cartPopup__contentMobile");
         const closeBtn = this.querySelector(".cartPopup__closeBtn");
-        const btnContinue = this.querySelector(".cartPopup__btnShopping");
+        const btnContinues = this.querySelectorAll(".cartPopup__btnShopping");
         popupContentMobile.addEventListener("click" , (e) => {
             e.stopPropagation();
         })
@@ -28,10 +27,12 @@ class CartPopUp extends HTMLElement {
             e.stopPropagation();
             this.closePopup();
         })
-        btnContinue.addEventListener("click", (e) => {
-            e.stopPropagation();
-            this.closePopup();
-        });
+        btnContinues.forEach(btnContinue => {
+            btnContinue.addEventListener("click", (e) => {
+                e.stopPropagation();
+                this.closePopup();
+            });
+        })
         this.toggleEnabelScroll();
     }
     closePopup(){

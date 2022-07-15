@@ -323,13 +323,14 @@
   opacity: .5; }
 
 .cartPopUpError {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  display: none; }
+  display: none;
+  z-index: 99999; }
 
 .cartPopUpError__overlay {
   width: 100%;
@@ -449,9 +450,12 @@
 @media (min-width: 1080px) {
   .cartPage__inner {
     max-width: 1000px;
-    margin: 0 auto; } }
+    width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0 30px; } }
 
 @media (min-width: 1280px) {
   .cartPage__inner {
     max-width: 1200px;
+    width: 1200px;
     margin: 0 auto; } }

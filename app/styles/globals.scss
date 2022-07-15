@@ -21,22 +21,22 @@ a{
     width: 100%;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+// /* Chrome, Safari, Edge, Opera */
+// input::-webkit-outer-spin-button,
+// input::-webkit-inner-spin-button {
+//   -webkit-appearance: none;
+//   margin: 0;
+// }
 
 button{
     border: none;
     background-color: inherit;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+// /* Firefox */
+// input[type=number] {
+//   -moz-appearance: textfield;
+// }
 
 
 .breadcrumb{
@@ -159,4 +159,46 @@ html, body {
 
 img.lazyload:not([src]) {
 	visibility: hidden;
+}
+
+.shopify-challenge__container
+{
+    padding: 53px 15px 59px;
+    margin:  52px 20px !important;
+    border: 1px solid var(--border-color);
+    .shopify-challenge__message
+    {
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+    #g-recaptcha{
+        margin: 26px 0;
+    }
+    .shopify-challenge__button 
+    {
+        width: 117px;
+        height: 40px;
+        background-color: #032c41;
+        border-radius: none;
+        border-radius: 5px;
+        color: white;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.2s linear;
+    }
+    .shopify-challenge__button:hover
+    {
+        transform: scale(1.2);
+    }
+
+}
+
+@media (min-width: 550px){
+    .shopify-challenge__container
+    {
+        margin: 52px auto !important;
+    }
 }

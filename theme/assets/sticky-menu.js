@@ -2,7 +2,6 @@
   // app/scripts/sticky-menu.js
   var header = document.querySelector(".header");
   var sliderBanner = document.querySelector(".pageBanner");
-  console.log(sliderBanner);
   var init = () => {
     window.onload = () => {
       window.onscroll = () => {

@@ -1,4 +1,73 @@
 (() => {
+  // app/scripts/collection.js
+  (() => {
+    var FilterIcon = document.querySelector(".collections__Filter");
+    var menuMobileCloseIcon = document.querySelector(".closebutton");
+    var menuMobileOverLay = document.querySelector(".collection__overlay-wrapper");
+    var menuMobile = document.querySelector(".collection__filter");
+    var init = () => {
+      FilterIcon.addEventListener("click", showMenuMobile);
+      menuMobileCloseIcon.addEventListener("click", hideMenuMobile);
+      menuMobileOverLay.addEventListener("click", hideMenuMobile);
+    };
+    var toggleEnabelScroll = () => {
+      const body = document.querySelector("body");
+      if (body.style.overflow === "hidden") {
+        body.style.overflow = "visible";
+      } else {
+        body.style.overflow = "hidden";
+      }
+    };
+    var showMenuMobile = () => {
+      window.scroll(0, 0);
+      menuMobileOverLay.style.display = "block";
+      menuMobile.style.display = "block";
+      toggleEnabelScroll();
+    };
+    var hideMenuMobile = () => {
+      menuMobile.style.display = "none";
+      menuMobileOverLay.style.display = "none";
+      toggleEnabelScroll();
+    };
+    init();
+  })();
+  function Control() {
+    var content = document.querySelectorAll(".filter__tittle");
+    content.forEach((e) => {
+      let item = e.nextElementSibling;
+      let icon_Open = e.children[2];
+      let icon_Close = e.children[1];
+      e.addEventListener("click", () => {
+        console.log(e.classList.contains("filter_active"));
+        if (e.classList.contains("filter_active")) {
+          let clear_All = document.querySelector(".ClearAll_button");
+          if (clear_All != void 0) {
+            clear_All.style.display = "none";
+          }
+          e.classList.remove("filter_active");
+          item.style.display = "none";
+          icon_Open.style.display = "unset";
+          icon_Close.style.display = "none";
+          e.parentElement.style.marginBottom = "20px";
+        } else {
+          let clear_All = document.querySelector(".ClearAll_button");
+          if (clear_All != void 0) {
+            clear_All.style.display = "flex";
+            clear_All.style.padding = "10px 0px 30px 0px";
+          }
+          e.classList.add("filter_active");
+          item.style.display = "flex";
+          icon_Open.style.display = "none";
+          icon_Close.style.display = "unset";
+          e.parentElement.style.marginBottom = "0px";
+        }
+      });
+    });
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    Control();
+  });
+
   // app/scripts/collection-ajax.js
   var tag = document.querySelectorAll(".tag");
   var Query = "";
@@ -45,7 +114,6 @@
           }
         }
       } else {
-        console.log(html_div);
         let html_dom = html_div.querySelector(".collection__Productcontent").innerHTML;
         document.querySelector(".collection__Productcontent").innerHTML = html_dom;
         let loadmore2 = document.querySelector(".collection__loadMore");
@@ -87,11 +155,9 @@
     }
   };
   document.addEventListener("DOMContentLoaded", function() {
-    console.log(document.querySelector(".filter-option").innerHTML);
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
-    console.log(array[1]);
     if (url_array[5] != void 0 && url_array[5] != "" || array[1] != "" && array[1] != void 0) {
       let items = url_array[5].split("+");
       let html_dom = `<div class="filter__tittle  filter_active">
@@ -142,7 +208,6 @@
         removeTags();
       }
       Query = url_array[5];
-      console.log(array[1]);
       if (array[1] != "" && array[1] != void 0) {
         sort_value = array[1].split("=")[1];
         let sort_options = document.querySelectorAll(".filter-option");
@@ -160,7 +225,9 @@
       document.getElementsByClassName("select-items")[1].children[0].classList.add("same-as-selected");
       render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
       renderItems();
+      Control();
     } else {
+      Control();
       removeTags();
       Query = "";
       let sort_default = document.querySelector(".select-items").children[1];
@@ -213,6 +280,7 @@
       ClearAll_button.addEventListener("click", () => {
         clearAll();
       });
+      Control();
       let html_dom2 = `
          <div class="shopingBy_tag">
          <div class="tag_text">
@@ -284,7 +352,6 @@
         task = true;
         let tittle = document.querySelector(".collection__tittle").innerHTML;
         let total = parseInt(tittle.split("(")[1].split(")")[0]);
-        console.log(total);
         if (products < total) {
           if (ifinity == 1) {
             loadmore();
@@ -307,7 +374,6 @@
   for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
     ll = selElmnt.length;
-    console.log(ll);
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
     a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
@@ -345,10 +411,8 @@
             } else {
               sort_value = s.options[i2].value;
               render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
-              console.log(render_number);
               renderItems();
             }
-            console.log(s.options[i2].value);
             y = this.parentNode.getElementsByClassName("same-as-selected");
             yl = y.length;
             for (k = 0; k < yl; k++) {
@@ -393,7 +457,4 @@
     }
   }
   document.addEventListener("click", closeAllSelect);
-  if (Shopify.designMode) {
-    console.log("hahaha");
-  }
 })();
