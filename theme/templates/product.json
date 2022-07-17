@@ -12,15 +12,13 @@
     "165638478359b08742": {
       "type": "section-single-banner",
       "settings": {
-        "banner": "shopify:\/\/shop_images\/Banner_1_1.jpg",
+        "banner": "shopify:\/\/shop_images\/Banner-Product-Page.jpg",
         "url": ""
       }
     },
     "16563876429df20041": {
       "type": "section-product-specs",
-      "settings": {
-        "icon": "shopify:\/\/shop_images\/next.png"
-      }
+      "settings": {}
     },
     "1656556383446a4bc6": {
       "type": "section-collection-slider",
@@ -84,7 +82,7 @@
         "5339c8e7-6bcc-4163-bce2-77019e19f020": {
           "type": "collection",
           "settings": {
-            "collection": "ice-makers",
+            "collection": "vitrifrigo-ice-makers",
             "checkImg": false
           }
         },

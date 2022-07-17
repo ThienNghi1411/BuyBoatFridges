@@ -2,60 +2,19 @@
 <section class="miniBanner" data-section-type="mini-banner" data-section-id="{{ section.id }}">
     <div class="miniBanner__inner">
         <div class="miniBanner__bannerCont">
-            <div class="miniBanner__imgBanner">
-                <a href="{{ routes.root_url }}" class="">
-                    {% comment %} <img src="{{ section.settings.image1 | image_url }} " /> {% endcomment %}
-                    {%- render "image-style" , image: section.settings.image1 -%}
-                </a>
-            </div>
-            <div class="miniBanner__imgBanner">
-                <a href="{{ routes.root_url }}" class="">
-                    {% comment %} <img src="{{ section.settings.image2 | image_url }} " /> {% endcomment %}
-                    {%- render "image-style" , image: section.settings.image2 -%}
-                </a>
-            </div>
-        </div>
-        <div class="miniBanner__productBannerCont">
-            {% for i in (1..2)%}
-                {% if i == 1 %}
-                    {%- assign product = all_products[section.settings.product1] -%}
-                {% else %}
-                    {%- assign product = all_products[section.settings.product2] -%}
-                {% endif %}
-                <div class="miniBanner__productBanner">
-                    <div class="miniBanner__productBanner-wrap">
-                        <div class="miniBanner__productBanner-imgCont">
-                            {% comment %} <img src="{{ product.featured_image | image_url }} " /> {% endcomment %}
-                            <a href="{{ product.url }}" class="">
-                                {%- render "image-style" , image: product.featured_image -%}
-                                <div class="miniBanner__productBanner-imgCont-tagCont">{{ product.vendor }}</div>
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when 'imageBlock' -%}
+                        <div class="miniBanner__imgBanner">
+                            <a href="{{ block.settings.urlImg | default: routes.root_url }}" class="">
+                                {% comment %} <img src="{{ section.settings.image1 | image_url }} " /> {% endcomment %}
+                                <script>console.log({{ block.settings.image | json }})</script>
+                                {%- render "image-style" , image: block.settings.image -%}
                             </a>
                         </div>
-                        <div class="miniBanner__productBanner-infoProduct">
-                            <div class="miniBanner__productBanner-titleProduct">
-                                <div class="miniBanner__productBanner-titleProduct-productName">{{ product.variants[0].sku }}</div>
-                                <div class="miniBanner__productBanner-titleProduct-subTitle">
-                                    <a href="{{ product.url }}" class="">{{ product.title }}</a>
-                                    
-                                </div>
-                                <div class="miniBanner__productBanner-priceProduct">
-                                    <div class="miniBanner__productBanner-priceProduct-lastPrice">{{ product.variants[0].price | money }}</div>
-                                    {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
-                                    <div class="miniBanner__productBanner-priceProduct-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
-                                    {%- endif -%}
-                                </div>
-                            </div>
-                            <div class="miniBanner__productBanner-priceAndBtn">
-                                <div class="miniBanner__productBanner-btnSeeMoreCont">
-                                    <button class="miniBanner__productBanner-btnSeeMore">
-                                        <a href="{{ product.url }}" class="">See more</a>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+             
+            {%- endcase -%}
+        {%- endfor -%}
         </div>
     </div>
 </section>
@@ -73,26 +32,28 @@
             {
                 "type":"header",
                 "content":"Mini Banner"
-            },
+            }
+        ],
+        "blocks":[
             {
-                "type":"image_picker",
-                "id":"image1",
-                "label":"choose image:"
-            },
-            {
-                "type":"image_picker",
-                "id":"image2",
-                "label":"choose image:"
-            },
-            {
-                "type":"product",
-                "id":"product1",
-                "label":"choose product:"
-            },
-            {
-                "type":"product",
-                "id":"product2",
-                "label":"choose product:"
+                "type":"imageBlock",
+                "name":"Image Block",
+                "settings":[
+                    {
+                        "type":"header",
+                        "content":"Image Banner "
+                    },
+                    {
+                        "type":"image_picker",
+                        "id":"image",
+                        "label":"Choose image:"
+                    },
+                    {
+                        "type":"text",
+                        "id":"urlImg",
+                        "label": "Fill your url for this image: "
+                    }
+                ]
             }
         ]
     }

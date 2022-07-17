@@ -2,6 +2,7 @@
   // app/scripts/sticky-menu.js
   var header = document.querySelector(".header");
   var sliderBanner = document.querySelector(".pageBanner");
+  console.log(sliderBanner);
   var init = () => {
     window.onload = () => {
       window.onscroll = () => {
@@ -10,7 +11,12 @@
     };
   };
   var stickyMenu = () => {
-    let checkPointSticky = sliderBanner.offsetTop;
+    let checkPointSticky = 1;
+    if (sliderBanner === null) {
+      checkPointSticky = 200;
+    } else {
+      checkPointSticky = sliderBanner.offsetTop;
+    }
     if (window.pageYOffset > checkPointSticky) {
       header.classList.add("sticky");
     } else {

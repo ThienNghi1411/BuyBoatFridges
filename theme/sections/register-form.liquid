@@ -1,0 +1,121 @@
+<!-- /templates/customers/register.liquid -->
+<link rel="stylesheet" href="{{ 'register.css' | asset_url }}">
+<section class="register">
+    <div class="register_inner">
+        <h2 class="register-tittle">{{section.settings.section_title}}</h2>
+        <div class="register_form">
+            {% form 'create_customer' %}
+            {{ form.errors | default_errors }}
+            <h3 class="register_form-tittle">{{section.settings.form_title}}</h3>
+            <div class="form_group">
+                <label for="first_name">{{section.settings.firstname}}</label>
+                <input type="text" value="" name="customer[first_name]" size="30" class="register_form-input" placeholder="Enter First Name"/>
+                {% if section.settings.show_firstname_require %}
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
+                {% endif %}
+            </div>
+            <div class="form_group">
+                <label for="last_name">{{section.settings.lastname}}</label>
+                <input type="text" value="" name="customer[last_name]" size="30" class="register_form-input" placeholder="Enter Last Name"/>
+                {% if section.settings.show_lastname_require %}
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
+                {% endif %}
+            </div>
+            <div class="form_group">
+                <label for="email">{{section.settings.email}}</label>
+                <input type="email" value="" name="customer[email]" size="30" class="register_form-input" placeholder="Enter Email Address"/>
+                {% if section.settings.show_email_require %}
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
+                {% endif %}
+            </div>       
+            <div class="form_group">
+                <label for="password">{{section.settings.password}}</label>
+                <input type="password" value="" name="customer[password]" size="30" class="register_form-input" placeholder="Enter Password"/>  
+                {% if section.settings.show_password_require %}
+                <div class="form_requiredText">* {{ 'sections.register-form.require' | t }}</div>
+                {% endif %}  
+            </div>
+            <div class="form_submit">
+                <input type="submit" value="{{section.settings.button_text}}" class="registerForm-submit"/>
+                <p class="registerForm-submit-text"><a href="https://www.buyboatfridges.com">{{ 'sections.register-form.return' | t }}</a> </p>
+            </div>
+            {% endform %}
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+  "name": "Register",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Edit section title",
+      "default":"CREATE AN ACCOUNT"
+    },
+    {
+        "type":"text",
+        "id":"form_title",
+        "label":"Edit form title",
+        "default":"PERSONAL INFORMATION"
+    },
+    {
+        "type":"text",
+        "id":"firstname",
+        "label":"Edit first name",
+        "default":"First Name"
+    },
+    {
+        "type":"checkbox",
+        "id":"show_firstname_require",
+        "label":"Show required",
+        "default":true
+    },
+    {
+        "type":"text",
+        "id":"lastname",
+        "label":"Edit last name",
+        "default":"Last Name"
+    },
+    {
+        "type":"checkbox",
+        "id":"show_lastname_require",
+        "label":"Show required",
+        "default":true
+    },
+    {
+        "type":"text",
+        "id":"email",
+        "label":"Edit email address",
+        "default":"Email Address"
+    },
+    {
+        "type":"checkbox",
+        "id":"show_email_require",
+        "label":"Show required",
+        "default":true
+    },
+    {
+        "type":"text",
+        "id":"password",
+        "label":"Edit password",
+        "default":"Password"
+    },
+    {
+        "type":"checkbox",
+        "id":"show_password_require",
+        "label":"Show required",
+        "default":true
+    },
+    {
+        "type":"text",
+        "id":"button_text",
+        "label":"Edit button text",
+        "default":"CREATE"
+    }
+  ]
+}
+{% endschema %}
+
+

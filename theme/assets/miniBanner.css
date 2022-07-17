@@ -126,7 +126,6 @@
 
 @media (min-width: 600px) {
   .miniBanner {
-    max-width: 720px;
     padding: 30px 20px; }
   .miniBanner__productBanner-wrap {
     padding: 30px 30px 25px;
@@ -148,12 +147,9 @@
 
 @media (min-width: 720px) {
   .miniBanner {
-    max-width: 1280px;
     padding: 30px 50px; } }
 
 @media (min-width: 900px) {
-  .miniBanner {
-    max-width: 1280px; }
   .miniBanner__bannerCont, .miniBanner__productBannerCont {
     display: flex;
     justify-content: space-between;
@@ -162,18 +158,18 @@
   .miniBanner__productBanner {
     flex: 1; } }
 
-@media (min-width: 1280px) {
+@media (min-width: 1080px) {
   .miniBanner {
-    max-width: 1440px; }
+    padding: 30px 0 !important; }
   .miniBanner__inner {
-    max-width: 1000px; }
+    max-width: 1000px;
+    margin: 0 auto; }
   .miniBanner__productBanner-wrap {
-    max-width: 476px; } }
+    max-width: 500px; } }
 
-@media (min-width: 1440px) {
-  .miniBanner {
-    max-width: 100%; }
+@media (min-width: 1280px) {
   .miniBanner__inner {
-    max-width: 1220px; }
+    max-width: 1200px; }
   .miniBanner__productBanner-wrap {
-    max-width: 590px; } }
+    max-width: 600px;
+    height: 371px !important; } }

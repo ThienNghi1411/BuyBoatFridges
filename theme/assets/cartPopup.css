@@ -52,6 +52,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
   align-items: center; }
 
 .cartPopup__imgCont img {

@@ -4,83 +4,109 @@ select {
     text-indent: 1px;
     text-overflow: '';
 }
+
 // options css
 .custom-select {
     position: relative;
-    font-family: Arial;
+    // font-family: Arial;
     width: 100%;
     border-radius: 5px solid black;
-  }
-  
-  .custom-select select {
-    display: none; /*hide original SELECT element:*/
-  }
-  
-  .select-selected {
-    background-color: #ffffff;
-  }
-  
-  /*style the arrow inside the select element:*/
-//   .select-selected:after {
-//     position: absolute;
-//     content: "";
-//     top: 14px;
-//     right: 10px;
-//     width: 0;
-//     height: 0;
-//     border: 6px solid transparent;
-//     border-color: #fff transparent transparent transparent;
-//   }
-  
-  /*point the arrow upwards when the select box is open (active):*/
-  .select-selected.select-arrow-active:after {
-    // border-color: transparent transparent #fff transparent;
+}
+
+.custom-select select {
+    display: none;
+    /*hide original SELECT element:*/
+}
+
+.select-selected {
+    background-color: white;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 41%;
+    right: 4%;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: black transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent black transparent;
     top: 7px;
-  }
-  
-  /*style the items (options), including the selected item:*/
-  .select-items div,.select-selected {
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
     color: black;
-    padding: 10px;
+    padding: 8px;
     // border: 1px solid transparent;
     width: 100%;
     // border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
     cursor: pointer;
     user-select: none;
-  }
-  .select-items div
-  {
-    border: 1px solid grey;
-  }
-  /*style items (options):*/
-  .select-items {
+}
+.select-items
+{
+    border-radius: 0px 0px 10px 10px;
+    width:  100%;
+    border: 1px solid var(--border-color);
+}
+.select-items div {
+    
+    position: relative;
+    width: 100%;
+}
+.select-items:last-child{
+    border-radius: 0px 0px 10px 10px;
+  
+}
+
+.select-items div::after {
+    content: "";
+    background: var(--border-color);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 6%;
+    height: 1px;
+    width: 87%;
+}
+
+/*style items (options):*/
+.select-items {
     position: absolute;
     background-color: #ffffff;
     top: 100%;
     left: 0;
     right: 0;
     z-index: 99;
-  }
-  
-  /*hide the items when the select box is closed:*/
-  .select-hide {
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
     display: none;
-  }
-  
-  .select-items div:hover, .same-as-selected {
+}
+
+.select-items div:hover,
+.same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
-    
+}
+.same-as-selected {
+    color: var(--primary-color) !important;
+}
+.no-after::after{
+    display:none;
   }
-   .same-as-selected
-  {
-    color: var( --primary-color) !important;
-  }
+
 // options css
-
-
-
 .collection {
-    max-width: 320px;
+   
 
     .collection__inner {
         width: 100%;
@@ -134,14 +160,14 @@ select {
             position: absolute;
             top: 0;
             left: 0;
-            width: 50%;
+            width: 60%;
             height: 100%;
             padding: 50px 20px 30px 20px;
             overflow-y: auto;
             background-color: #fff;
             z-index: 99;
             display: none;
-            
+
             .filter_byType {
                 display: flex;
                 flex-direction: column;
@@ -191,15 +217,13 @@ select {
                             font-size: 12px;
                             transition: all 0.2s linear;
                             cursor: pointer;
-
                         }
-
                         .remove {
                             opacity: 0;
                         }
 
                         .tag:hover {
-                            transform: scale(1.2);
+                            color: var(--primary-color);
                         }
 
                         .color_tag {
@@ -210,7 +234,6 @@ select {
                             a {
                                 opacity: 0;
                             }
-
                         }
 
                         .color_tag2 {
@@ -222,12 +245,9 @@ select {
                             a {
                                 opacity: 0;
                             }
-
                         }
 
                         .color {
-
-
                             border-radius: 5px;
                             cursor: pointer;
                             transition: all 0.2s linear;
@@ -244,12 +264,11 @@ select {
                         .color:hover {
                             transform: scale(1.2);
                         }
-
-
                     }
 
                     .flex {
                         flex-direction: row;
+                        align-items: center;
                         gap: 10px;
                     }
                 }
@@ -275,7 +294,6 @@ select {
                         right: -5%;
                         top: -38%;
                         cursor: pointer;
-
                     }
 
                     .Icon__Control {
@@ -304,7 +322,7 @@ select {
                             height: 10px;
                             position: absolute;
                             top: 50%;
-                            right: 0%;
+                            right: 7%;
                             transform: translate(50%, -50%);
                             cursor: pointer;
                         }
@@ -316,30 +334,32 @@ select {
                     cursor: pointer;
                     padding: 10px 0 30px 0;
                 }
-
             }
-            .closebutton
-            {
+
+            .closebutton {
                 position: absolute;
                 top: 1%;
                 right: 8%;
-                svg{
+
+                svg {
                     cursor: pointer;
                 }
             }
+
             .filter_image {
                 position: relative;
                 margin-top: 37px;
-                img{
+
+                img {
                     width: 100%;
                 }
             }
         }
 
         .collection__content {
-
+            width: 100%;
+            
             .collection__header {
-
                 img {
                     width: 100%;
                     height: 100%;
@@ -355,103 +375,116 @@ select {
                 width: 100%;
                 gap: 32px;
                 border-bottom: 1px solid #8d8d8d;
-              
+
                 .collection__tittle {
                     width: 100%;
                     font-size: 21px;
                     font-weight: bold;
+                    padding: 10px 0;
                     text-align: center;
                 }
 
                 .collection__control {
                     padding: 10px;
                     display: flex;
-                    gap: 32px;
-                    justify-content: flex-end;
+                    justify-content: space-between;
+
+                    .collections__Filter {
+                        width: 10%;
+                        height: 100%;
+                        cursor: pointer;
+
+                        svg {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
 
                     .collection__sort {
-                        // width: 50%;
-                        // position: relative;
-                        // #sort-by {
-                        //     font-size: 15px;
-                        //     border: none;
-                        //     border-radius: 5px;
-                        //     width: 141px;
-                        //     height: 15px;
-
-                         
-                        .sort__option {
-                            padding: 10px !important;
-                           
-                            color: black;
-                            width: 100%;
-                            height: 50px !important;
-                            font-size: 1.2rem;
-                            cursor: pointer;
-                        }
-                        // }
+                        width: 60%;
+                        border-radius: 5px;
+                        border: 1px solid var(--border-color);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
-
-                    // .collection__sort::before {
-                    //     content: '>';
-                    //     transform: rotate(90deg);
-                    //     font-size: 23px;
-                    //     font-weight: bolder;
-                    //     right: 2%;
-                    //     top: -3px;
-                    //     position: absolute;
-                    //     pointer-events: none;
-                    // }
 
                     .collection__itemDisplay {
+                        width: 20%;
+                        border-radius: 5px;
+                        border: 1px solid var(--border-color);
+                        display: flex;
+                        justify-content: center;
 
-
-                        // width: 30%;
-                        // position: relative;
-
-                        // #display {
-                        //     font-size: 15px;
-                        //     border: none;
-                        //     border-radius: 5px;
-                        //     width: 50px;
-                        //     height: 15px;
-
-                        // }
-
-
+                        align-items: center;
                     }
-
-                    // .collection__itemDisplay::before {
-                    //     content: ">";
-                    //     transform: rotate(90deg);
-                    //     font-size: 23px;
-                    //     font-weight: bolder;
-                    //     right: 34%;
-                    //     top: -13%;
-                    //     position: absolute;
-                    //     pointer-events: none;
-                    // }
-
-                    // .collections__Filter {
-                    //     width: 20px;
-                    //     height: 20px;
-                    //     cursor: pointer;
-                    // }
                 }
             }
+            .collection__Productcontent
+            {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                position: relative;
+                .paginate
+                {
+                    
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    .page 
+                    {
 
+                        width: 50px;
+                        height: 50px;
+                        border: 1px solid black;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: all 0.2s linear;
+                        a{
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+                    .page:hover{
+                        background-color: var(--border-color);
+                        
+                        border: unset;
+                    }
+                    .current{
+                        background-color: var(--primary-color);
+                        color: white;
+                        border: unset;
+                    }
+                    .current:hover{
+                        background-color: var(--primary-color);
+                        color: white;
+                        border: unset;
+                        
+                    }
+                }
+            }
+            .collection__empty
+            {
+                display: none;
+            }
             .collection__loadMore {
                 width: 210px;
                 height: 35px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
                 border: 1px solid var(--border-color);
                 border-radius: 5px;
                 cursor: pointer;
                 transition: all 0.2s linear;
-                margin: 50px auto;
+                margin: 50px auto 0px auto;
                 display: none;
             }
 
@@ -459,60 +492,66 @@ select {
                 transform: scale(1.2);
             }
         }
-
-
     }
 }
 
 @media (min-width: 320px) {
     .collection {
-        max-width: 480px;
-        
+      
+
     }
 }
 
 @media (min-width: 480px) {
     .collection {
-        max-width: 600px;
+       
 
     }
 }
+
 @media (min-width: 600px) {
     .collection {
-        max-width: 750px;
-        .collection__inner
-        {
+       
+
+        .collection__inner {
             padding: 30px 50px;
         }
     }
 }
+
 @media (min-width: 750px) {
     .collection {
-        max-width: 1080px;
+      
 
         .collection__inner {
             padding: 30px 50px;
+
+            .collection__filter {
+                width: 40%;
+                margin-right: 50px;
+            }
 
             .collection__content {
                 .collection__handle {
                     padding: 40px 0 45px 0;
                     display: flex;
                     align-items: center;
+
                     .collection__tittle {
+                        width: 100%;
                         text-align: unset;
                     }
 
                     .collection__control {
                         display: flex;
+                        width: 100%;
+                        gap: 10px;
+                        justify-content: flex-end;
                         align-items: center;
+
                         .collection__sort {
                             width: 180px;
                             height: 40px;
-                            border-radius: 5px;
-                            border: 1px solid var(--border-color);
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
 
                             #sort-by {
                                 width: 100%;
@@ -521,14 +560,6 @@ select {
                             }
 
                         }
-
-                        // .collection__sort:before {
-                        //     content: ">";
-
-                        //     right: 3%;
-                        //     top: 5px;
-
-                        // }
 
                         .collection__itemDisplay {
                             width: 70px;
@@ -546,18 +577,7 @@ select {
                                 padding-left: 12px;
                             }
                         }
-
-                        // .collection__itemDisplay:before {
-                        //     content: ">";
-
-                        //     right: 12%;
-                        //     top: 5px;
-
-                        // }
-
-
                     }
-
                 }
 
                 .collection__Productcontent {
@@ -565,13 +585,17 @@ select {
                     gap: 30px 57px;
                     grid-template-columns: repeat(2, 1fr);
                     margin-top: 39px;
-                  
-                   
+                    .paginate
+                    {
+                        grid-column-end: span 2;
+                    }
                 }
+
                 .collection__empty {
                     width: 100%;
                     display: none;
                     padding: 106px 20px 102px;
+
                     .collection__empty__pic {
                         width: 150px;
                         height: 150px;
@@ -604,72 +628,72 @@ select {
 
 @media (min-width: 1080px) {
     .collection {
-        max-width: 1280px;
+        width: 1000px;
         margin: 0 auto;
 
         .collection__inner {
             margin: 0 auto;
             display: flex;
-
+            padding: 50px 0;
             .collection__filter {
-                display: flex !important;
+                display: flex ;
                 position: relative;
                 height: 100%;
+                width: 20%;
+                padding: 0;
                 flex-direction: column;
-
                 .closebutton {
                     display: none;
                 }
-
             }
-            .collection__content
-            {
-                .collection__handle
-                {
-                    .collection__control{
-                        .collections__Filter
-                        {
+            .collection__content {
+                width: 80%;
+                .collection__handle {
+                    .collection__control {
+                        .collections__Filter {
                             display: none;
                         }
                     }
                 }
+
+                .collection__Productcontent {
+                    gap: 57px 45px;
+                }
             }
-            .collection__overlay-wrapper
-            {
+
+            .collection__overlay-wrapper {
                 display: none !important;
             }
         }
     }
 
 }
-@media (min-width:1280px)
-{
-    .collection
-    {
-        max-width: 1000px;
-        .collection__inner{
-            padding: 50px 0;
-            .collection__content
-            {
+
+@media (min-width:1280px) {
+    .collection {
+        width: 1200px;
+
+        .collection__inner {
+     
+            .collection__content {
                 .collection__Productcontent {
- 
                     grid-template-columns: repeat(3, 1fr);
-                  
-                   
+                    .paginate
+                    {
+                        grid-column-end: span 3;
+                    }
                 }
             }
         }
     }
-   
+
 }
 
-@media (min-width:1440px)
-{
-    .collection
-    {
-        max-width: 1220px;
+// @media (min-width:1440px) {
+//     .collection {
+//         max-width: 1220px;
 
-        
-    }
-   
-}
+
+//     }
+
+// }

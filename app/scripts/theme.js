@@ -4,8 +4,7 @@
   */
 
   import "./common/theme-section";
-  import homeFilter from "./homePage-filter";
-
+  
   register("page-banner", {
     onLoad: function () {
       var slider = tns({
@@ -26,9 +25,7 @@
     onBlockSelect: function (e) {},
     onBlockDeselect: function (e) {},
   });
-  register('home-filter',  {
-    onload: homeFilter
-  })
+
   register("mini-banner", {
     onLoad: function () {
 
@@ -118,6 +115,16 @@
       nextButton: ".control__imgProductMobile-nextBtn"
     });
     }
+  });
+  register("collection", {
+    onLoad: function () {
+      
+    },
+    onUnload: function () {},
+    onSelect: function () {},
+    onDeselect: function () {},
+    onBlockSelect: function (e) {},
+    onBlockDeselect: function (e) {},
   });
 
   load("*");

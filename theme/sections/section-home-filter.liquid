@@ -10,54 +10,29 @@
             </div>
         </div>
         <div class="homeFilter__content">
-            <div class="filterOption">
-                <div class="filterOption__title">Color</div>
-                <div class="filterOption__dropdown">
-                    <div class="filterOption__dropdown-placeHolder">- Select -</div>
-                    <div class="filterOption__dropdownCont">
-                        <div class="filterOption__dropdownCont-option">BLACK</div>
-                        <div class="filterOption__dropdownCont-option">WHITE</div>
-                        <div class="filterOption__dropdownCont-option">SILVER</div>
-                        <div class="filterOption__dropdownCont-option">STAINLESS STEEL</div>
-                    </div>
-                </div>
-                <button class="filterOption__btnConfirm ">
-                    {% render 'icon-next' %}
-                </button>
-            </div>
-            <div class="filterOption">
-                <div class="filterOption__title">Type</div>
-                <div class="filterOption__dropdown">
-                    <div class="filterOption__dropdown-placeHolder">- Select -</div>
-                    <div class="filterOption__dropdownCont">
-                        <div class="filterOption__dropdownCont-option">BLACK</div>
-                        <div class="filterOption__dropdownCont-option">WHITE</div>
-                        <div class="filterOption__dropdownCont-option">SILVER</div>
-                        <div class="filterOption__dropdownCont-option">STAINLESS STEEL</div>
-                    </div>
-                </div>
-                <button class="filterOption__btnConfirm">
-                    {% render 'icon-next' %}
-                </button>
-            </div>
-            <div class="filterOption">
-                <div class="filterOption__title">Cuft</div>
-                <div class="filterOption__dropdown">
-                    <div class="filterOption__dropdown-placeHolder">- Select -</div>
-                    <div class="filterOption__dropdownCont">
-                        <div class="filterOption__dropdownCont-option">BLACK</div>
-                        <div class="filterOption__dropdownCont-option">WHITE</div>
-                        <div class="filterOption__dropdownCont-option">SILVER</div>
-                        <div class="filterOption__dropdownCont-option">STAINLESS STEEL</div>
-                    </div>
-                </div>
-                <button class="filterOption__btnConfirm">
-                    {% render 'icon-next' %}
-                </button>
-            </div>
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                    {%- when 'filter' -%}
+                        <div class="filterOption" {{ block.shopify_attributes }}>
+                            <div class="filterOption__title"> {{ block.settings.title }}</div>
+                            <div class="filterOption__dropdown">
+                                <div class="filterOption__dropdown-placeHolder">- Select -</div>
+                                <div class="filterOption__dropdownCont">
+                                    {%- assign tags = block.settings.tags | split: ',' -%}
+                                    {%- for tag in tags -%}
+                                        <div class="filterOption__dropdownCont-option">{{ tag }}</div>
+                                    {%- endfor -%}
+                                </div>
+                            </div>
+                            <button class="filterOption__btnConfirm" value="">
+                                {% render 'icon-next' %}
+                            </button>
+                        </div>
+                {%- endcase -%}
+            {%- endfor -%}
         </div>
     </div>
-    <script src="{{ homePage-filter.js | asset_url}}" async></script>
+    <script src=" {{ 'homePage-filter.js' | asset_url }}" defer></script>
 </section>
 
 {% schema %}
@@ -73,6 +48,24 @@
             {
                 "type":"header",
                 "content":"Filter"
+            }
+        ],
+        "blocks":[
+            {
+                "name": "Filter",
+                "type": "filter",
+                "settings": [
+                    {
+                        "type":"text",
+                        "id":"title",
+                        "label":"Write your title: "
+                    },
+                    {
+                        "type":"textarea",
+                        "id":"tags",
+                        "label":"Write your option of filter: "
+                    }
+                ]
             }
         ]
     }

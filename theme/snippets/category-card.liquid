@@ -5,8 +5,8 @@
         <div class="categoryCard__imgCont">
             {%- if collection.image.src != blank -%}
                 <a href="{{ url }}"> 
-                    {% comment %} <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /> {% endcomment %}
-                    {%- render 'image-style' , image: collection.image.src  -%}
+                   {% comment %} <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /> {% endcomment %}
+                    {%- render 'image-style' , image: collection.image.src , imgClass: "object-fit--contain" -%}
                 </a>
             {%- else -%}
                 {{ 'product-1' | placeholder_svg_tag }}

@@ -51,12 +51,11 @@
       }).then((data) => {
         console.log(data);
         this.getSectionsToRender().forEach((section) => {
-          const elementToReplace = document.querySelector(section.selector);
-          const domReplace = this.getSectionInnerHTML(data.sections[section.section]).querySelector(section.selector);
-          if (section.selector === ".cartQuickView") {
-            domReplace.style.display = "block";
-          }
-          elementToReplace.replaceWith(domReplace);
+          const elementToReplaces = document.querySelectorAll(section.selector);
+          elementToReplaces.forEach((elementToReplace) => {
+            const domReplace = this.getSectionInnerHTML(data.sections[section.section]);
+            elementToReplace.replaceWith(domReplace.querySelector(section.selector));
+          });
         });
       }).catch((error) => {
         console.error("Error:", error);

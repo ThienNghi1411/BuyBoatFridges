@@ -33,7 +33,7 @@
         "64abadc8-26ac-42d6-b196-f78bde11b777": {
           "type": "Add_Filter",
           "settings": {
-            "tags_Heading": "Color",
+            "tags_Heading": "COLOR",
             "FilterBy": "2",
             "tags": "Black,Grey,Stainless Steel",
             "menu": ""
@@ -42,7 +42,7 @@
         "87f12cec-bbeb-4001-9f79-3977a0d77aae": {
           "type": "Add_Filter",
           "settings": {
-            "tags_Heading": "Flange Type",
+            "tags_Heading": "FLANGE TYPE",
             "FilterBy": "1",
             "tags": "Flush Flange,Surface Flange,Adjustable Flange",
             "menu": ""
@@ -51,7 +51,7 @@
         "7788ef51-74d0-466e-a3fb-2f7a35ff85cd": {
           "type": "Add_Filter",
           "settings": {
-            "tags_Heading": "Vendor",
+            "tags_Heading": "VENDOR",
             "FilterBy": "1",
             "tags": "Vitrifrigo",
             "menu": ""
@@ -60,7 +60,7 @@
         "f1c5f3ab-50a8-4f9d-a44d-cada53f0912c": {
           "type": "Add_Filter",
           "settings": {
-            "tags_Heading": "Cubic Feet",
+            "tags_Heading": "CUBIC FEET",
             "FilterBy": "1",
             "tags": "Under 2 Cubic Feet,Between 2 to 5 Cubic Feet,Above 5 Cubic Feet",
             "menu": ""
@@ -78,8 +78,9 @@
       ],
       "settings": {
         "filter_image": "shopify:\/\/shop_images\/img_0adef2eb-4009-47dd-b5e9-b2817af97aab.png",
-        "loading_type": "1",
-        "paginate_type": "1"
+        "loading_type": "2",
+        "paginate_type": "2",
+        "pagination": 6
       }
     }
   },

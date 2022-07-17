@@ -1,6 +1,6 @@
 .register
 {
-    max-width: 320px;
+
     margin: 0 auto;
     .register_inner
     {
@@ -24,6 +24,10 @@
                 padding: 20px 20px 10px;
                 border: 1px solid var(--border-color);
                 border-radius: 5px;
+                .errors{
+                    color: red;
+                    line-height: 20px;
+                }
             }
             .form_group
             {
@@ -65,45 +69,44 @@
                 .registerForm-submit:hover
                 {
                     color: white;
-                    background-color: black;
+                    border: unset;
+                    background-color: var(--primary-color);
                 }
             }
         }
         
     }
 }
-
 @media (min-width:320px)
 {
     .register{
-        max-width: 480px;
     }
 }
 @media (min-width:480px)
 {
     .register{
-        max-width: 720px;
-        
-
     }
    
 }
-
+@media (min-width:600px)
+{
+    .register
+    {
+        .register_inner
+        {
+            padding: 30px 50px;
+        }
+    }
+   
+}
 @media (min-width:720px)
 {   
-    .register{
-        max-width: 860px;
-       
-    }
-  
 }
 @media (min-width:860px)
 {
     .register{
-        max-width: 1080px;
         .register_inner
         {
-            padding: 30px 50px;
             max-width: 50%;
             margin: 0 auto;
             .register-tittle
@@ -111,24 +114,11 @@
             font-size: 34px;
             text-align: center;
         }
-
         }
-
     }
   
-   
-
 }
 @media (min-width:1080px)
-{
-    .register{
-        max-width: 1280px;
-        
-    }
-    
-}
-
-@media (min-width:1280px)
 {
     .register{
         max-width: 1000px;
@@ -136,18 +126,12 @@
         {
             padding: 30px 0px;
         }
-
     }
-    
-   
 }
-@media (min-width:1440px)
+
+@media (min-width:1280px)
 {
     .register{
-        max-width: 1220px;
-        
-        
+        max-width: 1200px;
     }
-    
-
 }

@@ -5,13 +5,14 @@
         {%- assign fsArr = section.settings.title_fs | split: "," -%}
 
         {%- style -%}
+            {%- assign limitPerRow = section.settings.limitPerRow | split: "," -%}
             @media(min-width: 320px){
                 .homeCategories__title{
                     font-size: {{ fsArr[0] }} ;
                     font-weight: {{ section.settings.title_fw }};
                 }
             }
-            @media(min-width: 720px){
+            @media(min-width: 600px){
                 .homeCategories__title{
                     font-size: {{ fsArr[1] }} ;
                 }
@@ -56,7 +57,7 @@
                 "type":"text",
                 "id":"title_fs",
                 "label":"Adjust font size: ",
-                "info":"E.g: 20px,24px,30px - Mobile screen, Table screen, Destop screen "
+                "info":"E.g: 20px,24px,30px - Mobile screen, Tablet screen, Destop screen "
             },
             {
                 "type":"range",
@@ -66,6 +67,16 @@
                 "step":100,
                 "default":700,
                 "label":"Adjust font weight: "
+            },
+            {
+                "type":"header",
+                "content":"Container"
+            },
+            {
+                "type":"text",
+                "id": "limitPerRow",
+                "label":"Items per row: ",
+                "info": "E.g: 2,3,4,5,6 - 320px - 600px - 800px - 1000px - 1280px"
             }
         ],
         "blocks":[
@@ -81,7 +92,7 @@
                     {
                         "type": "checkbox",
                         "id":"checkImg",
-                        "label":"Use another pictue for collection",
+                        "label":"Use another picture for collection",
                         "default":false
                     },
                     {

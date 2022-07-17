@@ -5,28 +5,124 @@
       "subtext_html": "The page you were looking for does not exist"
     }
   },
-  "sections":{
-    "header":{
-      "login":"Sign in",
-      "register":"Register",
-      "cart":"My cart",
-      "search":"SEARCH PRODUCTS",
-      "product":"PRODUCTS",
-      "contact":"Contact us",
-      "menu":"Menu"
+  "sections": {
+    "header": {
+      "login": "Sign in",
+      "register": "Register",
+      "cart": "My cart",
+      "search": "SEARCH PRODUCTS",
+      "product": "PRODUCTS",
+      "contact": "Contact us",
+      "menu": "Menu"
     },
-    "productPage":{
-      "policy1":"Shipping and Returns",
-      "policy2":"Ask about this product",
-      "addToCart":"Add to cart",
-      "buyNow":"BUY NOW",
-      "available":"Available",
-      "inStock":"In Stock",
-      "outStock":"Out of stock",
-      "agreeTerms":"I agree with the terms and conditions",
-      "vendor":"Vendor",
-      "productType":"Product Type",
-      "tag":"Tags"
+    "productPage": {
+      "policy1": "Shipping and Returns",
+      "policy2": "Ask about this product",
+      "addToCart": "Add to cart",
+      "buyNow": "BUY NOW",
+      "available": "Available",
+      "preOrder": "Pre - Order",
+      "preOrderBtn": "PRE-ORDER",
+      "inStock": "In Stock",
+      "outStock": "Out of stock",
+      "agreeTerms": "I agree with the terms and conditions",
+      "vendor": "Vendor",
+      "productType": "Product Type",
+      "sku": "SKU",
+      "tag": "Tags",
+      "imgTag": {
+        "sale": "On Sale",
+        "soldout": "SOLD OUT"
+      },
+      "popupAsking": {
+        "messageTitle": "Message Sent!",
+        "messageContent": "Thank you for getting in touch! We appreciate you contacting us about product {{ productName }}. One of our customer happiness members will be getting back to you shortly.",
+        "formTitle": "What would you like to know about this product?",
+        "formName": "Name",
+        "formEmail": "Email",
+        "formSubject": "Subject",
+        "formComment": "Comment",
+        "formProduct": "Product",
+        "formSend": "Send"
+      }
+    },
+    "productSpecs": {
+      "tab": {
+        "description": "DESCRIPTION",
+        "dimensions": "DIMENSIONS",
+        "technical": "TECHNICAL DOCUMENT",
+        "parts": "PARTS",
+        "shipping": "SHIPPING"
+      }
+    },
+    "cart": {
+      "title": "SHOPPING CART",
+      "cartBreadcrumb": "Your Shopping Cart",
+      "cartClear": "CLEAR SHOPPING CART",
+      "continueShopping": "CONTINUE SHOPPING",
+      "shipping": {
+        "one_shipping_rate": "There is one shipping rate available for {}, {{province}}, {{country}}.",
+        "many_shipping_rates": "There are {{number}} shipping rates available for {}, {{province}}, {{country}}.",
+        "not_found_shipping_rate": "Not found shipping rate available for {{code}}, {{province}}, {{country}}.",
+        "button_submit": "Calculate shipping",
+        "button_submited": "Calculating..."
+      },
+      "estimateShip": {
+        "title": "ESTIMATE SHIPPING AND TAX",
+        "subTitle": "Enter your destination to get a shipping estimate",
+        "country": "COUNTRY",
+        "province": "STATE\/PROVINCE",
+        "postal": "ZIP\/POSTAL CODE"
+      },
+      "note": "NOTE",
+      "noteLabel": "Add special instructions for your order...",
+      "subTotal": "SUBTOTAL",
+      "grandTotal": "GRANDTOTAL",
+      "emptyCart": {
+        "title": "SHOPPING CART IS EMPTY",
+        "subTitle": "You have no items in your shopping cart",
+        "continueShopping": "CONTINUE SHOPPING"
+      }
+    },
+    "cart-popup": {
+      "notification": "Added to cart successfully!",
+      "qty": "QTY",
+      "total": "TOTAL",
+      "qtyInCart": "There are {{ qtyInCart }} items in your cart",
+      "continueShopping": "CONTINUE SHOPPING",
+      "viewCart": "VIEW CART"
+    },
+    "cart-quickView": {
+      "emptyCart": "No Products in the Cart",
+      "total": "TOTAL",
+      "viewCart": "VIEW CART",
+      "title":"SHOPPING CART"
+    },
+    "cart-popup-error": {
+      "title": "Warning",
+      "error": "You can only add {{ maxQty }} of this item to your cart."
+    },
+    "login-form": {
+      "require": "Required Fields",
+      "lost": "Lost your password?",
+      "cancel": "or Cancel"
+    },
+    "register-form": {
+      "require": "Required Fields",
+      "return": "or Return to Store"
+    },
+    "404-template":{
+      "title":"404",
+      "subTitle":"We are sorry, the page you've requested is not available.",
+      "button":"Back to Homepage"
+    },
+    "contact":{
+      "message":"Thank you for your contact"
+    },
+    "collection":{
+      "button":"Download More",
+      "empty":"EMPTY",
+      "empty_text":"There are no products matching the selection."
     }
   }
 }

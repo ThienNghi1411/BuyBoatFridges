@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="{{ 'miniProductBanner.css' | asset_url }}">
+<section class="miniBanner miniProductBanner" data-section-type="mini-Productbanner" data-section-id="{{ section.id }}">
+    <div class="miniBanner__inner">
+        <div class="miniBanner__productBannerCont">
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                    {%- when 'product' -%}
+                        {%- assign product = all_products[block.settings.product] -%}
+                        <div class="miniBanner__productBanner">
+                            <div class="miniBanner__productBanner-wrap">
+                                <div class="miniBanner__productBanner-imgCont">
+                                    {% comment %} <img src="{{ product.featured_image | image_url }} " /> {% endcomment %}
+                                    <a href="{{ product.url }}" class="">
+                                        {%- render "image-style" , image: product.featured_image , imgClass: "object-fit--contain" -%}
+                                        <div class="miniBanner__productBanner-imgCont-tagCont">{{ product.vendor }}</div>
+                                    </a>
+                                </div>
+                                <div class="miniBanner__productBanner-infoProduct">
+                                    <div class="miniBanner__productBanner-titleProduct">
+                                        <div class="miniBanner__productBanner-titleProduct-productName">{{ product.variants[0].sku }}</div>
+                                        <div class="miniBanner__productBanner-titleProduct-subTitle">
+                                            <a href="{{ product.url }}" class="">{{ product.title }}</a>
+                                            
+                                        </div>
+                                        <div class="miniBanner__productBanner-priceProduct">
+                                            <div class="miniBanner__productBanner-priceProduct-lastPrice">{{ product.variants[0].price | money }}</div>
+                                            {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                                            <div class="miniBanner__productBanner-priceProduct-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                                            {%- endif -%}
+                                        </div>
+                                    </div>
+                                    <div class="miniBanner__productBanner-priceAndBtn">
+                                        <div class="miniBanner__productBanner-btnSeeMoreCont">
+                                            <button class="miniBanner__productBanner-btnSeeMore">
+                                                <a href="{{ product.url }}" class="">See more</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                {%- endcase -%}
+            {%- endfor -%} 
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Mini Product Banner",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Mini Product Banner"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":"Mini Product Banner"
+            }
+        ],
+        "blocks":[
+            {
+                "type":"product",
+                "name":"Product Block",
+                "settings":[
+                    {
+                        "type":"header",
+                        "content":"Product Banner "
+                    },
+                    {
+                        "type":"product",
+                        "id":"product",
+                        "label":"Choose product:"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

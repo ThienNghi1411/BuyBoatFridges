@@ -1,17 +1,5 @@
 <link rel="stylesheet" href="{{ 'list-collections.css' | asset_url }}">
-
-
-{% assign  var2= section.settings.collection_grid | times: 1 %}
-{% style %}
-
-
-.collections__inner{
-    grid-template-columns: repeat(var2,1fr);
-}
-{% endstyle %}
-
-
-
+{%- assign limitPerRow = section.settings.limitPerRow | split: "," -%}
 <div class="collections__wrapper">
   <div class="collections">
     <div class="collections__inner">     
@@ -22,44 +10,49 @@
         {% endcase %}       
       {% endfor %}
     </div>
+    
   </div>
 </div>
+
+{% style %}
+@media(min-width: 320px){
+  .collections__inner{
+    grid-template-columns: repeat({{limitPerRow[0]}},1fr) !important;
+  }
+}
+@media(min-width: 600px){
+  .collections__inner{
+    grid-template-columns: repeat({{limitPerRow[1]}},1fr)!important;
+  }
+}
+@media(min-width: 800px){
+  .collections__inner{
+    grid-template-columns: repeat({{limitPerRow[2]}},1fr)!important;
+  }
+}
+@media(min-width: 1000px){
+  .collections__inner{
+    grid-template-columns: repeat({{limitPerRow[3]}},1fr)!important;
+  }
+}
+@media(min-width: 1280px){
+  .collections__inner{
+    grid-template-columns: repeat({{limitPerRow[4]}},1fr)!important;
+  }
+}
+{% endstyle %}
 {% schema %}
 {
   "name": "Collections",
- 
   "class": "List-collection",
   "settings":[
   {
-    "type": "select",
-    "id": "collection_grid",
-    "label": "Adjust Grid",
-    "options": [
-      {
-        "value": "1",
-        "label": "1"
-      },
-      {
-        "value": "2",
-        "label": "2"
-      },
-      {
-        "value": "3",
-        "label": "3"
-      },
-      {
-        "value":"4",
-        "label":"4"
-      }
-    ],
-    "default": "4"
+    "type":"text",
+    "id": "limitPerRow",
+    "label":"Items per row: ",
+    "info": "E.g: 2,3,4,5,6 - 320px - 600px - 800px - 1000px - 1280px"
   }
-
-
-
-
   ],
-
   "blocks": [
      {
        "name": "collection",

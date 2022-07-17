@@ -1,5 +1,4 @@
 .login {
-    max-width: 320px;
     
     margin: 0 auto;
     .login_inner {
@@ -39,7 +38,8 @@
             }
 
             .left_col_button:hover {
-                background-color: black;
+                background-color: var(--primary-color);
+                border: unset;
                 color: white;
             }
 
@@ -84,7 +84,7 @@
             .form_summit
             {
                 display: flex;
-                justify-content: space-between;
+                
                 align-items: center;
                 .loginForm-submit
                 {
@@ -102,11 +102,21 @@
                 .loginForm-submit:hover
                 {
                     color: white;
-                    background-color: black;
+                    background-color: var(--primary-color);
+                    border: unset;
                 }
                 .loginForm-submit-text
                 {
                     cursor: pointer;
+                }
+                .Cancel
+                {
+                    margin-left: 20px;
+                }
+                .Forget
+                {
+                    width: 100%;
+                    text-align: right;
                 }
             }
         }
@@ -118,27 +128,29 @@
 }
 @media (min-width:320px)
 {
-    .login{
-        max-width: 480px;
-    }
+    
 }
 @media (min-width:480px)
 {
-    .login{
-        max-width: 720px;
-        
 
-    }
    
 }
-
-@media (min-width:720px)
-{   
+@media (min-width:600px)
+{
     .login{
-        max-width: 860px;
         .login_inner
         {
             padding: 30px 50px;
+        }
+    }
+}
+@media (min-width:720px)
+{   
+    .login{
+       
+        .login_inner
+        {
+            
             flex-direction: row !important;
             gap: 20px !important;
             .login_inner_left_col{
@@ -154,10 +166,7 @@
 }
 @media (min-width:860px)
 {
-    .login{
-        max-width: 1080px;
-
-    }
+  
   
    
 
@@ -165,7 +174,11 @@
 @media (min-width:1080px)
 {
     .login{
-        max-width: 1280px;
+        max-width: 1000px;
+        .login_inner
+        {
+            padding: 30px 0;
+        }
     }
     
 }
@@ -173,7 +186,7 @@
 @media (min-width:1280px)
 {
     .login{
-        max-width: 1000px;
+        max-width: 1200px;
         .login_inner
         {
             padding: 30px 0px;
@@ -182,13 +195,4 @@
     }
     
    
-}
-@media (min-width:1440px)
-{
-    .login{
-        max-width: 1220px;
-        
-    }
-    
-
 }

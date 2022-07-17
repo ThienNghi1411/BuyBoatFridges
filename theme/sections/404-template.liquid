@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="{{ '404-template.css' | asset_url }}">
+<section class="section_template_notfound">
+        <div class="notfound__inner">
+            <div class="notfound__inner__title">{{section.settings.title}}</div>
+            <div class="notfound__inner__SubTitle">{{section.settings.subtitle}}</div>
+            <div class="notfound__inner__button"> <a href="{{section.settings.button_link}}">{{section.settings.button_label}}</a>  </div>
+        </div>
+</section>
+{% schema %}
+{
+  "name": "404 Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Edit title"
+      
+    },
+    {
+        "type": "richtext",
+        "id": "subtitle",
+        "label": "Edit subtitle"
+     
+    },
+    {
+        "type": "text",
+        "id": "button_label",
+        "label": "Edit button label",
+        "default":"Back to Homepage"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Edit button link"
+    }
+  ]
+}
+{% endschema %}

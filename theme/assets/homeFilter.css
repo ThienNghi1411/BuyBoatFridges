@@ -210,11 +210,18 @@
     padding: 15px 0;
     cursor: pointer; } }
 
+@media (min-width: 1080px) {
+  .homeFilter {
+    max-width: 100%;
+    padding: 0; }
+  .homeFilter__inner {
+    width: 1000px; } }
+
 @media (min-width: 1280px) {
   .homeFilter {
     max-width: 100%; }
   .homeFilter__inner {
-    max-width: 1000px; }
+    width: 1200px; }
   .homeFilter__content {
     flex-direction: row;
     justify-content: space-between;

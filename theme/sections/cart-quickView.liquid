@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ 'cartQuickView.css' | asset_url }}">
 <script src=" {{ 'cart-quick-view.js' | asset_url }}" defer></script>
-<cart-quick-view class="cartQuickView pa"  style="display: none;">
+<cart-quick-view class="cartQuickView" >
     <div class="cartQuickView__inner" >
             {%- if cart.item_count == 0 -%}
                 <a href="{{ routes.cart_url }}" class="">
@@ -8,7 +8,7 @@
                         <div class="cartQuickView__emptyCart-icon">
                             <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
                         </div>
-                        <div class="cartQuickView__emptyCart-text">No Products in the Cart</div>
+                        <div class="cartQuickView__emptyCart-text">{{ 'sections.cart-quickView.emptyCart' | t }}</div>
                     </div>    
                 </a>
             {%- else -%}
@@ -17,11 +17,15 @@
                         {%- for item in cart.items -%}
                             <div class="cartQuickView__productLine">
                                 <div class="cartQuickView__productLine-imgCont">
-                                    {%- render "image-style" , image: item.image -%}
+                                    <a href="{{ item.url }}" class="w100 h100">
+                                        {%- render "image-style" , image: item.image -%}
+                                    </a>
                                 </div>
                                 <div class="cartQuickView__productLine-productInfo">
                                     
-                                    <div class="cartQuickView__productLine-productTitle">{{ item.title }}</div>
+                                    <div class="cartQuickView__productLine-productTitle">
+                                        <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                                    </div>
                                     <div class="cartQuickView__productLine-qtyAndPrice">
                                         <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>
                                         <span class="cartQuickView__productLine-price">{{ item.price | money }}</span>
@@ -37,7 +41,7 @@
                         {%- endfor -%}
                     </div>
                     <div class="cartQuickView__totalCart">
-                        <div class="cartQuickView__totalCart-text">TOTAL:</div>
+                        <div class="cartQuickView__totalCart-text">{{ 'sections.cart-quickView.total' | t }}:</div>
                         <div class="cartQuickView__totalCart-total">{{ cart.total_price | money }}</div>
                     </div>
                     <div class="cartQuickView__checkOutCont">
@@ -46,7 +50,7 @@
                 {%- endform -%}
                 <div class="cartQuickView__viewCartBtn">
                     <a href="{{ routes.cart_url }}" class="">
-                        <button class="cartQuickView__viewCartBtn-btn">VIEW CART</button>
+                        <button class="cartQuickView__viewCartBtn-btn">{{ 'sections.cart-quickView.viewCart' | t }}</button>
                     </a>
                 </div>
             {%- endif -%}

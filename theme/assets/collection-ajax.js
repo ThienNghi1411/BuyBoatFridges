@@ -1,4 +1,73 @@
 (() => {
+  // app/scripts/collection.js
+  (() => {
+    var FilterIcon = document.querySelector(".collections__Filter");
+    var menuMobileCloseIcon = document.querySelector(".closebutton");
+    var menuMobileOverLay = document.querySelector(".collection__overlay-wrapper");
+    var menuMobile = document.querySelector(".collection__filter");
+    var init = () => {
+      FilterIcon.addEventListener("click", showMenuMobile);
+      menuMobileCloseIcon.addEventListener("click", hideMenuMobile);
+      menuMobileOverLay.addEventListener("click", hideMenuMobile);
+    };
+    var toggleEnabelScroll = () => {
+      const body = document.querySelector("body");
+      if (body.style.overflow === "hidden") {
+        body.style.overflow = "visible";
+      } else {
+        body.style.overflow = "hidden";
+      }
+    };
+    var showMenuMobile = () => {
+      window.scroll(0, 0);
+      menuMobileOverLay.style.display = "block";
+      menuMobile.style.display = "block";
+      toggleEnabelScroll();
+    };
+    var hideMenuMobile = () => {
+      menuMobile.style.display = "none";
+      menuMobileOverLay.style.display = "none";
+      toggleEnabelScroll();
+    };
+    init();
+  })();
+  function Control() {
+    var content = document.querySelectorAll(".filter__tittle");
+    content.forEach((e) => {
+      let item = e.nextElementSibling;
+      let icon_Open = e.children[2];
+      let icon_Close = e.children[1];
+      e.addEventListener("click", () => {
+        console.log(e.classList.contains("filter_active"));
+        if (e.classList.contains("filter_active")) {
+          let clear_All = document.querySelector(".ClearAll_button");
+          if (clear_All != void 0) {
+            clear_All.style.display = "none";
+          }
+          e.classList.remove("filter_active");
+          item.style.display = "none";
+          icon_Open.style.display = "unset";
+          icon_Close.style.display = "none";
+          e.parentElement.style.marginBottom = "20px";
+        } else {
+          let clear_All = document.querySelector(".ClearAll_button");
+          if (clear_All != void 0) {
+            clear_All.style.display = "flex";
+            clear_All.style.padding = "10px 0px 30px 0px";
+          }
+          e.classList.add("filter_active");
+          item.style.display = "flex";
+          icon_Open.style.display = "none";
+          icon_Close.style.display = "unset";
+          e.parentElement.style.marginBottom = "0px";
+        }
+      });
+    });
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    Control();
+  });
+
   // app/scripts/collection-ajax.js
   var tag = document.querySelectorAll(".tag");
   var Query = "";
@@ -8,14 +77,20 @@
   renderItems = () => {
     let spinner = document.querySelector(".collection__spinner");
     spinner.style.display = "unset";
-    fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value).then((response) => response.text()).then((data) => {
+    fetch("https://www.buyboatfridges.com/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: "cors"
+    }).then((response) => response.text()).then((data) => {
       let html_div = document.createElement("div");
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
       let product_count = html_div.querySelectorAll(".productCard").length;
-      collection__tittle.innerHTML = collection_handle + `(${product_count})`;
+      collection__tittle.innerHTML = collection_title + ` (${product_count})`;
       spinner.style.display = "none";
-      history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value);
+      history.replaceState(null, null, "/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value);
       let ProductContainer = html_div.querySelector(".collection__Productcontent");
       document.querySelector(".collection__Productcontent").innerHTML = "";
       if (product_count == 0) {
@@ -52,6 +127,7 @@
       remove_Icons.forEach((e) => {
         let remove_text = e.previousElementSibling.innerText;
         e.addEventListener("click", () => {
+          task = false;
           let tags_remove = document.querySelectorAll(".remove");
           tags_remove.forEach((e2) => {
             let normal_text = e2.innerText.toLowerCase().replace(/ /g, "-");
@@ -82,7 +158,7 @@
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
-    if (url_array[5] != void 0 && url_array[5] != "") {
+    if (url_array[5] != void 0 && url_array[5] != "" || array[1] != "" && array[1] != void 0) {
       let items = url_array[5].split("+");
       let html_dom = `<div class="filter__tittle  filter_active">
         <div class="tittle__text">SHOPING BY:</div>
@@ -92,48 +168,45 @@
         <div class="Icon__Control plus">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/></svg>
         </div>
-        
         </div>
-
          <div class="item__wrap shopping">    
-
          </div>
             <div class="ClearAll_button">
             Clear All
-         </div>
-        
+         </div>  
          `;
       let clear_container = document.querySelector(".filter_Clear");
-      clear_container.innerHTML = html_dom;
-      let ClearAll_button = document.querySelector(".ClearAll_button");
-      ClearAll_button.addEventListener("click", () => {
-        clearAll();
-      });
-      items.forEach((e) => {
-        let tags = document.querySelectorAll(".tag");
-        tags.forEach((element) => {
-          let normal_filter = element.innerText.toLowerCase().replace(/ /g, "-");
-          if (e == normal_filter) {
-            element.classList.add("remove");
-          }
+      if (url_array[5].length > 0) {
+        clear_container.innerHTML = html_dom;
+        let ClearAll_button = document.querySelector(".ClearAll_button");
+        ClearAll_button.addEventListener("click", () => {
+          clearAll();
         });
-        let html_dom2 = `
-            <div class="shopingBy_tag">
-   
-            <div class="tag_text">
-           ${e}
-          </div>
-          <div class="tag_RemoveIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M376.6 427.5c11.31 13.58 9.484 33.75-4.094 45.06c-5.984 4.984-13.25 7.422-20.47 7.422c-9.172 0-18.27-3.922-24.59-11.52L192 305.1l-135.4 162.5c-6.328 7.594-15.42 11.52-24.59 11.52c-7.219 0-14.48-2.438-20.47-7.422c-13.58-11.31-15.41-31.48-4.094-45.06l142.9-171.5L7.422 84.5C-3.891 70.92-2.063 50.75 11.52 39.44c13.56-11.34 33.73-9.516 45.06 4.094L192 206l135.4-162.5c11.3-13.58 31.48-15.42 45.06-4.094c13.58 11.31 15.41 31.48 4.094 45.06l-142.9 171.5L376.6 427.5z"/></svg>
-          </div>
-            </div>
-           `;
-        var filter_container = document.querySelector(".shopping");
-        var div = document.createElement("div");
-        div.innerHTML = html_dom2;
-        filter_container.appendChild(div);
-      });
-      removeTags();
+        items.forEach((e) => {
+          let tags = document.querySelectorAll(".tag");
+          tags.forEach((element) => {
+            let normal_filter = element.innerText.toLowerCase().replace(/ /g, "-");
+            if (e == normal_filter) {
+              element.classList.add("remove");
+            }
+          });
+          let html_dom2 = `
+                <div class="shopingBy_tag">
+                <div class="tag_text">
+               ${e}
+              </div>
+              <div class="tag_RemoveIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M376.6 427.5c11.31 13.58 9.484 33.75-4.094 45.06c-5.984 4.984-13.25 7.422-20.47 7.422c-9.172 0-18.27-3.922-24.59-11.52L192 305.1l-135.4 162.5c-6.328 7.594-15.42 11.52-24.59 11.52c-7.219 0-14.48-2.438-20.47-7.422c-13.58-11.31-15.41-31.48-4.094-45.06l142.9-171.5L7.422 84.5C-3.891 70.92-2.063 50.75 11.52 39.44c13.56-11.34 33.73-9.516 45.06 4.094L192 206l135.4-162.5c11.3-13.58 31.48-15.42 45.06-4.094c13.58 11.31 15.41 31.48 4.094 45.06l-142.9 171.5L376.6 427.5z"/></svg>
+              </div>
+                </div>
+               `;
+          var filter_container = document.querySelector(".shopping");
+          var div = document.createElement("div");
+          div.innerHTML = html_dom2;
+          filter_container.appendChild(div);
+        });
+        removeTags();
+      }
       Query = url_array[5];
       if (array[1] != "" && array[1] != void 0) {
         sort_value = array[1].split("=")[1];
@@ -141,26 +214,34 @@
         sort_options.forEach((e) => {
           if (e.getAttribute("value") == array[1].split("=")[1]) {
             e.classList.add("same-as-selected");
+            e.classList.add("no-after");
+            if (e.nextElementSibling != null)
+              e.nextElementSibling.classList.add("no-after");
           }
         });
       } else {
-        sort_value = "price-ascending";
-        document.getElementsByClassName("select-items")[0].children[4].classList.add("same-as-selected");
+        sort_value = "best-selling";
       }
       document.getElementsByClassName("select-items")[1].children[0].classList.add("same-as-selected");
       render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
       renderItems();
+      Control();
     } else {
+      Control();
       removeTags();
       Query = "";
-      sort_value = "price-ascending";
-      document.getElementsByClassName("select-items")[0].children[4].classList.add("same-as-selected");
+      let sort_default = document.querySelector(".select-items").children[1];
+      sort_default.click();
+      document.querySelector(".filter-option").classList.add("no-after");
+      sort_value = "best-selling";
+      document.getElementsByClassName("select-items")[0].children[1].classList.add("same-as-selected");
       document.getElementsByClassName("select-items")[1].children[0].classList.add("same-as-selected");
+      document.getElementsByClassName("select-items")[1].children[0].classList.add("no-after");
       render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
-      renderItems();
     }
   });
   clearAll = () => {
+    task = false;
     Query = "";
     renderItems();
     document.querySelector(".filter_Clear").textContent = "";
@@ -172,6 +253,7 @@
   };
   tag.forEach((e) => {
     e.addEventListener("click", () => {
+      task = false;
       e.style.pointerEvents = "none";
       let newString = e.innerText.toLowerCase().replace(/ /g, "-");
       var filter_container = document.querySelector(".shopping");
@@ -184,16 +266,12 @@
         <div class="Icon__Control plus">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/></svg>
         </div>
-        
         </div>
-
          <div class="item__wrap shopping">    
-
          </div>
             <div class="ClearAll_button">
             Clear All
          </div>
-        
          `;
         let clear_container = document.querySelector(".filter_Clear");
         clear_container.innerHTML = html_dom;
@@ -202,9 +280,9 @@
       ClearAll_button.addEventListener("click", () => {
         clearAll();
       });
+      Control();
       let html_dom2 = `
          <div class="shopingBy_tag">
-
          <div class="tag_text">
         ${newString}
        </div>
@@ -230,7 +308,12 @@
     let spinner = document.querySelector(".collection__spinner");
     let render_number2 = parseInt(document.getElementById("display").value);
     spinner.style.display = "unset";
-    fetch("https://www.buyboatfridges.com/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value).then((response) => response.text()).then((data) => {
+    fetch("https://www.buyboatfridges.com/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then((response) => response.text()).then((data) => {
       let html_div = document.createElement("div");
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
@@ -238,7 +321,7 @@
       let itemOnScreen = document.querySelectorAll(".productCard").length;
       collection__tittle.innerHTML = collection_handle + `(${product_count})`;
       spinner.style.display = "none";
-      history.replaceState(null, null, "/collections/" + collection_handle + "/" + Query + "?sort_by=" + sort_value);
+      history.replaceState(null, null, "/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value);
       let ProductContainer = html_div.querySelector(".collection__Productcontent");
       for (i = 0; i < render_number2; i++) {
         if (itemOnScreen + i < product_count) {
@@ -261,10 +344,6 @@
   Load_Button.addEventListener("click", () => {
     loadmore();
   });
-  var display = document.getElementById("display");
-  display.addEventListener("change", (e) => {
-    renderItems();
-  });
   var footer = document.querySelector(".footer");
   window.addEventListener("scroll", () => {
     if (!task) {
@@ -273,7 +352,6 @@
         task = true;
         let tittle = document.querySelector(".collection__tittle").innerHTML;
         let total = parseInt(tittle.split("(")[1].split(")")[0]);
-        console.log(total);
         if (products < total) {
           if (ifinity == 1) {
             loadmore();
@@ -296,7 +374,6 @@
   for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
     ll = selElmnt.length;
-    console.log(ll);
     a = document.createElement("DIV");
     a.setAttribute("class", "select-selected");
     a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
@@ -309,6 +386,13 @@
       c.setAttribute("value", selElmnt.options[j].value);
       c.classList.add("filter-option");
       c.addEventListener("click", function(e) {
+        task = false;
+        let after_items = document.querySelectorAll(".no-after");
+        after_items.forEach((e2) => {
+          e2.classList.remove("no-after");
+        });
+        document.querySelector(".filter-option").classList.add("no-after");
+        document.querySelectorAll(".select-items")[1].children[0].classList.add("no-after");
         var y, i2, k, s, h, sl, yl;
         s = this.parentNode.parentNode.getElementsByTagName("select")[0];
         sl = s.length;
@@ -319,7 +403,7 @@
             h.innerHTML = this.innerHTML;
             h.setAttribute("value", s.options[i2].value);
             let a2 = parseInt(s.options[i2].value);
-            if (a2 > 0) {
+            if (a2 > 0 || a2 == "ALL") {
               let value = window.location.href;
               sort_value = value.split("=")[1];
               render_number = a2;
@@ -327,16 +411,17 @@
             } else {
               sort_value = s.options[i2].value;
               render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
-              console.log(render_number);
               renderItems();
             }
-            console.log(s.options[i2].value);
             y = this.parentNode.getElementsByClassName("same-as-selected");
             yl = y.length;
             for (k = 0; k < yl; k++) {
               y[k].classList.remove("same-as-selected");
             }
             this.classList.add("same-as-selected");
+            this.classList.add("no-after");
+            if (this.nextElementSibling != null)
+              this.nextElementSibling.classList.add("no-after");
             break;
           }
         }

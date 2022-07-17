@@ -30,6 +30,7 @@
     let showIcon = e.currentTarget.querySelector(".productSpecs__optionWrap-showIcon");
     if (option.classList.contains("productSpecs__activeOption")) {
       option.classList.remove("productSpecs__activeOption");
+      console.log(content);
       content.forEach((tmp) => {
         tmp.style.display = "none";
       });
@@ -37,7 +38,7 @@
       showIcon.style.display = "block";
       contentDestop[i].style.display = "none";
     } else {
-      removeClass(specOptions, "productSpecs__activeOption");
+      window.innerWidth >= 1e3 ? removeClass(specOptions, "productSpecs__activeOption") : "";
       removeContent();
       option.classList.add("productSpecs__activeOption");
       content.forEach((tmp) => {
@@ -49,4 +50,16 @@
     }
   };
   init();
+  var dimentionsContents = document.querySelectorAll(".dimentions__content");
+  dimentionsContents.forEach((dimentionsContent) => {
+    let trContents = dimentionsContent.querySelectorAll("table tbody tr");
+    trContents.forEach((trContent) => {
+      let tdContents = trContent.querySelectorAll("td");
+      tdContents.forEach((tdContent) => {
+        if (tdContent.querySelector("img")) {
+          tdContent.classList.add("tdWrap");
+        }
+      });
+    });
+  });
 })();

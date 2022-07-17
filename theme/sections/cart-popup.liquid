@@ -7,35 +7,36 @@
             <div class="cartPopup__product">
                 <div class="cartPopup__notification">
                     {%- render 'icon-check' -%}
-                    <div class="cartPopup__notification-text">Added to cart successfully!</div>
+                    <div class="cartPopup__notification-text">{{ 'sections.cart-popup.notification' | t }}</div>
                 </div>
                 <div class="cartPopup__imgCont">
                     <img src="{{ product.featured_image | image_url }} " alt="{{  }}" />
+                    {% comment %} {%- render 'image-style', image: product.featured_image  -%} {% endcomment %}
                 </div>
                 <div class="cartPopup__infoProduct">
                     <div class="cartPopup__pdName">{{ product.title }}</div>
                     <div class="cartPopup__pdQty">
-                       <span class="cartPopup__pdQty-text">QTY: </span>
+                       <span class="cartPopup__pdQty-text">{{ 'sections.cart-popup.qty' | t }}: </span>
                        <span class="cartPopup__pdQty-qty"> </span>
                     </div>
                     <div class="cartPopup__total">
-                        <span class="cartPopup__total-text">TOTAL: </span>
+                        <span class="cartPopup__total-text">{{ 'sections.cart-popup.total' | t }}: </span>
                         <span class="cartPopup__total-total"> </span>
                     </div>
                 </div>
             </div>
             <div class="cartPopup__cartInfo">
                 <div class="cartPopup__cartTotal">
-                    <div class="cartPopup__cartTotal-text">There are {{ cart.item_count }} items in your cart</div>
-                    <div class="cartPopup__cartTotal-total">TOTAL:   <span>{{ cart.total_price | money }}</span></div>
+                    <div class="cartPopup__cartTotal-text">{{ 'sections.cart-popup.qtyInCart' | t: qtyInCart: cart.item_count }}</div>
+                    <div class="cartPopup__cartTotal-total">{{ 'sections.cart-popup.total' | t }}:   <span>{{ cart.total_price | money }}</span></div>
                 </div>
                 <div class="cartPopup__btnCont">
                     <div class="cartPopup__btnShopping">
-                        <button class="cartPopup__btnShopping-btn">CONTINUE SHOPPING</button>
+                        <button class="cartPopup__btnShopping-btn">{{ 'sections.cart-popup.continueShopping' | t }}</button>
                     </div>
                     <div class="cartPopup__btnViewCart">
                         <a href="{{ routes.cart_url }}" class="">
-                            <button class="cartPopup__btnViewCart-btn">VIEW CART</button>
+                            <button class="cartPopup__btnViewCart-btn">{{ 'sections.cart-popup.viewCart' | t }}</button>
                         </a>
                     </div>
                 </div>
@@ -48,15 +49,15 @@
         <div class="cartPopup__contentMobile ">
             <div style="margin-bottom: 20px" class="cartPopup__notification">
                 {%- render 'icon-check' -%}
-                <div class="cartPopup__notification-text">Added to cart successfully!</div>
+                <div class="cartPopup__notification-text">{{ 'sections.cart-popup.notification' | t }}</div>
             </div>
             <div class="cartPopup__btnCont">
                 <div class="cartPopup__btnShopping">
-                    <button class="cartPopup__btnShopping-btn">CONTINUE SHOPPING</button>
+                    <button class="cartPopup__btnShopping-btn">{{ 'sections.cart-popup.continueShopping' | t }}</button>
                 </div>
                 <div class="cartPopup__btnViewCart">
                     <a href="{{ routes.cart_url }}" class="">
-                        <button class="cartPopup__btnViewCart-btn">VIEW CART</button>
+                        <button class="cartPopup__btnViewCart-btn">{{ 'sections.cart-popup.viewCart' | t }}</button>
                     </a>
                 </div>
             </div>

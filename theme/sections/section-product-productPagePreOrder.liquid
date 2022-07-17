@@ -1,0 +1,349 @@
+<link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
+<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
+<script src=" {{ 'product-popup.js' | asset_url }}" defer></script>
+<script>console.log({{ product.collections | json }})</script>
+{% comment %} {%- assign collectionUrl = "" -%}
+{%- for collection in product.collections -%}
+    {%- if collection.title == product.type -%}
+        {%- assign collectionUrl = collection.url -%}
+    {%- endif -%}
+{%- endfor -%} {% endcomment %}
+
+<div class="breadcrumb">
+    <div class="breadcrumb__inner">
+        <div class="breadcrumb__option">
+            <a href="{{ routes.root_url }}" class="">Home</a>
+        </div>
+        <div class="breadcrumb__option">
+            <a href="{{ product.collections[0].url }}" class="">{{ product.collections[0].title }}</a>
+        </div>
+        <div class="breadcrumb__option">
+            <a href="{{ product.url }}" class="">{{ product.vendor }} {{ product.variants[0].sku }}</a>
+        </div>
+    </div>
+</div>
+<section class="productPage" data-section-type="product-page" data-section-id="{{ section.id }}">
+    <div class="productPage__inner">                                                    
+        <div class="productPage__contentCont">
+            <div class="productPage__infoProduct">
+                <div class="productPage__titleProduct">  
+                    {%- capture productName -%}{{ product.vendor }} {{ product.variants[0].sku }}{%- endcapture -%}
+                    <div class="productPage__nameProduct"> {{ productName }}</div>
+                    <div class="productPage__skuProduct">{{ 'sections.productPage.sku' | t }}: {{ product.variants[0].sku }}</div>
+                    <div class="productPage__featureProduct">{{ product.title }}</div>
+                </div>
+                <div class="productPage__sliderImgProduct productPage__sliderImgMobile full-width">
+                    <div class="productPage__imgProduct imgProductMobile ">
+                        {%- assign ratio = product.media[0].aspect_ratio -%}
+                        {%- for image in product.media -%}
+                            <div class="productPage__imgProduct-wrapper">
+                                {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                                {%- render 'image-style', image: image , imageRatio: ratio -%}
+     
+                                <div class="productPage__imgProduct-alert">
+                                    <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                                </div>
+                                {%- if product.variants[0].inventory_quantity == 0 -%}
+                                    <div class="productPage__imgProduct-tag">{{ 'sections.productPage.imgTag.soldout' | t }}</div>
+                                {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
+                                    <div class="productPage__imgProduct-saleTag">{{ 'sections.productPage.imgTag.sale' | t }}</div>
+                                {%- endif -%}
+                            </div> 
+                        {%- endfor -%}
+                    </div>
+                    <div class="control__imgProductMobile">
+                        <div class="control__imgProductMobile-prevBtn">{% render 'icon-angle-left' %}</div>
+                        <div class="control__imgProductMobile-nextBtn">{% render 'icon-angle-right' %}</div>
+                    </div> 
+                </div>
+                <div class="productPage__priceCont">
+                    <div class="productPage__price">
+                        <div class="productPage__price-lastPrice">{{ product.variants[0].price | money }}</div>
+                        {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                        <div class="productPage__price-discount">
+                            <div class="productPage__price-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                            {%- assign discountPrice = product.variants[0].compare_at_price | minus: product.variants[0].price %}
+                            <div class="productPage__price-discountPrice">Save {{ discountPrice | money }}</div>
+                        </div>
+                        
+                        {%- endif -%}
+                    </div>
+                    <div class="productPage__policy">
+                        <div class="productPage__policyOption">
+                            <div class="productPage__policyOption-icon"> <img src="{{ section.settings.iconPolicy1 | image_url }} " alt="{{  }}" /></div>
+                            <div class="productPage__policyOption-text">{{ 'sections.productPage.policy1' | t }}</div>
+                        </div>
+                        <div class="productPage__policyOption productPage__askingPd">
+                            <div class="productPage__policyOption-icon"><img src="{{ section.settings.iconPolicy2 | image_url }} " alt="{{  }}" /></div>
+                            <div class="productPage__policyOption-text">{{ 'sections.productPage.policy2' | t }}</div>
+                        </div>
+                    </div>
+                    <div class="productPage__wrapper">
+                        <div class="productPage__quantityStatus">{{ 'sections.productPage.available' | t }}:  
+                                <span class="productPage__quantityStatus-status" style="color: #ff920c"> {{ 'sections.productPage.preOrder' | t }}</span>
+                        </div>
+                        <div class="productPage__quantityCont">
+                            <button class="productPage__quantityCont-minusBtn" name="minus" type="button">-</button>
+                            <input name="quantity" type="text" class="productPage__quantityCont-inputQty" value="1" min="1" m>
+                            <button class="productPage__quantityCont-plusBtn" name="plus" type="button">+</button> 
+                        </div>
+                    </div>
+                    <div class="productPage__preOrderLabel">
+                        {%- if product.metafields.product.preOrder != nil -%}
+                            <span class="productPage__preOrderLabel-text">{{ product.metafields.product.preOrder }}</span>
+                        {%- endif -%}
+                    </div>
+                    <div class="productPage__btnCont btnContMobile">
+                        <div class="productPage__btnAdd productPage__btnNoneClick ">
+                            <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
+                        </div>
+                        <div class="productPage__btnPreOrder">
+                            <button class="productPage__btnPreOrder-btn" type="submit" name="add">{{ 'sections.productPage.preOrderBtn' | t }}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="productPage__termConditions">
+                    <div class="productPage__termConditions-checkbox ">
+                        {%- render "icon-check" -%}
+                    </div>
+                    <div class="productPage__termConditions-text">{{ 'sections.productPage.agreeTerms' | t }}</div>
+                </div>
+                <div class="productPage__otherInfo">
+                    <div class="productPage__vendor">{{ 'sections.productPage.vendor' | t }}: {{ product.vendor }}</div>
+                    <div class="productPage__productType">{{ 'sections.productPage.productType' | t }}: {{ product.type }}</div>
+                    {%- assign tagContent = "" -%}
+                    {%- for tag in product.tags -%}
+                        {%- assign tagContent = tagContent | append: ', ' | append: tag -%}
+                    {%- endfor -%}
+                    {%- assign tagContent = tagContent | remove_first: "," -%}
+                    <div class="productPage__tags">{{ 'sections.productPage.tag' | t }}: {{ tagContent }}</div>
+                </div>
+                <div class="productPage__trustedSite">
+                    <img src="{{ section.settings.imgTrusted | image_url: width: 120 , height: 20 }} " alt="{{  }}" />
+                </div>
+            </div>
+            <div class="productPage__sliderImgProduct  productPage__sliderImgDestop">
+                <div class="productPage__imgProduct imgProductDestop">
+                    {%- assign ratio = product.media[0].aspect_ratio -%}
+                    {%- for image in product.media -%}
+                        <div class="productPage__imgProduct-wrapper">
+                            {% comment %} <img src="{{ image | image_url }} " alt="{{  }}" /> {% endcomment %}
+                            {%- render 'image-style', image: image , imageRatio: ratio -%}
+ 
+                            <div class="productPage__imgProduct-alert">
+                                <img src="{{ section.settings.iconPicture | image_url }} " alt="{{  }}" />
+                            </div>
+                            {%- if product.variants[0].inventory_quantity == 0 -%}
+                                <div class="productPage__imgProduct-tag">{{ 'sections.productPage.imgTag.soldout' | t }}</div>
+                            {% elsif product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price %}
+                                <div class="productPage__imgProduct-saleTag">{{ 'sections.productPage.imgTag.sale' | t }}</div>
+                            {%- endif -%}
+                        </div> 
+                    {%- endfor -%}
+                </div>
+                <div class="control__imgProduct">
+                    <div class="control__imgProduct-prevBtn">{% render 'icon-angle-left' %}</div>
+                    <div class="control__imgProduct-nextBtn">{% render 'icon-angle-right' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="productPage__btnCont btnContDestop">
+            <div class="productPage__btnAdd productPage__btnNoneClick ">
+                <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
+            </div>
+            <div class="productPage__btnPreOrder">
+                    <button class="productPage__btnPreOrder-btn" >{{ 'sections.productPage.preOrderBtn' | t }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="loading__spinner"></div>
+    <script id="productPage__settings" type="application/ld+json">
+        {
+            "product" : {{ product | json }},
+            "pdQuantity": {{ product.variants[0].inventory_quantity | json }} 
+        }
+    </script>
+</section>
+<div class="cartPopupCont">
+    <cart-popup-error class="cartPopUpError">
+        <div class="cartPopUpError__overlay">
+            <div class="cartPopUpError__content">
+                <div class="cartPopUpError__header">
+                    <div class="cartPopUpError__header-icon">
+                        {%- render 'icon-warning'-%}
+                    </div>
+                    <div class="cartPopUpError__header-text">Warning</div>
+                </div>
+                <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
+                <div class="cartPopUpError__iconClose">
+                    {%- render 'icon-X' -%}
+                </div>
+            </div>
+        </div>
+    </cart-popup-error>
+</div>
+<div class="popupAskingCont">
+    <product-popup-asking class="popupAsking">
+        <div class="popupAsking__overlay">
+            {% form 'contact' , id: 'ContactForm' %}
+                {%- if form.posted_successfully? -%}
+                    <div class="popupAsking__content popupAsking__success">
+                        <div class="popupAsking__btnClose"> {%- render 'icon-X' -%} </div>
+                        <div class="popupAsking__messageIcon">{%- render 'icon-check' -%}</div>
+                        <div class="popupAsking__titleMessage">{{ 'sections.productPage.popupAsking.messageTitle' | t }}</div>
+                        <div class="popupAsking__messageContent">{{ 'sections.productPage.popupAsking.messageContent' | t: productName: productName }}</div>
+                    </div>
+      
+                    {%- style -%}
+                        .popupAsking{
+                            display: block;
+                        }
+                        .popupAsking__contentDefault{
+                            display : none;
+                        }
+                        body{
+                            overflow: hidden;
+                        }
+                    {%- endstyle -%}
+
+                {%- else -%}
+                {{ form.errors | default_errors }}
+                {%- endif -%}
+                <div class="popupAsking__content popupAsking__contentDefault">
+                    <div class="popupAsking__title">{{ 'sections.productPage.popupAsking.formTitle' | t }}</div>
+                    <div class="popupAsking__btnClose"> {%- render 'icon-X' -%} </div>
+                    <div class="popupAsking__formContent">
+                        <div class="popupAsking__formContentHeader">
+                            <div class="popupAsking__formContentHeader-text">{{ 'sections.productPage.popupAsking.formProduct' | t }}:</div>
+                            <div class="popupAsking__formContentHeader-productTitle">{{ productName }}</div>
+                        </div>
+                        <div class="popupAsking__formWrapper">
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formName' | t }} <span>*</span></div>
+                                <input type="text" name="contact[name]" class="popupAsking__formField-input" required>
+                            </div>
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formEmail' | t }} <span>*</span></div>
+                                <input type="email" name="contact[email]" class="popupAsking__formField-input" required>
+                            </div>
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formSubject' | t }}</div>
+                                <input type="text" name="contact[subject]" class="popupAsking__formField-input">
+                            </div>
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">{{ 'sections.productPage.popupAsking.formComment' | t }} <span>*</span></div>
+                                <textarea  name="contact[body]" id="" cols="30" rows="10"  class="popupAsking__formField-input" required></textarea>
+                            </div>
+                            <div class="popupAsking__btnSend">
+                                <button class="popupAsking__btnSend-btn" type="submit">{{ 'sections.productPage.popupAsking.formSend' | t }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endform %}
+        </div>
+    </product-popup-asking>
+</div>
+ {% comment %} <div class="popupPreOrderCont">
+    <product-popup-preorder class="popupPreOrder">
+        <div class="popupPreOrder__overlay">
+            {% form 'contact' %}
+                {%- if form.posted_successfully? -%}
+                    <div class="popupPreOrder__content popupPreOrder__success">
+                        <div class="popupPreOrder__btnClose"> {%- render 'icon-X' -%} </div>
+                        <div class="popupPreOrder__messageIcon">{%- render 'icon-check' -%}</div>
+                        <div class="popupPreOrder__titleMessage">Message Sent!</div>
+                        <div class="popupPreOrder__messageContent">Thank you for getting in touch! We appreciate you pre-order product {{ productName }}. 
+                        One of our customer happiness members will be getting back to you shortly.</div>
+                        {%- style -%}
+                        .popupPreOrder{
+                            display: block;
+                        }
+                        .popupPreOrder__contentDefault{
+                            display : none;
+                        }
+                        body{
+                            overflow: hidden;
+                        }
+                    {%- endstyle -%}
+                    </div>
+                {%- else -%}
+                    {{ form.errors | default_errors }}
+                {%- endif -%}
+                <div class="popupPreOrder__content popupPreOrder__contentDefault">
+                    <div class="popupPreOrder__title">PRE-ORDER NOW !!!</div>
+                    <div class="popupPreOrder__btnClose"> {%- render 'icon-X' -%} </div>
+                    <div class="popupPreOrder__formContent">
+                        <div class="popupPreOrder__formContentHeader">
+                            <div class="popupPreOrder__formContentHeader-text">Product:</div>
+                            <div class="popupPreOrder__formContentHeader-productTitle">{{ productName }}</div>
+                        </div>
+                        <div class="popupPreOrder__formWrapper">
+                            <div class="popupPreOrder__formField">
+                                <div class="popupPreOrder__formField-label">Name <span>*</span></div>
+                                <input type="text" name="contact[name]" class="popupPreOrder__formField-input" required>
+                            </div>
+                            <div class="popupPreOrder__formField">
+                                <div class="popupPreOrder__formField-label">Email <span>*</span></div>
+                                <input type="email" name="contact[email]" class="popupPreOrder__formField-input" required>
+                            </div>
+                            <div class="popupAsking__formField">
+                                <div class="popupAsking__formField-label">Subject</div>
+                                <input type="text" name="contact[subject]" class="popupPreOrder__formField-input">
+                            </div>
+                            <div class="popupPreOrder__formField">
+                                <div class="popupPreOrder__formField-label">Comment <span>*</span></div>
+                                <textarea  name="contact[body]" id="" cols="30" rows="10"  class="popupPreOrder__formField-input" required></textarea>
+                            </div>
+                            <div class="popupPreOrder__btnSend">
+                                <button class="popupPreOrder__btnSend-btn" type="submit">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endform %}
+        </div>
+    </product-popup-preorder>
+</div>  {% endcomment %}
+
+<script src="{{ 'product-pagePreOrder.js' | asset_url }}" defer></script>
+
+
+{% schema %}
+    {
+        "name": "Product Page",
+        "tag": "section",
+        "presets": [
+            {
+              "name": "Product Page"
+            }
+        ],
+        "settings":[
+            {
+                "type":"header",
+                "content":"Product Page"
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPicture",
+                "label":"Choose icon for image product: "
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPolicy1",
+                "label":"Choose icon for policy 1: "
+            },
+            {
+                "type":"image_picker",
+                "id":"iconPolicy2",
+                "label":"Choose icon for policy 2: "
+            },
+            {
+                "type":"image_picker",
+                "id":"imgTrusted",
+                "label":"Choose certification image: "
+            }
+        ]
+
+    }
+{% endschema %}
