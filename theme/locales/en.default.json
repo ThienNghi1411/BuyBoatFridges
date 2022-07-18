@@ -3,6 +3,34 @@
     "404": {
       "title": "Not found",
       "subtext_html": "The page you were looking for does not exist"
+    },
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "shop": "Shop"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "pinterest": "Pinterest"
+    },
+    "countdown": {
+      "day": "day",
+      "hour": "hour",
+      "minute": "minute",
+      "second": "second",
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
+    },
+    "cookie": {
+      "message": "This website uses cookies to ensure you get the best experience on our website.",
+      "dismiss_button_text": "Got it!",
+      "policy_link_text": "Learn more"
     }
   },
   "sections": {
@@ -44,6 +72,9 @@
         "formComment": "Comment",
         "formProduct": "Product",
         "formSend": "Send"
+      },
+      "popupShipping":{
+        "title":"SHIPPING & RETURNS"
       }
     },
     "productSpecs": {
@@ -59,6 +90,7 @@
       "title": "SHOPPING CART",
       "cartBreadcrumb": "Your Shopping Cart",
       "cartClear": "CLEAR SHOPPING CART",
+      "preOrder":"PRE-ORDER",
       "continueShopping": "CONTINUE SHOPPING",
       "shipping": {
         "one_shipping_rate": "There is one shipping rate available for {}, {{province}}, {{country}}.",
@@ -118,6 +150,11 @@
     },
     "contact": {
       "message": "Thank you for your contact"
+    },
+    "collection": {
+      "button": "Download More",
+      "empty": "EMPTY",
+      "empty_text": "There are no products matching the selection."
     }
   }
 }

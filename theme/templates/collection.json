@@ -3,12 +3,10 @@
     "main": {
       "type": "collection",
       "blocks": {
-        "98d7d7fa-70fb-4e79-8469-89d8028c1b38": {
-          "type": "Add_Filter",
+        "ee9283a4-1ddd-444a-98e8-3ad3a167e28e": {
+          "type": "Add_MenuFilter",
           "settings": {
-            "tags_Heading": "Products",
-            "FilterBy": "3",
-            "tags": "",
+            "tags_Heading": "PRODUCTS",
             "menu": "collections-menu"
           }
         },
@@ -17,8 +15,7 @@
           "settings": {
             "tags_Heading": "PRODUCT TYPE",
             "FilterBy": "1",
-            "tags": "Front-Loading Refrigerator,\nFridge Freezer",
-            "menu": ""
+            "tags": "Front-Loading Refrigerator,\nFridge Freezer"
           }
         },
         "112a5771-ef2d-41bf-ae38-b63bc20bb07e": {
@@ -26,8 +23,7 @@
           "settings": {
             "tags_Heading": "DOOR TYPE",
             "FilterBy": "1",
-            "tags": "Double Door,Double Drawer,Single Door",
-            "menu": ""
+            "tags": "Double Door,Double Drawer,Single Door"
           }
         },
         "64abadc8-26ac-42d6-b196-f78bde11b777": {
@@ -35,8 +31,7 @@
           "settings": {
             "tags_Heading": "COLOR",
             "FilterBy": "2",
-            "tags": "Black,Grey,Stainless Steel",
-            "menu": ""
+            "tags": "Black,Grey,Stainless Steel"
           }
         },
         "87f12cec-bbeb-4001-9f79-3977a0d77aae": {
@@ -44,8 +39,7 @@
           "settings": {
             "tags_Heading": "FLANGE TYPE",
             "FilterBy": "1",
-            "tags": "Flush Flange,Surface Flange,Adjustable Flange",
-            "menu": ""
+            "tags": "Flush Flange,Surface Flange,Adjustable Flange"
           }
         },
         "7788ef51-74d0-466e-a3fb-2f7a35ff85cd": {
@@ -53,8 +47,7 @@
           "settings": {
             "tags_Heading": "VENDOR",
             "FilterBy": "1",
-            "tags": "Vitrifrigo",
-            "menu": ""
+            "tags": "Vitrifrigo"
           }
         },
         "f1c5f3ab-50a8-4f9d-a44d-cada53f0912c": {
@@ -62,13 +55,12 @@
           "settings": {
             "tags_Heading": "CUBIC FEET",
             "FilterBy": "1",
-            "tags": "Under 2 Cubic Feet,Between 2 to 5 Cubic Feet,Above 5 Cubic Feet",
-            "menu": ""
+            "tags": "Under 2 Cubic Feet,Between 2 to 5 Cubic Feet,Above 5 Cubic Feet"
           }
         }
       },
       "block_order": [
-        "98d7d7fa-70fb-4e79-8469-89d8028c1b38",
+        "ee9283a4-1ddd-444a-98e8-3ad3a167e28e",
         "2a76a88c-fd55-43c5-9652-16e90481af76",
         "112a5771-ef2d-41bf-ae38-b63bc20bb07e",
         "64abadc8-26ac-42d6-b196-f78bde11b777",
@@ -85,7 +77,7 @@
         "show_collection_description": true,
         "show_total": true,
         "show_sort": true,
-        "sidebar_display": "3"
+        "sidebar_display": "1"
       }
     }
   },

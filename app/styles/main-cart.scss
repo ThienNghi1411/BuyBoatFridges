@@ -41,6 +41,13 @@
             font-size: 14px;
             font-weight: 400;
         }
+        &-productName{
+            & a span{
+                color: #139aeb;
+                font-weight: bold;
+                font-style: italic;
+            }
+        }
 
     }
     &__qtyField{

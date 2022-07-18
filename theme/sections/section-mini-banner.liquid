@@ -5,11 +5,14 @@
         {%- for block in section.blocks -%}
             {%- case block.type -%}
                 {%- when 'imageBlock' -%}
-                        <div class="miniBanner__imgBanner">
+                        <div class="miniBanner__imgBanner" {{ block.shopify_attributes }}>
                             <a href="{{ block.settings.urlImg | default: routes.root_url }}" class="">
                                 {% comment %} <img src="{{ section.settings.image1 | image_url }} " /> {% endcomment %}
-                                
-                                {%- render "image-style" , image: block.settings.image -%}
+                                {%- if block.settings.image != blank -%}
+                                    {%- render "image-style" , image: block.settings.image -%}
+                                {%- else -%}
+                                    {{ 'lifestyle-1' | placeholder_svg_tag }}
+                                {%- endif -%}
                             </a>
                         </div>
              
@@ -49,7 +52,7 @@
                         "label":"Choose image:"
                     },
                     {
-                        "type":"text",
+                        "type":"url",
                         "id":"urlImg",
                         "label": "Fill your url for this image: "
                     }

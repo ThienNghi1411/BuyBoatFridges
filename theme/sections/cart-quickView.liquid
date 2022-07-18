@@ -24,7 +24,13 @@
                                 <div class="cartQuickView__productLine-productInfo">
                                     
                                     <div class="cartQuickView__productLine-productTitle">
-                                        <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                                        <a href="{{ item.url }}" >
+                                            {%- if item.properties.preOrder != nil -%}
+                                                {{ item.title }} <span>[PRE-ORDER]</span>
+                                            {%- else -%}
+                                                {{ item.title }}
+                                            {%- endif -%}
+                                        </a>
                                     </div>
                                     <div class="cartQuickView__productLine-qtyAndPrice">
                                         <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>

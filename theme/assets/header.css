@@ -102,14 +102,12 @@
   top: 100%;
   left: 0;
   transform: translateY(15px);
-  z-index: 10;
+  z-index: 990;
   background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
   border-radius: 5px;
   padding: 0 20px;
-  overflow: hidden;
-  -webkit-animation: rolling .2s linear;
-  animation: rolling .2s linear; }
+  overflow: hidden; }
 
 .header__megaMenu-option {
   width: 100%;
@@ -279,6 +277,11 @@
   font-size: 14px;
   color: #454545;
   margin-bottom: 5px; }
+
+.cartQuickView__productLine-productTitle a span {
+  color: #139aeb;
+  font-weight: 700;
+  font-style: italic; }
 
 .cartQuickView__productLine-removeIcon svg {
   min-width: 15px; }

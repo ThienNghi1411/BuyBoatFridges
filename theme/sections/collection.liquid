@@ -1,14 +1,5 @@
 <link rel="stylesheet" href="{{ 'collection.css' | asset_url }}">
-<div class="breadcrumb">
-  <div class="breadcrumb__inner">
-      <div class="breadcrumb__option">
-          <a href="{{ routes.root_url }}" class="">Home</a>
-      </div>
-      <div class="breadcrumb__option">
-          <a href="{{ collectionUrl }}" class="">{{ collection.title  }}</a>
-      </div>
-  </div>
-</div>
+
 <section class="collection" data-section-type="collection" data-section-id="{{section.id}}">
     <div class="collection__inner">
       <div class="collection__spinner">
@@ -25,6 +16,26 @@
         <div class="filter_byType">
           {% for block in section.blocks %}
           {% case block.type %}
+          {% when 'Add_MenuFilter' %}
+          <ul class="tag-filters">
+            <div class="filter__tittle filter_active">
+              <div class="tittle__text">{{block.settings.tags_Heading}}</div>
+              <div class="Icon__Control">
+                {% render 'icon-minus' %}
+              </div>
+              <div class="Icon__Control plus">
+                {% render 'icon-plus' %}
+              </div>
+            </div>
+            <div class="item__wrap">
+              <ul class="list">
+                {% for link in linklists[block.settings.menu].links %}             
+                <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>        
+            </div>  
+          </ul>
+
               {% when 'Add_Filter' %}
               <ul class="tag-filters">
                   <div class="filter__tittle filter_active">
@@ -36,7 +47,6 @@
                       {% render 'icon-plus' %}
                     </div>
                   </div>
-                  
                   {% if block.settings.FilterBy == '2' %}
                   <div class="item__wrap flex">
                       
@@ -63,63 +73,29 @@
                   
                   </div>
                   {% endif %}
-                  
-                 
                  {% if block.settings.FilterBy == '1' %}
-                 <div class="item__wrap">
-                      
+                 <div class="item__wrap">              
                   {% assign beatles = block.settings.tags | split: "," %}
-
                   {% for member in beatles %}
-                 
-                    <div class="tag" >
-               
-                      {{ member | link_to_add_tag: member }}
-                      
+                    <div class="tag" >              
+                      {{ member | link_to_add_tag: member }}                    
                     </div>
-                  {% endfor %}
-                
+                  {% endfor %}               
               </div>  
-                 {% endif %}
-                 
-                 {% if block.settings.FilterBy == '3' %}
-                 <div class="item__wrap">
-                  <ul class="list">
-                    {% for link in linklists[block.settings.menu].links %}
-                          
-                    <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
-              
-               {% endfor %}
-                  </ul>   
-                 
+                 {% endif %}         
                 
-                </div> 
-                 {% endif %}
-                 
-
-                </ul>
-            
-             
-
-              
-                  
+                </ul>  
           {% endcase %}
-              
-          {% endfor %}
-                  
-              
-           
+          {% endfor %}  
       </div>
         <div class="filter_image">
             {%- render 'image-style' , image:section.settings.filter_image-%}
         </div>
-
         </div>
       {% endif %}
       {% if section.settings.loading_type =='2' %}
       <div class="collection__filter">
         <div class="filter_Clear">
-
         </div>
         <div class="closebutton">
           {% render 'icon-close' %}
@@ -127,7 +103,26 @@
         <div class="filter_byType">
           {% for block in section.blocks %}
           {% case block.type %}
-              {% when 'Add_Filter' %}
+                {% when 'Add_MenuFilter' %}
+                <ul class="tag-filters">
+                  <div class="filter__tittle filter_active">
+                    <div class="tittle__text">{{block.settings.tags_Heading}}</div>
+                    <div class="Icon__Control">
+                      {% render 'icon-minus' %}
+                    </div>
+                    <div class="Icon__Control plus">
+                      {% render 'icon-plus' %}
+                    </div>
+                  </div>
+                  <div class="item__wrap">
+                    <ul class="list">
+                      {% for link in linklists[block.settings.menu].links %}             
+                      <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
+                      {% endfor %}
+                    </ul>        
+                  </div>  
+                </ul>
+                {% when 'Add_Filter' %}
               <ul class="tag-filters">
                   <div class="filter__tittle filter_active">
                     <div class="tittle__text">{{block.settings.tags_Heading}}</div>
@@ -138,7 +133,6 @@
                       {% render 'icon-plus' %}
                     </div>
                   </div>
-                 
                   {% if block.settings.FilterBy == '2' %}
                   <div class="item__wrap flex">
                       
@@ -175,37 +169,15 @@
                   
                  </div>  
                   {% endif %}
-                  {% if block.settings.FilterBy == '3'  %}
-                  <div class="item__wrap">
-                    <ul class="list">
-                      {% for link in linklists[block.settings.menu].links %}
-                            
-                      <li> <a  class="navMenu__menuOption" href="{{ link.url }}">{{ link.title }}</a></li>
-                
-                 {% endfor %}
-                    </ul>   
-                   
-                  
-                  </div>  
-                  {% endif %}
+                 
 
                 </ul>
-            
-             
-
-              
-                  
-          {% endcase %}
-              
+                {% endcase %}
           {% endfor %}
-                  
-              
-           
       </div>
       <div class="filter_image">
         {%- render 'image-style' , image:section.settings.filter_image-%}
       </div>
-             
         </div>
       {% endif %}
         <div class="collection__content">
@@ -240,9 +212,6 @@
                   </div>
                  {% endif %}
                   {% if section.settings.loading_type =='2' %}
-                 
-
-                 
                   <div class="collection__itemDisplay">
                     <div class="custom-select">
                       {% assign array = section.settings.product_limit | split: "," %}
@@ -281,11 +250,11 @@
             <div class="collection__empty__pic">
                 {% render 'icon-empty'%}
             </div>
-            <h2 class="collection__empty-tittle">EMPTY</h2>
-            <p class="collection__empty-text">There are no products matching the selection.</p>
+            <h2 class="collection__empty-tittle"> {{ 'sections.collection.empty' | t }}</h2>
+            <p class="collection__empty-text"> {{ 'sections.collection.empty_text' | t }}</p>
           </div>
           <div class="collection__loadMore">
-            Download More
+            {{ 'sections.collection.button' | t }}
            </div>
            {% if section.settings.paginate_type =='1' %}
             {% assign Ifinity = 1 %}
@@ -310,8 +279,6 @@
        
     }
 </script> 
-    
-
 </section>
 {% if section.settings.sidebar_display == '2' %}
 {% style %}
@@ -361,7 +328,7 @@
               "options": [
                 {
                   "value": "1",
-                  "label": "Reload Page"
+                  "label": "Reload page"
                 },
                 {
                   "value": "2",
@@ -374,7 +341,7 @@
             {
               "type": "select",
               "id": "paginate_type",
-              "label": "Choose Style (only for Ajax)",
+              "label": "Choose style (only for ajax)",
               "options": [
                 {
                   "value": "1",
@@ -391,7 +358,7 @@
             {
               "type": "number",
               "id": "pagination",
-              "label": "Edit items/page (only for Reload)",
+              "label": "Edit items/page (only for reload)",
               "default": 5
             },
             {
@@ -402,7 +369,7 @@
               "type": "text",
               "id": "product_limit",
               "label": "Adjust product limit ",
-              "info":"ALL ->show All product"
+              "info":"ALL ->show all product"
              
             },
             {
@@ -434,15 +401,15 @@
               "options": [
                 {
                   "value": "1",
-                  "label": "Left Sidebar"
+                  "label": "Left sidebar"
                 },
                 {
                   "value": "2",
-                  "label": "Right Sidebar"
+                  "label": "Right sidebar"
                 },
                 {
                   "value": "3",
-                  "label": "None Sidebar"
+                  "label": "None sidebar"
                 }
               ],
               "default": "1"
@@ -456,25 +423,22 @@
             {
                 "type":"text",
                 "id":"tags_Heading",
-                "label":"Enter Tags Heading"
+                "label":"Enter tags heading"
             },
             {
               "type": "select",
               "id": "FilterBy",
-              "label": "Choose Filter",
+              "label": "Choose filter",
               "options": [
                 {
                   "value": "1",
-                  "label": "Normal Filter"
+                  "label": "Normal filter"
                 },
                 {
                   "value": "2",
-                  "label": "Color Filter"
-                },
-                {
-                  "value": "3",
-                  "label": "Menu Filter"
+                  "label": "Color filter"
                 }
+               
 
                
               ],
@@ -483,15 +447,27 @@
             {
                 "type": "textarea",
                 "id": "tags",
-                "label": "Enter Tags"
+                "label": "Enter tags"
                
-            },
-            {
-              "type": "link_list",
-              "id": "menu",
-              "label": "Select Menu "
             }
+            
        ]
+     },
+     {
+      "name": "Menu Filter",
+      "type": "Add_MenuFilter",
+      "settings":[
+      {
+        "type":"text",
+        "id":"tags_Heading",
+        "label":"Enter tags heading"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Select menu "
+      }
+      ]
      }
     
      

@@ -33,6 +33,11 @@
             font-size: 14px;
             color: #454545;
             margin-bottom: 5px;
+            & a span{
+                color: #139aeb;
+                font-weight: bold;
+                font-style: italic;
+            }
         }
         &-removeIcon{
             & svg {

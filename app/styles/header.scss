@@ -102,13 +102,12 @@
         top: 100%;
         left: 0;
         transform: translateY(15px);
-        z-index: 10;
+        z-index: 990;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border-radius: 5px;
         padding: 0px 20px;
         overflow: hidden;
-        animation: rolling .2s linear;
         &-option{
             width: 100%;
             padding: 18px 0px 17px;
@@ -286,6 +285,11 @@
             font-size: 14px;
             color: #454545;
             margin-bottom: 5px;
+            & a span{
+                color: #139aeb;
+                font-weight: bold;
+                font-style: italic;
+            }
         }
         &-removeIcon{
             & svg {

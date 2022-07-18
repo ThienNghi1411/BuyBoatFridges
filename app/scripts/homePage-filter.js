@@ -16,20 +16,14 @@ const init = () => {
             dropDownOptions.forEach(dropDownOption => {
                 dropDownOption.addEventListener("click" , (e) => {
                     e.stopPropagation();
-                    if (dropDownOption.classList.contains("filterOption__dropdownCont-optionActive")){
-                        let btnConfirm = dropDown.parentElement.querySelector(".filterOption__btnConfirm");
-                        let placeHolder = dropDown.querySelector(".filterOption__dropdown-placeHolder");
-                        placeHolder.innerText = dropDownOption.innerText;
-                        dropDown.classList.add("backgroundActive");
-                        placeHolder.classList.add("filterOption__dropdown-selected");
-                        btnConfirm.classList.add("backgroundActive");
-                        btnConfirm.setAttribute("value" ,dropDownOption.innerText );
-                        dropDownList.style.display = "none";
-                    }else{
-                        removeClass(dropDownOptions,"filterOption__dropdownCont-optionActive");
-                        dropDownOption.classList.add("filterOption__dropdownCont-optionActive");
-                 
-                    }
+                    let btnConfirm = dropDown.parentElement.querySelector(".filterOption__btnConfirm");
+                    let placeHolder = dropDown.querySelector(".filterOption__dropdown-placeHolder");
+                    placeHolder.innerText = dropDownOption.innerText;
+                    dropDown.classList.add("backgroundActive");
+                    placeHolder.classList.add("filterOption__dropdown-selected");
+                    btnConfirm.classList.add("backgroundActive");
+                    btnConfirm.setAttribute("value" ,dropDownOption.innerText );
+                    dropDownList.style.display = "none";
                 })
             })
         })

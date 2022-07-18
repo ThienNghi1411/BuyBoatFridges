@@ -37,6 +37,11 @@
   font-size: 14px;
   font-weight: 400; }
 
+.cartPage__itemInfo-productName a span {
+  color: #139aeb;
+  font-weight: 700;
+  font-style: italic; }
+
 .cartPage__qtyField {
   height: 50px;
   max-width: 132px;

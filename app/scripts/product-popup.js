@@ -39,6 +39,44 @@ class ProductPopupAsking extends HTMLElement{
 
 customElements.define('product-popup-asking', ProductPopupAsking);
 
+class ProductPopupShipping extends HTMLElement{
+    constructor() {
+        super();
+        this.init();
+    }
+    init(){
+        const overlay = this.querySelector(".popupShipping__overlay");
+        const closeBtns = this.querySelectorAll(".popupShipping__btnClose");
+        const contents = this.querySelectorAll(".popupShipping__content");
+        
+        closeBtns.forEach(closeBtn => {
+            closeBtn.addEventListener("click", () => {
+                this.closePopup();
+            });
+        })
+
+        contents.forEach(content => {
+            content.addEventListener("click" , (e) => {
+                e.stopPropagation();
+            })
+        })
+
+        overlay.addEventListener("click" , () => {
+            
+            this.closePopup();
+        });
+
+    }
+    closePopup(){
+        this.style.display="none";
+        const body = document.querySelector("body");
+        body.style.overflow = "visible";
+    }
+}
+
+customElements.define('product-popup-shipping', ProductPopupShipping);
+
+
 class ProductPopupPreOrder extends HTMLElement{
     constructor() {
         super();

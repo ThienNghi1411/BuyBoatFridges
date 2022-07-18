@@ -59,14 +59,6 @@
               "Menu_content": "<p>PHONE : +1 (305) 999 521<\/p><p>HOURS: 24\/7 Customer Support<\/p><p>E-MAIL: <a href=\"https:\/\/www.buyboatfridges.com\/\" title=\"https:\/\/www.buyboatfridges.com\/\">sales@buyboatfridges.com<\/a><\/p>"
             }
           },
-          "ec4f0315-5e91-4abd-8895-c8a66e3c79e6": {
-            "type": "Payment_Method",
-            "settings": {
-              "show_content": true,
-              "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
-              "copyRight": "@2022 BUYBOATFRIDGES.com All Rights Resrved"
-            }
-          },
           "1c18d1a7-262f-455d-b929-6f6dc4d4c2a7": {
             "type": "payment_icon",
             "settings": {
@@ -120,7 +112,7 @@
             "type": "payment_icon",
             "settings": {
               "icon": "shopify:\/\/shop_images\/paypal-39_1.png",
-              "payment_link": ""
+              "payment_link": "https:\/\/www.buyboatfridges.com"
             }
           }
         },
@@ -129,7 +121,6 @@
           "8196e397-5f1e-4c2a-9b6f-e34b53dff551",
           "96fffcd2-41ac-42c0-b471-028effdf2637",
           "ad666687-d884-4023-8851-2f1a18791e46",
-          "ec4f0315-5e91-4abd-8895-c8a66e3c79e6",
           "1c18d1a7-262f-455d-b929-6f6dc4d4c2a7",
           "2d2e40d3-c7be-4673-aedc-9e36a4f2c13f",
           "63840cc5-4e05-4966-926b-1b05385c8af5",
@@ -140,7 +131,10 @@
           "86e860da-5c1b-49ce-9117-7f26b3fbda40"
         ],
         "settings": {
-          "show_content": true
+          "show_content": true,
+          "show_payment": true,
+          "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
+          "copyRight": "@2022 BUYBOATFRIDGES.com All Rights Resrved"
         }
       },
       "1655454297d803f2c2": {
@@ -305,7 +299,7 @@
           "title": "SHOP BY CATEGORIES",
           "title_fs": "20px,30px,30px",
           "title_fw": 700,
-          "limitPerRow": "2,3,4,5,6"
+          "limitPerRow": "3,3,4,5,6"
         }
       },
       "165563478473cdca76": {
@@ -441,7 +435,8 @@
           "4f6bc6fa-7cd0-4648-8059-ac1abfd42b98"
         ],
         "settings": {
-          "limitPerRow": "2,3,3,4,4"
+          "limitPerRow": "2,3,3,4,4",
+          "show_display": "2"
         }
       },
       "section-newsletter": {
@@ -616,6 +611,22 @@
           "subtitle": "<p>We are sorry, the page you've requested is not available.<\/p>",
           "button_label": "Back to Homepage",
           "button_link": "https:\/\/www.buyboatfridges.com\/"
+        }
+      },
+      "register-form": {
+        "type": "register-form",
+        "settings": {
+          "section_title": "CREATE AN ACCOUNT",
+          "form_title": "PERSONAL INFORMATION",
+          "firstname": "First Name",
+          "show_firstname_require": true,
+          "lastname": "Last Name",
+          "show_lastname_require": true,
+          "email": "Email Address",
+          "show_email_require": true,
+          "password": "Password",
+          "show_password_require": true,
+          "button_text": "CREATE"
         }
       }
     },

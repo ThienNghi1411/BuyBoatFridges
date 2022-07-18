@@ -3,18 +3,16 @@
   var minusBtn = document.querySelector(".productPage__quantityCont-minusBtn");
   var plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
   var qtyField = document.querySelector(".productPage__quantityCont-inputQty");
-  var qtyFieldQuickAdd = document.querySelector(".quickAdd__inputField");
   var checkBox = document.querySelector(".productPage__termConditions");
   var askingProduct = document.querySelector(".productPage__askingPd");
   var askingPopup = document.querySelector(".popupAsking");
   var askingPopUpDefault = document.querySelector(".popupAsking__contentDefault");
+  var shippingProduct = document.querySelector(".productPage__shippingPd");
+  var shippingPopup = document.querySelector(".popupShipping");
   var body = document.querySelector("body");
   var init = () => {
     minusBtn.addEventListener("click", adjustQty);
     plusBtn.addEventListener("click", adjustQty);
-    qtyFieldQuickAdd.addEventListener("change", () => {
-      qtyField.value = qtyFieldQuickAdd.value;
-    });
     checkBox.addEventListener("click", () => {
       let box = checkBox.querySelector(".productPage__termConditions-checkbox");
       let checkOutBtns = document.querySelectorAll(".productPage__btnBuyNow");
@@ -37,21 +35,24 @@
       askingPopup.style.display = "block";
       body.style.overflow = "hidden";
     });
+    shippingProduct.addEventListener("click", () => {
+      shippingPopup.style.display = "block";
+      body.style.overflow = "hidden";
+    });
   };
   var adjustQty = (e) => {
     if (e.target.getAttribute("name") === "minus") {
       if (qtyField.value * 1 > 1)
         qtyField.value = qtyField.value * 1 - 1;
-      qtyFieldQuickAdd.value = qtyField.value;
     } else {
       qtyField.value = qtyField.value * 1 + 1;
-      qtyFieldQuickAdd.value = qtyField.value;
     }
   };
   init();
   var productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
   var pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
-  var addToCartForms = document.querySelectorAll('form[action$="/cart/add"]');
+  var addToCartForms = document.querySelectorAll(".productForm");
+  console.log(addToCartForms);
   var spinner = document.querySelector(".loading__spinner");
   addToCartForms.forEach((addToCartForm) => {
     addToCartForm.addEventListener("submit", (e) => addToCart(e));
@@ -96,6 +97,7 @@
     }).then((response) => {
       return response.json();
     }).then((data) => {
+      console.log(data);
       spinner.style.display = "none";
       if (data.status) {
         let popupError = document.querySelector(".cartPopUpError");

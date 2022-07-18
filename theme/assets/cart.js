@@ -108,6 +108,7 @@
             let popupError = document.querySelector(".cartPopUpError");
             popupError.style.display = "block";
             let errorText = popupError.querySelector(".cartPopUpError__error");
+            console.log(errorText);
             errorText.innerText = errorText.getAttribute("error").replace("{{ maxQty }}", tmp.quantity);
             const body = document.querySelector("body");
             body.style.overflow = "hidden";

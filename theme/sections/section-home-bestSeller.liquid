@@ -24,8 +24,9 @@
         {%- endstyle -%}
         <div class="homeBestSeller__content">
             <div class="homeBestSeller__contentCont">
-                {%- for product in collections[ section.settings.collection].products limit : section.settings.limitProduct -%}
-                    {%- render 'product-card' with product as product -%}
+                {%- assign collection = collections[ section.settings.collection] -%}
+                {%- for product in collection.products limit : section.settings.limitProduct -%}
+                    {%- render 'product-card' with product as product , collection: collection -%}
                 {%- endfor -%}
             </div>
         </div>

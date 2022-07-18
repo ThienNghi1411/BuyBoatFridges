@@ -3,19 +3,24 @@
 const minusBtn = document.querySelector(".productPage__quantityCont-minusBtn");
 const plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
 const qtyField = document.querySelector(".productPage__quantityCont-inputQty");
-const qtyFieldQuickAdd = document.querySelector(".quickAdd__inputField");
+// const qtyFieldQuickAdd = document.querySelector(".quickAdd__inputField");
 const checkBox = document.querySelector(".productPage__termConditions");
+
 const askingProduct = document.querySelector(".productPage__askingPd");
 const askingPopup = document.querySelector(".popupAsking");
 const askingPopUpDefault = document.querySelector(".popupAsking__contentDefault");
+
+const shippingProduct = document.querySelector(".productPage__shippingPd");
+const shippingPopup = document.querySelector(".popupShipping");
+
 const body = document.querySelector("body");
 
 const init = () => {
     minusBtn.addEventListener("click", adjustQty )
     plusBtn.addEventListener("click" , adjustQty );
-    qtyFieldQuickAdd.addEventListener("change" , () => {
-        qtyField.value = qtyFieldQuickAdd.value;
-    })
+    // qtyFieldQuickAdd.addEventListener("change" , () => {
+    //     qtyField.value = qtyFieldQuickAdd.value;
+    // })
     checkBox.addEventListener("click" , () => {
         let box = checkBox.querySelector(".productPage__termConditions-checkbox");
         let checkOutBtns = document.querySelectorAll(".productPage__btnBuyNow");
@@ -38,6 +43,11 @@ const init = () => {
         askingPopup.style.display = "block";
         body.style.overflow="hidden";
     })
+
+    shippingProduct.addEventListener("click" , () => {
+        shippingPopup.style.display = "block";
+        body.style.overflow="hidden";
+    })
 }
 
 // FUNCTION //
@@ -46,10 +56,10 @@ const adjustQty = (e) => {
     if (e.target.getAttribute("name") === "minus"){
         if(qtyField.value*1 > 1)
         qtyField.value = qtyField.value*1 - 1;
-        qtyFieldQuickAdd.value = qtyField.value;
+        // qtyFieldQuickAdd.value = qtyField.value;
     }else{
         qtyField.value = qtyField.value*1 + 1;
-        qtyFieldQuickAdd.value = qtyField.value;
+        // qtyFieldQuickAdd.value = qtyField.value;
     }
 }
 
@@ -62,7 +72,8 @@ init();
 const productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
 const pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
 
-const addToCartForms = document.querySelectorAll('form[action$="/cart/add"]');
+const addToCartForms = document.querySelectorAll('.productForm');
+console.log(addToCartForms);
 const spinner = document.querySelector(".loading__spinner");
 
 addToCartForms.forEach(addToCartForm => {
@@ -120,6 +131,7 @@ const addToCart = (e) => {
         return response.json();
     })
     .then(data => {
+        console.log(data);
         spinner.style.display="none";
         if (data.status){
             let popupError = document.querySelector(".cartPopUpError");

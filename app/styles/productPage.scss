@@ -210,7 +210,6 @@
     }
     &__btnNoneClick{
         pointer-events: none !important;
-        opacity: .5 !important;
     }
     &__btnBuyNow{
         width: 100%;
@@ -446,7 +445,7 @@
 }
 
 
-.popupAsking , .popupPreOrder{
+.popupAsking , .popupPreOrder {
     position: fixed;
     top: 0;
     left: 0;
@@ -588,7 +587,59 @@
     }
 }
 
+.popupShipping{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+    display: none;
+    &__overlay{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__content{
+        width: 90%;
+        height: 600px;
+        overflow-y: scroll;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 50px 30px;
+        position: relative;
+    }
+    &__btnClose{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        & svg{
+            width: 20px;
+            height: 20px;
+            & path{
+                fill: #c1c1c1;
+            }
+        }
+    }
+    &__title{
+        width: 100%;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #454545;
+        margin-bottom: 40px;
+    }
 
+    & a {
+        display: inline-block;
+    }
+}
 .quickAdd{
     position: fixed;
     width: 100%;
@@ -873,6 +924,11 @@
         }
         &-nextBtn{
             transform: translate(-33px,-50%);
+        }
+    }
+    .popupShipping{
+        &__content{
+            width: 950px;
         }
     }
 }

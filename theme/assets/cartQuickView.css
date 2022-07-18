@@ -35,6 +35,11 @@
   color: #454545;
   margin-bottom: 5px; }
 
+.cartQuickView__productLine-productTitle a span {
+  color: #139aeb;
+  font-weight: 700;
+  font-style: italic; }
+
 .cartQuickView__productLine-removeIcon svg {
   min-width: 15px; }
 

@@ -64,16 +64,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z"/></svg>
           </div>  
       </div>    
-   {% for block in section.blocks %}
-         {% case block.type %}
-            {% when 'Payment_Method' %}
-            <div class="footer__copyRight">
+         <div class="footer__copyRight">
                <div class="copyRight__wrapper">
                   <div class="copyRight__left__col">
-                     <div class="footer__logo">   <img src=" {{ block.settings.image | img_url:'small'}} " /></div>
-                     <div class="footer__text">{{block.settings.copyRight}}</div>
+                     <div class="footer__logo">   <img src=" {{ section.settings.image | img_url:'small'}} " /></div>
+                     <div class="footer__text">{{section.settings.copyRight}}</div>
                   </div>
-                  {% if block.settings.show_content %}
+                  {% if section.settings.show_payment %}
                   <div class="paymentMethod_Wrapper">
    
                      {% for block in section.blocks %}
@@ -92,11 +89,7 @@
                   </div>
                   {% endif %}
                </div>
-             
-                 
                </div>    
-         {% endcase %}
-   {% endfor %}
    </div>
    
 </footer>
@@ -110,8 +103,25 @@
     {
       "type": "checkbox",
       "id": "show_content",
-      "label": "Show Content"
-    }
+      "label": "Show content"
+    },
+    {
+      "type":"checkbox",
+      "id":"show_payment",
+      "label":"Show payment method",
+      "default":true
+   },
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Pick icon image"
+  },
+  {
+   "type": "text",
+   "id": "copyRight",
+   "label": "Edit copyright"
+ }
+
   ],
   "blocks": [
      {
@@ -122,12 +132,12 @@
        {
          "type": "text",
          "id": "Col_title",
-         "label": "Tittle for Menu"
+         "label": "Tittle for menu"
        },
        {
          "type": "select",
          "id": "Menu_layout",
-         "label": "Show menu Layount",
+         "label": "Show menu layout",
          "options": [
            {
              "value": "1",
@@ -144,54 +154,30 @@
           {
          "type": "link_list",
          "id": "menu",
-         "label": "Footer menu (Content for layout 1)"
+         "label": "Footer menu (content for layout 1)"
           },
           {
             "type": "richtext",
             "id": "Menu_content",
-            "label": "Content for Layout 2"
+            "label": "Content for layout 2"
           
           }
        ]
      },
-     {
-      "name": "Payment",
-      "type": "Payment_Method",
-      "limit":1,
-      "settings": [
-         {
-            "type":"checkbox",
-            "id":"show_content",
-            "label":"Show Payment Method",
-            "default":true
-         },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Pick Icon Image"
-        },
-        {
-         "type": "text",
-         "id": "copyRight",
-         "label": "Edit CopyRight"
-       }
-
-      ]
-    },
-    {
-      "name": "+Payment Icon",
+      {
+      "name": "Payment Icon",
       "type": "payment_icon",
       "limit":8,
       "settings": [
         {
           "type": "image_picker",
           "id": "icon",
-          "label": "Pick Payment Icon Image"
+          "label": "Pick payment icon image"
         },
         {
          "type": "url",
          "id": "payment_link",
-         "label": "Edit Payment Link"
+         "label": "Edit payment link"
        }
         
       ]

@@ -2,6 +2,14 @@
 {%- assign limitPerRow = section.settings.limitPerRow | split: "," -%}
 <div class="collections__wrapper">
   <div class="collections">
+    {% if section.settings.show_display =='2' %}
+    <div class="collections__inner">
+      {% for collection in collections %}
+      {% render 'category-card' with  collection as collection  %}    
+      {% endfor %}                
+    </div>
+    {% endif %}
+    {% if section.settings.show_display =='1' %}
     <div class="collections__inner">     
       {% for block in section.blocks %}
         {% case block.type %}
@@ -10,7 +18,7 @@
         {% endcase %}       
       {% endfor %}
     </div>
-    
+    {% endif %}
   </div>
 </div>
 
@@ -51,6 +59,22 @@
     "id": "limitPerRow",
     "label":"Items per row: ",
     "info": "E.g: 2,3,4,5,6 - 320px - 600px - 800px - 1000px - 1280px"
+  },
+  {
+    "type": "select",
+    "id": "show_display",
+    "label": "Collection view",
+    "options": [
+      {
+        "value": "1",
+        "label": "View collections from blocks"
+      },
+      {
+        "value": "2",
+        "label": "View all collections"
+      }
+    ],
+    "default": "1"
   }
   ],
   "blocks": [
@@ -61,7 +85,7 @@
          {
            "type": "collection",
            "id": "collect",
-           "label": "collection picker"
+           "label": "Add collection "
          }
          
        ]

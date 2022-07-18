@@ -1,19 +1,9 @@
 <link rel="stylesheet" href="{{ 'main-cart.css' | asset_url }}">
-
+<script>console.log({{ cart | json }})</script>
 <script src=" {{ 'cart.js' | asset_url }}" defer></script>
 <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 <script src=" {{ 'shipping-calculator.js' | asset_url }}" defer></script>
-<div class="breadcrumb">
-    <div class="breadcrumb__inner">
-        <div class="breadcrumb__option">
-            <a href="{{ routes.root_url }}" class="">Home</a>
-        </div>
-        
-        <div class="breadcrumb__option">
-            <a href="{{ routes.cart_url }}" class="">{{ 'sections.cart.cartBreadcrumb' | t }}</a>
-        </div>
-    </div>
-</div>
+
 <main-cart class="cartPage">
     {%- if cart.item_count != 0 -%}
         {%- form 'cart' , cart -%}
@@ -24,13 +14,17 @@
                     <div class="cartPage__item">
                         <div class="cartPage__imgItem">
                             <a href="{{ item.url }}" class="w100 h100">
-                                {%- render "image-style" , image: item.image , imgClass: "object-fit--contain"-%}
+                                {%- render "image-style" , image: item.image , imgClass: "object-fit--contain" -%}
                             </a>
                         </div>
                         <div class="cartPage__itemInfo">        
                             <div class="cartPage__itemInfo-productName">
                                 <a href="{{ item.url }}" >
-                                    {{ item.title }}
+                                    {%- if item.properties.preOrder != blank -%}
+                                        {{ item.title }} <span>[{{ 'sections.cart.preOrder' | t }}]</span>
+                                    {%- else -%}
+                                        {{ item.title }}
+                                    {%- endif -%}
                                 </a>
                             </div>
                             <div class="cartPage__itemInfo-productPrice">{{ item.price | money }}</div>
@@ -167,11 +161,7 @@
 {% schema %}
     {
         "name": "Cart Page",
-        "tag": "section",
-        "presets": [
-            {
-              "name": "Cart Page"
-            }
-        ]
+        "tag": "section"
+        
     }
 {% endschema %}

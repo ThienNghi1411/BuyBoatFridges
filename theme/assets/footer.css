@@ -181,7 +181,7 @@
     font-size: 14.5px;
     line-height: 20px;
     transition: all 1s linear;
-    width: 70%;
+    width: 100%;
 }
 .menu_active
 {
@@ -242,7 +242,7 @@ li{
     text-decoration: none;
     color: var(--light-color);
     display: flex;
-    font-size: 12px;
+    font-size: 14.5px;
     transition: all 0.2s linear;
 }
 .list li>a:hover{

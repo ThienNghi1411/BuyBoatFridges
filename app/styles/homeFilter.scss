@@ -1,7 +1,7 @@
 .homeFilter{
     width: 100%;
     background-color: #e5e5e5;
-    margin-top: 50px;
+    margin-top: 18px;
     &__inner{
         width: 100%;
         margin: 0 auto;
@@ -113,22 +113,20 @@
             &:last-child{
                 border: none;
             }
-            
-        }
-        &-optionActive{
-            color: #009ee3;
-            font-weight: bold;
-            position: relative;
-        }
-        &-optionActive:before{
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -15px;
-            background-color: #009ee3;
-            height: 100%;
-            width: 7px;
-            
+            &:hover{
+                color: #009ee3;
+                font-weight: bold;
+                position: relative;
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: -15px;
+                    background-color: #009ee3;
+                    height: 100%;
+                    width: 7px;
+                }
+            }
         }
     }
     &__btnConfirm{
@@ -229,6 +227,7 @@
 
 @media (min-width: 700px){
     .homeFilter{
+        margin-top: 24px;
         &__leftTitle{
             padding: 10px 16px;
             font-size: 25px;
@@ -267,6 +266,7 @@
 
 @media (min-width: 1080px){
     .homeFilter{
+        margin-top: 32px;
         &__inner{
             width: 1000px;
         }
