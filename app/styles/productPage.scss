@@ -191,7 +191,7 @@
         text-align: center;
         
         background-color: #ebebeb;
-        border: 1px solid #139aeb;
+        border: 1px solid var(--primary-color);
         border-radius: 5px;
         cursor: pointer;
         transition: all .2s linear;
@@ -203,7 +203,7 @@
             padding: 12px 0px;
             font-size: 18px;
             font-weight: bold;
-            color: #139aeb;
+            color: var(--primary-color);
             width: 100%;
             height: 100%;
         }
@@ -215,7 +215,7 @@
         width: 100%;
         pointer-events: none;
         opacity: .5;
-        background-color: #139aeb !important;
+        background-color: var(--primary-color) !important;
         max-height: 50px;
         border-radius: 5px;
         cursor: pointer;
@@ -231,7 +231,7 @@
     &__btnPreOrder{
         width: 100%;
         height: 100%;
-        background-color: #139aeb !important;
+        background-color: var(--primary-color) !important;
         padding: 12px 0px;
         cursor: pointer;
         display: flex;
@@ -273,7 +273,7 @@
             }
         }
         &-checkboxActive{
-            background-color: #139aeb !important;
+            background-color: var(--primary-color) !important;
             & svg{
                 display: block !important;
                 & path{
@@ -369,80 +369,11 @@
 }
     
 .shopify-payment-button__button{
-    background-color: #139aeb;
+    background-color: var(--primary-color);
     font-weight: bold;
 }
 
 
-.cartPopUpError{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: none;
-    z-index: 99999;
-    &__overlay{
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
-    &__content{
-        width: 80%;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        position: relative;
-        z-index: 999;
-        cursor: default;
-    }
-    &__header{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 15px;
-        &-icon{
-            display: flex;
-            align-items: center;
-            height: 100%;
-            & svg{
-                width: 20px;
-                height: 20px;
-            }
-        }
-        &-text{
-            font-size: 26px;
-            font-weight: bold;
-            color: #454545;
-        }
-    }
-    &__error{
-        font-size: 15px;
-    }
-    &__iconClose{
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 34px;
-        height: 34px;
-        background-color: #139aeb;
-        border-top-right-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        & svg {
-            width: 13px;
-            & path {
-                fill: #fff;
-            }
-        }
-    }
-}
 
 
 .popupAsking , .popupPreOrder {
@@ -536,7 +467,7 @@
     &__btnSend{
         &-btn{
             padding: 10px 25px;
-            background-color: #139aeb;
+            background-color: var(--primary-color);
             color: #fff;
             font-weight: bold;
             font-size: 18px;
@@ -560,7 +491,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #139aeb;
+        background-color: var(--primary-color);
         margin-bottom: 7px;
         & svg {
             width: 15px;
@@ -708,7 +639,7 @@
             height: 40px;
             padding: 7px 15px;
             border-radius: 5px;
-            background-color: #139aeb;
+            background-color: var(--primary-color);
             color: #fff;
             font-weight: bold;
             display: flex;
@@ -820,11 +751,7 @@
             transform: translate(-63px,-50%);
         }
     }
-    .cartPopUpError{
-        &__content{
-            width: 500px;
-        }
-    }
+
     .quickAdd{
         &__inner{
             padding: 20px 50px;

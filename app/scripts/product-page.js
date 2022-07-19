@@ -73,7 +73,7 @@ const productData = JSON.parse(document.querySelector("#productPage__settings").
 const pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
 
 const addToCartForms = document.querySelectorAll('.productForm');
-console.log(addToCartForms);
+
 const spinner = document.querySelector(".loading__spinner");
 
 addToCartForms.forEach(addToCartForm => {
@@ -131,7 +131,6 @@ const addToCart = (e) => {
         return response.json();
     })
     .then(data => {
-        console.log(data);
         spinner.style.display="none";
         if (data.status){
             let popupError = document.querySelector(".cartPopUpError");

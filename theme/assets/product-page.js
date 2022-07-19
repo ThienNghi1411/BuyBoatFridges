@@ -52,7 +52,6 @@
   var productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
   var pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
   var addToCartForms = document.querySelectorAll(".productForm");
-  console.log(addToCartForms);
   var spinner = document.querySelector(".loading__spinner");
   addToCartForms.forEach((addToCartForm) => {
     addToCartForm.addEventListener("submit", (e) => addToCart(e));
@@ -97,7 +96,6 @@
     }).then((response) => {
       return response.json();
     }).then((data) => {
-      console.log(data);
       spinner.style.display = "none";
       if (data.status) {
         let popupError = document.querySelector(".cartPopUpError");

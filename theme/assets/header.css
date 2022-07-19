@@ -129,7 +129,7 @@
   width: 21px;
   height: 21px;
   border-radius: 100%;
-  background-color: #139aeb;
+  background-color: var(--primary-color);
   color: #fff;
   font-size: 14px;
   display: flex;
@@ -179,7 +179,7 @@
 
 .menuMobile__header-title {
   font-size: 24px;
-  color: #139aeb;
+  color: var(--primary-color);
   text-transform: uppercase;
   font-weight: 600; }
 
@@ -202,7 +202,7 @@
   transition: all .2s linear; }
 
 .menuMobile__menuShow-option:hover {
-  color: #139aeb; }
+  color: var(--primary-color); }
 
 .menuMobile__footer {
   padding-top: 30px; }
@@ -279,7 +279,7 @@
   margin-bottom: 5px; }
 
 .cartQuickView__productLine-productTitle a span {
-  color: #139aeb;
+  color: var(--primary-color);
   font-weight: 700;
   font-style: italic; }
 
@@ -348,7 +348,7 @@
   height: 15px; }
 
 .cartQuickView__checkbox-boxActive {
-  background-color: #139aeb !important; }
+  background-color: var(--primary-color) !important; }
 
 .cartQuickView__checkbox-boxActive svg {
   display: block !important; }
@@ -367,7 +367,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #139aeb;
+  background-color: var(--primary-color);
   margin-bottom: 10px;
   cursor: pointer;
   pointer-events: none;
@@ -481,7 +481,7 @@
     margin-bottom: 30px; }
   .menuMobile__header-title {
     font-size: 30px;
-    color: #139aeb;
+    color: var(--primary-color);
     text-transform: uppercase;
     font-weight: 600; }
   .menuMobile__header-icon {
@@ -499,7 +499,7 @@
     font-weight: 500;
     transition: all .2s linear; }
   .menuMobile__menuShow-option:hover {
-    color: #139aeb; }
+    color: var(--primary-color); }
   .menuMobile__footer {
     padding-top: 30px; }
   .menuMobile__contact {

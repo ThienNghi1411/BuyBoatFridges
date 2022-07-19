@@ -82,7 +82,7 @@ const productData = JSON.parse(document.querySelector("#productPage__settings").
 const pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
 
 const addToCartForms = document.querySelectorAll('.productForm');
-console.log(addToCartForms);
+
 const spinner = document.querySelector(".loading__spinner");
 
 
@@ -118,7 +118,7 @@ addToCartForms.forEach(addToCartForm => {
             'id': id,
             'quantity': quantity,
             'properties': {
-                'preOrder': true
+                'preOrder': 'true'
             }
          }],
         'sections': getSectionsToRender().map((section) => section.section) ,

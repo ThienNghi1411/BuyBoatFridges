@@ -38,7 +38,7 @@
   font-weight: 400; }
 
 .cartPage__itemInfo-productName a span {
-  color: #139aeb;
+  color: var(--primary-color);
   font-weight: 700;
   font-style: italic; }
 
@@ -190,7 +190,7 @@
   color: #fff;
   font-weight: 700;
   font-size: 14px;
-  background-color: #139aeb;
+  background-color: var(--primary-color);
   cursor: pointer; }
 
 .cartPage__calculateShipBtn-btnTextOnSubmit {
@@ -317,7 +317,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  background-color: #139aeb;
+  background-color: var(--primary-color);
   color: #fff;
   font-weight: 700;
   font-size: 14px;
@@ -384,7 +384,7 @@
   right: 0;
   width: 34px;
   height: 34px;
-  background-color: #139aeb;
+  background-color: var(--primary-color);
   border-top-right-radius: 5px;
   display: flex;
   justify-content: center;

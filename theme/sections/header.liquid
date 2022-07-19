@@ -159,12 +159,12 @@
             </ul>
         </div>
         <div class="menuMobile__footer">
-            <div class="menuMobile__contact">
+            <a class="menuMobile__contact" href="{{ routes.root_url | append: "pages/contact-us" }}">
                 <div class="menuMobile__contact-icon">
                     {% render 'icon-contact' %}
                 </div>
                 <div class="menuMobile__contact-text">{{ 'sections.header.contact' | t }}</div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

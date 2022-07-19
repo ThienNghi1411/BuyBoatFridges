@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
-<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
+
 <script src=" {{ 'product-popup.js' | asset_url }}" defer></script>
 
 {% comment %} {%- assign collectionUrl = "" -%}
@@ -159,24 +159,7 @@
         }
     </script>
 </section>
-<div class="cartPopupCont">
-    <cart-popup-error class="cartPopUpError">
-        <div class="cartPopUpError__overlay">
-            <div class="cartPopUpError__content">
-                <div class="cartPopUpError__header">
-                    <div class="cartPopUpError__header-icon">
-                        {%- render 'icon-warning'-%}
-                    </div>
-                    <div class="cartPopUpError__header-text">{{ 'sections.cart-popup-error.title' | t }}</div>
-                </div>
-                <div class="cartPopUpError__error"></div>
-                <div class="cartPopUpError__iconClose">
-                    {%- render 'icon-X' -%}
-                </div>
-            </div>
-        </div>
-    </cart-popup-error>
-</div>
+
 <div class="popupAskingCont">
     <product-popup-asking class="popupAsking">
         <div class="popupAsking__overlay">

@@ -8,6 +8,10 @@
     init() {
       const qty = this.querySelector(".cartPopup__pdQty-qty");
       qty.innerText = this.dataset.qty;
+      if (this.dataset.img) {
+        const imgPd = this.querySelector(".cartPopup__imgCont img");
+        imgPd.src = this.dataset.img;
+      }
       const total = this.querySelector(".cartPopup__total-total");
       total.innerText = "$" + this.dataset.price * 1 * (this.dataset.qty * 1) / 100;
       const overlay = this.querySelector(".cartPopup__overlay");

@@ -52,7 +52,6 @@
   var productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
   var pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
   var addToCartForms = document.querySelectorAll(".productForm");
-  console.log(addToCartForms);
   var spinner = document.querySelector(".loading__spinner");
   var getSectionsToRender = () => {
     return [
@@ -82,7 +81,7 @@
         "id": id,
         "quantity": quantity,
         "properties": {
-          "preOrder": true
+          "preOrder": "true"
         }
       }],
       "sections": getSectionsToRender().map((section) => section.section),
