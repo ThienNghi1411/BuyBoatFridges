@@ -5,8 +5,6 @@
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
-    console.log(url_array.length);
-    console.log(array);
     if (url_array[5] != void 0 && url_array[5] != "" || array[1] != "" && array[1] != void 0) {
       let html_dom = `<div class="filter__tittle  filter_active">
         <div class="tittle__text">SHOPING BY:</div>
@@ -31,7 +29,6 @@
         clear_container.innerHTML = html_dom;
         let filter_container = document.querySelector(".shopping");
         let filter_array = url_array[5].split("+");
-        console.log(filter_array.length);
         for (i = 0; i < filter_array.length; i++) {
           let html_dom2 = `
       <div class="shopingBy_tag">
@@ -74,7 +71,6 @@
     removeIcon.forEach((e) => {
       e.addEventListener("click", () => {
         let removeFilter = e.parentElement.parentElement;
-        console.log(removeFilter);
         let filterText = e.previousElementSibling.innerText;
         let filter_container = document.querySelector(".shopping");
         removeFilter.remove();
@@ -109,6 +105,9 @@
     }
   });
   document.addEventListener("DOMContentLoaded", function() {
+    if (Shopify.designMode) {
+      Control();
+    }
     let empty = document.querySelector(".collection__empty");
     let collection_content = document.querySelector(".collection__Productcontent").childElementCount;
     if (collection_content == 0) {
@@ -122,7 +121,6 @@
     for (i2 = 0; i2 < l; i2++) {
       selElmnt = x[i2].getElementsByTagName("select")[0];
       ll = selElmnt.length;
-      console.log(ll);
       a = document.createElement("DIV");
       a.setAttribute("class", "select-selected");
       a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
@@ -145,7 +143,6 @@
               h.innerHTML = this.innerHTML;
               h.setAttribute("value", s.options[i3].value);
               let a2 = parseInt(s.options[i3].value);
-              console.log(s.options[i3].value);
               y = this.parentNode.getElementsByClassName("same-as-selected");
               yl = y.length;
               Shopify.queryParams = {};
@@ -193,5 +190,6 @@
   };
   document.addEventListener("shopify:section:load", () => {
     renderOption();
+    Control();
   });
 })();

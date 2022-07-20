@@ -93,7 +93,7 @@
       "preOrder":"PRE-ORDER",
       "continueShopping": "CONTINUE SHOPPING",
       "shipping": {
-        "one_shipping_rate": "There is one shipping rate available for {}, {{province}}, {{country}}.",
+        "one_shipping_rate": "There is one shipping rate available for {{code}}, {{province}}, {{country}}.",
         "many_shipping_rates": "There are {{number}} shipping rates available for {}, {{province}}, {{country}}.",
         "not_found_shipping_rate": "Not found shipping rate available for {{code}}, {{province}}, {{country}}.",
         "button_submit": "Calculate shipping",
@@ -155,6 +155,10 @@
       "button": "Download More",
       "empty": "EMPTY",
       "empty_text": "There are no products matching the selection."
+    },
+    "checkoutTerm":{
+      "termArgee":"I argee with the terms and conditions",
+      "checkoutBtn":"PROCEED TO CHECKOUT"
     }
   }
 }

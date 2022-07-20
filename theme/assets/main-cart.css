@@ -272,11 +272,14 @@
   align-items: center; }
 
 .cartPage__emptyCart-icon {
-  width: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px; }
 
-.cartPage__emptyCart-icon img {
-  width: 100%; }
+.cartPage__emptyCart-icon svg {
+  width: 150px;
+  height: 150px; }
 
 .cartPage__emptyCart-title {
   font-size: 24px;

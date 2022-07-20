@@ -40,12 +40,11 @@
         cursor: pointer;
     };
     &__account{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        &-iconUser , &-iconCart{
-            width: 80%;
-        }
+       & a svg{
+            width: 31px;
+            height: 36px
+       }
+
     };
     &__contactAndCart{
         display: flex;
@@ -59,9 +58,19 @@
         gap: 15px;
         align-items: center;
         cursor: pointer;
+        & svg{
+            width: 31px;
+            height: 36px;
+        }
     }   
     &__contact{
         display: none;
+        &-icon{
+            & svg{
+                width: 31px;
+                height: 31px;
+            }
+        }
     }
     &__contact-number , &__myCart-text{
         font-size: 15px;
@@ -138,7 +147,7 @@
             align-items: center;
             top: 0;
             right: 0;
-            transform: translate(50%,-50%);
+            transform: translate(40%,-40%);
         }
     }
 }
@@ -460,12 +469,12 @@
     .header{
         &__account{
             gap: 17px;
-            &-iconUser , &-iconCart{
+            &-iconUser {
                 width: 100%;
             }
         };
         &__contactAndCart{
-            gap: 30px;
+            gap: 20px;
         }
     }
     .headerMobile{

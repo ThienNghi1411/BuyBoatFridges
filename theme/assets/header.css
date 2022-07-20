@@ -39,13 +39,9 @@
 .header__account, .header__iconMenu, .header__logo {
   cursor: pointer; }
 
-.header__account {
-  display: flex;
-  align-items: center;
-  gap: 10px; }
-
-.header__account-iconCart, .header__account-iconUser {
-  width: 80%; }
+.header__account a svg {
+  width: 31px;
+  height: 36px; }
 
 .header__contactAndCart {
   display: flex;
@@ -60,8 +56,16 @@
   align-items: center;
   cursor: pointer; }
 
+.header__contact svg, .header__myCart svg {
+  width: 31px;
+  height: 36px; }
+
 .header__contact {
   display: none; }
+
+.header__contact-icon svg {
+  width: 31px;
+  height: 31px; }
 
 .header__contact-number, .header__myCart-text {
   font-size: 15px;
@@ -137,7 +141,7 @@
   align-items: center;
   top: 0;
   right: 0;
-  transform: translate(50%, -50%); }
+  transform: translate(40%, -40%); }
 
 .headerMobile__iconMenu {
   cursor: pointer; }
@@ -440,10 +444,10 @@
 @media (min-width: 480px) {
   .header__account {
     gap: 17px; }
-  .header__account-iconCart, .header__account-iconUser {
+  .header__account-iconUser {
     width: 100%; }
   .header__contactAndCart {
-    gap: 30px; }
+    gap: 20px; }
   .headerMobile__iconMenu-icon {
     width: 100%; }
   .menuMobile {
@@ -530,6 +534,13 @@
   .header__inner {
     width: 1000px;
     max-width: 1000px;
+    margin: 0 auto; } }
+
+@media (min-width: 1280px) {
+  .header {
+    padding: 15px 0 0; }
+  .header__inner {
+    max-width: 1200px;
     margin: 0 auto; } }
 
 @media (min-width: 1280px) {

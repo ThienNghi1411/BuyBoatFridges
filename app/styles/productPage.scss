@@ -123,6 +123,10 @@
             font-size: 16px;
             font-weight: 400;
         }
+        &-icon svg{
+            height: 20px;
+            width: 20px;
+        }
     }
     &__wrapper{
         display: flex;

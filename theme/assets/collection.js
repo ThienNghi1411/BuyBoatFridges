@@ -39,7 +39,6 @@
       let icon_Close = e.children[1];
       e.addEventListener("click", () => {
         if (e.classList.contains("filter_active")) {
-          console.log("Hahah");
           let clear_All = e.nextElementSibling.nextElementSibling;
           if (clear_All != null) {
             clear_All.style.display = "none";
@@ -54,7 +53,7 @@
           let clear_All = e.nextElementSibling.nextElementSibling;
           if (clear_All != null) {
             clear_All.style.display = "flex";
-            clear_All.style.padding = "10px 0px 30px 0px";
+            clear_All.style.padding = "10px 0px";
           }
           e.classList.add("filter_active");
           item.style.display = "flex";
@@ -67,6 +66,9 @@
     });
   }
   window.addEventListener("DOMContentLoaded", () => {
+    Control();
+  });
+  document.addEventListener("shopify:section:load", () => {
     Control();
   });
 })();

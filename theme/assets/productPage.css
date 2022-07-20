@@ -108,6 +108,10 @@
   font-size: 16px;
   font-weight: 400; }
 
+.productPage__policyOption-icon svg {
+  height: 20px;
+  width: 20px; }
+
 .productPage__wrapper {
   display: flex;
   flex-direction: column;

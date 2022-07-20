@@ -6,7 +6,7 @@
                 <a href="{{ routes.cart_url }}" class="">
                     <div class="cartQuickView__emptyCart">
                         <div class="cartQuickView__emptyCart-icon">
-                            <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
+                            {%- render 'icon-cart' -%}
                         </div>
                         <div class="cartQuickView__emptyCart-text">{{ 'sections.cart-quickView.emptyCart' | t }}</div>
                     </div>    

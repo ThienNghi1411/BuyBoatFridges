@@ -38,8 +38,8 @@
       let icon_Open = e.children[2];
       let icon_Close = e.children[1];
       e.addEventListener("click", () => {
+        console.log(e);
         if (e.classList.contains("filter_active")) {
-          console.log("Hahah");
           let clear_All = e.nextElementSibling.nextElementSibling;
           if (clear_All != null) {
             clear_All.style.display = "none";
@@ -54,7 +54,7 @@
           let clear_All = e.nextElementSibling.nextElementSibling;
           if (clear_All != null) {
             clear_All.style.display = "flex";
-            clear_All.style.padding = "10px 0px 30px 0px";
+            clear_All.style.padding = "10px 0px";
           }
           e.classList.add("filter_active");
           item.style.display = "flex";
@@ -67,6 +67,9 @@
     });
   }
   window.addEventListener("DOMContentLoaded", () => {
+    Control();
+  });
+  document.addEventListener("shopify:section:load", () => {
     Control();
   });
 
@@ -90,7 +93,6 @@
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
       let product_count = html_div.querySelectorAll(".productCard").length;
-      console.log(html_div.querySelectorAll(".productCard"));
       collection__tittle.innerHTML = collection_title + ` (${product_count})`;
       spinner.style.display = "none";
       history.replaceState(null, null, "/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value);
@@ -162,11 +164,13 @@
     }
   };
   document.addEventListener("DOMContentLoaded", function() {
+    if (Shopify.designMode) {
+      Control();
+    }
     renderOption();
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
-    console.log(url_array);
     if (url_array[5] != void 0 && url_array[5] != "" || array[1] != "" && array[1] != void 0) {
       let items = url_array[5].split("+");
       let html_dom = `<div class="filter__tittle  filter_active">
@@ -324,7 +328,7 @@
           item.style.display = "none";
           icon_Open.style.display = "unset";
           icon_Close.style.display = "none";
-          content.parentElement.style.marginBottom = "20px";
+          content.parentElement.style.marginBottom = "0px";
           content.parentElement.style.paddingBottom = "20px";
         } else {
           let clear_All = content.nextElementSibling.nextElementSibling;
@@ -356,13 +360,10 @@
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
       let product_count = html_div.querySelectorAll(".productCard").length;
-      console.log(html_div.querySelectorAll(".productCard"));
       let itemOnScreen = document.querySelector(".collection__Productcontent").childElementCount;
       collection__tittle.innerHTML = collection_handle + `(${product_count})`;
       spinner.style.display = "none";
       history.replaceState(null, null, "/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value);
-      console.log(product_count);
-      console.log(itemOnScreen);
       let ProductContainer = html_div.querySelector(".collection__Productcontent");
       for (i = 0; i < render_number2; i++) {
         if (itemOnScreen + i < product_count) {
@@ -493,5 +494,6 @@
   };
   document.addEventListener("shopify:section:load", () => {
     renderOption();
+    Control();
   });
 })();
