@@ -1,8 +1,5 @@
 (() => {
   // app/scripts/product-page.js
-  if (window.location.search === "?contact_posted=true") {
-    window.scroll(0, 0);
-  }
   var minusBtn = document.querySelector(".productPage__quantityCont-minusBtn");
   var plusBtn = document.querySelector(".productPage__quantityCont-plusBtn");
   var qtyField = document.querySelector(".productPage__quantityCont-inputQty");
@@ -10,6 +7,8 @@
   var askingProduct = document.querySelector(".productPage__askingPd");
   var askingPopup = document.querySelector(".popupAsking");
   var askingPopUpDefault = document.querySelector(".popupAsking__contentDefault");
+  var shippingProduct = document.querySelector(".productPage__shippingPd");
+  var shippingPopup = document.querySelector(".popupShipping");
   var body = document.querySelector("body");
   var init = () => {
     minusBtn.addEventListener("click", adjustQty);
@@ -33,8 +32,11 @@
     });
     askingProduct.addEventListener("click", () => {
       askingPopUpDefault.style.display = "block";
-      window.scroll(0, 0);
       askingPopup.style.display = "block";
+      body.style.overflow = "hidden";
+    });
+    shippingProduct.addEventListener("click", () => {
+      shippingPopup.style.display = "block";
       body.style.overflow = "hidden";
     });
   };
@@ -49,9 +51,11 @@
   init();
   var productData = JSON.parse(document.querySelector("#productPage__settings").innerText).product;
   var pdQty = JSON.parse(document.querySelector("#productPage__settings").innerText).pdQuantity;
-  var addToCartForm = document.querySelector('form[action$="/cart/add"]');
+  var addToCartForms = document.querySelectorAll(".productForm");
   var spinner = document.querySelector(".loading__spinner");
-  addToCartForm.addEventListener("submit", (e) => addToCart(e));
+  addToCartForms.forEach((addToCartForm) => {
+    addToCartForm.addEventListener("submit", (e) => addToCart(e));
+  });
   var getSectionsToRender = () => {
     return [
       {
@@ -93,7 +97,6 @@
       return response.json();
     }).then((data) => {
       spinner.style.display = "none";
-      window.scrollTo(0, 0);
       if (data.status) {
         let popupError = document.querySelector(".cartPopUpError");
         popupError.style.display = "block";

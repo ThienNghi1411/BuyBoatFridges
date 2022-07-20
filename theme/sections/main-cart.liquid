@@ -1,19 +1,8 @@
 <link rel="stylesheet" href="{{ 'main-cart.css' | asset_url }}">
-<script>console.log({{ cart | json }})</script>
+
 <script src=" {{ 'cart.js' | asset_url }}" defer></script>
-<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 <script src=" {{ 'shipping-calculator.js' | asset_url }}" defer></script>
-<div class="breadcrumb">
-    <div class="breadcrumb__inner">
-        <div class="breadcrumb__option">
-            <a href="{{ routes.root_url }}" class="">Home</a>
-        </div>
-        
-        <div class="breadcrumb__option">
-            <a href="{{ routes.cart_url }}" class="">{{ 'sections.cart.cartBreadcrumb' | t }}</a>
-        </div>
-    </div>
-</div>
+
 <main-cart class="cartPage">
     {%- if cart.item_count != 0 -%}
         {%- form 'cart' , cart -%}
@@ -24,13 +13,17 @@
                     <div class="cartPage__item">
                         <div class="cartPage__imgItem">
                             <a href="{{ item.url }}" class="w100 h100">
-                                {%- render "image-style" , image: item.image -%}
+                                {%- render "image-style" , image: item.image , imgClass: "object-fit--contain" -%}
                             </a>
                         </div>
                         <div class="cartPage__itemInfo">        
                             <div class="cartPage__itemInfo-productName">
                                 <a href="{{ item.url }}" >
-                                    {{ item.title }}
+                                    {%- if item.properties.preOrder != blank -%}
+                                        {{ item.title }} <span>[{{ 'sections.cart.preOrder' | t }}]</span>
+                                    {%- else -%}
+                                        {{ item.title }}
+                                    {%- endif -%}
                                 </a>
                             </div>
                             <div class="cartPage__itemInfo-productPrice">{{ item.price | money }}</div>
@@ -63,7 +56,7 @@
                 </maincart-remove-all-button>
                 <div class="cartPage__continueShopping">
                     <a href="{{ routes.collections_url }}" class="cartPage__continueShopping">
-                        <div class="cartPage__continueShopping-icon">{%- render 'icon-remove' -%}</div>
+                        <div class="cartPage__continueShopping-icon">{%- render 'icon-previous' -%}</div>
                         <div class="cartPage__continueShopping-text">{{ 'sections.cart.continueShopping' | t }}</div>
                     </a>
                 </div>
@@ -155,7 +148,7 @@
                 </div>
                 <div class="cartPopUpError__header-text">{{ 'sections.cart-popup-error.title' | t }}</div>
             </div>
-            <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
+            <div class="cartPopUpError__error" error="{{ 'sections.cart-popup-error.error' | t }}"></div>
             <div class="cartPopUpError__iconClose">
                 {%- render 'icon-X' -%}
             </div>
@@ -167,11 +160,7 @@
 {% schema %}
     {
         "name": "Cart Page",
-        "tag": "section",
-        "presets": [
-            {
-              "name": "Cart Page"
-            }
-        ]
+        "tag": "section"
+        
     }
 {% endschema %}

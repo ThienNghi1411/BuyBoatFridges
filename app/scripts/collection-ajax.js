@@ -5,6 +5,7 @@ var Query = '';
 var sort_value = document.querySelector(".select-selected");
 let render_number = 0;
 var task = false;
+
 //Render Items with Query & sort
 renderItems = () => {
     let spinner = document.querySelector(".collection__spinner");
@@ -23,6 +24,7 @@ renderItems = () => {
             html_div.innerHTML = data;
             let collection__tittle = document.querySelector(".collection__tittle");
             let product_count = html_div.querySelectorAll('.productCard').length;
+            console.log(html_div.querySelectorAll('.productCard'))
             collection__tittle.innerHTML = collection_title+' '+`(${product_count})`
             spinner.style.display = "none";
             history.replaceState(null, null, '/collections/' + collection_handle.toLowerCase()  + '/' + Query + '?sort_by=' + sort_value);
@@ -41,6 +43,11 @@ renderItems = () => {
             if (product_count != 0) {
                 let empty = document.querySelector(".collection__empty");
                 empty.style.display = "none";
+            }
+            if(Shopify.designMode)
+            {
+                render_value=document.querySelector(".collection__itemDisplay").children[0].children[2].children[0].innerText;
+                render_number = parseInt(render_value)
             }
             if (product_count > render_number) {
                 for (i = 0; i < render_number; i++) {
@@ -113,8 +120,8 @@ removeTags = () => {
 }
 //url matching
 document.addEventListener('DOMContentLoaded', function () {
-     
     //first item
+    renderOption();
     // document.querySelector("#display").nextElementSibling.nextElementSibling.children[0].click();
     // console.log( document.querySelector(".filter-option").innerHTML)
     let filter = window.location.href;
@@ -122,6 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let url_array = array[0].split("/");
     // console.log(url_array[].length)
     // console.log(array[1])
+    // console.log(array[1])
+    console.log(url_array)
     if (url_array[5] != undefined && url_array[5] != ''|| array[1]!='' && array[1]!=undefined) {
         let items = url_array[5].split("+")
         // console.log(items);
@@ -202,11 +211,11 @@ document.addEventListener('DOMContentLoaded', function () {
         Control();
         removeTags()
         Query = '';  
-        let sort_default = document.querySelector(".select-items").children[1];
+        let sort_default = document.querySelector(".select-items").children[4];
         sort_default.click();
         document.querySelector(".filter-option").classList.add("no-after");
-        sort_value = 'best-selling';
-        document.getElementsByClassName("select-items")[0].children[1].classList.add("same-as-selected")
+        sort_value = 'price-ascending';
+        document.getElementsByClassName("select-items")[0].children[4].classList.add("same-as-selected")
         document.getElementsByClassName("select-items")[1].children[0].classList.add("same-as-selected")
         document.getElementsByClassName("select-items")[1].children[0].classList.add("no-after")
         render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
@@ -259,7 +268,6 @@ tag.forEach(e => {
         ClearAll_button.addEventListener("click", () => {
             clearAll();
         })
-        Control();
         //render tag item
         let html_dom2 = `
          <div class="shopingBy_tag">
@@ -285,6 +293,50 @@ tag.forEach(e => {
         renderItems();
         //add event remove tag
         removeTags();
+        var content = document.querySelector(".filter__tittle");
+  //Icon Control display
+      let item = content.nextElementSibling;
+      let icon_Open = content.children[2];
+      let icon_Close = content.children[1];
+      content.addEventListener("click", () => {
+
+          if(content.classList.contains("filter_active"))
+          {
+              let clear_All = content.nextElementSibling.nextElementSibling;
+              // console.log(clear_All)
+              if(clear_All!=null)
+              {
+                clear_All.style.display="none";
+              }
+              content.classList.remove("filter_active")
+              item.style.display = "none";
+              icon_Open.style.display = "unset"
+              icon_Close.style.display = "none"
+              content.parentElement.style.marginBottom="20px"
+              content.parentElement.style.paddingBottom="20px"
+
+          }
+          else
+          {
+            
+            let clear_All = content.nextElementSibling.nextElementSibling;
+            // console.log(clear_All)
+              if(clear_All!=null)
+              {
+                clear_All.style.display="flex";
+                clear_All.style.padding="10px 0px 30px 0px";
+              }
+              content.classList.add("filter_active")
+              item.style.display = "flex";
+              // item.style.flexDirection ="column";
+              icon_Open.style.display = "none"
+              icon_Close.style.display = "unset"
+              content.parentElement.style.marginBottom ="0px"
+              content.parentElement.style.paddingBottom ="30px"
+          }
+         
+      })
+  
     })
 })
 //loadmore
@@ -311,14 +363,15 @@ loadmore = () => {
             // console.log(html_div)
             let collection__tittle = document.querySelector(".collection__tittle");
             let product_count = html_div.querySelectorAll('.productCard').length;
-            let itemOnScreen = document.querySelectorAll(".productCard").length;
+            console.log(html_div.querySelectorAll('.productCard'))
+            let itemOnScreen = document.querySelector(".collection__Productcontent").childElementCount;
             collection__tittle.innerHTML = collection_handle + `(${product_count})`
             spinner.style.display = "none";
             history.replaceState(null, null, '/collections/' + collection_handle.toLowerCase()  + '/' + Query + '?sort_by=' + sort_value);
             // product_count tong san pham
             // render_number so sp can render
-            // console.log(product_count)
-            // console.log(itemOnScreen)
+            console.log(product_count)
+            console.log(itemOnScreen)
             let ProductContainer = html_div.querySelector('.collection__Productcontent');
             // console.log(ProductContainer.children[7]);             
             for (i = 0; i < render_number; i++) {
@@ -333,7 +386,7 @@ loadmore = () => {
                     document.querySelector('.collection__Productcontent').appendChild(div);
                 }
             }
-            let ItemOnScreen = document.querySelectorAll(".productCard").length;
+            let ItemOnScreen =  document.querySelector(".collection__Productcontent").childElementCount;
             // console.log(ItemOnScreen)
             // console.log(product_count)
             if (ItemOnScreen == product_count) {
@@ -348,11 +401,12 @@ var Load_Button = document.querySelector(".collection__loadMore");
 Load_Button.addEventListener("click", () => {
     loadmore();
 })
+//infinity load
 var footer = document.querySelector(".footer");
 // console.log(footer.offsetHeight)
 window.addEventListener('scroll', () => {
     if (!task) {
-        let products = document.querySelectorAll(".productCard").length;
+        let products =  document.querySelector(".collection__Productcontent").childElementCount;
         if (window.scrollY + window.innerHeight >=
             document.documentElement.scrollHeight - footer.offsetHeight) {
             // console.log("Hahahaha") 
@@ -372,7 +426,8 @@ window.addEventListener('scroll', () => {
 // console.log(document.documentElement.scrollHeight)
 // option-select
 
-var x, i, j, l, ll, selElmnt, a, b, c;
+renderOption = () =>{
+    var x, i, j, l, ll, selElmnt, a, b, c;
 /* Look for any elements with the class "custom-select": */
 x = document.getElementsByClassName("custom-select");
 l = x.length;
@@ -447,7 +502,7 @@ for (i = 0; i < l; i++) {
                     break;
                 }
             }
-            h.click();
+            // h.click();
 
         });
         b.appendChild(c);
@@ -483,6 +538,12 @@ function closeAllSelect(elmnt) {
         }
     }
 }
+
+document.addEventListener("click", closeAllSelect);
+}
+
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
-document.addEventListener("click", closeAllSelect);
+document.addEventListener("shopify:section:load", ()=>{
+    renderOption();
+});

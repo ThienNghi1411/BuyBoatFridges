@@ -1,49 +1,68 @@
-
-
-<div class="productCard">
-    {%- form 'product' , product , class: "productCard__form" -%}
-        <input type="hidden" name="id" value="{{ product.variants[0].id }}">    
-        <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
-        <div class="productCard__imgCont">
-            <a href="{{ product.url }}" class="">
-                {% if product.featured_image != blank %}
-                    {% comment %} <img src="{{ product.featured_image | image_url }}" alt="{{ "" }}" /> {% endcomment %}
-                    {%- render 'image-style' , image: product.featured_image , imgClass: 'object-fit--contain'-%}
-                {% else %}
-                    {{ 'product-1' | placeholder_svg_tag }}
-                {% endif %}
-            </a>
-            <div class="productCard__imgCont-tagCont">
-                {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
-                    {% assign floatNum =  product.variants[0].compare_at_price | times: 1.0 %}    
-                    {% assign percentSale = product.variants[0].price | divided_by: floatNum | times: 100.0 %}
-                    {% assign resPercent = 100.0 | minus: percentSale | round %}
-                    <div class="productCard__imgCont-tagCont-text">SALE {{ resPercent }}%</div>
-                {% endif %}
-            </div>
-        </div>
-        <div class="productCard__productInfo">
-            <div class="productCard__productTitle">
-                <div class="productCard__vendor">{{ product.vendor }}</div>
-                <div class="productCard__productSKU"><a href="{{ product.url }}" class="">{{ product.variants[0].sku }}</a></div>
-                <div class="productCard__productName">
-                    {{ product.title }}
-                </div>
-            </div>
-            <div class="productCard__priceCont">
-                <div class="productCard__priceCont-wrap">
-                    <div class="productCard__priceCont-salePrice">{{ product.variants[0].price | money }}</div>
+<div class="productCardCont">
+    <product-card class="productCard">
+        {%- form 'product' , product , class: "productCard__form" -%}
+            <input type="hidden" name="id" value="{{ product.variants[0].id }}">
+            <input type="hidden" name="quantity" value="1">
+            {%- if product.template_suffix == "preOrder" -%}
+                <input id="preorder" type="hidden" value="true" name="properties[preOrder]">    
+            {%- endif -%}
+            <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
+            <div class="productCard__imgCont">
+                <a href="{{ product.url | within: collection }}" class="">
+                    {% if product.featured_image != blank %}
+                        {% comment %} <img src="{{ product.featured_image | image_url }}" alt="{{ "" }}" /> {% endcomment %}
+                        {%- render 'image-style' , image: product.featured_image , imgClass: 'object-fit--contain'-%}
+                    {% else %}
+                        {{ 'product-1' | placeholder_svg_tag }}
+                    {% endif %}
+                </a>
+            
+                {%- if product.variants[0].inventory_quantity > 0 -%}
                     {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
-                        <div class="productCard__priceCont-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                        {% assign floatNum =  product.variants[0].compare_at_price | times: 1.0 %}    
+                        {% assign percentSale = product.variants[0].price | divided_by: floatNum | times: 100.0 %}
+                        {% assign resPercent = 100.0 | minus: percentSale | round %}
+                        <div class="productCard__imgCont-tagCont">
+                            <div class="productCard__imgCont-tagCont-text">SALE {{ resPercent }}%</div>
+                        </div>
                     {%- endif -%}
-                    
+                {%- else -%}
+                <div class="productCard__imgCont-tagCont">
+                    <div class="productCard__imgCont-tagCont-text">SOLD OUT</div>
                 </div>
-                <button class="productCard__priceCont-btnAdd" type="submit" value="Add to cart">
-                    ADD TO CART
-                </button>
+                {%- endif -%}
+                
             </div>
-        </div>
-    {%- endform -%}
+            <div class="productCard__productInfo">
+                <div class="productCard__productTitle">
+                    <div class="productCard__vendor">{{ product.vendor }}</div>
+                    <div class="productCard__productSKU"><a href="{{ product.url }}" class="">{{ product.variants[0].sku }}</a></div>
+                    <div class="productCard__productName">
+                        {{ product.title }}
+                    </div>
+                </div>
+                <div class="productCard__priceCont">
+                    <div class="productCard__priceCont-wrap">
+                        <div class="productCard__priceCont-salePrice">{{ product.variants[0].price | money }}</div>
+                        {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                            <div class="productCard__priceCont-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                        {%- endif -%}
+                        
+                    </div>
+                    {%- if product.variants[0].inventory_quantity > 0 -%}
+                        <button class="productCard__priceCont-btnAdd" type="submit" value="Add to cart">
+                            ADD TO CART
+                        </button>
+                    {%- endif -%}
+                </div>
+            </div>
+        {%- endform -%}
+        <script class="productCard_settings" type="application/ld+json">
+            {
+                "data":{{ product | json }}
+            }
+        </script>
+    </product-card>
 </div>
 
 

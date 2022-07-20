@@ -4,7 +4,6 @@
     constructor() {
       super();
       this.addEventListener("click", (event) => {
-        console.log(this);
         let spin = this.querySelector(".cartQuickView__productLine-spinner");
         let removeSvg = this.querySelector("svg");
         spin.style.display = "block";
@@ -49,7 +48,6 @@
       }).then((response) => {
         return response.json();
       }).then((data) => {
-        console.log(data);
         this.getSectionsToRender().forEach((section) => {
           const elementToReplaces = document.querySelectorAll(section.selector);
           elementToReplaces.forEach((elementToReplace) => {

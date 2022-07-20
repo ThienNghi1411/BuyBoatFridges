@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "main": {
+      "type": "contact",
+      "blocks": {
+        "d35f7aec-e763-4e13-bb63-8acbb6b447bd": {
+          "type": "svg",
+          "settings": {
+            "icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"32px\" height=\"32px\" viewbox=\"0 0 32 32\" id=\"icon\"><defs><style>.cls-1{fill:none;}<\/style><\/defs><title>phone<\/title>\n<path d=\"M26,29h-.17C6.18,27.87,3.39,11.29,3,6.23A3,3,0,0,1,5.76,3h5.51a2,2,0,0,1,1.86,1.26L14.65,8a2,2,0,0,1-.44,2.16l-2.13,2.15a9.37,9.37,0,0,0,7.58,7.6l2.17-2.15A2,2,0,0,1,24,17.35l3.77,1.51A2,2,0,0,1,29,20.72V26A3,3,0,0,1,26,29ZM6,5A1,1,0,0,0,5,6v.08C5.46,12,8.41,26,25.94,27A1,1,0,0,0,27,26.06V20.72l-3.77-1.51-2.87,2.85L19.88,22C11.18,20.91,10,12.21,10,12.12l-.06-.48,2.84-2.87L11.28,5Z\" transform=\"translate(0)\"><\/path><rect id=\"_Transparent_Rectangle_\" data-name=\"&lt;Transparent Rectangle&gt;\" class=\"cls-1\" width=\"32\" height=\"32\"><\/rect><\/svg>",
+            "block_title": "LET’S HAVE A CHAT!",
+            "block_textarea": "+1 (305) 999 5212"
+          }
+        },
+        "b5d66a8d-adca-488c-bd8f-23e213419ee2": {
+          "type": "svg",
+          "settings": {
+            "icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"512px\" height=\"512px\" viewbox=\"0 0 512 512\"><title>ionicons-v5-n<\/title>\n<path d=\"M256,48c-79.5,0-144,61.39-144,137,0,87,96,224.87,131.25,272.49a15.77,15.77,0,0,0,25.5,0C304,409.89,400,272.07,400,185,400,109.39,335.5,48,256,48Z\" style=\"fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px\"><\/path><circle cx=\"256\" cy=\"192\" r=\"48\" style=\"fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px\"><\/circle><\/svg>",
+            "block_title": "OUR LOCATION",
+            "block_textarea": "Fort Lauderdale, Florida, 33315\nUnited States of America"
+          }
+        },
+        "30db0bf7-6ee4-449b-95f9-0cd7c0f565ef": {
+          "type": "svg",
+          "settings": {
+            "icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https:\/\/fontawesome.com License - https:\/\/fontawesome.com\/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d=\"M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z\"><\/path><\/svg>",
+            "block_title": "WORK TIME",
+            "block_textarea": "24\/7 Customer Support"
+          }
+        }
+      },
+      "block_order": [
+        "d35f7aec-e763-4e13-bb63-8acbb6b447bd",
+        "b5d66a8d-adca-488c-bd8f-23e213419ee2",
+        "30db0bf7-6ee4-449b-95f9-0cd7c0f565ef"
+      ],
+      "settings": {
+        "map": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d28665.913813719006!2d-80.15161084999998!3d26.09110845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d90083510ac873%3A0x4953afc8bdd73df7!2sFort%20Lauderdale%2C%20Florida%2033315%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1658116661972!5m2!1svi!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+        "display": "1"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

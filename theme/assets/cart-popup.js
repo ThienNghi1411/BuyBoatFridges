@@ -3,19 +3,22 @@
   var CartPopUp = class extends HTMLElement {
     constructor() {
       super();
-      console.log(this.dataset);
       this.init();
     }
     init() {
       const qty = this.querySelector(".cartPopup__pdQty-qty");
       qty.innerText = this.dataset.qty;
+      if (this.dataset.img) {
+        const imgPd = this.querySelector(".cartPopup__imgCont img");
+        imgPd.src = this.dataset.img;
+      }
       const total = this.querySelector(".cartPopup__total-total");
       total.innerText = "$" + this.dataset.price * 1 * (this.dataset.qty * 1) / 100;
       const overlay = this.querySelector(".cartPopup__overlay");
       const popupContent = this.querySelector(".cartPopup__content");
       const popupContentMobile = this.querySelector(".cartPopup__contentMobile");
       const closeBtn = this.querySelector(".cartPopup__closeBtn");
-      const btnContinue = this.querySelector(".cartPopup__btnShopping");
+      const btnContinues = this.querySelectorAll(".cartPopup__btnShopping");
       popupContentMobile.addEventListener("click", (e) => {
         e.stopPropagation();
       });
@@ -30,9 +33,11 @@
         e.stopPropagation();
         this.closePopup();
       });
-      btnContinue.addEventListener("click", (e) => {
-        e.stopPropagation();
-        this.closePopup();
+      btnContinues.forEach((btnContinue) => {
+        btnContinue.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.closePopup();
+        });
       });
       this.toggleEnabelScroll();
     }

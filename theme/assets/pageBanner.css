@@ -1,6 +1,7 @@
 .pageBanner {
   height: 100%;
-  padding: 30px 20px; }
+  padding: 30px 20px;
+  max-width: 100%; }
 
 .pageBanner__inner {
   position: relative;
@@ -83,21 +84,11 @@
     display: none; } }
 
 @media (min-width: 1080px) {
-  .pageBanner {
-    width: 100%;
-    padding: 30px 0; }
   .pageBanner__inner {
-    max-width: 1000px; } }
+    width: 1000px; } }
 
 @media (min-width: 1280px) {
   .pageBanner {
-    width: 100%;
     padding: 30px 0; }
   .pageBanner__inner {
-    max-width: 1200px; } }
-
-@media (min-width: 1440px) {
-  .pageBanner {
-    max-width: 100%; }
-  .pageBanner__inner {
-    max-width: 1220px; } }
+    width: 1200px; } }

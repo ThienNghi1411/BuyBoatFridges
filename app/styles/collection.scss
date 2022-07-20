@@ -275,6 +275,7 @@ select {
             }
 
             .filter_Clear {
+                padding-bottom: 30px;
                 .filter__tittle {
                     position: relative;
                     cursor: pointer;
@@ -332,7 +333,7 @@ select {
 
                 .ClearAll_button {
                     cursor: pointer;
-                    padding: 10px 0 30px 0;
+                    padding: 10px 0 0 0;
                 }
             }
 
@@ -529,6 +530,27 @@ select {
             .collection__filter {
                 width: 40%;
                 margin-right: 50px;
+                .filter_byType
+                {
+                    .tag-filters
+                    {
+                        .item__wrap
+                        {
+                            .tag
+                            {
+                                font-size: 14.5px;
+                            }
+                            .list li>a
+                            {
+                                font-size: 14.5px;
+                            }
+                            .color_tag2
+                            {
+                                font-size: 0;
+                            }
+                        }
+                    }
+                }
             }
 
             .collection__content {
@@ -641,9 +663,23 @@ select {
                 height: 100%;
                 width: 20%;
                 padding: 0;
+                overflow-y: unset;
                 flex-direction: column;
                 .closebutton {
                     display: none;
+                }
+                .filter_byType
+                {
+                    .tag-filters
+                    {
+                        .item__wrap
+                        {
+                            .tag:hover{
+                                transform: scale(1.2);
+                                color: var(--light-color);
+                            }
+                        }
+                    }
                 }
             }
             .collection__content {

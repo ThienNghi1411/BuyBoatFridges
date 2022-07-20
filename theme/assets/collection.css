@@ -224,6 +224,9 @@ select {
   align-items: center;
   gap: 10px; }
 
+.collection .collection__inner .collection__filter .filter_Clear {
+  padding-bottom: 30px; }
+
 .collection .collection__inner .collection__filter .filter_Clear .filter__tittle {
   position: relative;
   cursor: pointer;
@@ -271,7 +274,7 @@ select {
 
 .collection .collection__inner .collection__filter .filter_Clear .ClearAll_button {
   cursor: pointer;
-  padding: 10px 0 30px; }
+  padding: 10px 0 0; }
 
 .collection .collection__inner .collection__filter .closebutton {
   position: absolute;
@@ -405,6 +408,10 @@ select {
   .collection .collection__inner .collection__filter {
     width: 40%;
     margin-right: 50px; }
+  .collection .collection__inner .collection__filter .filter_byType .tag-filters .item__wrap .list li > a, .collection .collection__inner .collection__filter .filter_byType .tag-filters .item__wrap .tag {
+    font-size: 14.5px; }
+  .collection .collection__inner .collection__filter .filter_byType .tag-filters .item__wrap .color_tag2 {
+    font-size: 0; }
   .collection .collection__inner .collection__content .collection__handle {
     padding: 40px 0 45px;
     display: flex;
@@ -481,9 +488,13 @@ select {
     height: 100%;
     width: 20%;
     padding: 0;
+    overflow-y: unset;
     flex-direction: column; }
   .collection .collection__inner .collection__filter .closebutton {
     display: none; }
+  .collection .collection__inner .collection__filter .filter_byType .tag-filters .item__wrap .tag:hover {
+    transform: scale(1.2);
+    color: var(--light-color); }
   .collection .collection__inner .collection__content {
     width: 80%; }
   .collection .collection__inner .collection__content .collection__handle .collection__control .collections__Filter {

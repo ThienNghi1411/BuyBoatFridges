@@ -6,39 +6,70 @@
                 {%- case block.type -%}
                     {%- when 'product' -%}
                         {%- assign product = all_products[block.settings.product] -%}
-                        <div class="miniBanner__productBanner">
-                            <div class="miniBanner__productBanner-wrap">
-                                <div class="miniBanner__productBanner-imgCont">
-                                    {% comment %} <img src="{{ product.featured_image | image_url }} " /> {% endcomment %}
-                                    <a href="{{ product.url }}" class="">
-                                        {%- render "image-style" , image: product.featured_image , imgClass: "object-fit--contain" -%}
-                                        <div class="miniBanner__productBanner-imgCont-tagCont">{{ product.vendor }}</div>
-                                    </a>
-                                </div>
-                                <div class="miniBanner__productBanner-infoProduct">
-                                    <div class="miniBanner__productBanner-titleProduct">
-                                        <div class="miniBanner__productBanner-titleProduct-productName">{{ product.variants[0].sku }}</div>
-                                        <div class="miniBanner__productBanner-titleProduct-subTitle">
-                                            <a href="{{ product.url }}" class="">{{ product.title }}</a>
-                                            
-                                        </div>
-                                        <div class="miniBanner__productBanner-priceProduct">
-                                            <div class="miniBanner__productBanner-priceProduct-lastPrice">{{ product.variants[0].price | money }}</div>
-                                            {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
-                                            <div class="miniBanner__productBanner-priceProduct-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
-                                            {%- endif -%}
-                                        </div>
+                        {%- if product != blank -%}
+                            <div class="miniBanner__productBanner" {{ block.shopify_attributes }}>
+                                <div class="miniBanner__productBanner-wrap">
+                                    <div class="miniBanner__productBanner-imgCont">
+                                        {% comment %} <img src="{{ product.featured_image | image_url }} " /> {% endcomment %}
+                                        <a href="{{ product.url }}" class="">
+                                            {%- render "image-style" , image: product.featured_image , imgClass: "object-fit--contain" -%}
+                                            <div class="miniBanner__productBanner-imgCont-tagCont">{{ product.vendor }}</div>
+                                        </a>
                                     </div>
-                                    <div class="miniBanner__productBanner-priceAndBtn">
-                                        <div class="miniBanner__productBanner-btnSeeMoreCont">
-                                            <button class="miniBanner__productBanner-btnSeeMore">
-                                                <a href="{{ product.url }}" class="">See more</a>
-                                            </button>
+                                    <div class="miniBanner__productBanner-infoProduct">
+                                        <div class="miniBanner__productBanner-titleProduct">
+                                            <div class="miniBanner__productBanner-titleProduct-productName">{{ product.variants[0].sku }}</div>
+                                            <div class="miniBanner__productBanner-titleProduct-subTitle">
+                                                <a href="{{ product.url }}" class="">{{ product.title }}</a>
+                                                
+                                            </div>
+                                            <div class="miniBanner__productBanner-priceProduct">
+                                                <div class="miniBanner__productBanner-priceProduct-lastPrice">{{ product.variants[0].price | money }}</div>
+                                                {%- if product.variants[0].compare_at_price != blank and product.variants[0].compare_at_price > product.variants[0].price -%}
+                                                <div class="miniBanner__productBanner-priceProduct-basePrice">{{ product.variants[0].compare_at_price | money }}</div>
+                                                {%- endif -%}
+                                            </div>
+                                        </div>
+                                        <div class="miniBanner__productBanner-priceAndBtn">
+                                            <div class="miniBanner__productBanner-btnSeeMoreCont">
+                                                <button class="miniBanner__productBanner-btnSeeMore">
+                                                    <a href="{{ product.url }}" class="">See more</a>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {%- else-%}
+                            <div class="miniBanner__productBanner" {{ block.shopify_attributes }}>
+                                <div class="miniBanner__productBanner-wrap">
+                                    <div class="miniBanner__productBanner-imgCont">
+                                        <a href="" class="">
+                                            {{ 'product-1' | placeholder_svg_tag }}
+                                            <div class="miniBanner__productBanner-imgCont-tagCont">Vendor</div>
+                                        </a>
+                                    </div>
+                                    <div class="miniBanner__productBanner-infoProduct">
+                                        <div class="miniBanner__productBanner-titleProduct">
+                                            <div class="miniBanner__productBanner-titleProduct-productName">SKU</div>
+                                            <div class="miniBanner__productBanner-titleProduct-subTitle">
+                                                <a href="{{ product.url }}" class="">Name</a>
+                                            </div>
+                                            <div class="miniBanner__productBanner-priceProduct">
+                                                <div class="miniBanner__productBanner-priceProduct-lastPrice">$.00</div>
+                                            </div>
+                                        </div>
+                                        <div class="miniBanner__productBanner-priceAndBtn">
+                                            <div class="miniBanner__productBanner-btnSeeMoreCont">
+                                                <button class="miniBanner__productBanner-btnSeeMore">
+                                                    <a href="{{ product.url }}" class="">See more</a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {%- endif -%}
                 {%- endcase -%}
             {%- endfor -%} 
         </div>

@@ -38,10 +38,10 @@
       let icon_Open = e.children[2];
       let icon_Close = e.children[1];
       e.addEventListener("click", () => {
-        console.log(e.classList.contains("filter_active"));
         if (e.classList.contains("filter_active")) {
-          let clear_All = document.querySelector(".ClearAll_button");
-          if (clear_All != void 0) {
+          console.log("Hahah");
+          let clear_All = e.nextElementSibling.nextElementSibling;
+          if (clear_All != null) {
             clear_All.style.display = "none";
           }
           e.classList.remove("filter_active");
@@ -49,9 +49,10 @@
           icon_Open.style.display = "unset";
           icon_Close.style.display = "none";
           e.parentElement.style.marginBottom = "20px";
+          e.parentElement.style.paddingBottom = "0px";
         } else {
-          let clear_All = document.querySelector(".ClearAll_button");
-          if (clear_All != void 0) {
+          let clear_All = e.nextElementSibling.nextElementSibling;
+          if (clear_All != null) {
             clear_All.style.display = "flex";
             clear_All.style.padding = "10px 0px 30px 0px";
           }
@@ -60,6 +61,7 @@
           icon_Open.style.display = "none";
           icon_Close.style.display = "unset";
           e.parentElement.style.marginBottom = "0px";
+          e.parentElement.style.paddingBottom = "30px";
         }
       });
     });

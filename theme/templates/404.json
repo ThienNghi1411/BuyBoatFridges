@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "404-template",
+      "settings": {
+        "title": "<p>404<\/p>",
+        "subtitle": "<p>It looks like nothing was found at this location.<\/p>",
+        "button_label": "Back to Homepage",
+        "button_link": "https:\/\/www.buyboatfridges.com\/"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

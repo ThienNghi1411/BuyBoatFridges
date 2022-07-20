@@ -1,8 +1,15 @@
 {
   "current": {
-    "primary_color": "#009ee3",
+    "primary_color": "#139aeb",
     "background_content": "#f7f8fa",
     "border_color": "#c1c1c1",
+    "textColor_label_sale": "#ffffff",
+    "bgColor_label_sale": "#ff920c",
+    "textColor_label_soldOut": "#ffffff",
+    "bgColor_label_soldOut": "#032c41",
+    "arrowColor_slider": "#ffffff",
+    "arrowBgColor_slider": "#000000",
+    "arrBgColor_slider": "#000000",
     "sections": {
       "header": {
         "type": "header",
@@ -59,14 +66,6 @@
               "Menu_content": "<p>PHONE : +1 (305) 999 521<\/p><p>HOURS: 24\/7 Customer Support<\/p><p>E-MAIL: <a href=\"https:\/\/www.buyboatfridges.com\/\" title=\"https:\/\/www.buyboatfridges.com\/\">sales@buyboatfridges.com<\/a><\/p>"
             }
           },
-          "ec4f0315-5e91-4abd-8895-c8a66e3c79e6": {
-            "type": "Payment_Method",
-            "settings": {
-              "show_content": true,
-              "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
-              "copyRight": "@2022 BUYBOATFRIDGES.com All Rights Resrved"
-            }
-          },
           "1c18d1a7-262f-455d-b929-6f6dc4d4c2a7": {
             "type": "payment_icon",
             "settings": {
@@ -120,7 +119,7 @@
             "type": "payment_icon",
             "settings": {
               "icon": "shopify:\/\/shop_images\/paypal-39_1.png",
-              "payment_link": ""
+              "payment_link": "https:\/\/www.buyboatfridges.com"
             }
           }
         },
@@ -129,7 +128,6 @@
           "8196e397-5f1e-4c2a-9b6f-e34b53dff551",
           "96fffcd2-41ac-42c0-b471-028effdf2637",
           "ad666687-d884-4023-8851-2f1a18791e46",
-          "ec4f0315-5e91-4abd-8895-c8a66e3c79e6",
           "1c18d1a7-262f-455d-b929-6f6dc4d4c2a7",
           "2d2e40d3-c7be-4673-aedc-9e36a4f2c13f",
           "63840cc5-4e05-4966-926b-1b05385c8af5",
@@ -140,7 +138,10 @@
           "86e860da-5c1b-49ce-9117-7f26b3fbda40"
         ],
         "settings": {
-          "show_content": true
+          "show_content": true,
+          "show_payment": true,
+          "image": "shopify:\/\/shop_images\/BBFC_Logo_1_2x_a97679b6-1fca-4c9c-b7c2-0d63ef24a7d0.png",
+          "copyRight": "@2022 BUYBOATFRIDGES.com All Rights Resrved"
         }
       },
       "1655454297d803f2c2": {
@@ -181,7 +182,10 @@
           "3136ffd8-97c9-4ca0-8e28-e7f79611ce27",
           "f9ef989a-c33e-46dd-bc8a-3827c130d052"
         ],
-        "settings": {}
+        "settings": {
+          "fullWidth": false,
+          "autoPlay": 2
+        }
       },
       "165556668187c23e1f": {
         "type": "section-home-categories",
@@ -218,28 +222,32 @@
             "type": "collection",
             "settings": {
               "collection": "vitrifrigo-ice-makers",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/ICE_MAKERS_3x_00ec7449-496e-458a-891c-11dd23304f47.png"
             }
           },
           "b43a3eb5-3b40-410b-a747-d506decc23e3": {
             "type": "collection",
             "settings": {
               "collection": "portable-refrigerators",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/PORTABLE_FRIDGE_3x_265ac957-5edc-4520-8a24-24fdd359603a.png"
             }
           },
           "ad63279d-cfa2-4969-abed-b8b4b196bf08": {
             "type": "collection",
             "settings": {
               "collection": "top-loading-countertop",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/TOP_LOADING_COUNTERTOP_3x_004fe55e-c28b-4d25-8e9c-38df32ae9250.png"
             }
           },
           "b8d17b65-0c19-4d96-ba3d-fcb1f3d66879": {
             "type": "collection",
             "settings": {
               "collection": "wine-coolers",
-              "checkImg": false
+              "checkImg": true,
+              "imgCollection": "shopify:\/\/shop_images\/WINE_COOLER_3x_0012861b-6af9-41de-9370-bfed9cb3bc4d.png"
             }
           },
           "15dca201-c473-46cf-85b5-80390d0ebf6d": {
@@ -298,7 +306,7 @@
           "title": "SHOP BY CATEGORIES",
           "title_fs": "20px,30px,30px",
           "title_fw": 700,
-          "limitPerRow": "2,3,5,6"
+          "limitPerRow": "3,3,4,5,6"
         }
       },
       "165563478473cdca76": {
@@ -434,7 +442,8 @@
           "4f6bc6fa-7cd0-4648-8059-ac1abfd42b98"
         ],
         "settings": {
-          "limitPerRow": "2,3,3,4,4"
+          "limitPerRow": "2,3,3,4,4",
+          "show_display": "2"
         }
       },
       "section-newsletter": {
@@ -534,7 +543,7 @@
           "bb5a7b2b-dbe4-474c-a363-71b9f311a8c1": {
             "type": "product",
             "settings": {
-              "product": "dw100rxp4-ex-1-vitrifrigo-stainless-steel-single-drawer-refrigerator-ocx2-model"
+              "product": "c42rbd4-f-1-vitrifrigo-front-loading-black-refrigerator-w-freezer-compartment-adjustable-flange-external-unit"
             }
           }
         },
@@ -599,7 +608,32 @@
         ],
         "settings": {
           "map": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d28665.904630819092!2d-80.16916334103881!3d26.091145930386087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d90083510ac873%3A0x4953afc8bdd73df7!2sFort%20Lauderdale%2C%20Florida%2033315%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1657090001758!5m2!1svi!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
-          "display": "1"
+          "display": "2"
+        }
+      },
+      "404-template": {
+        "type": "404-template",
+        "settings": {
+          "title": "<p>404<\/p>",
+          "subtitle": "<p>We are sorry, the page you've requested is not available.<\/p>",
+          "button_label": "Back to Homepage",
+          "button_link": "https:\/\/www.buyboatfridges.com\/"
+        }
+      },
+      "register-form": {
+        "type": "register-form",
+        "settings": {
+          "section_title": "CREATE AN ACCOUNT",
+          "form_title": "PERSONAL INFORMATION",
+          "firstname": "First Name",
+          "show_firstname_require": true,
+          "lastname": "Last Name",
+          "show_lastname_require": true,
+          "email": "Email Address",
+          "show_email_require": true,
+          "password": "Password",
+          "show_password_require": true,
+          "button_text": "CREATE"
         }
       }
     },

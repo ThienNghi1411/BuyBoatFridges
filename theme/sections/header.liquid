@@ -8,7 +8,7 @@
     </div>
     <div class="header__container">
         <div class="headerMobile__iconMenu">
-            <img src="{{ section.settings.iconMenu | image_url }}" class="headerMobile__iconMenu-icon" />
+            <img src="{{ section.settings.iconMenu | image_url }}" alt="{{ section.settings.iconMenu.alt }}" class="headerMobile__iconMenu-icon" />
         </div>
         <div class="header__logo">
             <a href="{{ routes.root_url }}" class="">
@@ -29,28 +29,28 @@
                 <div class="header__logoMobile">
                     {%- render "image-style" , image: section.settings.logoMobile , width: logoMobileWidth -%}
                 </div> {% endcomment %}
-                <img src="{{ section.settings.logoDestop | image_url: width: logoDestopWidth  }}" alt="{{ "" }}" class="header__logoDestop" />
-                <img src="{{ section.settings.logoMobile | image_url: width: logoMobileWidth  }}" alt="{{ "" }}" class="header__logoMobile" /> 
+                <img src="{{ section.settings.logoDestop | image_url: width: logoDestopWidth  }}" alt="{{ section.settings.logoDestop.alt }}" class="header__logoDestop" />
+                <img src="{{ section.settings.logoMobile | image_url: width: logoMobileWidth  }}" alt="{{ section.settings.logoMobile.alt }}" class="header__logoMobile" /> 
             </a>
         </div>
         
         <div class="header__contactAndCart">
             <div class="header__contact">
                 <div class="header__contact-icon">
-                    <img src="{{ section.settings.iconContact | image_url }}" class="header__contact-iconContact" />
+                    <img src="{{ section.settings.iconContact | image_url }}" alt="{{ section.settings.iconContact.alt }}" class="header__contact-iconContact" />
                 </div>
                 <div class="header__contact-number">{{ section.settings.contact_text }}</div>
             </div>
             <div class="header__myCart">
                 <div class="header__myCart-icon">
-                    <img src="{{ section.settings.iconCart | image_url }}" class="header__account-iconCart"/>
+                    <img src="{{ section.settings.iconCart | image_url }}" alt="{{ section.settings.iconCart.alt }}" class="header__account-iconCart"/>
                     <div class="header__myCart-qty">{{ cart.item_count }}</div>
                 </div>
                 <div class="header__myCart-text">{{ section.settings.cart_text }}</div>
             </div>
             <div class="header__account">
-                <a href="{{ routes.account_url }}}" class="">
-                    <img src="{{ section.settings.iconUser | image_url }}" class="header__account-iconUser"/>
+                <a href="{{ routes.account_login_url }}" class="">
+                    <img src="{{ section.settings.iconUser | image_url }}" class="header__account-iconUser" alt="{{ section.settings.iconUser.alt }}"/>
                 </a>
             </div>
             <div class="miniCartDestop__wrap" style="display: none">
@@ -78,7 +78,13 @@
                                                 <div class="cartQuickView__productLine-productInfo">
                                                     
                                                     <div class="cartQuickView__productLine-productTitle">
-                                                        <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                                                        <a href="{{ item.url }}" >
+                                                            {%- if item.properties.preOrder != nil -%}
+                                                                {{ item.title }} <span>[PRE-ORDER]</span>
+                                                            {%- else -%}
+                                                                {{ item.title }}
+                                                            {%- endif -%}
+                                                        </a>
                                                     </div>
                                                     <div class="cartQuickView__productLine-qtyAndPrice">
                                                         <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>
@@ -153,12 +159,12 @@
             </ul>
         </div>
         <div class="menuMobile__footer">
-            <div class="menuMobile__contact">
+            <a class="menuMobile__contact" href="{{ routes.root_url | append: "pages/contact-us" }}">
                 <div class="menuMobile__contact-icon">
                     {% render 'icon-contact' %}
                 </div>
                 <div class="menuMobile__contact-text">{{ 'sections.header.contact' | t }}</div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
@@ -171,7 +177,7 @@
     <div class="miniCartMobile__overlay">
         <div class="miniCartMobile__content">
             <div class="miniCartMobile__title">
-                <div class="miniCartMobile__title-text">SHOPPING CART</div>
+                <div class="miniCartMobile__title-text">{{ 'sections.cart-quickView.title' | t }}</div>
                 <div class="miniCartMobile__title-icon"> {%- render 'icon-X' -%}</div>
             </div>
             <div class="miniCartMobile__wrap">
@@ -183,7 +189,7 @@
                                         <div class="cartQuickView__emptyCart-icon">
                                             <img src="//cdn.shopify.com/s/files/1/0550/1714/4497/files/shopping-bag.png?v=1655886064"/>
                                         </div>
-                                        <div class="cartQuickView__emptyCart-text">No Products in the Cart</div>
+                                        <div class="cartQuickView__emptyCart-text">{{ 'sections.cart-quickView.emptyCart' | t }}</div>
                                     </div>    
                                 </a>
                             {%- else -%}
@@ -198,7 +204,13 @@
                                                 </div>
                                                 <div class="cartQuickView__productLine-productInfo">
                                                     <div class="cartQuickView__productLine-productTitle">
-                                                        <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                                                        <a href="{{ item.url }}" >
+                                                            {%- if item.properties.preOrder != nil -%}
+                                                                {{ item.title }} <span>[PRE-ORDER]</span>
+                                                            {%- else -%}
+                                                                {{ item.title }}
+                                                            {%- endif -%}
+                                                        </a>
                                                     </div>
                                                     <div class="cartQuickView__productLine-qtyAndPrice">
                                                         <span class="cartQuickView__productLine-qty">{{ item.quantity }} &times; </span>
@@ -215,7 +227,7 @@
                                         {%- endfor -%}
                                     </div>
                                     <div class="cartQuickView__totalCart">
-                                        <div class="cartQuickView__totalCart-text">TOTAL:</div>
+                                        <div class="cartQuickView__totalCart-text">{{ 'sections.cart-quickView.total' | t }}:</div>
                                         <div class="cartQuickView__totalCart-total">{{ cart.total_price | money }}</div>
                                     </div>
                                     <div class="cartQuickView__checkOutCont">
@@ -224,7 +236,7 @@
                                 {%- endform -%}
                                 <div class="cartQuickView__viewCartBtn">
                                     <a href="{{ routes.cart_url }}" class="">
-                                        <button class="cartQuickView__viewCartBtn-btn">VIEW CART</button>
+                                        <button class="cartQuickView__viewCartBtn-btn">{{ 'sections.cart-quickView.viewCart' | t }}</button>
                                     </a>
                                 </div>
                             {%- endif -%}

@@ -1,12 +1,18 @@
 
 {%- capture url -%}{{ routes.collections_url }}/{{ collection.handle }}{%- endcapture -%}
+{%- assign img = img -%}
+
 <div class="categoryCard" {{ block.shopify_attributes }}>
     <link rel="stylesheet" href="{{ 'category-card.css' | asset_url }}">
         <div class="categoryCard__imgCont">
             {%- if collection.image.src != blank -%}
                 <a href="{{ url }}"> 
                    {% comment %} <img src="{{ collection.image.src | image_url }} " alt="{{ collection.image.alt }}" /> {% endcomment %}
-                    {%- render 'image-style' , image: collection.image.src , imgClass: "object-fit--contain" -%}
+                   {%- if img == nil -%}
+                        {%- render 'image-style' , image: collection.image.src , imgClass: "object-fit--contain" -%}
+                   {%else%}
+                        {%- render 'image-style' , image: img , imgClass: "object-fit--contain" -%}
+                   {%- endif -%}
                 </a>
             {%- else -%}
                 {{ 'product-1' | placeholder_svg_tag }}

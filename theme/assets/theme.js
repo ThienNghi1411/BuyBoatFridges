@@ -243,10 +243,14 @@
     */
   register("page-banner", {
     onLoad: function() {
+      const settings = JSON.parse(this.container.querySelector("#pageBanner_settings").innerText);
+      const autoPlay = settings.autoPlay * 1e3;
       var slider = tns({
         container: ".pageBanner__slider",
         items: 1,
         mouseDrag: true,
+        autoplay: autoPlay <= 0 ? false : true,
+        autoplayTimeout: autoPlay,
         autoplayButtonOutput: false,
         nav: true,
         navPosition: "bottom",

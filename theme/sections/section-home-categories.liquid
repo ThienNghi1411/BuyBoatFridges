@@ -1,36 +1,62 @@
 <link rel="stylesheet" href="{{ 'homeCategories.css' | asset_url }}">
 <section class="homeCategories">
     <div class="homeCategories__inner">
-        <div class="homeCategories__title">{{ section.settings.title }}</div>
+        <div class="homeCategories__title">{{ section.settings.title | default: "SHOP BY CATEGORIES" }}</div>
         {%- assign fsArr = section.settings.title_fs | split: "," -%}
 
         {%- style -%}
             {%- assign limitPerRow = section.settings.limitPerRow | split: "," -%}
-            @media(min-width: 320px){
-                .homeCategories__title{
-                    font-size: {{ fsArr[0] }} ;
-                    font-weight: {{ section.settings.title_fw }};
-                }
+            
+            .homeCategories__content{
+                grid-template-columns: repeat({{ limitPerRow[0] }},1fr);
             }
+
+            .homeCategories__title{
+                font-size: {{ fsArr[0] }} ;
+                font-weight: {{ section.settings.title_fw }};
+            }
+           
             @media(min-width: 600px){
                 .homeCategories__title{
                     font-size: {{ fsArr[1] }} ;
                 }
+                .homeCategories__content{
+                    grid-template-columns: repeat({{ limitPerRow[1] }},1fr);
+                }
             }
-            @media(min-width: 1440px){
+            @media(min-width: 800px){
+                .homeCategories__content{
+                    grid-template-columns: repeat({{ limitPerRow[2] }},1fr);
+                }
+            }
+
+            @media(min-width: 1080px){
+                .homeCategories__content{
+                    grid-template-columns: repeat({{ limitPerRow[3] }},1fr);
+                }
+            }
+
+            @media(min-width: 1280px){
                 .homeCategories__title{
                     font-size: {{ fsArr[2] }} ;
+                }
+                .homeCategories__content{
+                    grid-template-columns: repeat({{ limitPerRow[4] }},1fr);
                 }
             }
         {%- endstyle -%}
         <div class="homeCategories__content">
-            {% for block in section.blocks %}
-                {% case block.type %}
-                  {% when 'collection' %}
-                    {% assign collection = collections[block.settings.collection] %}
-                    {% render 'category-card' with collection as collection %}
-                {% endcase %}
-              {% endfor %}
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'collection' -%}
+                    {%- assign collection = collections[block.settings.collection] -%}
+                    {%- if block.settings.checkImg == true -%}
+                        {%- render 'category-card' with collection as collection , img: block.settings.imgCollection -%}
+                    {%- else -%}
+                        {%- render 'category-card' with collection as collection -%}
+                    {%- endif -%}
+                {%- endcase -%}
+              {%- endfor -%}
         </div>
     </div>
 </section>
@@ -76,7 +102,7 @@
                 "type":"text",
                 "id": "limitPerRow",
                 "label":"Items per row: ",
-                "info": "E.g: 2,3,4,5,6 - 320px - 600px - 800px - 1000px - 1280px"
+                "info": "E.g: 2,3,4,5,6 - 320px - 600px - 800px - 1080px - 1280px"
             }
         ],
         "blocks":[

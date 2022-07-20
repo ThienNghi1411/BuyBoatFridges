@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="{{ 'productPage.css' | asset_url }}">
-<script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 <script src=" {{ 'product-popup.js' | asset_url }}" defer></script>
-<script>console.log({{ product.collections | json }})</script>
+
 {% comment %} {%- assign collectionUrl = "" -%}
 {%- for collection in product.collections -%}
     {%- if collection.title == product.type -%}
@@ -9,21 +8,14 @@
     {%- endif -%}
 {%- endfor -%} {% endcomment %}
 
-<div class="breadcrumb">
-    <div class="breadcrumb__inner">
-        <div class="breadcrumb__option">
-            <a href="{{ routes.root_url }}" class="">Home</a>
-        </div>
-        <div class="breadcrumb__option">
-            <a href="{{ product.collections[0].url }}" class="">{{ product.collections[0].title }}</a>
-        </div>
-        <div class="breadcrumb__option">
-            <a href="{{ product.url }}" class="">{{ product.vendor }} {{ product.variants[0].sku }}</a>
-        </div>
-    </div>
-</div>
+
 <section class="productPage" data-section-type="product-page" data-section-id="{{ section.id }}">
-    <div class="productPage__inner">                                                    
+    <div class="productPage__inner">
+        {%- form 'product', product , class: "productForm" -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {%- if product.template_suffix == "preOrder" -%}
+            <input id="preorder" type="hidden" value="true" name="properties[preOrder]">    
+        {%- endif -%}                                                     
         <div class="productPage__contentCont">
             <div class="productPage__infoProduct">
                 <div class="productPage__titleProduct">  
@@ -69,12 +61,12 @@
                         {%- endif -%}
                     </div>
                     <div class="productPage__policy">
-                        <div class="productPage__policyOption">
-                            <div class="productPage__policyOption-icon"> <img src="{{ section.settings.iconPolicy1 | image_url }} " alt="{{  }}" /></div>
+                        <div class="productPage__policyOption productPage__shippingPd">
+                            <div class="productPage__policyOption-icon"> <img src="{{ section.settings.iconPolicy1 | image_url }} " alt="{{ section.settings.iconPolicy1.alt }}" /></div>
                             <div class="productPage__policyOption-text">{{ 'sections.productPage.policy1' | t }}</div>
                         </div>
                         <div class="productPage__policyOption productPage__askingPd">
-                            <div class="productPage__policyOption-icon"><img src="{{ section.settings.iconPolicy2 | image_url }} " alt="{{  }}" /></div>
+                            <div class="productPage__policyOption-icon"><img src="{{ section.settings.iconPolicy2 | image_url }} " alt="{{ section.settings.iconPolicy2.alt }}" /></div>
                             <div class="productPage__policyOption-text">{{ 'sections.productPage.policy2' | t }}</div>
                         </div>
                     </div>
@@ -94,10 +86,10 @@
                         {%- endif -%}
                     </div>
                     <div class="productPage__btnCont btnContMobile">
-                        <div class="productPage__btnAdd productPage__btnNoneClick ">
+                        <div class="productPage__btnAdd">
                             <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
                         </div>
-                        <div class="productPage__btnPreOrder">
+                        <div class="productPage__btnPreOrder productPage__btnNoneClick">
                             <button class="productPage__btnPreOrder-btn" type="submit" name="add">{{ 'sections.productPage.preOrderBtn' | t }}</button>
                         </div>
                     </div>
@@ -148,13 +140,14 @@
             </div>
         </div>
         <div class="productPage__btnCont btnContDestop">
-            <div class="productPage__btnAdd productPage__btnNoneClick ">
+            <div class="productPage__btnAdd ">
                 <button class="productPage__btnAdd-btn" type="submit" name="add">{{ 'sections.productPage.addToCart' | t }}</button>
             </div>
-            <div class="productPage__btnPreOrder">
+            <div class="productPage__btnPreOrder productPage__btnNoneClick">
                     <button class="productPage__btnPreOrder-btn" >{{ 'sections.productPage.preOrderBtn' | t }}</button>
             </div>
         </div>
+        {%- endform -%}
     </div>
     <div class="loading__spinner"></div>
     <script id="productPage__settings" type="application/ld+json">
@@ -164,24 +157,7 @@
         }
     </script>
 </section>
-<div class="cartPopupCont">
-    <cart-popup-error class="cartPopUpError">
-        <div class="cartPopUpError__overlay">
-            <div class="cartPopUpError__content">
-                <div class="cartPopUpError__header">
-                    <div class="cartPopUpError__header-icon">
-                        {%- render 'icon-warning'-%}
-                    </div>
-                    <div class="cartPopUpError__header-text">Warning</div>
-                </div>
-                <div class="cartPopUpError__error">You can only add {{ product.variants[0].inventory_quantity }} of this item to your cart.</div>
-                <div class="cartPopUpError__iconClose">
-                    {%- render 'icon-X' -%}
-                </div>
-            </div>
-        </div>
-    </cart-popup-error>
-</div>
+
 <div class="popupAskingCont">
     <product-popup-asking class="popupAsking">
         <div class="popupAsking__overlay">
@@ -244,6 +220,17 @@
         </div>
     </product-popup-asking>
 </div>
+<div class="popupShippingCont">
+    <product-popup-shipping class="popupShipping">
+        <div class="popupShipping__overlay">
+            <div class="popupShipping__content">
+                <div class="popupShipping__title">{{ 'sections.productPage.popupShipping.title' | t }}</div>
+                <div class="popupShipping__btnClose"> {%- render 'icon-X' -%} </div>
+                <div class="popupShipping__content-text">{{ pages[product.metafields.shopping.page].content }}</div>
+            </div>
+        </div>
+    </product-popup-shipping>
+</div>
  {% comment %} <div class="popupPreOrderCont">
     <product-popup-preorder class="popupPreOrder">
         <div class="popupPreOrder__overlay">
@@ -305,6 +292,26 @@
         </div>
     </product-popup-preorder>
 </div>  {% endcomment %}
+{% comment %} <div class="quickAdd">
+    {%- form 'product', product , class: "productForm" -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">    
+        <div class="quickAdd__inner">
+            <div class="quickAdd__productInfo">
+                <div class="quickAdd__productImg">
+                    {%- render 'image-style', image: product.featured_image , imgClass: "object-fit--contain" -%}
+                </div>
+                <div class="quickAdd__productName">{{ productName }}</div>
+            </div>
+            <div class="quickAdd__productAdd">
+                <div class="quickAdd__productPrice">USD {{ product.variants[0].price | money }}</div>
+                <input type="number" name="quantity" class="quickAdd__inputField" min="1" value="1">
+                <div class="quickAdd__btnAddToCart">
+                    <button class="quickAdd__btnAddToCart-btn" type="submit">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    {%- endform -%}
+</div> {% endcomment %}
 
 <script src="{{ 'product-pagePreOrder.js' | asset_url }}" defer></script>
 

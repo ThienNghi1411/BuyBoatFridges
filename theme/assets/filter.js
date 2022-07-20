@@ -1,6 +1,7 @@
 (() => {
   // app/scripts/filter.js
   document.addEventListener("DOMContentLoaded", function() {
+    renderOption();
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
@@ -114,88 +115,83 @@
       empty.style.display = "unset";
     }
   });
-  var x;
-  var i;
-  var j;
-  var l;
-  var ll;
-  var selElmnt;
-  var a;
-  var b;
-  var c;
-  x = document.getElementsByClassName("custom-select");
-  l = x.length;
-  for (i = 0; i < l; i++) {
-    selElmnt = x[i].getElementsByTagName("select")[0];
-    ll = selElmnt.length;
-    console.log(ll);
-    a = document.createElement("DIV");
-    a.setAttribute("class", "select-selected");
-    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-    x[i].appendChild(a);
-    b = document.createElement("DIV");
-    b.setAttribute("class", "select-items select-hide");
-    for (j = 0; j < ll; j++) {
-      c = document.createElement("DIV");
-      c.innerHTML = selElmnt.options[j].innerHTML;
-      c.setAttribute("value", selElmnt.options[j].value);
-      c.classList.add("filter-option");
-      c.addEventListener("click", function(e) {
-        var y, i2, k, s, h, sl, yl;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        sl = s.length;
-        h = this.parentNode.previousSibling;
-        for (i2 = 0; i2 < sl; i2++) {
-          if (s.options[i2].innerHTML == this.innerHTML) {
-            s.selectedIndex = i2;
-            h.innerHTML = this.innerHTML;
-            h.setAttribute("value", s.options[i2].value);
-            let a2 = parseInt(s.options[i2].value);
-            console.log(s.options[i2].value);
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            yl = y.length;
-            Shopify.queryParams = {};
-            Shopify.queryParams.sort_by = s.options[i2].value;
-            location.search = new URLSearchParams(Shopify.queryParams).toString();
-            for (k = 0; k < yl; k++) {
-              y[k].classList.remove("same-as-selected");
+  renderOption = () => {
+    var x, i2, j, l, ll, selElmnt, a, b, c;
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i2 = 0; i2 < l; i2++) {
+      selElmnt = x[i2].getElementsByTagName("select")[0];
+      ll = selElmnt.length;
+      console.log(ll);
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i2].appendChild(a);
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 0; j < ll; j++) {
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.setAttribute("value", selElmnt.options[j].value);
+        c.classList.add("filter-option");
+        c.addEventListener("click", function(e) {
+          var y, i3, k, s, h, sl, yl;
+          s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+          sl = s.length;
+          h = this.parentNode.previousSibling;
+          for (i3 = 0; i3 < sl; i3++) {
+            if (s.options[i3].innerHTML == this.innerHTML) {
+              s.selectedIndex = i3;
+              h.innerHTML = this.innerHTML;
+              h.setAttribute("value", s.options[i3].value);
+              let a2 = parseInt(s.options[i3].value);
+              console.log(s.options[i3].value);
+              y = this.parentNode.getElementsByClassName("same-as-selected");
+              yl = y.length;
+              Shopify.queryParams = {};
+              Shopify.queryParams.sort_by = s.options[i3].value;
+              location.search = new URLSearchParams(Shopify.queryParams).toString();
+              for (k = 0; k < yl; k++) {
+                y[k].classList.remove("same-as-selected");
+              }
+              this.classList.add("same-as-selected");
+              break;
             }
-            this.classList.add("same-as-selected");
-            break;
           }
-        }
-        h.click();
+          h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i2].appendChild(b);
+      a.addEventListener("click", function(e) {
+        e.stopPropagation();
+        closeAllSelect(this);
+        this.nextSibling.classList.toggle("select-hide");
+        this.classList.toggle("select-arrow-active");
       });
-      b.appendChild(c);
     }
-    x[i].appendChild(b);
-    a.addEventListener("click", function(e) {
-      e.stopPropagation();
-      closeAllSelect(this);
-      this.nextSibling.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
-    });
-  }
-  function closeAllSelect(elmnt) {
-    var x2, y, i2, xl, yl, arrNo = [];
-    x2 = document.getElementsByClassName("select-items");
-    y = document.getElementsByClassName("select-selected");
-    xl = x2.length;
-    yl = y.length;
-    for (i2 = 0; i2 < yl; i2++) {
-      if (elmnt == y[i2]) {
-        arrNo.push(i2);
-      } else {
-        y[i2].classList.remove("select-arrow-active");
+    function closeAllSelect(elmnt) {
+      var x2, y, i3, xl, yl, arrNo = [];
+      x2 = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      xl = x2.length;
+      yl = y.length;
+      for (i3 = 0; i3 < yl; i3++) {
+        if (elmnt == y[i3]) {
+          arrNo.push(i3);
+        } else {
+          y[i3].classList.remove("select-arrow-active");
+        }
+      }
+      for (i3 = 0; i3 < xl; i3++) {
+        if (arrNo.indexOf(i3)) {
+          x2[i3].classList.add("select-hide");
+        }
       }
     }
-    for (i2 = 0; i2 < xl; i2++) {
-      if (arrNo.indexOf(i2)) {
-        x2[i2].classList.add("select-hide");
-      }
-    }
-  }
-  document.addEventListener("click", closeAllSelect);
-  document.addEventListener("shopify:section:load", function(event) {
+    document.addEventListener("click", closeAllSelect);
+  };
+  document.addEventListener("shopify:section:load", () => {
+    renderOption();
   });
 })();

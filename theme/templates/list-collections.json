@@ -1,0 +1,102 @@
+{
+  "sections": {
+    "main": {
+      "type": "section-list-collections",
+      "blocks": {
+        "4f3c8b4f-e8af-4853-a3ce-40711dca3ff1": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "front-loading-refrigerator"
+          }
+        },
+        "a81794f7-f1c6-476a-991c-71de87b42e77": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "fridge-freezer"
+          }
+        },
+        "f9231936-af8b-4d9a-a133-2c7ce6375fac": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "fridges"
+          }
+        },
+        "d10beb6e-b993-459b-8740-7e0461b69c10": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "freezers"
+          }
+        },
+        "e2010650-ee7c-49bf-9d94-9b4315ac263f": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "top-loading-countertop"
+          }
+        },
+        "a6a0c53e-f6d4-4dd8-bcb4-c1a211f27246": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "wine-coolers"
+          }
+        },
+        "32526894-f4f5-431f-8e26-071be580f393": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "vitrifrigo-ice-makers"
+          }
+        },
+        "60bb4606-93f9-4de9-bc70-4d603180ab89": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "portable-refrigerators"
+          }
+        },
+        "073e7947-914e-405f-8352-f852486a8f7c": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "safes"
+          }
+        },
+        "73f05907-bfd8-425d-82d2-da9e6bae3d35": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "condensing-units"
+          }
+        },
+        "013920e4-15bf-448a-a999-b7ded25f052d": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "evaporators"
+          }
+        },
+        "314220a4-dfd1-457d-b941-76cbee4305e9": {
+          "type": "add_collection",
+          "settings": {
+            "collect": "spare-parts"
+          }
+        }
+      },
+      "block_order": [
+        "4f3c8b4f-e8af-4853-a3ce-40711dca3ff1",
+        "a81794f7-f1c6-476a-991c-71de87b42e77",
+        "f9231936-af8b-4d9a-a133-2c7ce6375fac",
+        "d10beb6e-b993-459b-8740-7e0461b69c10",
+        "e2010650-ee7c-49bf-9d94-9b4315ac263f",
+        "a6a0c53e-f6d4-4dd8-bcb4-c1a211f27246",
+        "32526894-f4f5-431f-8e26-071be580f393",
+        "60bb4606-93f9-4de9-bc70-4d603180ab89",
+        "073e7947-914e-405f-8352-f852486a8f7c",
+        "73f05907-bfd8-425d-82d2-da9e6bae3d35",
+        "013920e4-15bf-448a-a999-b7ded25f052d",
+        "314220a4-dfd1-457d-b941-76cbee4305e9"
+      ],
+      "settings": {
+        "limitPerRow": "2,3,3,4,4",
+        "show_display": "1"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

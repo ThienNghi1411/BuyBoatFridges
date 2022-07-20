@@ -25,7 +25,27 @@
     {% section 'header' %}
   </header>
   <main role="main">
+    {%- render 'breadcrumb' -%}
     {{ content_for_layout }}
+    <div class="cartPopupCont">
+      <cart-popup-error class="cartPopUpError">
+          <div class="cartPopUpError__overlay">
+              <div class="cartPopUpError__content">
+                  <div class="cartPopUpError__header">
+                      <div class="cartPopUpError__header-icon">
+                          {%- render 'icon-warning'-%}
+                      </div>
+                      <div class="cartPopUpError__header-text">{{ 'sections.cart-popup-error.title' | t }}</div>
+                  </div>
+                  <div class="cartPopUpError__error"></div>
+                  <div class="cartPopUpError__iconClose">
+                      {%- render 'icon-X' -%}
+                  </div>
+              </div>
+          </div>
+      </cart-popup-error>
+    </div>
+    <div class="loading__spinner spinnerAddToCart" style="right:0 ; left: 50%"></div> 
   </main>
   <footer>
     {% render 'snippet-render-footer' %}
@@ -33,5 +53,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js' defer></script>
   <script src="{{ 'plugin.js' | asset_url }}" defer></script>
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <script src=" {{ 'product-card.js' | asset_url }}" defer></script>
+  <script src=" {{ 'cart-popup.js' | asset_url }}" defer></script>
 </body>
 </html>

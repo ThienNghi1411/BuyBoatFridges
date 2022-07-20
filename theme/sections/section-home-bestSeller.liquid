@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ 'homeBestSeller.css' | asset_url }}">
 <section class="homeBestSeller">
     <div class="homeBestSeller__inner">
-        <div class="homeBestSeller__title">{{ section.settings.title }}</div>
+        <div class="homeBestSeller__title">{{ section.settings.title | default: "BEST SELLER" }}</div>
         {%- assign fsArr = section.settings.title_fs | split: "," -%}
 
         {%- style -%}
@@ -24,8 +24,9 @@
         {%- endstyle -%}
         <div class="homeBestSeller__content">
             <div class="homeBestSeller__contentCont">
-                {%- for product in collections[ section.settings.collection].products limit : section.settings.limitProduct -%}
-                    {%- render 'product-card' with product as product -%}
+                {%- assign collection = collections[ section.settings.collection] -%}
+                {%- for product in collection.products limit : section.settings.limitProduct -%}
+                    {%- render 'product-card' with product as product , collection: collection -%}
                 {%- endfor -%}
             </div>
         </div>

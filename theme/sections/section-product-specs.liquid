@@ -170,6 +170,7 @@
                     <div class="productSpecs__contentDestop">
                         <div class="productSpecs__columnLayout">
                             {%- assign dataProducts = product.metafields.part.product | split: "|" -%}
+                            
                             {%- for pdName in dataProducts -%}
                                 {%- assign dataProduct = all_products[pdName] -%}
                                 {%- if dataProduct.id != blank -%}

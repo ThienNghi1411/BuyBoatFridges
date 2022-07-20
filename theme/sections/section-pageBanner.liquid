@@ -26,7 +26,18 @@
           <div class="controls__nextBtn">{% render 'icon-angle-right' %}</div>
         </div>
     </div>
-
+    {%- if section.settings.fullWidth == true -%}
+      {%- style -%}
+          .pageBanner__inner{
+             max-width: 100% !important;
+          }
+      {%- endstyle -%}
+    {%- endif -%}
+    <script id="pageBanner_settings" type="application/ld+json">
+      {
+          "autoPlay" : {{ section.settings.autoPlay | json }}
+      }
+    </script> 
 </section>
 {% schema %}
     {
@@ -41,6 +52,18 @@
             {
                 "type":"header",
                 "content":"Slider"
+            },
+            {
+                "type":"checkbox",
+                "id":"fullWidth",
+                "label":"Full Width Slider"
+            },
+            {
+              "type":"number",
+              "id":"autoPlay",
+              "label":"Auto play slider (in second)",
+              "info":"E.g: 5 - If auto play <= 0 , slider will disable autoplay",
+              "default":0
             }
         ],
         "blocks": [
