@@ -102,7 +102,11 @@
         top: 100%;
         left: 0;
         transform: translateY(15px);
+<<<<<<< HEAD
         z-index: 990;
+=======
+        z-index: 99999;
+>>>>>>> TheNgan
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border-radius: 5px;
@@ -251,7 +255,10 @@
 .cartQuickView{
     width: 100%;
     min-height: 160px;
+<<<<<<< HEAD
     -webkit-animation: opacity .5s;
+=======
+>>>>>>> TheNgan
     &__inner{
         width: 100%;
     }
@@ -282,6 +289,10 @@
         }
         &-productTitle{
             font-size: 14px;
+<<<<<<< HEAD
+=======
+            color: #454545;
+>>>>>>> TheNgan
             margin-bottom: 5px;
             & a span{
                 color: var(--primary-color);
@@ -408,8 +419,13 @@
 }
 
 .miniCartMobile{
+<<<<<<< HEAD
     position: fixed;
     z-index: 99999;
+=======
+    position: absolute;
+    z-index: 10;
+>>>>>>> TheNgan
     width: 100%;
     height: 100%;
     top: 0;
@@ -588,12 +604,28 @@
         display: none !important;
     }
 }
+<<<<<<< HEAD
 
 @media (min-width: 1080px){
     .header{
+=======
+@media (min-width: 1080px){
+    .header{
+       width: 100%;
+        padding: 15px 0px 0px 0px;
+>>>>>>> TheNgan
         &__inner{
             width: 1000px;
             max-width: 1000px;
+            margin: 0 auto;
+        }
+    }
+}
+@media (min-width: 1280px){
+    .header{
+        padding: 15px 0px 0px 0px;
+        &__inner{
+            max-width: 1200px;
             margin: 0 auto;
         }
     }
@@ -608,5 +640,9 @@
             max-width: 1200px;
         }
     }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> TheNgan

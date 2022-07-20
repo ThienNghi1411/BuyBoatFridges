@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const removeClass = (doms , className) => {
     doms.forEach(dom => {
         if (dom.classList.contains(className)){
@@ -49,3 +50,5 @@ const init = () => {
 }
 
 init();
+=======
+>>>>>>> TheNgan

@@ -1,4 +1,3 @@
-
 @import "reset.scss";
 @import "base.scss";
 @import "tiny-slider.scss";
@@ -25,22 +24,39 @@ a{
     width: 100%;
 }
 
+<<<<<<< HEAD
 // /* Chrome, Safari, Edge, Opera */
 // input::-webkit-outer-spin-button,
 // input::-webkit-inner-spin-button {
 //   -webkit-appearance: none;
 //   margin: 0;
 // }
+=======
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+>>>>>>> TheNgan
 
 button{
     border: none;
     background-color: inherit;
 }
 
+<<<<<<< HEAD
 // /* Firefox */
 // input[type=number] {
 //   -moz-appearance: textfield;
 // }
+
+=======
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+>>>>>>> TheNgan
 
 
 .breadcrumb{
@@ -178,12 +194,15 @@ html, body {
 img.lazyload:not([src]) {
 	visibility: hidden;
 }
+<<<<<<< HEAD
 
 .flex{
     display: flex;
     flex-wrap: wrap;
 }
 
+=======
+>>>>>>> TheNgan
 .shopify-challenge__container
 {
     padding: 53px 15px 59px;
@@ -224,6 +243,7 @@ img.lazyload:not([src]) {
     {
         margin: 52px auto !important;
     }
+<<<<<<< HEAD
 }
 
 
@@ -322,4 +342,6 @@ from {
 to {
     opacity: 1;
 }
+=======
+>>>>>>> TheNgan
 }

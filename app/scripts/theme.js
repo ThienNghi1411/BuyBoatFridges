@@ -4,7 +4,11 @@
   */
 
   import "./common/theme-section";
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> TheNgan
   register("page-banner", {
     onLoad: function () {
       const settings = JSON.parse(this.container.querySelector("#pageBanner_settings").innerText);
@@ -142,6 +146,16 @@
       nextButton: ".control__imgProductMobile-nextBtn"
     });
     }
+  });
+  register("collection", {
+    onLoad: function () {
+      
+    },
+    onUnload: function () {},
+    onSelect: function () {},
+    onDeselect: function () {},
+    onBlockSelect: function (e) {},
+    onBlockDeselect: function (e) {},
   });
 
   load("*");

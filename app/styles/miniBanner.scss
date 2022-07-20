@@ -99,7 +99,7 @@
         }
         &__productBanner{
             &-wrap{
-                max-width: 476px;
+                max-width: 500px;
             }
         }
     }
@@ -112,8 +112,23 @@
         }
         &__productBanner{
             &-wrap{
-                max-width: 590px;
+                max-width: 600px;
+                height: 371px !important;
             }
         }
     }
 }
+
+// @media (min-width: 1440px){
+//     .miniBanner{
+//         max-width: 100%;
+//         &__inner{
+//             max-width: 1220px;
+//         }
+//         &__productBanner{
+//             &-wrap{
+//                 max-width: 590px;
+//             }
+//         }
+//     }
+// }
