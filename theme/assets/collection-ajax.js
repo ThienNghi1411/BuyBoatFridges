@@ -49,6 +49,7 @@
           icon_Open.style.display = "unset";
           icon_Close.style.display = "none";
           e.parentElement.style.marginBottom = "20px";
+          e.parentElement.style.paddingBottom = "0px";
         } else {
           let clear_All = e.nextElementSibling.nextElementSibling;
           if (clear_All != null) {
@@ -60,6 +61,7 @@
           icon_Open.style.display = "none";
           icon_Close.style.display = "unset";
           e.parentElement.style.marginBottom = "0px";
+          e.parentElement.style.paddingBottom = "30px";
         }
       });
     });
@@ -88,6 +90,7 @@
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
       let product_count = html_div.querySelectorAll(".productCard").length;
+      console.log(html_div.querySelectorAll(".productCard"));
       collection__tittle.innerHTML = collection_title + ` (${product_count})`;
       spinner.style.display = "none";
       history.replaceState(null, null, "/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value);
@@ -100,6 +103,10 @@
       if (product_count != 0) {
         let empty = document.querySelector(".collection__empty");
         empty.style.display = "none";
+      }
+      if (Shopify.designMode) {
+        render_value = document.querySelector(".collection__itemDisplay").children[0].children[2].children[0].innerText;
+        render_number = parseInt(render_value);
       }
       if (product_count > render_number) {
         for (i = 0; i < render_number; i++) {
@@ -155,9 +162,11 @@
     }
   };
   document.addEventListener("DOMContentLoaded", function() {
+    renderOption();
     let filter = window.location.href;
     let array = filter.split("?");
     let url_array = array[0].split("/");
+    console.log(url_array);
     if (url_array[5] != void 0 && url_array[5] != "" || array[1] != "" && array[1] != void 0) {
       let items = url_array[5].split("+");
       let html_dom = `<div class="filter__tittle  filter_active">
@@ -230,11 +239,11 @@
       Control();
       removeTags();
       Query = "";
-      let sort_default = document.querySelector(".select-items").children[1];
+      let sort_default = document.querySelector(".select-items").children[4];
       sort_default.click();
       document.querySelector(".filter-option").classList.add("no-after");
-      sort_value = "best-selling";
-      document.getElementsByClassName("select-items")[0].children[1].classList.add("same-as-selected");
+      sort_value = "price-ascending";
+      document.getElementsByClassName("select-items")[0].children[4].classList.add("same-as-selected");
       document.getElementsByClassName("select-items")[1].children[0].classList.add("same-as-selected");
       document.getElementsByClassName("select-items")[1].children[0].classList.add("no-after");
       render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
@@ -280,7 +289,6 @@
       ClearAll_button.addEventListener("click", () => {
         clearAll();
       });
-      Control();
       let html_dom2 = `
          <div class="shopingBy_tag">
          <div class="tag_text">
@@ -302,6 +310,36 @@
         Query = Query + "+" + newString;
       renderItems();
       removeTags();
+      var content = document.querySelector(".filter__tittle");
+      let item = content.nextElementSibling;
+      let icon_Open = content.children[2];
+      let icon_Close = content.children[1];
+      content.addEventListener("click", () => {
+        if (content.classList.contains("filter_active")) {
+          let clear_All = content.nextElementSibling.nextElementSibling;
+          if (clear_All != null) {
+            clear_All.style.display = "none";
+          }
+          content.classList.remove("filter_active");
+          item.style.display = "none";
+          icon_Open.style.display = "unset";
+          icon_Close.style.display = "none";
+          content.parentElement.style.marginBottom = "20px";
+          content.parentElement.style.paddingBottom = "20px";
+        } else {
+          let clear_All = content.nextElementSibling.nextElementSibling;
+          if (clear_All != null) {
+            clear_All.style.display = "flex";
+            clear_All.style.padding = "10px 0px 30px 0px";
+          }
+          content.classList.add("filter_active");
+          item.style.display = "flex";
+          icon_Open.style.display = "none";
+          icon_Close.style.display = "unset";
+          content.parentElement.style.marginBottom = "0px";
+          content.parentElement.style.paddingBottom = "30px";
+        }
+      });
     });
   });
   loadmore = () => {
@@ -318,10 +356,13 @@
       html_div.innerHTML = data;
       let collection__tittle = document.querySelector(".collection__tittle");
       let product_count = html_div.querySelectorAll(".productCard").length;
-      let itemOnScreen = document.querySelectorAll(".productCard").length;
+      console.log(html_div.querySelectorAll(".productCard"));
+      let itemOnScreen = document.querySelector(".collection__Productcontent").childElementCount;
       collection__tittle.innerHTML = collection_handle + `(${product_count})`;
       spinner.style.display = "none";
       history.replaceState(null, null, "/collections/" + collection_handle.toLowerCase() + "/" + Query + "?sort_by=" + sort_value);
+      console.log(product_count);
+      console.log(itemOnScreen);
       let ProductContainer = html_div.querySelector(".collection__Productcontent");
       for (i = 0; i < render_number2; i++) {
         if (itemOnScreen + i < product_count) {
@@ -332,7 +373,7 @@
           document.querySelector(".collection__Productcontent").appendChild(div);
         }
       }
-      let ItemOnScreen = document.querySelectorAll(".productCard").length;
+      let ItemOnScreen = document.querySelector(".collection__Productcontent").childElementCount;
       if (ItemOnScreen == product_count) {
         let loadmore2 = document.querySelector(".collection__loadMore");
         loadmore2.style.display = "none";
@@ -347,7 +388,7 @@
   var footer = document.querySelector(".footer");
   window.addEventListener("scroll", () => {
     if (!task) {
-      let products = document.querySelectorAll(".productCard").length;
+      let products = document.querySelector(".collection__Productcontent").childElementCount;
       if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - footer.offsetHeight) {
         task = true;
         let tittle = document.querySelector(".collection__tittle").innerHTML;
@@ -360,101 +401,97 @@
       }
     }
   });
-  var x;
-  var i;
-  var j;
-  var l;
-  var ll;
-  var selElmnt;
-  var a;
-  var b;
-  var c;
-  x = document.getElementsByClassName("custom-select");
-  l = x.length;
-  for (i = 0; i < l; i++) {
-    selElmnt = x[i].getElementsByTagName("select")[0];
-    ll = selElmnt.length;
-    a = document.createElement("DIV");
-    a.setAttribute("class", "select-selected");
-    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-    x[i].appendChild(a);
-    b = document.createElement("DIV");
-    b.setAttribute("class", "select-items select-hide");
-    for (j = 0; j < ll; j++) {
-      c = document.createElement("DIV");
-      c.innerHTML = selElmnt.options[j].innerHTML;
-      c.setAttribute("value", selElmnt.options[j].value);
-      c.classList.add("filter-option");
-      c.addEventListener("click", function(e) {
-        task = false;
-        let after_items = document.querySelectorAll(".no-after");
-        after_items.forEach((e2) => {
-          e2.classList.remove("no-after");
-        });
-        document.querySelector(".filter-option").classList.add("no-after");
-        document.querySelectorAll(".select-items")[1].children[0].classList.add("no-after");
-        var y, i2, k, s, h, sl, yl;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        sl = s.length;
-        h = this.parentNode.previousSibling;
-        for (i2 = 0; i2 < sl; i2++) {
-          if (s.options[i2].innerHTML == this.innerHTML) {
-            s.selectedIndex = i2;
-            h.innerHTML = this.innerHTML;
-            h.setAttribute("value", s.options[i2].value);
-            let a2 = parseInt(s.options[i2].value);
-            if (a2 > 0 || a2 == "ALL") {
-              let value = window.location.href;
-              sort_value = value.split("=")[1];
-              render_number = a2;
-              renderItems();
-            } else {
-              sort_value = s.options[i2].value;
-              render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
-              renderItems();
+  renderOption = () => {
+    var x, i2, j, l, ll, selElmnt, a, b, c;
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i2 = 0; i2 < l; i2++) {
+      selElmnt = x[i2].getElementsByTagName("select")[0];
+      ll = selElmnt.length;
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i2].appendChild(a);
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 0; j < ll; j++) {
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.setAttribute("value", selElmnt.options[j].value);
+        c.classList.add("filter-option");
+        c.addEventListener("click", function(e) {
+          task = false;
+          let after_items = document.querySelectorAll(".no-after");
+          after_items.forEach((e2) => {
+            e2.classList.remove("no-after");
+          });
+          document.querySelector(".filter-option").classList.add("no-after");
+          document.querySelectorAll(".select-items")[1].children[0].classList.add("no-after");
+          var y, i3, k, s, h, sl, yl;
+          s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+          sl = s.length;
+          h = this.parentNode.previousSibling;
+          for (i3 = 0; i3 < sl; i3++) {
+            if (s.options[i3].innerHTML == this.innerHTML) {
+              s.selectedIndex = i3;
+              h.innerHTML = this.innerHTML;
+              h.setAttribute("value", s.options[i3].value);
+              let a2 = parseInt(s.options[i3].value);
+              if (a2 > 0 || a2 == "ALL") {
+                let value = window.location.href;
+                sort_value = value.split("=")[1];
+                render_number = a2;
+                renderItems();
+              } else {
+                sort_value = s.options[i3].value;
+                render_number = parseInt(document.getElementsByClassName("select-selected")[1].innerHTML);
+                renderItems();
+              }
+              y = this.parentNode.getElementsByClassName("same-as-selected");
+              yl = y.length;
+              for (k = 0; k < yl; k++) {
+                y[k].classList.remove("same-as-selected");
+              }
+              this.classList.add("same-as-selected");
+              this.classList.add("no-after");
+              if (this.nextElementSibling != null)
+                this.nextElementSibling.classList.add("no-after");
+              break;
             }
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            yl = y.length;
-            for (k = 0; k < yl; k++) {
-              y[k].classList.remove("same-as-selected");
-            }
-            this.classList.add("same-as-selected");
-            this.classList.add("no-after");
-            if (this.nextElementSibling != null)
-              this.nextElementSibling.classList.add("no-after");
-            break;
           }
-        }
-        h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i2].appendChild(b);
+      a.addEventListener("click", function(e) {
+        e.stopPropagation();
+        closeAllSelect(this);
+        this.nextSibling.classList.toggle("select-hide");
+        this.classList.toggle("select-arrow-active");
       });
-      b.appendChild(c);
     }
-    x[i].appendChild(b);
-    a.addEventListener("click", function(e) {
-      e.stopPropagation();
-      closeAllSelect(this);
-      this.nextSibling.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
-    });
-  }
-  function closeAllSelect(elmnt) {
-    var x2, y, i2, xl, yl, arrNo = [];
-    x2 = document.getElementsByClassName("select-items");
-    y = document.getElementsByClassName("select-selected");
-    xl = x2.length;
-    yl = y.length;
-    for (i2 = 0; i2 < yl; i2++) {
-      if (elmnt == y[i2]) {
-        arrNo.push(i2);
-      } else {
-        y[i2].classList.remove("select-arrow-active");
+    function closeAllSelect(elmnt) {
+      var x2, y, i3, xl, yl, arrNo = [];
+      x2 = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      xl = x2.length;
+      yl = y.length;
+      for (i3 = 0; i3 < yl; i3++) {
+        if (elmnt == y[i3]) {
+          arrNo.push(i3);
+        } else {
+          y[i3].classList.remove("select-arrow-active");
+        }
+      }
+      for (i3 = 0; i3 < xl; i3++) {
+        if (arrNo.indexOf(i3)) {
+          x2[i3].classList.add("select-hide");
+        }
       }
     }
-    for (i2 = 0; i2 < xl; i2++) {
-      if (arrNo.indexOf(i2)) {
-        x2[i2].classList.add("select-hide");
-      }
-    }
-  }
-  document.addEventListener("click", closeAllSelect);
+    document.addEventListener("click", closeAllSelect);
+  };
+  document.addEventListener("shopify:section:load", () => {
+    renderOption();
+  });
 })();

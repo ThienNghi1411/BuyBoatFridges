@@ -60,7 +60,6 @@
         margin-bottom: 11px ;
     }
     &__productName{
-        color: #454545;
         font-size: 12px;
         font-weight: 500;
         margin-bottom: 15px;
@@ -77,13 +76,11 @@
         &-salePrice{
             font-size: 16px;
             font-weight: bold;
-            color: #454545;
         }
         &-basePrice{
             font-size: 15px;
             font-weight: 400;
             text-decoration: line-through;
-            color: #454545;
         }
         &-btnAdd{
             width: 100%;
@@ -120,7 +117,6 @@
             margin-bottom: 11px ;
         }
         &__productName{
-            color: #454545;
             font-size: 12px;
             font-weight: 500;
             margin-bottom: 15px;
@@ -137,13 +133,11 @@
             &-salePrice{
                 font-size: 16px;
                 font-weight: bold;
-                color: #454545;
             }
             &-basePrice{
                 font-size: 15px;
                 font-weight: 400;
                 text-decoration: line-through;
-                color: #454545;
                 display: none;
             }
             &-btnAdd{

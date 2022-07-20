@@ -61,7 +61,6 @@
   margin-bottom: 15px; }
 
 .miniBanner__productBanner-titleProduct-subTitle {
-  color: #454545;
   font-size: 10px;
   font-weight: 500;
   margin-bottom: 15px; }
@@ -74,14 +73,12 @@
 
 .miniBanner__productBanner-priceProduct-lastPrice {
   font-size: 20px;
-  font-weight: 700;
-  color: #454545; }
+  font-weight: 700; }
 
 .miniBanner__productBanner-priceProduct-basePrice {
   font-size: 13px;
   font-weight: 400;
   text-decoration: line-through;
-  color: #454545;
   display: none; }
 
 .miniBanner__productBanner-btnSeeMoreCont {

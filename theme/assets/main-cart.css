@@ -5,7 +5,6 @@
 .cartPage__title {
   font-size: 24px;
   font-weight: 500;
-  color: #454545;
   text-align: center;
   border-bottom: 1px solid #c1c1c1;
   padding-bottom: 30px; }
@@ -112,8 +111,7 @@
 
 .cartPage__clearCart-text, .cartPage__continueShopping-text {
   font-size: 14px;
-  font-weight: 400;
-  color: #454545; }
+  font-weight: 400; }
 
 .cartPage__shipAndTax {
   width: 100%;
@@ -122,13 +120,11 @@
 .cartPage__shipAndTax-title {
   font-size: 17px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 20px; }
 
 .cartPage__shipAndTax-subTitle {
   font-size: 14px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 20px; }
 
 .cartPage__form {
@@ -144,7 +140,6 @@
 .cartPage__formField-label {
   font-size: 14px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 7px; }
 
 .cartPage__formField-input, .cartPage__formField-select {
@@ -164,7 +159,6 @@
 .cartPage__inputZipCode-title, .cartPage__selectCountry-title, .cartPage__selectProvince-title {
   font-size: 14px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 7px; }
 
 .cartPage__inputZipCode-select, .cartPage__selectCountry-select, .cartPage__selectProvince-select {
@@ -205,7 +199,6 @@
 .cartPage__resCalculate-title {
   font-size: 14px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 7px; }
 
 .cartPage__resCalculate-listRes {
@@ -215,7 +208,6 @@
 .cartPage__resCalculate-listRes-option {
   font-size: 14px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 7px; }
 
 .cartPage__noteBox {
@@ -227,13 +219,11 @@
 .cartPage__noteBox-title {
   font-size: 17px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 20px; }
 
 .cartPage__noteBox-subTitle {
   font-size: 14px;
   font-weight: 400;
-  color: #454545;
   margin-bottom: 20px; }
 
 .cartPage__noteBox-text {
@@ -263,8 +253,7 @@
 
 .cartPage__subTotal-price, .cartPage__subTotal-text {
   font-size: 16px;
-  font-weight: 400;
-  color: #454545; }
+  font-weight: 400; }
 
 .cartPage__grandTotal {
   display: flex;
@@ -273,8 +262,7 @@
 
 .cartPage__grandTotal-price, .cartPage__grandTotal-text {
   font-size: 20px;
-  font-weight: 500;
-  color: #454545; }
+  font-weight: 500; }
 
 .cartPage__emptyCart {
   width: 100%;
@@ -293,14 +281,12 @@
 .cartPage__emptyCart-title {
   font-size: 24px;
   font-weight: 500;
-  margin-bottom: 10px;
-  color: #454545; }
+  margin-bottom: 10px; }
 
 .cartPage__emptyCart-subTitle {
   font-size: 15px;
   font-weight: 400;
-  margin-bottom: 20px;
-  color: #454545; }
+  margin-bottom: 20px; }
 
 .cartPage__emptyCart-btnShopping {
   width: 208px;
@@ -372,8 +358,7 @@
 
 .cartPopUpError__header-text {
   font-size: 26px;
-  font-weight: 700;
-  color: #454545; }
+  font-weight: 700; }
 
 .cartPopUpError__error {
   font-size: 15px; }

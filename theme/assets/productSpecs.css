@@ -53,6 +53,9 @@
   border: 1px solid #c1c1c1;
   display: none; }
 
+.productSpecs__content, .productSpecs__contentDestop {
+  -webkit-animation: opacity .5s; }
+
 .productSpecs__contentDestop p .main-title, .productSpecs__content p .main-title {
   font-size: 25px; }
 
@@ -101,8 +104,7 @@
   gap: 7px; }
 
 .productSpecs__listDocument-lineText {
-  font-size: 15px;
-  color: #454545; }
+  font-size: 15px; }
 
 .productSpecs__listDocument-lineType {
   font-size: 15px;

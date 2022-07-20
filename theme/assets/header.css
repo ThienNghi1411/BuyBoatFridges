@@ -65,8 +65,7 @@
 
 .header__contact-number, .header__myCart-text {
   font-size: 15px;
-  font-weight: 400;
-  color: #454545; }
+  font-weight: 400; }
 
 .header__myCart-text {
   display: none; }
@@ -97,6 +96,7 @@
 
 .header__megaMenu {
   display: none;
+  -webkit-animation: slideDown .5s;
   position: absolute;
   width: 100%;
   top: 100%;
@@ -112,11 +112,11 @@
 .header__megaMenu-option {
   width: 100%;
   padding: 18px 0 17px;
-  color: #454545;
   font-size: 16px;
   font-weight: 400;
   border-bottom: 1px solid #e9e7e7;
-  transition: all .2s linear; }
+  transition: all .2s linear;
+  color: var(--text-color); }
 
 .header__megaMenu-option:hover {
   font-weight: 700; }
@@ -197,7 +197,6 @@
 
 .menuMobile__menuShow-option {
   font-size: 16px;
-  color: #454545;
   font-weight: 500;
   transition: all .2s linear; }
 
@@ -214,7 +213,6 @@
 
 .menuMobile__contact-text {
   font-size: 18px;
-  color: #454545;
   font-weight: 400; }
 
 .sticky {
@@ -243,7 +241,8 @@
 
 .cartQuickView {
   width: 100%;
-  min-height: 160px; }
+  min-height: 160px;
+  -webkit-animation: opacity .5s; }
 
 .cartQuickView__inner {
   width: 100%; }
@@ -275,7 +274,6 @@
 
 .cartQuickView__productLine-productTitle {
   font-size: 14px;
-  color: #454545;
   margin-bottom: 5px; }
 
 .cartQuickView__productLine-productTitle a span {
@@ -297,12 +295,10 @@
   display: none; }
 
 .cartQuickView__productLine-qty {
-  font-size: 14px;
-  color: #454545; }
+  font-size: 14px; }
 
 .cartQuickView__productLine-price {
-  font-size: 16px;
-  color: #454545; }
+  font-size: 16px; }
 
 .cartQuickView__emptyCart {
   display: flex;
@@ -321,8 +317,7 @@
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  color: #454545; }
+  font-size: 14px; }
 
 .cartQuickView__totalCart-total {
   font-size: 16px; }
@@ -495,7 +490,6 @@
     gap: 20px; }
   .menuMobile__menuShow-option {
     font-size: 25px;
-    color: #454545;
     font-weight: 500;
     transition: all .2s linear; }
   .menuMobile__menuShow-option:hover {
@@ -508,7 +502,6 @@
     gap: 17px; }
   .menuMobile__contact-text {
     font-size: 25px;
-    color: #454545;
     font-weight: 400; } }
 
 @media (min-width: 600px) {

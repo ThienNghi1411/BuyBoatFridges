@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ 'homeCategories.css' | asset_url }}">
 <section class="homeCategories">
     <div class="homeCategories__inner">
-        <div class="homeCategories__title">{{ section.settings.title }}</div>
+        <div class="homeCategories__title">{{ section.settings.title | default: "SHOP BY CATEGORIES" }}</div>
         {%- assign fsArr = section.settings.title_fs | split: "," -%}
 
         {%- style -%}

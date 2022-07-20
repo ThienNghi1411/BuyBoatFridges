@@ -63,6 +63,7 @@
     }
 
     &__content, &__contentDestop{
+        -webkit-animation: opacity .5s ;
         & p .main-title{
             font-size: 25px;
         }
@@ -119,7 +120,6 @@
         }
         &-lineText{
             font-size: 15px;
-            color: #454545;
         }
 
         &-lineType{

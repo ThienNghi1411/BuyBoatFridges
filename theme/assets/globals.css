@@ -157,6 +157,9 @@ input:active, input:focus {
 html {
   font-family: Source Sans Pro,sans-serif; }
 
+body {
+  color: var(--text-color); }
+
 a {
   display: block; }
 
@@ -368,8 +371,7 @@ img.lazyload:not([src]) {
 
 .cartPopUpError__header-text {
   font-size: 26px;
-  font-weight: 700;
-  color: #454545; }
+  font-weight: 700; }
 
 .cartPopUpError__error {
   font-size: 15px; }
@@ -396,3 +398,31 @@ img.lazyload:not([src]) {
 @media (min-width: 600px) {
   .cartPopUpError__content {
     width: 500px; } }
+
+@-webkit-keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0; }
+  to {
+    transform: translateY(0);
+    opacity: 1; } }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0; }
+  to {
+    transform: translateY(0);
+    opacity: 1; } }
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes opacity {
+  0% {
+    opacity: 0; }
+  to {
+    opacity: 1; } }

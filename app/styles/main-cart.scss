@@ -7,7 +7,6 @@
     &__title{
         font-size: 24px;
         font-weight: 500;
-        color: #454545;
         text-align: center;
         border-bottom: 1px solid #c1c1c1;
         padding-bottom: 30px;
@@ -124,7 +123,6 @@
             &-text{
                 font-size: 14px;
                 font-weight: 400;
-                color: #454545;
             }
     }
     &__shipAndTax{
@@ -135,13 +133,11 @@
         &-title{
             font-size: 17px;
             font-weight: 400;
-            color: #454545;
             margin-bottom: 20px;
         }
         &-subTitle{
             font-size: 14px;
             font-weight: 400;
-            color: #454545;
             margin-bottom: 20px;
         }
     }
@@ -157,7 +153,6 @@
         &-label{
             font-size: 14px;
             font-weight: 400;
-            color: #454545;
             margin-bottom: 7px;
         }
         &-select,&-input{
@@ -177,7 +172,6 @@
         &-title{
             font-size: 14px;
             font-weight: 400;
-            color: #454545;
             margin-bottom: 7px;
         }
         &-select{
@@ -219,7 +213,6 @@
         &-title{
             font-size: 14px;
             font-weight: 400;
-            color: #454545;
             margin-bottom: 7px;
         }
         &-listRes{
@@ -228,7 +221,6 @@
             &-option{
                 font-size: 14px;
                 font-weight: 400;
-                color: #454545;
                 margin-bottom: 7px;
             }
         }
@@ -241,13 +233,11 @@
         &-title{
             font-size: 17px;
             font-weight: 400;
-            color: #454545;
             margin-bottom: 20px;
         }
         &-subTitle{
             font-size: 14px;
             font-weight: 400;
-            color: #454545;
             margin-bottom: 20px;
         }
         &-text{
@@ -278,7 +268,6 @@
         &-text , &-price{
             font-size: 16px;
             font-weight: 400;
-            color: #454545;
         }
     }
     &__grandTotal{
@@ -288,7 +277,6 @@
         &-text , &-price{
             font-size: 20px;
             font-weight: 500;
-            color: #454545;
         }
     }
     &__emptyCart{
@@ -308,13 +296,11 @@
             font-size: 24px;
             font-weight: 500;
             margin-bottom: 10px;
-            color: #454545;
         }
         &-subTitle{
             font-size: 15px;
             font-weight: 400;
             margin-bottom: 20px;
-            color: #454545;
         }
         &-btnShopping{
             width: 208px;
@@ -388,7 +374,6 @@
         &-text{
             font-size: 26px;
             font-weight: bold;
-            color: #454545;
         }
     }
     &__error{

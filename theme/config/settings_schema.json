@@ -87,5 +87,52 @@
         "default": "#d0d0d0"
       }
     ]
+  },
+  {
+    "name": "Color Product Page",
+    "settings":[
+      {
+          "type":"header",
+          "content":"Label Sale"    
+      },
+      {
+          "type":"color",
+          "id":"textColor_label_sale",
+          "label":"Text Color Label Sale: "
+      },
+      {
+        "type":"color",
+        "id":"bgColor_label_sale",
+        "label":"Background Color Label Sale: "
+      },
+      {
+        "type":"header",
+        "content":"Label Sold Out"    
+      },
+      {
+          "type":"color",
+          "id":"textColor_label_soldOut",
+          "label":"Text Color Label Sold Out: "
+      },
+      {
+        "type":"color",
+        "id":"bgColor_label_soldOut",
+        "label":"Background Color Label Sold Out: "
+      },
+      {
+        "type":"header",
+        "content":"Custom Arrows Controls Slider"    
+      },
+      {
+          "type":"color",
+          "id":"arrowColor_slider",
+          "label":"Arrow Color Slider: "
+      },
+      {
+        "type":"color",
+        "id":"arrowBgColor_slider",
+        "label":"Arrow Background Color Slider: "
+      }
+    ]
   }
 ]

@@ -49,6 +49,7 @@
           icon_Open.style.display = "unset";
           icon_Close.style.display = "none";
           e.parentElement.style.marginBottom = "20px";
+          e.parentElement.style.paddingBottom = "0px";
         } else {
           let clear_All = e.nextElementSibling.nextElementSibling;
           if (clear_All != null) {
@@ -60,6 +61,7 @@
           icon_Open.style.display = "none";
           icon_Close.style.display = "unset";
           e.parentElement.style.marginBottom = "0px";
+          e.parentElement.style.paddingBottom = "30px";
         }
       });
     });

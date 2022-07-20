@@ -1,6 +1,7 @@
 .cartQuickView{
     width: 100%;
     min-height: 160px;
+    -webkit-animation: opacity .5s ;
     &__inner{
         width: 100%;
     }
@@ -31,7 +32,6 @@
         }
         &-productTitle{
             font-size: 14px;
-            color: #454545;
             margin-bottom: 5px;
             & a span{
                 color: #139aeb;
@@ -55,11 +55,9 @@
         }
         &-qty{
             font-size: 14px;
-            color: #454545;
         }
         &-price{
             font-size: 16px;
-            color: #454545;
         }
     }
 
@@ -81,7 +79,6 @@
         display: flex;
         justify-content: space-between;
         font-size: 14px;
-        color: #454545;
         &-total{
             font-size: 16px;
         }

@@ -16,7 +16,6 @@
         flex-direction: column;
         gap: 20px;
         margin-bottom: 30px;
-        color: #454545;
     }
     &__nameProduct{
         font-size: 24px;
@@ -67,9 +66,9 @@
            display: flex;
            justify-content: flex-end;
            align-items: center;
-           background-color: #032c41;
+           background-color: var(--bgColor-label-soldOut);
            font-size: 16px ;
-           color: #fff;
+           color: var(--textColor-label-soldOut);
            font-weight: bold;
            top: 20px;
         }
@@ -80,9 +79,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ff920c;
+            background-color: var(--bgColor-label-sale);
             font-size: 18px ;
-            color: #fff;
+            color: var(--textColor-label-sale);
             font-weight: bold;
             top: 20px;
             left: 33px;
@@ -119,7 +118,6 @@
         display: flex;
         align-items: center;
         gap: 15px;
-        color: #454545;
         cursor: pointer;
         &-text{
             font-size: 16px;
@@ -172,7 +170,6 @@
         }
         &-inputQty{
             flex: 1;
-            color: #454545;
             text-align: center;
             width: 100px;
             background-color: #ebebeb;
@@ -284,7 +281,6 @@
         &-text{
             font-size: 16px;
             font-weight: 400;
-            color: #454545;
         }
     }
     &__otherInfo{
@@ -296,7 +292,6 @@
     &__vendor,&__productType,&__tags{
         font-size: 13px;
         font-weight: 400;
-        color: #454545;
     }
     &__sliderImgProduct{
         width: 100%;
@@ -314,7 +309,7 @@
         height: 35px;
         width: 35px;
         border-radius: 100%;
-        background-color: #000;
+        background-color: var(--arrowBgColor-slider);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -323,7 +318,7 @@
             width: 12px;
             height: 17px;
             & path{
-                fill: #fff;
+                fill: var(--arrowColor-slider);
             }
         }
     }
@@ -335,7 +330,7 @@
         height: 35px;
         width: 35px;
         border-radius: 100%;
-        background-color: #000;
+        background-color: var(--arrowBgColor-slider);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -344,7 +339,7 @@
             width: 12px;
             height: 17px;
             & path{
-                fill: #fff;
+                fill: var(--arrowColor-slider);
             }
         }
     }
@@ -377,6 +372,7 @@
 
 
 .popupAsking , .popupPreOrder {
+    -webkit-animation: opacity .5s;
     position: fixed;
     top: 0;
     left: 0;
@@ -420,7 +416,6 @@
         text-align: center;
         font-size: 28px;
         font-weight: bold;
-        color: #454545;
         margin-bottom: 40px;
     }
     &__formContent{
@@ -449,7 +444,6 @@
         &-label{
             font-size: 16px;
             font-weight: bold;
-            color: #454545;
             margin-bottom: 8px;
             & span{
                 color: red;
@@ -504,7 +498,6 @@
     &__titleMessage{
         font-size: 28px;
         font-weight: bold;
-        color: #454545;
         width: 100%;
         text-align: center;
         margin-bottom: 7px;
@@ -512,13 +505,13 @@
     &__messageContent{
         width: 100%;
         text-align: center;
-        color: #454545;
         font-weight: 500;
         font-size: 16px;
     }
 }
 
 .popupShipping{
+    -webkit-animation: opacity .5s;
     position: fixed;
     top: 0;
     left: 0;
@@ -563,7 +556,6 @@
         text-align: center;
         font-size: 28px;
         font-weight: bold;
-        color: #454545;
         margin-bottom: 40px;
     }
 

@@ -488,9 +488,13 @@ select {
     height: 100%;
     width: 20%;
     padding: 0;
+    overflow-y: unset;
     flex-direction: column; }
   .collection .collection__inner .collection__filter .closebutton {
     display: none; }
+  .collection .collection__inner .collection__filter .filter_byType .tag-filters .item__wrap .tag:hover {
+    transform: scale(1.2);
+    color: var(--light-color); }
   .collection .collection__inner .collection__content {
     width: 80%; }
   .collection .collection__inner .collection__content .collection__handle .collection__control .collections__Filter {

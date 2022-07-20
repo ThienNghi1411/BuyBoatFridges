@@ -1,8 +1,15 @@
 {
   "current": {
-    "primary_color": "#009ee3",
+    "primary_color": "#139aeb",
     "background_content": "#f7f8fa",
     "border_color": "#c1c1c1",
+    "textColor_label_sale": "#ffffff",
+    "bgColor_label_sale": "#ff920c",
+    "textColor_label_soldOut": "#ffffff",
+    "bgColor_label_soldOut": "#032c41",
+    "arrowColor_slider": "#ffffff",
+    "arrowBgColor_slider": "#000000",
+    "arrBgColor_slider": "#000000",
     "sections": {
       "header": {
         "type": "header",
@@ -536,7 +543,7 @@
           "bb5a7b2b-dbe4-474c-a363-71b9f311a8c1": {
             "type": "product",
             "settings": {
-              "product": "dw100rxp4-ex-1-vitrifrigo-stainless-steel-single-drawer-refrigerator-ocx2-model"
+              "product": "c42rbd4-f-1-vitrifrigo-front-loading-black-refrigerator-w-freezer-compartment-adjustable-flange-external-unit"
             }
           }
         },

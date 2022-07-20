@@ -112,6 +112,7 @@
     justify-content: center;
     align-items: center; }
   .contact .contact_inner .contact_inner_info .inner_info_item {
+    height: 145px;
     width: 30%; }
   .contact .contact_inner .contact_inner_form form {
     display: flex;
