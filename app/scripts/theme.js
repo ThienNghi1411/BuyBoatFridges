@@ -4,11 +4,6 @@
   */
 
   import "./common/theme-section";
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> TheNgan
   register("page-banner", {
     onLoad: function () {
       const settings = JSON.parse(this.container.querySelector("#pageBanner_settings").innerText);

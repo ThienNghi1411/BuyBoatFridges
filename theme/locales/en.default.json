@@ -73,13 +73,8 @@
         "formProduct": "Product",
         "formSend": "Send"
       },
-<<<<<<< HEAD
       "popupShipping":{
         "title":"SHIPPING & RETURNS"
-=======
-      "popupShipping": {
-        "title": "SHIPPING & RETURNS"
->>>>>>> TheNgan
       }
     },
     "productSpecs": {
@@ -95,11 +90,7 @@
       "title": "SHOPPING CART",
       "cartBreadcrumb": "Your Shopping Cart",
       "cartClear": "CLEAR SHOPPING CART",
-<<<<<<< HEAD
       "preOrder":"PRE-ORDER",
-=======
-      "preOrder": "PRE-ORDER",
->>>>>>> TheNgan
       "continueShopping": "CONTINUE SHOPPING",
       "shipping": {
         "one_shipping_rate": "There is one shipping rate available for {}, {{province}}, {{country}}.",
